@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Droplets, Cpu, Layers, ShieldCheck, Waves, TrendingUp, Sun } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import Header from '../components/Header';
 import Hero from '../components/Hero';
 import StatsBar from '../components/StatsBar';
 import LoadingScreen from '../components/LoadingScreen';
