@@ -42,32 +42,7 @@ const SolarCalculatorBody: React.FC = () => {
   const co2Pct = Math.min(100, (co2Offset / 10) * 100);
 
   return (
-    <div className="bg-white text-black pb-20 overflow-x-hidden">
-      {/* Hero */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden mb-0 pt-24 mt-[-80px]">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/calculator-hero.jpg"
-            className="w-full h-full object-cover scale-[1.05]"
-            alt="Solar ROI Analytics"
-          />
-          <div className="absolute inset-0 bg-black/35"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent"></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
-            Yield Analytics
-          </span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
-            SOLAR SAVINGS <br className="hidden md:block" />
-            ROI CALCULATOR
-          </h1>
-          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-            Based on real-time KSEB tariff models and your roof capacity.
-          </p>
-        </div>
-      </section>
-
+    <>
       {/* Calculator Body */}
       <section className="px-6 py-20 md:py-32" data-nav-light>
         <div className="max-w-7xl mx-auto">
@@ -235,7 +210,7 @@ const SolarCalculatorBody: React.FC = () => {
           <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest">Spectrum Powers — 24 Years of Solar Excellence</p>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

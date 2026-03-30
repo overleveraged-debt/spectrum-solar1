@@ -1,12 +1,69 @@
-import React, { useState } from 'react';
-import { Droplets, Cpu, Layers, ShieldCheck, Waves, TrendingUp, Sun, Star, CheckCircle2, Quote, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Droplets, Cpu, Layers, ShieldCheck, Waves, TrendingUp, Sun, Star, CheckCircle2, Quote, ArrowRight, ChevronLeft, ChevronRight, Zap, Leaf, BatteryCharging } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import StatsBar from '../components/StatsBar';
 import LoadingScreen from '../components/LoadingScreen';
 
+const homeTestimonials = [
+  { name: 'Abdul Rahman', location: 'Kannur', initials: 'AR', date: '2 months ago', product: '5KW Hybrid Solar', text: 'Spectrum Powers installed a 5KW Hybrid system at my home. The service team was extremely professional, and my electricity bill has literally dropped to zero.', rating: 5 },
+  { name: 'Dr. Somashekharan', location: 'Koyili Hospital', initials: 'DS', date: '1 year ago', product: '50KW Commercial', text: 'Their 50KW installation has been performing flawlessly for over 3 years. One of the most reliable power partners in Kerala. Highly recommended.', rating: 5 },
+  { name: 'Priya Menon', location: 'Thrissur', initials: 'PM', date: '8 months ago', product: '200kW On-Grid', text: 'Our factory runs on Spectrum\'s 200kW solar plant now. ROI happened faster than they estimated. Their after-sales team is always available.', rating: 5 },
+  { name: 'Suresh Babu', location: 'Malappuram', initials: 'SB', date: '5 months ago', product: 'Lithium UPS', text: "Switched to their Lithium backup system recently. The transition is so smooth I don't even know when the power goes out. Exceptional quality.", rating: 5 },
+  { name: 'Anitha Krishnan', location: 'Kozhikode', initials: 'AK', date: '7 months ago', product: '6kW On-Grid', text: 'Best solar company in Kerala without a doubt. Honest advice, premium products, and a team that genuinely cares about long-term performance.', rating: 5 },
+];
+
+const HomeTestimonialCarousel: React.FC = () => {
+  const [idx, setIdx] = useState(0);
+  const next = useCallback(() => setIdx((i) => (i + 1) % homeTestimonials.length), []);
+  const prev = useCallback(() => setIdx((i) => (i - 1 + homeTestimonials.length) % homeTestimonials.length), []);
+
+  useEffect(() => {
+    const t = setInterval(next, 3500);
+    return () => clearInterval(t);
+  }, [next]);
+
+  const t = homeTestimonials[idx];
+  return (
+    <div className="relative">
+      <div key={idx} className="relative p-7 md:p-9 bg-zinc-900/60 border border-white/5 rounded-[2rem] shadow-lg overflow-hidden" style={{ animation: 'fadeIn 0.4s ease-out' }}>
+        <Quote className="absolute -top-2 -right-2 w-20 h-20 text-yellow-400/[0.05]" />
+        <div className="flex gap-1 mb-4">
+          {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+        </div>
+        <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full mb-5 inline-block">{t.product}</span>
+        <p className="text-zinc-300 leading-relaxed mb-6 italic text-base font-light min-h-[80px]">"{t.text}"</p>
+        <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+          <div className="w-10 h-10 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
+            <span className="text-yellow-400 font-black text-xs">{t.initials}</span>
+          </div>
+          <div>
+            <div className="font-black uppercase text-sm tracking-tight flex items-center gap-2 text-white">{t.name} <CheckCircle2 className="w-4 h-4 text-yellow-400" /></div>
+            <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">{t.location} · {t.date}</div>
+          </div>
+        </div>
+      </div>
+      {/* Controls */}
+      <div className="flex items-center gap-3 mt-4">
+        {homeTestimonials.map((_, i) => (
+          <button key={i} onClick={() => setIdx(i)} className={`rounded-full transition-all duration-200 ${i === idx ? 'w-5 h-2 bg-yellow-400' : 'w-2 h-2 bg-zinc-700 hover:bg-zinc-500'}`} />
+        ))}
+        <div className="ml-auto flex gap-2">
+          <button onClick={prev} className="w-9 h-9 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-600 transition-all"><ChevronLeft className="w-4 h-4" /></button>
+          <button onClick={next} className="w-9 h-9 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-600 transition-all"><ChevronRight className="w-4 h-4" /></button>
+        </div>
+      </div>
+      <Link to="/feedback" className="mt-4 flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-yellow-400 hover:gap-2 transition-all">
+        Read all 40,000+ reviews <ArrowRight className="w-3 h-3" />
+      </Link>
+      <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+    </div>
+  );
+};
+
 const Home: React.FC = () => {
+
   useScrollReveal();
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
@@ -16,180 +73,119 @@ const Home: React.FC = () => {
       <Hero onLoaded={() => setIsVideoLoaded(true)} />
       <StatsBar />
 
-      <section id="solutions" className="py-32 bg-zinc-950">
+      {/* Core Solar Solutions Section */}
+      <section id="solutions" className="py-24 md:py-32 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
             <div className="reveal">
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Core Energy</span>
-              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] text-white uppercase leading-[0.9]">Solar <br />Integration.</h2>
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Solar Solutions</span>
+              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] text-white uppercase leading-[0.9]">Solar <br />Systems.</h2>
             </div>
-            <p className="text-zinc-500 max-w-xs text-sm leading-relaxed reveal">Proven expertise in large-scale system integration across Kerala and beyond.</p>
+            <Link to="/solar" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-400 hover:gap-3 transition-all reveal">
+              All Solar Products <ArrowRight className="w-3 h-3" />
+            </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div className="md:col-span-7 h-[400px] sm:h-[450px] md:h-[600px] bento-card rounded-[3rem] p-6 sm:p-8 md:p-14 flex flex-col justify-end relative overflow-hidden group reveal">
-              <img src="/images/Banner04.jpg" className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-[2000ms]" alt="Solar Hybrid" />
-              <div className="relative z-10">
-                <div className="w-12 h-12 bg-yellow-400 rounded-2xl flex items-center justify-center mb-8 text-black">
-                  <Sun className="w-6 h-6" />
-                </div>
-                <h3 className="text-3xl md:text-5xl font-black mb-6 text-white uppercase tracking-[-0.02em] leading-tight text-balance">Government <br />Awarded Grid Integration.</h3>
-                <p className="text-zinc-400 text-sm max-w-sm mb-8 leading-relaxed">High-performance Kerala Gov Awarded solar architecture for industry and home with 24/7 monitoring.</p>
-                <div className="flex flex-wrap gap-3">
-                  <span className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md">Net-Metering</span>
-                  <span className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md">Hybrid Ready</span>
-                </div>
-              </div>
-            </div>
-            <div className="md:col-span-5 flex flex-col gap-6">
-              <div className="h-[280px] bento-card rounded-[3rem] p-10 flex flex-col justify-between group reveal" style={{ transitionDelay: '150ms' }}>
-                <div className="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center group-hover:border-yellow-400 transition-colors">
-                  <Droplets className="text-yellow-400 w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-tight">Solar Water Heating</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">Specialized thermal solutions for residential and commercial scales.</p>
-                </div>
-              </div>
-              <div className="flex-1 bento-card rounded-[3rem] p-10 flex flex-col justify-between group reveal" style={{ transitionDelay: '300ms' }}>
-                <div className="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center group-hover:border-yellow-400 transition-colors">
-                  <Cpu className="text-yellow-400 w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-tight">Power Analytics</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-6">ERP-Enabled data tracking for every unit installed since 2005.</p>
-                  <span className="text-[10px] font-black text-yellow-500 uppercase tracking-[0.3em]">System Integrated &rarr;</span>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+            {[
+              { id: 'on-grid', icon: Sun, title: 'On-Grid Solar', sub: 'Grid-Tied', desc: 'Zero electricity bills with net metering. Fastest ROI. Best for homes & offices.', badge: 'Most Popular', color: '#facc15' },
+              { id: 'hybrid', icon: Zap, title: 'Hybrid Solar', sub: 'Grid + Battery', desc: 'Day & night power. Solar generation + lithium backup for seamless reliability.', badge: null, color: '#a78bfa' },
+              { id: 'off-grid', icon: Leaf, title: 'Lithium Off-Grid', sub: 'Off-Grid', desc: 'Complete energy independence. For remote sites, islands & hospitals.', badge: null, color: '#4ade80' },
+              { id: 'water-heaters', icon: Droplets, title: 'Solar Water Heaters', sub: 'Thermal Savings', desc: 'High-efficiency vacuum tube systems. 100L to 2000L for any scale.', badge: null, color: '#fb923c' },
+            ].map((p) => {
+              const Icon = p.icon;
+              return (
+                <Link
+                  key={p.id}
+                  to={`/solar#${p.id}`}
+                  className="group relative p-6 md:p-8 bg-zinc-900/50 border border-zinc-800 rounded-[2rem] hover:border-opacity-60 transition-all duration-400 flex flex-col justify-between min-h-[240px] overflow-hidden hover:bg-zinc-900"
+                  style={{ borderColor: 'rgba(255,255,255,0.08)' }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = p.color + '60')}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
+                >
+                  <div>
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300" style={{ backgroundColor: p.color + '15', border: `1px solid ${p.color}30` }}>
+                      <Icon className="w-5 h-5" style={{ color: p.color }} />
+                    </div>
+                    {p.badge && <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full mb-3 inline-block" style={{ color: p.color, backgroundColor: p.color + '15', border: `1px solid ${p.color}30` }}>{p.badge}</span>}
+                    <h3 className="text-lg font-black text-white uppercase tracking-tight mb-2">{p.title}</h3>
+                    <span className="text-[9px] font-black uppercase tracking-widest mb-3 block" style={{ color: p.color }}>{p.sub}</span>
+                    <p className="text-zinc-500 text-xs leading-relaxed">{p.desc}</p>
+                  </div>
+                  <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest mt-6 transition-all group-hover:gap-2" style={{ color: p.color }}>
+                    Learn More <ArrowRight className="w-3 h-3" />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Power Backup & Diverse Systems (White) */}
-      <section id="backup" className="py-32 bg-white text-black" data-nav-light>
+      {/* Power Backup Section */}
+      <section id="backup" className="py-24 md:py-32 bg-white text-black" data-nav-light>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
             <div className="reveal">
-              <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Electronics</span>
-              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] uppercase leading-[0.9]">Diverse <br />Portfolio.</h2>
+              <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Backup</span>
+              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] uppercase leading-[0.9]">Backup <br />Systems.</h2>
             </div>
-            <p className="text-zinc-600 max-w-xs text-sm leading-relaxed reveal tracking-wide">Precision-engineered power conditioning and backup devices with Kerala Heritage.</p>
+            <Link to="/power" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:gap-3 transition-all reveal">
+              All Power Products <ArrowRight className="w-3 h-3" />
+            </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-8 premium-cream-card rounded-2xl reveal">
-              <Cpu className="w-8 h-8 mb-6 text-yellow-500" />
-              <h4 className="text-lg font-extrabold mb-2 uppercase">UPS Systems</h4>
-              <p className="text-zinc-600 text-xs">Online and home UPS units with zero switch-over.</p>
-            </div>
-            <div className="p-8 premium-cream-card rounded-2xl reveal" style={{ transitionDelay: '100ms' }}>
-              <Layers className="w-8 h-8 mb-6 text-yellow-500" />
-              <h4 className="text-lg font-extrabold mb-2 uppercase">Batteries</h4>
-              <p className="text-zinc-600 text-xs">Lithium and Tubular battery manufacturing.</p>
-            </div>
-            <div id="integrated" className="p-8 premium-cream-card rounded-2xl reveal" style={{ transitionDelay: '200ms' }}>
-              <ShieldCheck className="w-8 h-8 mb-6 text-yellow-500" />
-              <h4 className="text-lg font-extrabold mb-2 uppercase">Security & CCTV</h4>
-              <p className="text-zinc-600 text-xs">Total integrated surveillance and safety units.</p>
-            </div>
-            <div className="p-8 premium-cream-card rounded-2xl reveal" style={{ transitionDelay: '300ms' }}>
-              <Waves className="w-8 h-8 mb-6 text-yellow-500" />
-              <h4 className="text-lg font-extrabold mb-2 uppercase">Water Purifiers</h4>
-              <p className="text-zinc-600 text-xs">Advanced purification systems for healthy living.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Network & Opportunities (Dark) */}
-      <section id="opportunities" className="py-32 bg-zinc-950 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-5 reveal">
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.4em] mb-4 block">Expansion</span>
-              <h2 className="text-[2.5rem] sm:text-4xl md:text-5xl font-bold mb-8 tracking-tighter text-white uppercase leading-none md:leading-tight">Scale with a <br className="hidden md:block" />Market Leader.</h2>
-              <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed mb-10">
-                Join a network of 20 successful outlets. We offer structured franchise and dealership models with 24 years of supply chain expertise.
-              </p>
-              <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-yellow-400 rounded-xl text-black">
-                    <TrendingUp className="w-6 h-6" />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 reveal">
+            {[
+              { id: 'lithium-ups', icon: Cpu, title: 'Lithium UPS', sub: 'Pure Sine Wave' },
+              { id: 'home-ups', icon: Zap, title: 'Home UPS', sub: 'Zero Interruption' },
+              { id: 'inverters', icon: TrendingUp, title: 'Inverters', sub: 'All Capacities' },
+              { id: 'online-ups', icon: ShieldCheck, title: 'Online UPS', sub: 'IT & Server' },
+              { id: 'lithium-batteries', icon: Layers, title: 'Lithium Batteries', sub: '4000+ Cycles' },
+              { id: 'tubular-batteries', icon: Waves, title: 'Tubular Batteries', sub: 'Lead-Acid Value' },
+            ].map((p) => {
+              const Icon = p.icon;
+              return (
+                <Link
+                  key={p.id}
+                  to={`/power#${p.id}`}
+                  className="group p-5 premium-cream-card rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-3 hover:-translate-y-1"
+                >
+                  <div className="w-10 h-10 bg-yellow-400/10 rounded-xl flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-yellow-600 group-hover:text-yellow-500 transition-colors" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-white">ERP-Optimized Operations</p>
-                    <p className="text-[10px] text-zinc-500 mt-1 uppercase">Full logistical transparency since 2005.</p>
+                    <h4 className="font-black text-sm uppercase tracking-tight text-black leading-tight">{p.title}</h4>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-0.5 block">{p.sub}</span>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4 reveal" style={{ transitionDelay: '200ms' }}>
-              <div className="group p-10 border border-zinc-800 rounded-[2rem] hover:border-yellow-400 transition-all cursor-pointer bg-zinc-900/40 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <TrendingUp className="w-12 h-12" />
-                </div>
-                <h4 className="text-2xl font-bold text-white mb-4">Franchise <br />(12 Units)</h4>
-                <p className="text-zinc-500 text-sm mb-8 leading-relaxed">Establish a brand center with full technical and marketing support from HQ.</p>
-                <span className="text-[10px] font-black text-yellow-400 uppercase tracking-[0.3em] group-hover:translate-x-2 transition-transform inline-block">Inquire Area &rarr;</span>
-              </div>
-              <div className="group p-10 border border-zinc-800 rounded-[2rem] hover:border-yellow-400 transition-all cursor-pointer bg-zinc-900/40 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Layers className="w-12 h-12" />
-                </div>
-                <h4 className="text-2xl font-bold text-white mb-4">Official <br />Dealership</h4>
-                <p className="text-zinc-500 text-sm mb-8 leading-relaxed">Distribute our core range of UPS, Batteries, and Water Purifiers in your area.</p>
-                <span className="text-[10px] font-black text-yellow-400 uppercase tracking-[0.3em] group-hover:translate-x-2 transition-transform inline-block">Join Network &rarr;</span>
-              </div>
-              <div className="group p-8 border border-zinc-800 rounded-2xl hover:border-yellow-400 transition-all cursor-pointer bg-zinc-900/40 md:col-span-2">
-                <h4 className="text-xl font-bold text-white mb-4">Freelance Partnership</h4>
-                <p className="text-zinc-500 text-sm mb-6">Expert-level consultation partnerships for energy auditors and engineering professionals.</p>
-                <span className="text-[10px] font-bold text-yellow-400 uppercase tracking-widest">Register Profile</span>
-              </div>
-            </div>
+                  <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-yellow-600 mt-auto">
+                    View <ArrowRight className="w-2.5 h-2.5" />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Network Visualization Section (Dark) */}
-      <section className="py-32 bg-zinc-950 border-t border-zinc-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="reveal">
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">National Infrastructure</span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-[-0.05em] text-white uppercase leading-[0.9] mb-8">India's <br />Energy Backbone.</h2>
-              <div className="space-y-4">
-                {[
-                  { region: "Southern Hub", type: "Kochi Headquarters", data: "Engineering R&D Center" },
-                  { region: "National Reach", type: "Pan-India Sales", data: "500+ Franchise Partners" },
-                  { region: "Govt. Integration", type: "Utility Projects", data: "State-Awarded Excellence" },
-                  { region: "Support Grid", type: "24/7 Operations", data: "60+ Service Engineers" }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between py-4 border-b border-zinc-900 group cursor-pointer hover:border-yellow-400 transition-colors">
-                    <div>
-                      <span className="text-xl font-bold text-white uppercase tracking-tighter block">{item.region}</span>
-                      <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{item.type}</span>
-                    </div>
-                    <span className="text-[10px] font-black text-yellow-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0">{item.data}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative flex justify-center items-center reveal" style={{ transitionDelay: '200ms' }}>
-              <div className="aspect-square w-full max-w-md bg-zinc-900/30 rounded-full border border-white/5 flex items-center justify-center relative overflow-hidden group/map">
-                <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/5 to-transparent"></div>
-                
-                {/* High-Impact Minimalism */}
-                <div className="relative z-10 text-center px-12 group-hover/map:scale-110 transition-transform duration-700">
-                  <div className="text-yellow-400 font-extrabold text-7xl tracking-tighter uppercase italic leading-none mb-4 drop-shadow-[0_0_30px_rgba(250,204,21,0.2)]">INDIA</div>
-                  <div className="w-12 h-[1px] bg-yellow-400 mx-auto opacity-50 mb-4"></div>
-                  <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.5em]">National Grid</p>
-                </div>
 
-                {/* Animated Rings */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-64 h-64 border border-yellow-400/5 rounded-full animate-pulse"></div>
-                  <div className="absolute w-80 h-80 border border-yellow-400/5 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+      {/* Full-Bleed Nature Photo Background — Why Spectrum */}
+      <section className="relative py-28 md:py-40 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src="/images/nature-kerala.jpg" className="w-full h-full object-cover" alt="Kerala Nature" />
+          <div className="absolute inset-0 bg-black/65" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div className="max-w-2xl reveal">
+            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Why Spectrum</span>
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-white mb-8">India's Most Trusted <br />Solar Partner.</h2>
+            <p className="text-white/70 text-lg font-light leading-relaxed mb-10">24 years. 40,000+ installations. Government-awarded excellence. Engineered for Kerala's unique climate.</p>
+            <div className="grid grid-cols-3 gap-6">
+              {[{ v: '40K+', l: 'Installations' }, { v: '24yr', l: 'Track Record' }, { v: '100%', l: 'Service Rate' }].map((s, i) => (
+                <div key={i} className="border-l border-yellow-400/40 pl-4">
+                  <div className="text-3xl font-black text-yellow-400 tracking-tighter">{s.v}</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-white/50 mt-1">{s.l}</div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -215,113 +211,58 @@ const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Right: Testimonial Cards */}
-            <div className="flex flex-col gap-5 reveal" style={{ transitionDelay: '150ms' }}>
-              {[
-                {
-                  name: 'Abdul Rahman', location: 'Kannur', initials: 'AR', date: '2 months ago',
-                  product: '5KW Hybrid Solar',
-                  text: 'Spectrum Powers installed a 5KW Hybrid system at my home. The service team was extremely professional, and my electricity bill has literally dropped to zero.',
-                  rating: 5
-                },
-                {
-                  name: 'Dr. Somashekharan', location: 'Koyili Hospital', initials: 'DS', date: '1 year ago',
-                  product: '50KW Commercial',
-                  text: 'Their 50KW installation has been performing flawlessly for over 3 years. One of the most reliable power partners in Kerala. Highly recommended.',
-                  rating: 5
-                }
-              ].map((t, i) => (
-                <div
-                  key={i}
-                  className="relative p-6 md:p-8 bg-zinc-900/60 border border-white/5 rounded-[2rem] hover:border-yellow-400/20 hover:bg-zinc-900 transition-all duration-500 shadow-lg overflow-hidden group"
-                >
-                  <Quote className="absolute -top-2 -right-2 w-20 h-20 text-white/[0.03] group-hover:text-yellow-400/[0.06] transition-colors duration-500" />
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {[1,2,3,4,5].map(s => (
-                      <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  {/* Product tag */}
-                  <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full mb-4 inline-block">
-                    {t.product}
-                  </span>
-                  <p className="text-zinc-300 leading-relaxed mb-5 italic text-sm md:text-base font-light">
-                    "{t.text}"
-                  </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                    <div className="w-10 h-10 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
-                      <span className="text-yellow-400 font-black text-xs">{t.initials}</span>
-                    </div>
-                    <div>
-                      <div className="font-black uppercase text-sm tracking-tight flex items-center gap-2 text-white">
-                        {t.name}
-                        <CheckCircle2 className="w-4 h-4 text-yellow-400" />
-                      </div>
-                      <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
-                        {t.location} · {t.date}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+            {/* Right: Testimonial Carousel */}
+            <div className="reveal" style={{ transitionDelay: '150ms' }}>
+              <HomeTestimonialCarousel />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Installation Gallery Strip */}
-      <section className="py-20 bg-zinc-950 border-t border-white/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 mb-10 reveal">
-          <div className="flex items-end justify-between">
+      {/* Installation Gallery — Improved Design */}
+      <section className="py-20 md:py-24 bg-zinc-950 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-end justify-between mb-10 reveal">
             <div>
               <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Installations</span>
               <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-white">
                 Real Projects. <br className="hidden md:block" />Real Results.
               </h2>
             </div>
-            <Link
-              to="/gallery"
-              className="hidden md:flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-400 hover:gap-3 transition-all"
-            >
-              View Gallery <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-        </div>
-        {/* Horizontal Scroll Strip */}
-        <div className="flex gap-4 overflow-x-auto pb-4 px-6 md:px-0 md:pl-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] scrollbar-none">
-          {[
-            { src: '/images/p01.jpg', label: 'Residential · Kannur', cap: '5kW On-Grid' },
-            { src: '/images/p02.jpg', label: 'Commercial · Calicut', cap: '50kVA UPS' },
-            { src: '/images/p03.jpg', label: 'Residential · Thrissur', cap: '3kW Hybrid' },
-            { src: '/images/p04.jpg', label: 'Industrial · Kochi', cap: '100kVA Online UPS' },
-            { src: '/images/p05.jpg', label: 'Residential · Palakkad', cap: '20kWh Lithium' },
-            { src: '/images/p06.jpg', label: 'Commercial · Kozhikode', cap: '30kW Solar' },
-            { src: '/images/p07.jpg', label: 'Industrial · Ernakulam', cap: '200kW On-Grid' },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 w-60 md:w-72 h-48 md:h-60 relative rounded-2xl overflow-hidden group cursor-pointer"
-            >
-              <img
-                src={item.src}
-                alt={item.cap}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                <p className="text-yellow-400 text-[9px] font-black uppercase tracking-widest">{item.label}</p>
-                <p className="text-white font-black text-sm uppercase tracking-tight">{item.cap}</p>
-              </div>
+            <div className="flex gap-3">
+              <a href="/solar" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300">
+                Solar Solutions <Sun className="w-3.5 h-3.5" />
+              </a>
+              <a href="/power" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300">
+                Power Systems <BatteryCharging className="w-3.5 h-3.5" />
+              </a>
             </div>
-          ))}
-          {/* Gallery CTA card */}
-          <Link
-            to="/gallery"
-            className="flex-shrink-0 w-48 h-48 md:h-60 rounded-2xl border border-dashed border-white/15 hover:border-yellow-400/40 flex flex-col items-center justify-center gap-3 text-center p-6 transition-all group mr-6"
-          >
-            <span className="text-3xl font-black text-white">+11</span>
-            <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 group-hover:text-yellow-400 transition-colors">View All Projects</span>
-          </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 reveal">
+            {[
+              { src: '/images/p01.jpg', label: 'Kannur', cap: '5kW On-Grid' },
+              { src: '/images/p02.jpg', label: 'Calicut', cap: '50kVA UPS' },
+              { src: '/images/p03.jpg', label: 'Thrissur', cap: '3kW Hybrid' },
+              { src: '/images/p04.jpg', label: 'Kochi', cap: '100kVA UPS' },
+              { src: '/images/p05.jpg', label: 'Palakkad', cap: '20kWh Lithium' },
+              { src: '/images/p06.jpg', label: 'Kozhikode', cap: '30kW Solar' },
+              { src: '/images/p07.jpg', label: 'Ernakulam', cap: '200kW On-Grid' },
+              { src: '/images/banner1090x907.jpg', label: 'Trivandrum', cap: '500kW Plant' },
+            ].map((item, i) => (
+              <div key={i} className={`relative rounded-2xl overflow-hidden group cursor-pointer ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                style={{ aspectRatio: i === 0 ? undefined : '4/3', minHeight: i === 0 ? '300px' : undefined }}>
+                <img src={item.src} alt={item.cap} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-yellow-400 text-[9px] font-black uppercase tracking-widest">{item.label}</p>
+                  <p className="text-white font-black text-sm uppercase tracking-tight">{item.cap}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 flex justify-center md:hidden">
+            <Link to="/gallery" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-400 border border-yellow-400/30 px-6 py-3 rounded-full">View All Projects <ArrowRight className="w-3 h-3" /></Link>
+          </div>
         </div>
       </section>
 

@@ -63,13 +63,13 @@ const navGroups: NavGroup[] = [
       { label: 'About Us', to: '/about' },
       { label: 'Testimonials', to: '/feedback' },
       { label: 'Gallery', to: '/gallery' },
+      { label: 'Projects', to: '/projects' },
     ],
   },
 ];
 
 const singleLinks: NavGroup[] = [
-  { label: 'Vlog', to: '/blog' },
-  { label: 'Projects', to: '/projects' },
+  { label: 'Blog', to: '/blog' },
 ];
 
 const Header: React.FC = () => {
@@ -197,7 +197,7 @@ const Header: React.FC = () => {
               to="/contact"
               className={`${ctaClass} px-5 py-2.5 rounded-full transition-all ml-1 border border-transparent font-black text-[10px]`}
             >
-              Inquiry
+              Enquiry
             </Link>
           </div>
 
@@ -310,7 +310,7 @@ const Header: React.FC = () => {
             onClick={() => setIsMobileMenuOpen(false)}
             className="mt-8 block bg-yellow-400 text-black px-8 py-5 rounded-full text-sm font-black uppercase tracking-[0.2em] text-center shadow-2xl hover:scale-[1.02] transition-transform"
           >
-            Inquiry Now
+            Enquiry Now
           </Link>
         </div>
 

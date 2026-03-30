@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useLocation } from 'react-router-dom';
 import { Sun, Zap, Thermometer, CheckCircle2, ArrowRight, Leaf } from 'lucide-react';
 
 interface Product {
@@ -144,7 +145,21 @@ const products: Product[] = [
 
 const SolarSolutions: React.FC = () => {
   useScrollReveal();
-  const [activeProduct, setActiveProduct] = useState<string | null>(null);
+  const { hash } = useLocation();
+  const [activeProduct, setActiveProduct] = useState<string | null>(
+    hash ? hash.replace('#', '') : null
+  );
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      setActiveProduct(id);
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    }
+  }, [hash]);
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
@@ -193,7 +208,7 @@ const SolarSolutions: React.FC = () => {
 
           <div className="space-y-4">
             {products.map((product, index) => (
-              <div key={product.id} className="reveal group" style={{ transitionDelay: `${index * 80}ms` }}>
+              <div key={product.id} id={product.id} className="reveal group" style={{ transitionDelay: `${index * 80}ms` }}>
                 <div
                   className={`relative border rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden ${
                     activeProduct === product.id
