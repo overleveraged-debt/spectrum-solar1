@@ -3,12 +3,16 @@ import RootLayout from './layouts/RootLayout';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
-import Services from './pages/Services';
+import SolarSolutions from './pages/SolarSolutions';
+import PowerBackup from './pages/PowerBackup';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Calculator from './pages/Calculator';
 import Feedback from './pages/Feedback';
+import Opportunities from './pages/Opportunities';
+import Gallery from './pages/Gallery';
+import Support from './pages/Support';
 
 function App() {
   return (
@@ -18,13 +22,16 @@ function App() {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="services" element={<Services />} />
+          <Route path="solar" element={<SolarSolutions />} />
+          <Route path="power" element={<PowerBackup />} />
           <Route path="projects" element={<Projects />} />
           <Route path="contact" element={<Contact />} />
           <Route path="blog" element={<Blog />} />
           <Route path="calculator" element={<Calculator />} />
           <Route path="feedback" element={<Feedback />} />
-          {/* Add more routes here as the app grows */}
+          <Route path="opportunities" element={<Opportunities />} />
+          <Route path="gallery" element={<Gallery />} />
+          <Route path="support" element={<Support />} />
         </Route>
       </Routes>
     </Router>

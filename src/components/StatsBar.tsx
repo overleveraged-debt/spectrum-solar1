@@ -55,9 +55,6 @@ const StatItem = ({ value, label, icon: Icon }: { value: string, label: string, 
 const StatsBar: React.FC = () => {
   return (
     <div className="py-20 bg-zinc-950 border-b border-zinc-900 overflow-hidden relative">
-      <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-zinc-800 to-transparent"></div>
-      <div className="absolute top-0 left-2/4 w-px h-full bg-gradient-to-b from-transparent via-zinc-800 to-transparent"></div>
-      <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-zinc-800 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 items-center">

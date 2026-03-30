@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Battery, Sun, Thermometer, ShieldCheck, Waves, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
+import { Sun, Zap, Thermometer, CheckCircle2, ArrowRight, Leaf } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -13,99 +13,136 @@ interface Product {
   accentColor: string;
   features: string[];
   specs: { label: string; value: string }[];
+  image: string;
   badge?: string;
 }
 
 const products: Product[] = [
   {
-    id: 'solar',
+    id: 'on-grid',
     number: '01',
-    title: 'Solar Grid Integration',
-    category: 'Energy Generation',
-    tagline: 'Government-Awarded Architecture',
-    description: 'Custom-engineered On-Grid, Hybrid, and Lithium Off-Grid systems. 24-year heritage in large-scale solar architecture — from residential rooftops to industrial megawatt arrays.',
-    icon: <Sun className="w-8 h-8" />,
+    title: 'On-Grid Solar System',
+    category: 'Grid-Tied',
+    tagline: 'Net-metered. Zero electricity bills.',
+    description:
+      'Grid-connected solar systems that feed excess power back to the KSEB grid through net metering. The most cost-effective way to slash your electricity bill to zero with a fast ROI — ideal for homes, offices, and factories.',
+    icon: <Sun className="w-5 h-5 md:w-7 md:h-7" />,
     accentColor: '#facc15',
-    features: ['Net-Metering Ready', 'Hybrid Capable', 'ERP-Monitored 24/7', 'Grid-Tied & Off-Grid'],
+    badge: 'Most Popular',
+    features: [
+      'Net-Metering with KSEB',
+      'Real-time ERP Monitoring',
+      '25-Year Panel Warranty',
+      'Government Subsidy Eligible',
+    ],
     specs: [
       { label: 'Capacity Range', value: '3kW – 500kW+' },
-      { label: 'System Types', value: 'On-Grid / Hybrid / Off-Grid' },
-      { label: 'Warranty', value: '25-Year Panel Warranty' },
-      { label: 'Monitoring', value: 'Real-Time ERP Dashboard' },
+      { label: 'Grid Feed', value: 'Net-Metered' },
+      { label: 'Warranty', value: '25-Year Panel' },
+      { label: 'ROI Period', value: '3 – 5 Years' },
     ],
-    badge: 'Kerala Govt. Award',
+    image: '/images/Banner01.jpg',
   },
   {
-    id: 'ups',
+    id: 'hybrid',
     number: '02',
-    title: 'Lithium In-Built UPS',
-    category: 'Power Reliability',
-    tagline: 'Zero-Switch. Zero Maintenance.',
-    description: 'Space-saving UPS systems with integrated lithium-ion cells engineered for seamless, instantaneous power transition. Ideal for homes, offices, and mission-critical operations.',
-    icon: <Battery className="w-8 h-8" />,
-    accentColor: '#60a5fa',
-    features: ['Zero-Switch Time', '10-Year Service Life', 'Compact Form Factor', 'Smart Load Sensing'],
+    title: 'Hybrid Solar System',
+    category: 'Grid + Battery',
+    tagline: 'Solar power + backup. Day and night.',
+    description:
+      'The best of both worlds — solar generation during the day with a lithium or VRLA battery bank for uninterrupted power during outages or night hours. Ideal for homes and businesses in areas with frequent power cuts.',
+    icon: <Zap className="w-5 h-5 md:w-7 md:h-7" />,
+    accentColor: '#a78bfa',
+    features: [
+      'Day + Night Power',
+      'Grid + Battery Hybrid',
+      'Instant Switchover (<10ms)',
+      'Smart Energy Management',
+    ],
     specs: [
-      { label: 'Backup Duration', value: '2 – 8 Hours' },
-      { label: 'Technology', value: 'Lithium-Ion Integrated' },
+      { label: 'Capacity Range', value: '2kW – 50kW' },
+      { label: 'Backup', value: '2 – 12 Hours' },
+      { label: 'Battery', value: 'Lithium / VRLA' },
       { label: 'Switch Time', value: '< 10ms' },
-      { label: 'Footprint', value: '60% Smaller than Lead-Acid' },
     ],
+    image: '/images/Banner02.jpg',
   },
   {
-    id: 'security',
+    id: 'off-grid',
     number: '03',
-    title: 'Security & CCTV',
-    category: 'Safety Integration',
-    tagline: 'Total Site Intelligence.',
-    description: 'End-to-end integrated surveillance systems with remote cloud access, AI-powered night vision, and mission-critical uptime. Protecting what matters, around the clock.',
-    icon: <ShieldCheck className="w-8 h-8" />,
+    title: 'Lithium Off-Grid System',
+    category: 'Off-Grid',
+    tagline: 'Total energy independence.',
+    description:
+      'Fully autonomous solar+lithium battery systems designed for locations without reliable grid access. Hospitals, remote estates, islands, and industries requiring absolute power independence.',
+    icon: <Leaf className="w-5 h-5 md:w-7 md:h-7" />,
     accentColor: '#4ade80',
-    features: ['IP-Based Systems', '4K Night Vision', 'Cloud Sync', 'Motion Analytics'],
-    specs: [
-      { label: 'Resolution', value: 'Up to 4K Ultra-HD' },
-      { label: 'Storage', value: 'Cloud + Local NVR' },
-      { label: 'Access', value: 'Remote Mobile App' },
-      { label: 'Uptime SLA', value: '99.9% Guaranteed' },
+    features: [
+      'Zero Grid Dependency',
+      'Lithium LFP Batteries',
+      'All-Weather Rated',
+      '10-Year Battery Warranty',
     ],
+    specs: [
+      { label: 'Capacity', value: '1kW – 25kW' },
+      { label: 'Autonomy', value: 'Full Off-Grid' },
+      { label: 'Battery Tech', value: 'LFP Lithium' },
+      { label: 'Cycles', value: '4000+ Charge Cycles' },
+    ],
+    image: '/images/banner03.jpg',
   },
   {
-    id: 'purifiers',
+    id: 'water-heaters',
     number: '04',
-    title: 'Advanced Purifiers',
-    category: 'Lifestyle',
-    tagline: 'Industrial-Grade. Home-Ready.',
-    description: 'Industrial-grade water purification systems adapted for residential and commercial environments. RO + UV multi-stage filtration with intelligent flow sensing.',
-    icon: <Waves className="w-8 h-8" />,
-    accentColor: '#38bdf8',
-    features: ['RO + UV Dual Filter', 'pH Balancing', 'Smart Flow Control', 'TDS Real-Time Display'],
-    specs: [
-      { label: 'Filtration', value: 'RO + UV + Alkaline' },
-      { label: 'Flow Rate', value: '15L / Hour' },
-      { label: 'Rejection Rate', value: '98% TDS Removal' },
-      { label: 'Maintenance', value: 'Annual Service Only' },
-    ],
-  },
-  {
-    id: 'heaters',
-    number: '05',
     title: 'Solar Water Heaters',
     category: 'Thermal Savings',
-    tagline: 'Sun-Powered. Scale-Proof.',
-    description: "High-efficiency vacuum tube thermal systems designed for India's diverse climatic conditions. Eliminate water heating costs with zero electricity consumption.",
-    icon: <Thermometer className="w-8 h-8" />,
+    tagline: 'Sun-powered. Scale-proof.',
+    description:
+      "High-efficiency vacuum tube thermal systems designed for India's diverse climatic conditions. Available in 100L to 2000L capacities for homes, hotels, hospitals, and industrial applications.",
+    icon: <Thermometer className="w-5 h-5 md:w-7 md:h-7" />,
     accentColor: '#fb923c',
-    features: ['Vacuum Tube Tech', 'Stainless Steel Tank', 'All-Climate Rated', 'Scale & Corrosion Proof'],
+    features: [
+      'Vacuum Tube Technology',
+      'Stainless Steel Tank 316L',
+      'All-Climate Rated',
+      'Scale & Corrosion Proof',
+    ],
     specs: [
-      { label: 'Capacity', value: '100L – 2000L Systems' },
+      { label: 'Capacity', value: '100L – 2000L' },
       { label: 'Efficiency', value: '85% Solar Utilization' },
       { label: 'Material', value: '316L Marine-Grade Steel' },
       { label: 'ROI Period', value: '< 2 Years' },
     ],
+    image: '/images/Banner04.jpg',
+  },
+  {
+    id: 'energy-audit',
+    number: '05',
+    title: 'Energy Audit & Maintenance',
+    category: 'After-Sales',
+    tagline: 'Performance guaranteed. Always.',
+    description:
+      '24-year heritage in solar field service. Our 60+ certified engineers across Kerala conduct detailed site audits, preventive maintenance, panel cleaning, and performance optimization to keep your system at peak output.',
+    icon: <CheckCircle2 className="w-5 h-5 md:w-7 md:h-7" />,
+    accentColor: '#38bdf8',
+    badge: 'Kerala Govt. Award',
+    features: [
+      '60+ Service Engineers',
+      'Preventive Maintenance',
+      'ERP-Monitored Performance',
+      'Panel Cleaning & Inspection',
+    ],
+    specs: [
+      { label: 'Coverage', value: 'Pan-Kerala' },
+      { label: 'Response', value: '24-Hour SLA' },
+      { label: 'Engineers', value: '60+ Certified' },
+      { label: 'Uptime', value: '99% Guaranteed' },
+    ],
+    image: '/images/banner1090x907.jpg',
   },
 ];
 
-const Services: React.FC = () => {
+const SolarSolutions: React.FC = () => {
   useScrollReveal();
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
 
@@ -117,21 +154,21 @@ const Services: React.FC = () => {
           <img
             src="/images/services-hero.jpg"
             className="w-full h-full object-cover scale-[1.05]"
-            alt="Industrial Solar Infrastructure"
+            alt="Solar Panels Installation"
           />
-          <div className="absolute inset-0 bg-black/50"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent"></div>
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
-            Precision Engineering
+            24 Years of Solar Excellence
           </span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-            INTEGRATED ENERGY <br className="hidden md:block" />
-            ECOSYSTEMS
+            Solar <br className="hidden md:block" />
+            Solutions
           </h1>
           <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-            Consolidating two decades of expertise into sustainable power solutions.
+            From rooftop to industrial — engineered for Kerala's climate.
           </p>
         </div>
       </section>
@@ -139,23 +176,21 @@ const Services: React.FC = () => {
       {/* Product Catalog */}
       <section className="pt-24 pb-32 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Section Header */}
           <div className="flex items-end justify-between mb-20 reveal">
             <div>
               <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
-                Complete Portfolio
+                Solar Portfolio
               </span>
               <h2 className="text-4xl md:text-7xl font-black uppercase text-white tracking-[-0.04em] leading-[0.9]">
-                Our <br />Products.
+                Solar <br />Solutions.
               </h2>
             </div>
             <div className="hidden md:flex items-center gap-3 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
-              <Zap className="w-4 h-4 text-yellow-400" />
-              <span>5 Engineered Solutions</span>
+              <Sun className="w-4 h-4 text-yellow-400" />
+              <span>5 Engineered Systems</span>
             </div>
           </div>
 
-          {/* Product List */}
           <div className="space-y-4">
             {products.map((product, index) => (
               <div key={product.id} className="reveal group" style={{ transitionDelay: `${index * 80}ms` }}>
@@ -167,10 +202,13 @@ const Services: React.FC = () => {
                   }`}
                   onClick={() => setActiveProduct(activeProduct === product.id ? null : product.id)}
                 >
+                  {/* Accent bar */}
                   <div
                     className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl transition-all duration-500"
                     style={{ backgroundColor: activeProduct === product.id ? product.accentColor : 'transparent' }}
                   />
+
+                  {/* Row */}
                   <div className="flex items-center gap-3 md:gap-10 p-4 md:p-8 pl-6 md:pl-10">
                     <span
                       className="text-[11px] font-black uppercase tracking-[0.3em] tabular-nums flex-shrink-0 transition-colors duration-500 hidden sm:block"
@@ -228,13 +266,14 @@ const Services: React.FC = () => {
                   {/* Expanded Content */}
                   <div
                     className={`overflow-hidden transition-all duration-500 ${
-                      activeProduct === product.id ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+                      activeProduct === product.id ? 'max-h-[700px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="px-8 md:px-16 pb-10 border-t border-white/5">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 pt-8">
-                        <div>
-                          <p className="text-zinc-300 text-base leading-relaxed mb-8 font-light">
+                    <div className="px-6 md:px-14 pb-10 border-t border-white/5">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 pt-8">
+                        {/* Description + Features */}
+                        <div className="md:col-span-1">
+                          <p className="text-zinc-300 text-base leading-relaxed mb-6 font-light">
                             {product.description}
                           </p>
                           <ul className="space-y-3">
@@ -246,7 +285,9 @@ const Services: React.FC = () => {
                             ))}
                           </ul>
                         </div>
-                        <div>
+
+                        {/* Specs */}
+                        <div className="md:col-span-1">
                           <p className="text-[9px] font-black uppercase tracking-[0.4em] mb-5" style={{ color: product.accentColor }}>
                             Technical Specifications
                           </p>
@@ -272,6 +313,17 @@ const Services: React.FC = () => {
                             <ArrowRight className="w-3 h-3 group-hover/cta:translate-x-1 transition-transform" />
                           </a>
                         </div>
+
+                        {/* Product Photo */}
+                        <div className="md:col-span-1">
+                          <div className="rounded-2xl overflow-hidden h-52 md:h-full min-h-[180px] max-h-72">
+                            <img
+                              src={product.image}
+                              alt={product.title}
+                              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -282,62 +334,22 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* System Selection Guide — Dark */}
-      <section className="px-6 py-32 border-t border-white/5">
-        <div className="max-w-7xl mx-auto reveal">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">System Guide</span>
-            <h2 className="text-[2rem] sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter leading-none mb-4 text-white">
-              Technical Selection Guide
-            </h2>
-            <p className="text-zinc-600 font-bold uppercase tracking-widest text-[10px]">Matching solutions to requirements</p>
-          </div>
-
-          <div className="overflow-x-auto rounded-[2rem] border border-white/5 bg-zinc-900">
-            <table className="w-full text-left text-sm min-w-[600px]">
-              <thead>
-                <tr className="border-b border-white/5 text-zinc-500 uppercase tracking-widest text-[10px]">
-                  <th className="px-10 py-8 font-black">System Type</th>
-                  <th className="px-10 py-8 font-black">Capacity Range</th>
-                  <th className="px-10 py-8 font-black">Primary Application</th>
-                  <th className="px-10 py-8 font-black">Backup Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: 'On-Grid Solar', cap: '3kW – 500kW+', app: 'Grid Bill Reduction', backup: 'Net-Metered' },
-                  { type: 'Hybrid Energy', cap: '2kW – 50kW', app: 'Critical Load Backup', backup: '2 – 12 Hours' },
-                  { type: 'Off-Grid Lithium', cap: '1kW – 25kW', app: 'Self-Sufficient Power', backup: 'Full Autonomy' },
-                ].map((row, i) => (
-                  <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
-                    <td className="px-10 py-8 font-black text-white text-lg italic uppercase">{row.type}</td>
-                    <td className="px-10 py-8 font-bold text-zinc-400">{row.cap}</td>
-                    <td className="px-10 py-8 text-zinc-500 uppercase text-[10px] font-black tracking-widest">{row.app}</td>
-                    <td className="px-10 py-8 font-bold text-yellow-400 uppercase text-[10px]">{row.backup}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="px-6 pb-10">
         <div className="max-w-7xl mx-auto border border-yellow-400/20 bg-zinc-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 reveal shadow-2xl">
           <div className="text-center md:text-left">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-4">
-              Ready to Optimize?
+              Ready to Go Solar?
             </h2>
             <p className="font-bold text-zinc-500 max-w-md mx-auto md:mx-0 text-sm md:text-base">
-              Our certified engineers provide a detailed site audit to ensure maximum efficiency.
+              Our certified solar engineers provide a free site audit to design the perfect system for your needs.
             </p>
           </div>
           <a
             href="/contact"
             className="w-full md:w-auto bg-yellow-400 text-black px-12 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform whitespace-nowrap shadow-xl text-center"
           >
-            Get Energy Audit
+            Get Free Site Audit
           </a>
         </div>
       </section>
@@ -345,4 +357,4 @@ const Services: React.FC = () => {
   );
 };
 
-export default Services;
+export default SolarSolutions;

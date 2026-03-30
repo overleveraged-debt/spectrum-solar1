@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Droplets, Cpu, Layers, ShieldCheck, Waves, TrendingUp, Sun } from 'lucide-react';
+import { Droplets, Cpu, Layers, ShieldCheck, Waves, TrendingUp, Sun, Star, CheckCircle2, Quote, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import StatsBar from '../components/StatsBar';
 import LoadingScreen from '../components/LoadingScreen';
-import TestimonialCarousel from '../components/TestimonialCarousel';
 
 const Home: React.FC = () => {
   useScrollReveal();
@@ -195,27 +195,133 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* About & Testimonials (Light Neutral) */}
-      <section id="about" className="py-32 bg-zinc-50 text-black border-y border-zinc-200 noise-bg" data-nav-light>
+      {/* About & Testimonials */}
+      <section id="about" className="py-20 md:py-32 bg-zinc-950 text-white border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Left: Heritage text */}
             <div className="reveal">
-              <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.4em] mb-4 block">Our Heritage</span>
-              <h2 className="text-[2.5rem] sm:text-4xl md:text-5xl font-bold mb-8 tracking-tighter uppercase leading-none">Spectrum Powers <br className="hidden md:block" />India.</h2>
-              <p className="text-zinc-800 mb-8 text-base md:text-lg font-light leading-relaxed max-w-lg">
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Heritage</span>
+              <h2 className="text-[2.5rem] sm:text-4xl md:text-5xl font-black mb-6 tracking-tighter uppercase leading-none text-white">
+                Spectrum Powers <br className="hidden md:block" />India.
+              </h2>
+              <p className="text-zinc-400 mb-8 text-base md:text-lg font-light leading-relaxed max-w-lg">
                 Specializing in power electronics and solar system integration, we prioritize a customer-centric approach that drives our high referral rates.
               </p>
-              <div className="p-6 bento-card-light rounded-2xl inline-block">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600 mb-2">Accreditation</p>
-                <p className="text-sm font-black uppercase tracking-tight">Best Solar Energy Industry Award</p>
-                <p className="text-[10px] text-zinc-700 mt-1">Kerala Government State Award Recipient</p>
+              <div className="p-6 bg-yellow-400/10 border border-yellow-400/20 rounded-2xl inline-block">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-400 mb-2">Accreditation</p>
+                <p className="text-sm font-black uppercase tracking-tight text-white">Best Solar Energy Industry Award</p>
+                <p className="text-[10px] text-zinc-400 mt-1">Kerala Government State Award Recipient</p>
               </div>
             </div>
 
-            <div className="flex flex-col gap-6 reveal">
-              <TestimonialCarousel />
+            {/* Right: Testimonial Cards */}
+            <div className="flex flex-col gap-5 reveal" style={{ transitionDelay: '150ms' }}>
+              {[
+                {
+                  name: 'Abdul Rahman', location: 'Kannur', initials: 'AR', date: '2 months ago',
+                  product: '5KW Hybrid Solar',
+                  text: 'Spectrum Powers installed a 5KW Hybrid system at my home. The service team was extremely professional, and my electricity bill has literally dropped to zero.',
+                  rating: 5
+                },
+                {
+                  name: 'Dr. Somashekharan', location: 'Koyili Hospital', initials: 'DS', date: '1 year ago',
+                  product: '50KW Commercial',
+                  text: 'Their 50KW installation has been performing flawlessly for over 3 years. One of the most reliable power partners in Kerala. Highly recommended.',
+                  rating: 5
+                }
+              ].map((t, i) => (
+                <div
+                  key={i}
+                  className="relative p-6 md:p-8 bg-zinc-900/60 border border-white/5 rounded-[2rem] hover:border-yellow-400/20 hover:bg-zinc-900 transition-all duration-500 shadow-lg overflow-hidden group"
+                >
+                  <Quote className="absolute -top-2 -right-2 w-20 h-20 text-white/[0.03] group-hover:text-yellow-400/[0.06] transition-colors duration-500" />
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-4">
+                    {[1,2,3,4,5].map(s => (
+                      <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  {/* Product tag */}
+                  <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full mb-4 inline-block">
+                    {t.product}
+                  </span>
+                  <p className="text-zinc-300 leading-relaxed mb-5 italic text-sm md:text-base font-light">
+                    "{t.text}"
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                    <div className="w-10 h-10 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-yellow-400 font-black text-xs">{t.initials}</span>
+                    </div>
+                    <div>
+                      <div className="font-black uppercase text-sm tracking-tight flex items-center gap-2 text-white">
+                        {t.name}
+                        <CheckCircle2 className="w-4 h-4 text-yellow-400" />
+                      </div>
+                      <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
+                        {t.location} · {t.date}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Installation Gallery Strip */}
+      <section className="py-20 bg-zinc-950 border-t border-white/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-10 reveal">
+          <div className="flex items-end justify-between">
+            <div>
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Installations</span>
+              <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-white">
+                Real Projects. <br className="hidden md:block" />Real Results.
+              </h2>
+            </div>
+            <Link
+              to="/gallery"
+              className="hidden md:flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-400 hover:gap-3 transition-all"
+            >
+              View Gallery <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+        </div>
+        {/* Horizontal Scroll Strip */}
+        <div className="flex gap-4 overflow-x-auto pb-4 px-6 md:px-0 md:pl-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] scrollbar-none">
+          {[
+            { src: '/images/p01.jpg', label: 'Residential · Kannur', cap: '5kW On-Grid' },
+            { src: '/images/p02.jpg', label: 'Commercial · Calicut', cap: '50kVA UPS' },
+            { src: '/images/p03.jpg', label: 'Residential · Thrissur', cap: '3kW Hybrid' },
+            { src: '/images/p04.jpg', label: 'Industrial · Kochi', cap: '100kVA Online UPS' },
+            { src: '/images/p05.jpg', label: 'Residential · Palakkad', cap: '20kWh Lithium' },
+            { src: '/images/p06.jpg', label: 'Commercial · Kozhikode', cap: '30kW Solar' },
+            { src: '/images/p07.jpg', label: 'Industrial · Ernakulam', cap: '200kW On-Grid' },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 w-60 md:w-72 h-48 md:h-60 relative rounded-2xl overflow-hidden group cursor-pointer"
+            >
+              <img
+                src={item.src}
+                alt={item.cap}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                <p className="text-yellow-400 text-[9px] font-black uppercase tracking-widest">{item.label}</p>
+                <p className="text-white font-black text-sm uppercase tracking-tight">{item.cap}</p>
+              </div>
+            </div>
+          ))}
+          {/* Gallery CTA card */}
+          <Link
+            to="/gallery"
+            className="flex-shrink-0 w-48 h-48 md:h-60 rounded-2xl border border-dashed border-white/15 hover:border-yellow-400/40 flex flex-col items-center justify-center gap-3 text-center p-6 transition-all group mr-6"
+          >
+            <span className="text-3xl font-black text-white">+11</span>
+            <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 group-hover:text-yellow-400 transition-colors">View All Projects</span>
+          </Link>
         </div>
       </section>
 
@@ -223,7 +329,7 @@ const Home: React.FC = () => {
       <section id="contact" className="py-32 bg-zinc-950 text-center">
         <div className="max-w-3xl mx-auto px-6 reveal">
           <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-bold tracking-tighter mb-8 md:mb-12 text-white uppercase leading-none">24 Years of <br className="hidden md:block" />Reliability.</h2>
-          <button className="w-full sm:w-auto bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:scale-105 transition-all">Connect with Experts</button>
+          <Link to="/contact" className="inline-block w-full sm:w-auto bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:scale-105 transition-all">Connect with Experts</Link>
         </div>
       </section>
     </div>

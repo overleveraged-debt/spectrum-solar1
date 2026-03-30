@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Battery, Sun, Thermometer, ShieldCheck, Waves, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
+import { Battery, Zap, Server, BatteryCharging, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -13,99 +13,159 @@ interface Product {
   accentColor: string;
   features: string[];
   specs: { label: string; value: string }[];
+  image: string;
   badge?: string;
 }
 
 const products: Product[] = [
   {
-    id: 'solar',
+    id: 'lithium-ups',
     number: '01',
-    title: 'Solar Grid Integration',
-    category: 'Energy Generation',
-    tagline: 'Government-Awarded Architecture',
-    description: 'Custom-engineered On-Grid, Hybrid, and Lithium Off-Grid systems. 24-year heritage in large-scale solar architecture — from residential rooftops to industrial megawatt arrays.',
-    icon: <Sun className="w-8 h-8" />,
-    accentColor: '#facc15',
-    features: ['Net-Metering Ready', 'Hybrid Capable', 'ERP-Monitored 24/7', 'Grid-Tied & Off-Grid'],
-    specs: [
-      { label: 'Capacity Range', value: '3kW – 500kW+' },
-      { label: 'System Types', value: 'On-Grid / Hybrid / Off-Grid' },
-      { label: 'Warranty', value: '25-Year Panel Warranty' },
-      { label: 'Monitoring', value: 'Real-Time ERP Dashboard' },
-    ],
-    badge: 'Kerala Govt. Award',
-  },
-  {
-    id: 'ups',
-    number: '02',
-    title: 'Lithium In-Built UPS',
-    category: 'Power Reliability',
-    tagline: 'Zero-Switch. Zero Maintenance.',
-    description: 'Space-saving UPS systems with integrated lithium-ion cells engineered for seamless, instantaneous power transition. Ideal for homes, offices, and mission-critical operations.',
-    icon: <Battery className="w-8 h-8" />,
+    title: 'Lithium Inbuilt UPS',
+    category: 'Zero-Switch UPS',
+    tagline: 'No interruptions. Ever.',
+    description:
+      'Space-saving UPS systems with integrated lithium-ion cells for seamless, instantaneous power transition. Engineered for homes, offices, and mission-critical environments that cannot tolerate even a millisecond of downtime.',
+    icon: <Battery className="w-5 h-5 md:w-7 md:h-7" />,
     accentColor: '#60a5fa',
-    features: ['Zero-Switch Time', '10-Year Service Life', 'Compact Form Factor', 'Smart Load Sensing'],
+    badge: 'Most Advanced',
+    features: [
+      'Zero-Switch Time (<10ms)',
+      '10-Year Service Life',
+      '60% Smaller than Lead-Acid',
+      'Smart Load Sensing',
+    ],
     specs: [
       { label: 'Backup Duration', value: '2 – 8 Hours' },
       { label: 'Technology', value: 'Lithium-Ion Integrated' },
       { label: 'Switch Time', value: '< 10ms' },
-      { label: 'Footprint', value: '60% Smaller than Lead-Acid' },
+      { label: 'Warranty', value: '3 Years' },
     ],
+    image: '/images/p01.jpg',
   },
   {
-    id: 'security',
+    id: 'home-ups',
+    number: '02',
+    title: 'Home UPS System',
+    category: 'Residential Backup',
+    tagline: 'Reliable power for every Kerala home.',
+    description:
+      'Designed specifically for residential loads — fans, lights, routers, and essential appliances. Pure sine wave output protects sensitive electronics. Simple, low-maintenance, and trusted by over 12,000 Kerala households.',
+    icon: <Zap className="w-5 h-5 md:w-7 md:h-7" />,
+    accentColor: '#facc15',
+    features: [
+      'Pure Sine Wave Output',
+      'Protects All Appliances',
+      'Tubular / Lithium Compatible',
+      'Low Maintenance',
+    ],
+    specs: [
+      { label: 'Capacity', value: '600VA – 5kVA' },
+      { label: 'Output', value: 'Pure Sine Wave' },
+      { label: 'Efficiency', value: '95%+' },
+      { label: 'Battery', value: 'Tubular / Li-Ion' },
+    ],
+    image: '/images/p02.jpg',
+  },
+  {
+    id: 'inverters',
     number: '03',
-    title: 'Security & CCTV',
-    category: 'Safety Integration',
-    tagline: 'Total Site Intelligence.',
-    description: 'End-to-end integrated surveillance systems with remote cloud access, AI-powered night vision, and mission-critical uptime. Protecting what matters, around the clock.',
-    icon: <ShieldCheck className="w-8 h-8" />,
-    accentColor: '#4ade80',
-    features: ['IP-Based Systems', '4K Night Vision', 'Cloud Sync', 'Motion Analytics'],
-    specs: [
-      { label: 'Resolution', value: 'Up to 4K Ultra-HD' },
-      { label: 'Storage', value: 'Cloud + Local NVR' },
-      { label: 'Access', value: 'Remote Mobile App' },
-      { label: 'Uptime SLA', value: '99.9% Guaranteed' },
-    ],
-  },
-  {
-    id: 'purifiers',
-    number: '04',
-    title: 'Advanced Purifiers',
-    category: 'Lifestyle',
-    tagline: 'Industrial-Grade. Home-Ready.',
-    description: 'Industrial-grade water purification systems adapted for residential and commercial environments. RO + UV multi-stage filtration with intelligent flow sensing.',
-    icon: <Waves className="w-8 h-8" />,
-    accentColor: '#38bdf8',
-    features: ['RO + UV Dual Filter', 'pH Balancing', 'Smart Flow Control', 'TDS Real-Time Display'],
-    specs: [
-      { label: 'Filtration', value: 'RO + UV + Alkaline' },
-      { label: 'Flow Rate', value: '15L / Hour' },
-      { label: 'Rejection Rate', value: '98% TDS Removal' },
-      { label: 'Maintenance', value: 'Annual Service Only' },
-    ],
-  },
-  {
-    id: 'heaters',
-    number: '05',
-    title: 'Solar Water Heaters',
-    category: 'Thermal Savings',
-    tagline: 'Sun-Powered. Scale-Proof.',
-    description: "High-efficiency vacuum tube thermal systems designed for India's diverse climatic conditions. Eliminate water heating costs with zero electricity consumption.",
-    icon: <Thermometer className="w-8 h-8" />,
+    title: 'Inverters',
+    category: 'Power Conversion',
+    tagline: 'Efficient. Durable. Proven.',
+    description:
+      'High-efficiency inverters for residential and commercial use. Available in a wide range from compact 600VA units for homes to heavy-duty 10kVA units for shops, offices, and small industries.',
+    icon: <BatteryCharging className="w-5 h-5 md:w-7 md:h-7" />,
     accentColor: '#fb923c',
-    features: ['Vacuum Tube Tech', 'Stainless Steel Tank', 'All-Climate Rated', 'Scale & Corrosion Proof'],
-    specs: [
-      { label: 'Capacity', value: '100L – 2000L Systems' },
-      { label: 'Efficiency', value: '85% Solar Utilization' },
-      { label: 'Material', value: '316L Marine-Grade Steel' },
-      { label: 'ROI Period', value: '< 2 Years' },
+    features: [
+      'DSP-Controlled Output',
+      'Automatic Voltage Regulation',
+      'Overload Protected',
+      'LED Display Diagnostics',
     ],
+    specs: [
+      { label: 'Range', value: '600VA – 10kVA' },
+      { label: 'Efficiency', value: '93 – 97%' },
+      { label: 'Input Voltage', value: '90V – 290V AC' },
+      { label: 'Protection', value: 'OVP / UVP / OLP' },
+    ],
+    image: '/images/p03.jpg',
+  },
+  {
+    id: 'online-ups',
+    number: '04',
+    title: 'Online UPS',
+    category: 'Critical Load Protection',
+    tagline: 'Always on. Never fails.',
+    description:
+      'True Online double-conversion UPS for hospitals, server rooms, labs, and data centers. The power never actually passes through the grid — it is always being regenerated from the battery, ensuring absolutely clean, stable power.',
+    icon: <Server className="w-5 h-5 md:w-7 md:h-7" />,
+    accentColor: '#4ade80',
+    features: [
+      'Double Conversion Technology',
+      'Zero Transfer Time',
+      'Clean Sine Wave Always',
+      'SNMP Network Card Ready',
+    ],
+    specs: [
+      { label: 'Range', value: '1kVA – 200kVA' },
+      { label: 'Transfer Time', value: '0ms (Online)' },
+      { label: 'Input PF', value: '0.99' },
+      { label: 'Efficiency', value: 'Up to 96%' },
+    ],
+    image: '/images/p04.jpg',
+  },
+  {
+    id: 'lithium-batteries',
+    number: '05',
+    title: 'Lithium Batteries',
+    category: 'Energy Storage',
+    tagline: 'Lighter. Longer. Smarter.',
+    description:
+      'LFP (Lithium Iron Phosphate) batteries for solar storage, UPS backup, and EV applications. 4000+ cycle life means no replacement for over 10 years. Built-in BMS protects from overcharge, overdischarge, and temperature extremes.',
+    icon: <Battery className="w-5 h-5 md:w-7 md:h-7" />,
+    accentColor: '#a78bfa',
+    features: [
+      'LFP Chemistry (Safest)',
+      '4000+ Charge Cycles',
+      'Built-in Smart BMS',
+      'No Maintenance Required',
+    ],
+    specs: [
+      { label: 'Chemistry', value: 'LFP (Li Iron Phosphate)' },
+      { label: 'Cycle Life', value: '4000+ Cycles' },
+      { label: 'Warranty', value: '5 – 10 Years' },
+      { label: 'DoD', value: '95% Depth of Discharge' },
+    ],
+    image: '/images/p05.jpg',
+  },
+  {
+    id: 'tubular-batteries',
+    number: '06',
+    title: 'Tubular Batteries',
+    category: 'Lead-Acid Storage',
+    tagline: 'Proven technology. Unmatched value.',
+    description:
+      "India's most trusted battery technology for home UPS systems. Tall tubular plates give superior performance in Kerala's hot climate and frequent power cuts. Low water topping frequency and robust construction.",
+    icon: <BatteryCharging className="w-5 h-5 md:w-7 md:h-7" />,
+    accentColor: '#38bdf8',
+    features: [
+      'Tall Tubular Plates',
+      'Heat-Resistant Design',
+      'Low Water Topping',
+      'Deep Discharge Recovery',
+    ],
+    specs: [
+      { label: 'Capacity', value: '100Ah – 220Ah' },
+      { label: 'Voltage', value: '12V' },
+      { label: 'Warranty', value: '3 – 5 Years' },
+      { label: 'Life', value: '4 – 6 Years' },
+    ],
+    image: '/images/p06.jpg',
   },
 ];
 
-const Services: React.FC = () => {
+const PowerBackup: React.FC = () => {
   useScrollReveal();
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
 
@@ -115,23 +175,23 @@ const Services: React.FC = () => {
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/services-hero.jpg"
+            src="/images/banner1090x908.jpg"
             className="w-full h-full object-cover scale-[1.05]"
-            alt="Industrial Solar Infrastructure"
+            alt="Power Backup Systems"
           />
-          <div className="absolute inset-0 bg-black/50"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent"></div>
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
-            Precision Engineering
+          <span className="text-blue-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+            Kerala's Power Backup Specialists
           </span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-            INTEGRATED ENERGY <br className="hidden md:block" />
-            ECOSYSTEMS
+            Power Backup <br className="hidden md:block" />
+            Solutions
           </h1>
-          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-            Consolidating two decades of expertise into sustainable power solutions.
+          <p className="text-blue-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+            UPS, inverters, and batteries — built for Kerala's power conditions.
           </p>
         </div>
       </section>
@@ -139,30 +199,28 @@ const Services: React.FC = () => {
       {/* Product Catalog */}
       <section className="pt-24 pb-32 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Section Header */}
           <div className="flex items-end justify-between mb-20 reveal">
             <div>
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
-                Complete Portfolio
+              <span className="text-blue-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
+                Backup Portfolio
               </span>
               <h2 className="text-4xl md:text-7xl font-black uppercase text-white tracking-[-0.04em] leading-[0.9]">
-                Our <br />Products.
+                Power <br />Backup.
               </h2>
             </div>
             <div className="hidden md:flex items-center gap-3 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
-              <Zap className="w-4 h-4 text-yellow-400" />
-              <span>5 Engineered Solutions</span>
+              <Battery className="w-4 h-4 text-blue-400" />
+              <span>6 Engineered Solutions</span>
             </div>
           </div>
 
-          {/* Product List */}
           <div className="space-y-4">
             {products.map((product, index) => (
               <div key={product.id} className="reveal group" style={{ transitionDelay: `${index * 80}ms` }}>
                 <div
                   className={`relative border rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden ${
                     activeProduct === product.id
-                      ? 'border-yellow-400/50 bg-zinc-900'
+                      ? 'border-blue-400/50 bg-zinc-900'
                       : 'border-zinc-800 bg-zinc-900/40 hover:border-zinc-600 hover:bg-zinc-900/70'
                   }`}
                   onClick={() => setActiveProduct(activeProduct === product.id ? null : product.id)}
@@ -171,6 +229,7 @@ const Services: React.FC = () => {
                     className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl transition-all duration-500"
                     style={{ backgroundColor: activeProduct === product.id ? product.accentColor : 'transparent' }}
                   />
+
                   <div className="flex items-center gap-3 md:gap-10 p-4 md:p-8 pl-6 md:pl-10">
                     <span
                       className="text-[11px] font-black uppercase tracking-[0.3em] tabular-nums flex-shrink-0 transition-colors duration-500 hidden sm:block"
@@ -204,7 +263,7 @@ const Services: React.FC = () => {
                           {product.category}
                         </span>
                         {product.badge && (
-                          <span className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-yellow-400/10 text-yellow-400 border border-yellow-400/30 flex-shrink-0">
+                          <span className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-blue-400/10 text-blue-400 border border-blue-400/30 flex-shrink-0">
                             {product.badge}
                           </span>
                         )}
@@ -225,16 +284,16 @@ const Services: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Expanded Content */}
+                  {/* Expanded */}
                   <div
                     className={`overflow-hidden transition-all duration-500 ${
-                      activeProduct === product.id ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+                      activeProduct === product.id ? 'max-h-[700px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="px-8 md:px-16 pb-10 border-t border-white/5">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 pt-8">
-                        <div>
-                          <p className="text-zinc-300 text-base leading-relaxed mb-8 font-light">
+                    <div className="px-6 md:px-14 pb-10 border-t border-white/5">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 pt-8">
+                        <div className="md:col-span-1">
+                          <p className="text-zinc-300 text-base leading-relaxed mb-6 font-light">
                             {product.description}
                           </p>
                           <ul className="space-y-3">
@@ -246,7 +305,8 @@ const Services: React.FC = () => {
                             ))}
                           </ul>
                         </div>
-                        <div>
+
+                        <div className="md:col-span-1">
                           <p className="text-[9px] font-black uppercase tracking-[0.4em] mb-5" style={{ color: product.accentColor }}>
                             Technical Specifications
                           </p>
@@ -272,6 +332,17 @@ const Services: React.FC = () => {
                             <ArrowRight className="w-3 h-3 group-hover/cta:translate-x-1 transition-transform" />
                           </a>
                         </div>
+
+                        {/* Product Photo */}
+                        <div className="md:col-span-1">
+                          <div className="rounded-2xl overflow-hidden h-52 md:h-full min-h-[180px] max-h-72">
+                            <img
+                              src={product.image}
+                              alt={product.title}
+                              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -282,62 +353,22 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* System Selection Guide — Dark */}
-      <section className="px-6 py-32 border-t border-white/5">
-        <div className="max-w-7xl mx-auto reveal">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">System Guide</span>
-            <h2 className="text-[2rem] sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter leading-none mb-4 text-white">
-              Technical Selection Guide
-            </h2>
-            <p className="text-zinc-600 font-bold uppercase tracking-widest text-[10px]">Matching solutions to requirements</p>
-          </div>
-
-          <div className="overflow-x-auto rounded-[2rem] border border-white/5 bg-zinc-900">
-            <table className="w-full text-left text-sm min-w-[600px]">
-              <thead>
-                <tr className="border-b border-white/5 text-zinc-500 uppercase tracking-widest text-[10px]">
-                  <th className="px-10 py-8 font-black">System Type</th>
-                  <th className="px-10 py-8 font-black">Capacity Range</th>
-                  <th className="px-10 py-8 font-black">Primary Application</th>
-                  <th className="px-10 py-8 font-black">Backup Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: 'On-Grid Solar', cap: '3kW – 500kW+', app: 'Grid Bill Reduction', backup: 'Net-Metered' },
-                  { type: 'Hybrid Energy', cap: '2kW – 50kW', app: 'Critical Load Backup', backup: '2 – 12 Hours' },
-                  { type: 'Off-Grid Lithium', cap: '1kW – 25kW', app: 'Self-Sufficient Power', backup: 'Full Autonomy' },
-                ].map((row, i) => (
-                  <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
-                    <td className="px-10 py-8 font-black text-white text-lg italic uppercase">{row.type}</td>
-                    <td className="px-10 py-8 font-bold text-zinc-400">{row.cap}</td>
-                    <td className="px-10 py-8 text-zinc-500 uppercase text-[10px] font-black tracking-widest">{row.app}</td>
-                    <td className="px-10 py-8 font-bold text-yellow-400 uppercase text-[10px]">{row.backup}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="px-6 pb-10">
-        <div className="max-w-7xl mx-auto border border-yellow-400/20 bg-zinc-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 reveal shadow-2xl">
+        <div className="max-w-7xl mx-auto border border-blue-400/20 bg-zinc-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 reveal shadow-2xl">
           <div className="text-center md:text-left">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-4">
-              Ready to Optimize?
+              Never Lose Power Again.
             </h2>
             <p className="font-bold text-zinc-500 max-w-md mx-auto md:mx-0 text-sm md:text-base">
-              Our certified engineers provide a detailed site audit to ensure maximum efficiency.
+              Our engineers will assess your load requirements and recommend the perfect backup solution.
             </p>
           </div>
           <a
             href="/contact"
             className="w-full md:w-auto bg-yellow-400 text-black px-12 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform whitespace-nowrap shadow-xl text-center"
           >
-            Get Energy Audit
+            Get Power Assessment
           </a>
         </div>
       </section>
@@ -345,4 +376,4 @@ const Services: React.FC = () => {
   );
 };
 
-export default Services;
+export default PowerBackup;
