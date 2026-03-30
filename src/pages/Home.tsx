@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Droplets, Cpu, Layers, ShieldCheck, Waves, TrendingUp, Sun } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import Header from '../components/Header';
 import Hero from '../components/Hero';
 import StatsBar from '../components/StatsBar';
+import LoadingScreen from '../components/LoadingScreen';
+import TestimonialCarousel from '../components/TestimonialCarousel';
 
 const Home: React.FC = () => {
   useScrollReveal();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   return (
-    <div className="flex flex-col bg-zinc-950 noise-bg">
-      <Hero />
+    <div className={`flex flex-col bg-zinc-950 noise-bg ${!isVideoLoaded ? 'h-screen overflow-hidden' : ''}`}>
+      <LoadingScreen isVisible={!isVideoLoaded} />
+      <Hero onLoaded={() => setIsVideoLoaded(true)} />
       <StatsBar />
 
       <section id="solutions" className="py-32 bg-zinc-950">
@@ -17,7 +22,7 @@ const Home: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
             <div className="reveal">
               <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Core Energy</span>
-              <h2 className="text-[3rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] text-white uppercase leading-[0.9]">Solar <br />Integration.</h2>
+              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] text-white uppercase leading-[0.9]">Solar <br />Integration.</h2>
             </div>
             <p className="text-zinc-500 max-w-xs text-sm leading-relaxed reveal">Proven expertise in large-scale system integration across Kerala and beyond.</p>
           </div>
@@ -67,7 +72,7 @@ const Home: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
             <div className="reveal">
               <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Electronics</span>
-              <h2 className="text-[3rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] uppercase leading-[0.9]">Diverse <br />Portfolio.</h2>
+              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] uppercase leading-[0.9]">Diverse <br />Portfolio.</h2>
             </div>
             <p className="text-zinc-600 max-w-xs text-sm leading-relaxed reveal tracking-wide">Precision-engineered power conditioning and backup devices with Kerala Heritage.</p>
           </div>
@@ -150,34 +155,40 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="reveal">
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Statewide Presence</span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-[-0.05em] text-white uppercase leading-[0.9] mb-8">Kerala's <br />Energy Hook.</h2>
-              <div className="space-y-6">
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">National Infrastructure</span>
+              <h2 className="text-4xl md:text-6xl font-black tracking-[-0.05em] text-white uppercase leading-[0.9] mb-8">India's <br />Energy Backbone.</h2>
+              <div className="space-y-4">
                 {[
-                  { city: "Kochi", type: "HQ & Distribution" },
-                  { city: "Trivandrum", type: "Regional Hub" },
-                  { city: "Kannur", type: "Engineering Center" },
-                  { city: "Kozhikode", type: "Solar Design Lab" }
+                  { region: "Southern Hub", type: "Kochi Headquarters", data: "Engineering R&D Center" },
+                  { region: "National Reach", type: "Pan-India Sales", data: "500+ Franchise Partners" },
+                  { region: "Govt. Integration", type: "Utility Projects", data: "State-Awarded Excellence" },
+                  { region: "Support Grid", type: "24/7 Operations", data: "60+ Service Engineers" }
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center justify-between py-4 border-b border-zinc-900 group cursor-pointer hover:border-yellow-400 transition-colors">
-                    <span className="text-xl font-bold text-white uppercase tracking-tighter">{item.city}</span>
-                    <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest group-hover:text-yellow-400 transition-colors">{item.type}</span>
+                    <div>
+                      <span className="text-xl font-bold text-white uppercase tracking-tighter block">{item.region}</span>
+                      <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{item.type}</span>
+                    </div>
+                    <span className="text-[10px] font-black text-yellow-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0">{item.data}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="relative flex justify-center items-center reveal" style={{ transitionDelay: '200ms' }}>
-              <div className="aspect-square w-full max-w-md bg-zinc-900/50 rounded-full border border-zinc-800 flex items-center justify-center relative overflow-hidden">
+              <div className="aspect-square w-full max-w-md bg-zinc-900/30 rounded-full border border-white/5 flex items-center justify-center relative overflow-hidden group/map">
                 <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/5 to-transparent"></div>
-                {/* Minimalist Map Placeholder - Can be replaced with actual SVG later */}
-                <div className="relative text-center p-12">
-                  <div className="text-yellow-400 font-black text-7xl opacity-10 blur-sm absolute inset-0 flex items-center justify-center select-none uppercase tracking-tighter transition-all group-hover:blur-none">KERALA</div>
-                  <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.5em]">Network Visualization</p>
-                  <div className="mt-8 flex justify-center gap-2">
-                    <span className="w-2 h-2 bg-yellow-400 rounded-full animate-ping"></span>
-                    <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                    <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                  </div>
+                
+                {/* High-Impact Minimalism */}
+                <div className="relative z-10 text-center px-12 group-hover/map:scale-110 transition-transform duration-700">
+                  <div className="text-yellow-400 font-extrabold text-7xl tracking-tighter uppercase italic leading-none mb-4 drop-shadow-[0_0_30px_rgba(250,204,21,0.2)]">INDIA</div>
+                  <div className="w-12 h-[1px] bg-yellow-400 mx-auto opacity-50 mb-4"></div>
+                  <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.5em]">National Grid</p>
+                </div>
+
+                {/* Animated Rings */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-64 h-64 border border-yellow-400/5 rounded-full animate-pulse"></div>
+                  <div className="absolute w-80 h-80 border border-yellow-400/5 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                 </div>
               </div>
             </div>
@@ -203,30 +214,7 @@ const Home: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-6 reveal">
-              <div className="bg-zinc-950 p-10 rounded-xl border border-zinc-800 shadow-2xl">
-                <p className="text-zinc-300 text-sm leading-relaxed italic mb-8 border-b border-zinc-800 pb-8">
-                  "With a decade of partnership with Spectrum, their ERP-enabled operations ensure we never face a supply delay. Truly professional."
-                </p>
-                <div className="flex items-center gap-4 pt-6">
-                  <div className="w-8 h-8 rounded-full bg-zinc-800 overflow-hidden flex items-center justify-center text-[10px] text-white font-bold">SP</div>
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white">Abraham Thomas</p>
-                    <p className="text-[9px] text-zinc-500 uppercase tracking-widest">Franchise Owner, Kochi</p>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-zinc-950 p-10 rounded-xl border border-zinc-800 shadow-2xl">
-                <p className="text-zinc-300 text-sm leading-relaxed italic mb-8 border-b border-zinc-800 pb-8">
-                  "High referrals led me here. The Solar + Water Purifier installation was completed in record time. Highly customer-centric."
-                </p>
-                <div className="flex items-center gap-4 pt-6">
-                  <div className="w-8 h-8 rounded-full bg-zinc-800 overflow-hidden flex items-center justify-center text-[10px] text-white font-bold">SP</div>
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white">Saira Khan</p>
-                    <p className="text-[9px] text-zinc-500 uppercase tracking-widest">Residential Client, Trivandrum</p>
-                  </div>
-                </div>
-              </div>
+              <TestimonialCarousel />
             </div>
           </div>
         </div>
@@ -235,7 +223,7 @@ const Home: React.FC = () => {
       {/* Contact CTA */}
       <section id="contact" className="py-32 bg-zinc-950 text-center">
         <div className="max-w-3xl mx-auto px-6 reveal">
-          <h2 className="text-[3rem] sm:text-5xl md:text-7xl font-bold tracking-tighter mb-12 text-white uppercase leading-none">24 Years of <br className="hidden md:block" />Reliability.</h2>
+          <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-bold tracking-tighter mb-8 md:mb-12 text-white uppercase leading-none">24 Years of <br className="hidden md:block" />Reliability.</h2>
           <button className="w-full sm:w-auto bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:scale-105 transition-all">Connect with Experts</button>
         </div>
       </section>

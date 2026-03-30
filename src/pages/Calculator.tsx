@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Calculator as CalcIcon, Zap, TrendingUp, Leaf, Info, ArrowRight } from 'lucide-react';
+import { Zap, TrendingUp, Leaf, Info, ArrowRight, Sun, IndianRupee } from 'lucide-react';
 
 const SolarCalculator: React.FC = () => {
   useScrollReveal();
@@ -8,155 +8,216 @@ const SolarCalculator: React.FC = () => {
   const [monthlyBill, setMonthlyBill] = useState<number>(3000);
   const [roofSpace, setRoofSpace] = useState<number>(500);
 
-  // Results states
   const [recommendedKW, setRecommendedKW] = useState<number>(0);
   const [annualSavings, setAnnualSavings] = useState<number>(0);
   const [paybackYears, setPaybackYears] = useState<number>(0);
   const [co2Offset, setCo2Offset] = useState<number>(0);
+  const [systemCost, setSystemCost] = useState<number>(0);
 
   useEffect(() => {
-    // Basic Solar Logic for Kerala (Approximate)
-    // 1kW produces ~4 units/day = 120 units/month
-    // Avg cost per unit in Kerala slabs (KSEB) ~ 7.5 INR
-
+    // Kerala KSEB avg blended tariff ≈ ₹7.5/unit
     const monthlyUnits = monthlyBill / 7.5;
-    const peakKWNeeded = monthlyUnits / 120;
-    const roundedKW = Math.ceil(peakKWNeeded * 10) / 10;
+    // 1kW produces ~120 units/month in Kerala (avg 4 units/day, 30 days)
+    const billBasedKW = monthlyUnits / 120;
+    // Roof constraint: 1kW needs ~100 sq.ft (10 sq.m) of shadow-free roof
+    const roofBasedKW = roofSpace / 100;
+    // Recommended kW is the minimum of what your bill needs and what your roof allows
+    const rawKW = Math.min(billBasedKW, roofBasedKW);
+    const roundedKW = Math.max(1, Math.round(rawKW * 10) / 10);
 
-    const annualSaving = monthlyBill * 12;
-    const systemCost = roundedKW * 65000; // ~65k per kW installed
+    const costPerKW = 65000; // ~₹65,000/kW installed (panels + inverter + structure + installation)
+    const totalCost = roundedKW * costPerKW;
+    // Annual savings = bill we offset (the recommended kW may not cover full bill if roof is small)
+    const monthlyUnitsSaved = roundedKW * 120;
+    const annualSaving = Math.min(monthlyBill, monthlyUnitsSaved * 7.5) * 12;
 
     setRecommendedKW(roundedKW);
     setAnnualSavings(annualSaving);
-    setPaybackYears(Math.round((systemCost / annualSaving) * 10) / 10);
-    setCo2Offset(Math.round(roundedKW * 1.5 * 10) / 10); // 1.5 tons CO2 per kW/yr
-  }, [monthlyBill]);
+    setSystemCost(totalCost);
+    setPaybackYears(Math.round((totalCost / annualSaving) * 10) / 10);
+    setCo2Offset(Math.round(roundedKW * 1.5 * 10) / 10);
+  }, [monthlyBill, roofSpace]);
+
+  const paybackPct = Math.min(100, (paybackYears / 10) * 100);
+  const co2Pct = Math.min(100, (co2Offset / 10) * 100);
 
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
-      {/* Calculator Mini-Hero */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden mb-20 pt-24 mt-[-80px]">
+      {/* Hero */}
+      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden mb-0 pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/calculator-hero.jpg"
             className="w-full h-full object-cover scale-[1.05]"
             alt="Solar ROI Analytics"
           />
-          <div className="absolute inset-0 bg-black/25"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent"></div>
+          <div className="absolute inset-0 bg-black/35"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent"></div>
         </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center reveal active opacity-1 translate-y-0 transition-all duration-1000">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Yield Analytics</span>
-          <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-10 leading-[0.85] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+            Yield Analytics
+          </span>
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             SOLAR SAVINGS <br className="hidden md:block" />
             ROI CALCULATOR
           </h1>
           <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-            Discover how much you can save by switching to Spectrum Solar. Based on real-time KSEB tariff models.
+            Based on real-time KSEB tariff models and your roof capacity.
           </p>
         </div>
       </section>
 
-      {/* Inputs Section */}
-      <section className="px-6 pb-20 md:pb-32" data-nav-light>
-        <div className="max-w-3xl mx-auto reveal opacity-0 translate-y-10 transition-all duration-1000">
-          <div className="premium-cream-card p-8 md:p-10 rounded-[2.5rem] shadow-2xl space-y-12">
-            <div className="space-y-6">
-              <div className="flex justify-between items-end">
-                <label className="text-xs font-black uppercase tracking-widest text-zinc-600">Average Monthly Bill</label>
-                <span className="text-3xl font-black text-black italic">₹{monthlyBill.toLocaleString()}</span>
-              </div>
-              <input
-                type="range"
-                min="500"
-                max="50000"
-                step="500"
-                value={monthlyBill}
-                onChange={(e) => setMonthlyBill(parseInt(e.target.value))}
-                className="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-yellow-500"
-              />
-              <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
-                <span>₹500</span>
-                <span>₹50,000+</span>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="flex justify-between items-end">
-                <label className="text-xs font-black uppercase tracking-widest text-zinc-500">Available Roof Space</label>
-                <span className="text-3xl font-black text-black italic">{roofSpace} Sq.Ft</span>
-              </div>
-              <input
-                type="range"
-                min="100"
-                max="5000"
-                step="50"
-                value={roofSpace}
-                onChange={(e) => setRoofSpace(parseInt(e.target.value))}
-                className="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-yellow-500"
-              />
-              <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
-                <span>100 Sq.Ft</span>
-                <span>5,000+ Sq.Ft</span>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-zinc-200 flex gap-4 text-zinc-500">
-              <Info className="w-5 h-5 shrink-0 text-yellow-500/50" />
-              <p className="text-[10px] font-bold leading-relaxed uppercase tracking-wider">
-                Calculations are estimates based on average annual sunlight in Kerala and current KSEB net-metering policies.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Results Section - Full Width White (Matches Page) */}
-      <section className="px-6 py-32 bg-zinc-50 border-y border-zinc-200" data-nav-light>
+      {/* Calculator Body */}
+      <section className="px-6 py-20 md:py-32" data-nav-light>
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal opacity-0 translate-y-10 transition-all duration-1000">
-            {/* Recommendation Card */}
-            <div className="md:col-span-2 lg:col-span-4 bg-yellow-400 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 group shadow-2xl mb-6">
-              <div className="text-black text-center md:text-left">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 block opacity-60">Custom Recommendation</span>
-                <h3 className="text-5xl md:text-6xl font-black italic tracking-tighter leading-none mb-1">{recommendedKW} KW</h3>
-                <p className="font-bold text-black/70 italic uppercase text-[10px] sm:text-xs">Optimum System Size for your bill</p>
-              </div>
-              <div className="w-20 h-20 md:w-24 md:h-24 bg-black rounded-full flex items-center justify-center text-yellow-400 group-hover:scale-110 transition-transform duration-500 shadow-2xl shrink-0">
-                <Zap className="w-10 h-10 md:w-12 md:h-12 fill-current" />
-              </div>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
-            <div className="premium-cream-card p-8 md:p-10 rounded-[2.5rem] shadow-xl group">
-              <TrendingUp className="text-yellow-500 w-8 h-8 mb-6" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 block mb-2">Annual Savings</span>
-              <div className="text-3xl md:text-4xl font-black italic tracking-tighter text-black">₹{annualSavings.toLocaleString()}</div>
-              <p className="text-[10px] font-bold text-zinc-500 uppercase mt-4">95% Grid Independence</p>
-            </div>
+            {/* LEFT: Inputs */}
+            <div className="reveal">
+              <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Details</span>
+              <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-8 md:mb-12">
+                Tell us <br />about your home.
+              </h2>
 
-            <div className="premium-cream-card p-8 md:p-10 rounded-[2.5rem] shadow-xl group">
-              <CalcIcon className="text-yellow-500 w-8 h-8 mb-6" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 block mb-2">Payback Period</span>
-              <div className="text-3xl md:text-4xl font-black italic tracking-tighter text-black">{paybackYears} Years</div>
-              <p className="text-[10px] font-bold text-zinc-500 uppercase mt-4">Full Capital Recovery</p>
-            </div>
-
-            <div className="premium-cream-card p-8 md:p-10 rounded-[2.5rem] shadow-xl group">
-              <Leaf className="text-yellow-500 w-8 h-8 mb-6" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 block mb-2">Carbon Offset</span>
-              <div className="text-3xl md:text-4xl font-black italic tracking-tighter text-black">{co2Offset} Tons</div>
-              <p className="text-[10px] font-bold text-zinc-500 uppercase mt-4">Saving our planet</p>
-            </div>
-
-            <div className="bg-black border border-white/5 p-10 rounded-[2.5rem] flex flex-col justify-center shadow-2xl group cursor-pointer hover:bg-zinc-900 transition-all">
-              <a href="/contact" className="flex items-center justify-between">
-                <div>
-                  <span className="text-white font-black uppercase italic tracking-tighter block text-xl">Detailed Audit</span>
-                  <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest leading-none">Book Engineer Visit</span>
+              <div className="space-y-10">
+                {/* Bill Slider */}
+                <div className="space-y-5">
+                  <div className="flex justify-between items-baseline">
+                    <label className="text-xs font-black uppercase tracking-widest text-zinc-500">Monthly Electricity Bill</label>
+                    <span className="text-4xl font-black text-black tracking-tighter">₹{monthlyBill.toLocaleString()}</span>
+                  </div>
+                  <div className="relative pt-1">
+                    <input
+                      type="range"
+                      min="500"
+                      max="50000"
+                      step="500"
+                      value={monthlyBill}
+                      onChange={(e) => setMonthlyBill(parseInt(e.target.value))}
+                      className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-yellow-500"
+                      style={{ background: `linear-gradient(to right, #eab308 0%, #eab308 ${((monthlyBill - 500) / 49500) * 100}%, #e4e4e7 ${((monthlyBill - 500) / 49500) * 100}%, #e4e4e7 100%)` }}
+                    />
+                    <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-3">
+                      <span>₹500</span>
+                      <span>₹50,000+</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
-                  <ArrowRight className="w-6 h-6" />
+
+                {/* Roof Slider */}
+                <div className="space-y-5">
+                  <div className="flex justify-between items-baseline">
+                    <label className="text-xs font-black uppercase tracking-widest text-zinc-500">Available Roof Area</label>
+                    <span className="text-4xl font-black text-black tracking-tighter">{roofSpace} <span className="text-xl text-zinc-400">Sq.Ft</span></span>
+                  </div>
+                  <div className="relative pt-1">
+                    <input
+                      type="range"
+                      min="100"
+                      max="5000"
+                      step="50"
+                      value={roofSpace}
+                      onChange={(e) => setRoofSpace(parseInt(e.target.value))}
+                      className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-yellow-500"
+                      style={{ background: `linear-gradient(to right, #eab308 0%, #eab308 ${((roofSpace - 100) / 4900) * 100}%, #e4e4e7 ${((roofSpace - 100) / 4900) * 100}%, #e4e4e7 100%)` }}
+                    />
+                    <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-3">
+                      <span>100 Sq.Ft</span>
+                      <span>5,000+ Sq.Ft</span>
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
+                    ~{Math.floor(roofSpace / 100)} kW can fit on your roof
+                  </p>
+                </div>
+
+                {/* Disclaimer */}
+                <div className="flex gap-4 text-zinc-500 bg-zinc-50 border border-zinc-200 rounded-2xl p-5">
+                  <Info className="w-5 h-5 shrink-0 text-yellow-500 mt-0.5" />
+                  <p className="text-[10px] font-bold leading-relaxed uppercase tracking-wider">
+                    Estimates based on Kerala's average solar irradiance (4.5 kWh/m²/day) and current KSEB net-metering slab rates. Your recommended size is the lower of what your bill needs vs. what your roof supports.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT: Results */}
+            <div className="reveal" style={{ transitionDelay: '150ms' }}>
+              {/* Hero Result Card */}
+              <div className="bg-yellow-400 rounded-[2.5rem] p-8 md:p-10 mb-6 relative overflow-hidden group shadow-2xl shadow-yellow-400/20">
+                <div className="absolute top-0 right-0 w-48 h-48 opacity-10 translate-x-8 -translate-y-8">
+                  <Sun className="w-full h-full text-black" />
+                </div>
+                <p className="text-black/60 text-[10px] font-black uppercase tracking-[0.3em] mb-3">Recommended System Size</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-5xl md:text-7xl font-black text-black tracking-tighter leading-none">{recommendedKW}</span>
+                  <span className="text-3xl font-black text-black/60 uppercase">kW</span>
+                </div>
+                <div className="mt-6 pt-6 border-t border-black/10 grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-black/50 text-[9px] font-black uppercase tracking-widest">Total Investment</p>
+                    <p className="text-black font-black text-lg">₹{systemCost.toLocaleString()}</p>
+                  </div>
+                  <div>
+                    <p className="text-black/50 text-[9px] font-black uppercase tracking-widest">Panels Needed</p>
+                    <p className="text-black font-black text-lg">~{Math.ceil(recommendedKW / 0.545)} panels</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Annual Savings */}
+                <div className="premium-cream-card p-6 rounded-[1.5rem] shadow-sm">
+                  <TrendingUp className="text-yellow-500 w-6 h-6 mb-4" />
+                  <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">Annual Savings</span>
+                  <div className="text-2xl font-black text-black tracking-tighter">₹{annualSavings.toLocaleString()}</div>
+                  <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">Per Year</p>
+                </div>
+
+                {/* Payback Period */}
+                <div className="premium-cream-card p-6 rounded-[1.5rem] shadow-sm">
+                  <IndianRupee className="text-yellow-500 w-6 h-6 mb-4" />
+                  <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">Payback Period</span>
+                  <div className="text-2xl font-black text-black tracking-tighter">{paybackYears} <span className="text-base text-zinc-400">yrs</span></div>
+                  <div className="mt-3 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-yellow-400 rounded-full transition-all duration-700" style={{ width: `${paybackPct}%` }} />
+                  </div>
+                  <p className="text-[9px] font-bold text-zinc-400 uppercase mt-1.5">Out of 10-year benchmark</p>
+                </div>
+
+                {/* CO2 Offset */}
+                <div className="premium-cream-card p-6 rounded-[1.5rem] shadow-sm">
+                  <Leaf className="text-yellow-500 w-6 h-6 mb-4" />
+                  <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">CO₂ Offset</span>
+                  <div className="text-2xl font-black text-black tracking-tighter">{co2Offset} <span className="text-base text-zinc-400">T/yr</span></div>
+                  <div className="mt-3 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-green-400 rounded-full transition-all duration-700" style={{ width: `${co2Pct}%` }} />
+                  </div>
+                  <p className="text-[9px] font-bold text-zinc-400 uppercase mt-1.5">Tons of CO₂ saved yearly</p>
+                </div>
+
+                {/* 25-Year Savings */}
+                <div className="premium-cream-card p-6 rounded-[1.5rem] shadow-sm">
+                  <Zap className="text-yellow-500 w-6 h-6 mb-4" />
+                  <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">25-Year Value</span>
+                  <div className="text-2xl font-black text-black tracking-tighter">₹{(annualSavings * 25).toLocaleString()}</div>
+                  <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">Total lifetime savings</p>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <a
+                href="/contact"
+                className="mt-6 flex items-center justify-between bg-black text-white rounded-[1.5rem] p-6 group hover:bg-zinc-900 transition-all shadow-xl"
+              >
+                <div>
+                  <span className="text-white font-black uppercase italic tracking-tighter block text-lg">Book Site Audit</span>
+                  <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Free Engineer Visit</span>
+                </div>
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-all">
+                  <ArrowRight className="w-5 h-5 text-black" />
                 </div>
               </a>
             </div>
@@ -164,11 +225,14 @@ const SolarCalculator: React.FC = () => {
         </div>
       </section>
 
-      {/* Trust Quote */}
-      <section className="px-6 py-32 bg-white">
-        <div className="max-w-4xl mx-auto text-center reveal opacity-0 translate-y-10 transition-all duration-1000">
-          <h2 className="text-4xl font-black italic uppercase tracking-tighter mb-8 opacity-20 text-black italic">"Saving doesn't just benefit you, <br /> it benefits the planet."</h2>
-          <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
+      {/* Quote Footer */}
+      <section className="px-6 py-24 border-t border-zinc-100">
+        <div className="max-w-4xl mx-auto text-center reveal">
+          <p className="text-3xl md:text-4xl font-black italic uppercase tracking-tighter mb-6 text-zinc-100" style={{ WebkitTextStroke: '1px #d4d4d8' }}>
+            "Every unit you generate is money you keep."
+          </p>
+          <div className="w-20 h-1 bg-yellow-400 mx-auto mb-4"></div>
+          <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest">Spectrum Powers — 24 Years of Solar Excellence</p>
         </div>
       </section>
     </div>

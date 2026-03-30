@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, BatteryCharging, Settings2, ChevronDown } from 'lucide-react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onLoaded?: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
   const [showOverlay, setShowOverlay] = useState(true);
   const [scrollY, setScrollY] = useState(0);
 
@@ -19,6 +23,8 @@ const Hero: React.FC = () => {
           muted 
           loop 
           playsInline 
+          preload="auto"
+          onCanPlayThrough={() => onLoaded?.()}
           className={`w-full h-full object-cover transition-all duration-1000 ${showOverlay ? 'filter saturate-[0.6] brightness-[0.35]' : 'saturate-100 brightness-100'}`}
           poster="/images/Banner01.jpg"
           style={{ transform: `scale(${1 + scrollY * 0.0005}) translateY(${scrollY * 0.2}px)` }}
