@@ -68,7 +68,7 @@ const Home: React.FC = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   return (
-    <div className={`flex flex-col bg-zinc-950 noise-bg ${!isVideoLoaded ? 'h-screen overflow-hidden' : ''}`}>
+    <div className={`flex flex-col bg-zinc-950 noise-bg overflow-x-hidden ${!isVideoLoaded ? 'h-screen overflow-hidden' : ''}`}>
       <LoadingScreen isVisible={!isVideoLoaded} />
       <Hero onLoaded={() => setIsVideoLoaded(true)} />
       <StatsBar />
@@ -222,19 +222,19 @@ const Home: React.FC = () => {
       {/* Installation Gallery — Improved Design */}
       <section className="py-20 md:py-24 bg-zinc-950 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-10 reveal">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 reveal gap-4">
             <div>
               <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Installations</span>
               <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-white">
                 Real Projects. <br className="hidden md:block" />Real Results.
               </h2>
             </div>
-            <div className="flex gap-3">
-              <a href="/solar" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300">
-                Solar Solutions <Sun className="w-3.5 h-3.5" />
+            <div className="flex flex-wrap gap-2">
+              <a href="/solar" className="flex items-center justify-center gap-2 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-5 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300 whitespace-nowrap">
+                Solar Solutions <Sun className="w-3 h-3" />
               </a>
-              <a href="/power" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300">
-                Power Systems <BatteryCharging className="w-3.5 h-3.5" />
+              <a href="/power" className="flex items-center justify-center gap-2 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-5 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300 whitespace-nowrap">
+                Power Systems <BatteryCharging className="w-3 h-3" />
               </a>
             </div>
           </div>
@@ -249,13 +249,12 @@ const Home: React.FC = () => {
               { src: '/images/p07.jpg', label: 'Ernakulam', cap: '200kW On-Grid' },
               { src: '/images/banner1090x907.jpg', label: 'Trivandrum', cap: '500kW Plant' },
             ].map((item, i) => (
-              <div key={i} className={`relative rounded-2xl overflow-hidden group cursor-pointer ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
-                style={{ aspectRatio: i === 0 ? undefined : '4/3', minHeight: i === 0 ? '300px' : undefined }}>
+              <div key={i} className="relative rounded-2xl overflow-hidden group cursor-pointer" style={{ aspectRatio: '4/3' }}>
                 <img src={item.src} alt={item.cap} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-yellow-400 text-[9px] font-black uppercase tracking-widest">{item.label}</p>
-                  <p className="text-white font-black text-sm uppercase tracking-tight">{item.cap}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <p className="text-yellow-400 text-[8px] font-black uppercase tracking-widest">{item.label}</p>
+                  <p className="text-white font-black text-xs md:text-sm uppercase tracking-tight leading-tight">{item.cap}</p>
                 </div>
               </div>
             ))}
