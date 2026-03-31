@@ -85,7 +85,7 @@ const Home: React.FC = () => {
               All Solar Products <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 reveal">
             {[
               { id: 'on-grid', icon: Sun, title: 'On-Grid Solar', sub: 'Grid-Tied', desc: 'Zero electricity bills with net metering. Fastest ROI. Best for homes & offices.', badge: 'Most Popular', color: '#facc15' },
               { id: 'hybrid', icon: Zap, title: 'Hybrid Solar', sub: 'Grid + Battery', desc: 'Day & night power. Solar generation + lithium backup for seamless reliability.', badge: null, color: '#a78bfa' },
@@ -266,11 +266,18 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section id="contact" className="py-32 bg-zinc-950 text-center">
-        <div className="max-w-3xl mx-auto px-6 reveal">
-          <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-bold tracking-tighter mb-8 md:mb-12 text-white uppercase leading-none">24 Years of <br className="hidden md:block" />Reliability.</h2>
-          <Link to="/contact" className="inline-block w-full sm:w-auto bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:scale-105 transition-all">Connect with Experts</Link>
+      {/* Contact CTA — Solar Image Background */}
+      <section id="contact" className="relative py-32 text-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src="/images/banner1090x909.jpg" alt="Solar Installation" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/40" />
+        </div>
+        <div className="relative z-10 max-w-3xl mx-auto px-6 reveal">
+          <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Since 2000</span>
+          <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white uppercase leading-none">24 Years of <br className="hidden md:block" />Reliability.</h2>
+          <p className="text-white/60 text-base md:text-lg font-light mb-10 max-w-md mx-auto">Kerala's most trusted solar and power solutions provider. Award-winning. Engineer-certified.</p>
+          <Link to="/contact" className="inline-block w-full sm:w-auto bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:scale-105 hover:bg-yellow-300 transition-all shadow-2xl">Connect with Experts</Link>
         </div>
       </section>
     </div>

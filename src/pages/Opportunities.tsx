@@ -79,7 +79,6 @@ const opportunities = [
 
 const Opportunities: React.FC = () => {
   useScrollReveal();
-  const [activeOpp, setActiveOpp] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', email: '', phone: '', role: '', message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -96,8 +95,9 @@ const Opportunities: React.FC = () => {
             className="w-full h-full object-cover scale-[1.05]"
             alt="Opportunities at Spectrum Powers"
           />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/30 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">

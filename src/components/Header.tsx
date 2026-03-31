@@ -1,11 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Sun, Zap, Leaf, Thermometer, CheckCircle2, Battery, Server, BatteryCharging, Layers, Cpu, Waves, TrendingUp, Users, Briefcase, Image, BookOpen, FolderOpen } from 'lucide-react';
 import { useNavbarScroll } from '../hooks/useNavbarScroll';
 import { Link, useLocation } from 'react-router-dom';
+
+// ─── Nav structure with correct hash deep-links ───────────────────────────────
 
 interface NavChild {
   label: string;
   to: string;
+  sub?: string;
+  icon?: React.ElementType;
+  color?: string;
 }
 
 interface NavGroup {
@@ -19,58 +24,58 @@ const navGroups: NavGroup[] = [
     label: 'Solar Solutions',
     to: '/solar',
     children: [
-      { label: 'On-Grid Solar System', to: '/solar' },
-      { label: 'Hybrid Solar System', to: '/solar' },
-      { label: 'Lithium Off-Grid System', to: '/solar' },
-      { label: 'Solar Water Heaters', to: '/solar' },
-      { label: 'Energy Audit & Maintenance', to: '/solar' },
+      { label: 'On-Grid Solar System',      to: '/solar#on-grid',       sub: 'Grid-Tied · Net Metering',   icon: Sun,          color: '#facc15' },
+      { label: 'Hybrid Solar System',        to: '/solar#hybrid',        sub: 'Grid + Battery',             icon: Zap,          color: '#a78bfa' },
+      { label: 'Lithium Off-Grid System',    to: '/solar#off-grid',      sub: 'Complete Independence',      icon: Leaf,         color: '#4ade80' },
+      { label: 'Solar Water Heaters',        to: '/solar#water-heaters', sub: 'Thermal Solutions',          icon: Thermometer,  color: '#fb923c' },
+      { label: 'Energy Audit & Maintenance', to: '/solar#energy-audit',  sub: 'After-Sales Support',       icon: CheckCircle2, color: '#38bdf8' },
     ],
   },
   {
     label: 'Power Backup',
     to: '/power',
     children: [
-      { label: 'Lithium Inbuilt UPS', to: '/power' },
-      { label: 'Home UPS System', to: '/power' },
-      { label: 'Inverters', to: '/power' },
-      { label: 'Online UPS', to: '/power' },
-      { label: 'Lithium Batteries', to: '/power' },
-      { label: 'Tubular Batteries', to: '/power' },
+      { label: 'Lithium Inbuilt UPS',  to: '/power#lithium-ups',       sub: 'Zero-Switch Technology',   icon: Battery,        color: '#60a5fa' },
+      { label: 'Home UPS System',      to: '/power#home-ups',          sub: 'Residential Backup',       icon: Zap,            color: '#facc15' },
+      { label: 'Inverters',            to: '/power#inverters',         sub: 'Power Conversion',         icon: BatteryCharging,color: '#fb923c' },
+      { label: 'Online UPS',           to: '/power#online-ups',        sub: 'Critical Load Protection', icon: Server,         color: '#4ade80' },
+      { label: 'Lithium Batteries',    to: '/power#lithium-batteries', sub: 'LFP Energy Storage',       icon: Layers,         color: '#a78bfa' },
+      { label: 'Tubular Batteries',    to: '/power#tubular-batteries', sub: 'Lead-Acid Value',          icon: Cpu,            color: '#38bdf8' },
     ],
   },
   {
     label: 'Calculator',
     to: '/calculator',
     children: [
-      { label: 'Solar Calculator', to: '/calculator' },
-      { label: 'Power Backup Calculator', to: '/calculator' },
+      { label: 'Solar ROI Calculator',       to: '/calculator#solar',  icon: Sun,     color: '#facc15', sub: 'Savings & Payback' },
+      { label: 'Power Backup Calculator',    to: '/calculator#power',  icon: Battery, color: '#60a5fa', sub: 'Battery & UPS Sizing' },
     ],
   },
   {
     label: 'Opportunities',
     to: '/opportunities',
     children: [
-      { label: 'Franchise', to: '/opportunities' },
-      { label: 'Dealership', to: '/opportunities' },
-      { label: 'Freelance Dealer', to: '/opportunities' },
-      { label: 'Job Opportunities', to: '/opportunities' },
+      { label: 'Franchise',         to: '/opportunities', icon: TrendingUp, color: '#facc15', sub: '12 Active Units' },
+      { label: 'Dealership',        to: '/opportunities', icon: Briefcase,  color: '#a78bfa', sub: 'Regional Distribution' },
+      { label: 'Referral Partner',  to: '/opportunities', icon: Users,      color: '#4ade80', sub: 'Commission Based' },
+      { label: 'Careers',           to: '/opportunities', icon: Waves,      color: '#38bdf8', sub: 'Join Our Team' },
     ],
   },
   {
     label: 'About',
     to: '/about',
     children: [
-      { label: 'About Us', to: '/about' },
-      { label: 'Testimonials', to: '/feedback' },
-      { label: 'Gallery', to: '/gallery' },
-      { label: 'Projects', to: '/projects' },
+      { label: 'About Us',      to: '/about',     icon: Users,       color: '#facc15', sub: '24 Years of Excellence' },
+      { label: 'Testimonials',  to: '/feedback',  icon: BookOpen,    color: '#a78bfa', sub: '40,000+ Happy Customers' },
+      { label: 'Gallery',       to: '/gallery',   icon: Image,       color: '#4ade80', sub: 'Installation Portfolio' },
+      { label: 'Projects',      to: '/projects',  icon: FolderOpen,  color: '#38bdf8', sub: 'Case Studies' },
     ],
   },
 ];
 
-const singleLinks: NavGroup[] = [
-  { label: 'Blog', to: '/blog' },
-];
+const singleLinks: NavGroup[] = [{ label: 'Blog', to: '/blog' }];
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 const Header: React.FC = () => {
   const { isScrolled, isOverLightSection } = useNavbarScroll();
@@ -100,7 +105,7 @@ const Header: React.FC = () => {
 
   const isGroupActive = (group: NavGroup) => {
     if (location.pathname === group.to) return true;
-    if (group.children?.some((c) => location.pathname === c.to)) return true;
+    if (group.children?.some((c) => location.pathname === c.to.split('#')[0])) return true;
     return false;
   };
 
@@ -110,16 +115,11 @@ const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
-            <img
-              src="/logo.png"
-              alt="Spectrum Powers"
-              className="h-7 md:h-9 w-auto transition-all duration-500 group-hover:scale-110"
-            />
+            <img src="/logo.png" alt="Spectrum Powers" className="h-7 md:h-9 w-auto transition-all duration-500 group-hover:scale-110" />
           </Link>
 
           {/* Desktop Nav */}
           <div className={`hidden lg:flex items-center gap-1 xl:gap-2 text-[10px] font-black uppercase tracking-[0.18em] ${textColor}`}>
-            {/* Dropdown Groups */}
             {navGroups.map((group) => (
               <div
                 key={group.label}
@@ -138,37 +138,49 @@ const Header: React.FC = () => {
                   }`}
                 >
                   {group.label}
-                  <ChevronDown
-                    className={`w-3 h-3 transition-transform duration-200 ${
-                      activeDropdown === group.label ? 'rotate-180' : ''
-                    }`}
-                  />
+                  <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === group.label ? 'rotate-180' : ''}`} />
                 </Link>
 
                 {/* Dropdown Panel */}
                 {group.children && (
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden transition-all duration-200 origin-top ${
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden transition-all duration-200 origin-top ${
                       activeDropdown === group.label
                         ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
                         : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                     }`}
+                    style={{ minWidth: '220px' }}
                     onMouseEnter={() => handleMouseEnter(group.label)}
                     onMouseLeave={handleMouseLeave}
                   >
                     <div className="p-2">
-                      {group.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          to={child.to}
-                          className="flex items-center gap-2 px-4 py-3 rounded-xl text-zinc-400 hover:text-yellow-400 hover:bg-white/5 transition-all duration-150 group/item"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover/item:bg-yellow-400 transition-colors flex-shrink-0" />
-                          <span className="text-[10px] font-black uppercase tracking-widest leading-tight">
-                            {child.label}
-                          </span>
-                        </Link>
-                      ))}
+                      {group.children.map((child) => {
+                        const Icon = child.icon;
+                        return (
+                          <Link
+                            key={child.label}
+                            to={child.to}
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-zinc-400 hover:text-yellow-400 hover:bg-white/5 transition-all duration-150 group/item"
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            {Icon && (
+                              <div
+                                className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 transition-all group-hover/item:scale-110"
+                                style={{ backgroundColor: (child.color ?? '#facc15') + '18' }}
+                              >
+                                <Icon className="w-3 h-3" style={{ color: child.color ?? '#facc15' }} />
+                              </div>
+                            )}
+                            <div className="min-w-0">
+                              <p className="text-[10px] font-black uppercase tracking-widest leading-tight truncate">{child.label}</p>
+                              {child.sub && (
+                                <p className="text-[8px] font-bold uppercase tracking-widest truncate mt-0.5 opacity-50">{child.sub}</p>
+                              )}
+                            </div>
+                            <ChevronRight className="w-3 h-3 ml-auto flex-shrink-0 opacity-0 group-hover/item:opacity-100 transition-opacity" style={{ color: child.color ?? '#facc15' }} />
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -193,10 +205,7 @@ const Header: React.FC = () => {
             ))}
 
             {/* CTA */}
-            <Link
-              to="/contact"
-              className={`${ctaClass} px-5 py-2.5 rounded-full transition-all ml-1 border border-transparent font-black text-[10px]`}
-            >
+            <Link to="/contact" className={`${ctaClass} px-5 py-2.5 rounded-full transition-all ml-1 border border-transparent font-black text-[10px]`}>
               Enquiry
             </Link>
           </div>
@@ -215,110 +224,132 @@ const Header: React.FC = () => {
       {/* Mobile Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-[59] bg-black/50 lg:hidden"
+          className="fixed inset-0 z-[59] bg-black/60 backdrop-blur-sm lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
 
-      {/* Mobile Menu Overlay */}
+      {/* ─── Premium Mobile Menu ─────────────────────────────────────────── */}
       <div
-        className={`fixed inset-0 z-[60] bg-zinc-950 flex flex-col lg:hidden transition-transform duration-300 ${
+        className={`fixed top-0 right-0 bottom-0 z-[60] w-full max-w-sm bg-zinc-950 flex flex-col lg:hidden transition-transform duration-300 ease-out shadow-2xl ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        {/* Mobile Header */}
-        <div className="flex justify-between items-center px-6 py-5 border-b border-white/5 flex-shrink-0">
+        {/* Header bar */}
+        <div className="flex justify-between items-center px-6 py-5 border-b border-white/8 flex-shrink-0 bg-zinc-900/60">
           <Link to="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
             <img src="/logo.png" alt="Spectrum Powers" className="h-7 w-auto" />
           </Link>
           <button
-            className="text-zinc-400 hover:text-white p-2 transition-colors"
+            className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-zinc-400 hover:text-white transition-all"
             onClick={() => setIsMobileMenuOpen(false)}
             aria-label="Close menu"
           >
-            <X className="w-7 h-7" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Mobile Links */}
-        <div className="flex-1 overflow-y-auto px-6 py-6">
-          <div className="flex flex-col">
-            {/* Dropdown groups — accordion */}
-            {navGroups.map((group, i) => (
-              <div key={group.label} className="border-b border-white/5">
-                <button
-                  className={`w-full flex items-center justify-between py-4 text-xl font-black italic tracking-tighter uppercase transition-colors ${
-                    isGroupActive(group) ? 'text-yellow-400' : 'text-white'
+        {/* Scrollable body */}
+        <div className="flex-1 overflow-y-auto">
+          {navGroups.map((group) => (
+            <div key={group.label} className="border-b border-white/5">
+              <button
+                className={`w-full flex items-center justify-between px-6 py-4 transition-colors ${
+                  isGroupActive(group) ? 'text-yellow-400' : 'text-white'
+                }`}
+                onClick={() => setExpandedMobile(expandedMobile === group.label ? null : group.label)}
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`w-1.5 h-1.5 rounded-full ${isGroupActive(group) ? 'bg-yellow-400' : 'bg-zinc-700'}`} />
+                  <span className="text-base font-black uppercase tracking-tight">{group.label}</span>
+                </div>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    expandedMobile === group.label ? 'rotate-180 text-yellow-400' : 'text-zinc-600'
                   }`}
-                  onClick={() =>
-                    setExpandedMobile(expandedMobile === group.label ? null : group.label)
-                  }
-                  style={{ transitionDelay: `${i * 30}ms` }}
-                >
-                  <span>{group.label}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 transition-transform duration-200 ${
-                      expandedMobile === group.label ? 'rotate-180 text-yellow-400' : 'text-zinc-500'
-                    }`}
-                  />
-                </button>
-                {/* Accordion children */}
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    expandedMobile === group.label ? 'max-h-80' : 'max-h-0'
-                  }`}
-                >
-                  <div className="pl-4 pb-3 space-y-1">
-                    {group.children?.map((child) => (
+                />
+              </button>
+
+              {/* Accordion children */}
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  expandedMobile === group.label ? 'max-h-[600px]' : 'max-h-0'
+                }`}
+              >
+                <div className="px-4 pb-3 space-y-0.5">
+                  {group.children?.map((child) => {
+                    const Icon = child.icon;
+                    return (
                       <Link
                         key={child.label}
                         to={child.to}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center gap-3 py-2.5 text-zinc-400 hover:text-yellow-400 transition-colors group/mc"
+                        className="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-white/5 transition-all group/mi"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover/mc:bg-yellow-400 transition-colors flex-shrink-0" />
-                        <span className="text-xs font-black uppercase tracking-widest">{child.label}</span>
+                        {Icon && (
+                          <div
+                            className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                            style={{ backgroundColor: (child.color ?? '#facc15') + '18' }}
+                          >
+                            <Icon className="w-4 h-4" style={{ color: child.color ?? '#facc15' }} />
+                          </div>
+                        )}
+                        <div className="min-w-0">
+                          <p className="text-sm font-black uppercase tracking-tight text-white group-hover/mi:text-yellow-400 transition-colors truncate">
+                            {child.label}
+                          </p>
+                          {child.sub && (
+                            <p className="text-[9px] font-bold uppercase tracking-widest mt-0.5 truncate" style={{ color: child.color ?? '#facc15', opacity: 0.8 }}>
+                              {child.sub}
+                            </p>
+                          )}
+                        </div>
+                        <ChevronRight className="w-3.5 h-3.5 ml-auto flex-shrink-0 text-zinc-700 group-hover/mi:text-yellow-400 transition-colors" />
                       </Link>
-                    ))}
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
 
-            {/* Single links */}
-            {singleLinks.map((link, i) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex items-center justify-between py-4 border-b border-white/5 text-xl font-black italic tracking-tighter uppercase transition-colors group ${
-                  location.pathname === link.to ? 'text-yellow-400' : 'text-white hover:text-yellow-400'
-                }`}
-                style={{ transitionDelay: `${(navGroups.length + i) * 30}ms` }}
-              >
-                <span>{link.label}</span>
-                <span className="text-yellow-400 text-sm font-black opacity-0 group-hover:opacity-100 transition-opacity">
-                  →
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile CTA */}
+          {/* Blog */}
           <Link
-            to="/contact"
+            to="/blog"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-8 block bg-yellow-400 text-black px-8 py-5 rounded-full text-sm font-black uppercase tracking-[0.2em] text-center shadow-2xl hover:scale-[1.02] transition-transform"
+            className="flex items-center justify-between px-6 py-4 border-b border-white/5 text-white hover:text-yellow-400 transition-colors group"
           >
-            Enquiry Now
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-yellow-400 transition-colors" />
+              <span className="text-base font-black uppercase tracking-tight">Blog</span>
+            </div>
+            <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-yellow-400 transition-colors" />
           </Link>
+
+          {/* CTAs */}
+          <div className="px-6 pt-6 pb-4 space-y-3">
+            <Link
+              to="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block bg-yellow-400 text-black px-8 py-4 rounded-2xl text-sm font-black uppercase tracking-[0.2em] text-center shadow-xl hover:bg-yellow-300 transition-all active:scale-[0.98]"
+            >
+              Get Free Enquiry
+            </Link>
+            <Link
+              to="/calculator"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block bg-white/5 border border-white/10 text-white px-8 py-3.5 rounded-2xl text-sm font-black uppercase tracking-[0.2em] text-center hover:bg-white/10 transition-all active:scale-[0.98]"
+            >
+              Calculate Savings
+            </Link>
+          </div>
         </div>
 
-        {/* Mobile Footer */}
-        <div className="px-6 py-6 border-t border-white/5 flex-shrink-0">
-          <p className="text-[9px] font-bold text-zinc-500 uppercase tracking-[0.3em] mb-2">Engineering Headquarters</p>
+        {/* Footer */}
+        <div className="px-6 py-5 border-t border-white/5 flex-shrink-0 bg-zinc-900/40">
+          <p className="text-[9px] font-bold text-zinc-600 uppercase tracking-[0.3em] mb-1">Engineering HQ</p>
           <p className="text-white font-bold text-sm">Kochi, Kerala, India</p>
-          <p className="text-zinc-400 text-sm">+91 97456 60055</p>
+          <p className="text-yellow-400 text-sm font-black mt-0.5">+91 97456 60055</p>
         </div>
       </div>
     </>

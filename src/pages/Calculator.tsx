@@ -351,6 +351,12 @@ const PowerCalculator: React.FC = () => {
 const Calculator: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'solar' | 'power'>('solar');
 
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'power') setActiveTab('power');
+    else setActiveTab('solar');
+  }, []);
+
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
       {/* Hero */}
