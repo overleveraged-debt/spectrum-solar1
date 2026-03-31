@@ -34,8 +34,6 @@ const Gallery: React.FC = () => {
     ? galleryItems
     : galleryItems.filter((g) => g.category === activeFilter.toLowerCase());
 
-  const current = filtered[currentIndex] ?? filtered[0];
-
   const safeIndex = Math.min(currentIndex, filtered.length - 1);
   const safeItem = filtered[safeIndex] ?? filtered[0];
 
