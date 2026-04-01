@@ -117,7 +117,7 @@ const Home: React.FC = () => {
             <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-black tracking-[-0.05em] text-black uppercase leading-[0.9]">Why <br />Go Solar?</h2>
           </div>
           {/* Full-width photo — Tesla style */}
-          <div className="reveal rounded-[2rem] overflow-hidden" style={{ height: 'clamp(240px, 50vw, 520px)' }}>
+          <div className="reveal rounded-[2rem] overflow-hidden" style={{ height: 'clamp(480px, 80vw, 520px)' }}>
             <img
               src="/images/home_why_solar.jpg"
               alt="Solar panels powering a beautiful home"
@@ -164,7 +164,7 @@ const Home: React.FC = () => {
             </Link>
           </div>
           {/* Section Banner Image — Solar */}
-          <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(200px, 40vw, 420px)' }}>
+          <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 420px)' }}>
             <img
               src="/images/home_solar_banner.jpg"
               alt="Solar panels on modern home"
@@ -220,7 +220,7 @@ const Home: React.FC = () => {
             </Link>
           </div>
           {/* Section Banner Image — Power Backup */}
-          <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(180px, 35vw, 380px)' }}>
+          <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 380px)' }}>
             <img
               src="/images/home_backup_banner.jpg"
               alt="Modern backup power systems"
@@ -296,7 +296,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* Heritage Banner Image */}
-          <div className="reveal rounded-[2rem] overflow-hidden mb-16" style={{ height: 'clamp(240px, 45vw, 480px)' }}>
+          <div className="reveal rounded-[2rem] overflow-hidden mb-16" style={{ height: 'clamp(480px, 80vw, 480px)' }}>
             <img
               src="/images/home_heritage_banner.jpg"
               alt="Spectrum Engineering Heritage"

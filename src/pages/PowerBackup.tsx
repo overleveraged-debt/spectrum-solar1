@@ -349,8 +349,8 @@ const PowerBackup: React.FC = () => {
                         </div>
 
                         {/* Product Photo */}
-                        <div className="md:col-span-1">
-                          <div className="rounded-2xl overflow-hidden" style={{ height: 'clamp(200px, 30vw, 288px)' }}>
+                        <div className="md:col-span-1 order-first md:order-last">
+                          <div className="rounded-2xl overflow-hidden mb-6 md:mb-0" style={{ height: 'clamp(280px, 40vw, 320px)' }}>
                             <img
                               src={product.image}
                               alt={product.title}
