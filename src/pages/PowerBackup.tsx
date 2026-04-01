@@ -28,7 +28,7 @@ const products: Product[] = [
     description:
       'Space-saving UPS systems with integrated lithium-ion cells for seamless, instantaneous power transition. Engineered for homes, offices, and mission-critical environments that cannot tolerate even a millisecond of downtime.',
     icon: <Battery className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#60a5fa',
+    accentColor: '#facc15',
     badge: 'Most Advanced',
     features: [
       'Zero-Switch Time (<10ms)',
@@ -42,7 +42,7 @@ const products: Product[] = [
       { label: 'Switch Time', value: '< 10ms' },
       { label: 'Warranty', value: '3 Years' },
     ],
-    image: '/images/p01.jpg',
+    image: '/images/pwr_lithium_ups.jpg',
   },
   {
     id: 'home-ups',
@@ -66,7 +66,7 @@ const products: Product[] = [
       { label: 'Efficiency', value: '95%+' },
       { label: 'Battery', value: 'Tubular / Li-Ion' },
     ],
-    image: '/images/p02.jpg',
+    image: '/images/pwr_home_ups.jpg',
   },
   {
     id: 'inverters',
@@ -77,7 +77,7 @@ const products: Product[] = [
     description:
       'High-efficiency inverters for residential and commercial use. Available in a wide range from compact 600VA units for homes to heavy-duty 10kVA units for shops, offices, and small industries.',
     icon: <BatteryCharging className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#fb923c',
+    accentColor: '#facc15',
     features: [
       'DSP-Controlled Output',
       'Automatic Voltage Regulation',
@@ -90,7 +90,7 @@ const products: Product[] = [
       { label: 'Input Voltage', value: '90V – 290V AC' },
       { label: 'Protection', value: 'OVP / UVP / OLP' },
     ],
-    image: '/images/p03.jpg',
+    image: '/images/pwr_inverter.jpg',
   },
   {
     id: 'online-ups',
@@ -101,7 +101,7 @@ const products: Product[] = [
     description:
       'True Online double-conversion UPS for hospitals, server rooms, labs, and data centers. The power never actually passes through the grid — it is always being regenerated from the battery, ensuring absolutely clean, stable power.',
     icon: <Server className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#4ade80',
+    accentColor: '#facc15',
     features: [
       'Double Conversion Technology',
       'Zero Transfer Time',
@@ -114,7 +114,7 @@ const products: Product[] = [
       { label: 'Input PF', value: '0.99' },
       { label: 'Efficiency', value: 'Up to 96%' },
     ],
-    image: '/images/p04.jpg',
+    image: '/images/pwr_online_ups.jpg',
   },
   {
     id: 'lithium-batteries',
@@ -125,7 +125,7 @@ const products: Product[] = [
     description:
       'LFP (Lithium Iron Phosphate) batteries for solar storage, UPS backup, and EV applications. 4000+ cycle life means no replacement for over 10 years. Built-in BMS protects from overcharge, overdischarge, and temperature extremes.',
     icon: <Battery className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#a78bfa',
+    accentColor: '#facc15',
     features: [
       'LFP Chemistry (Safest)',
       '4000+ Charge Cycles',
@@ -138,7 +138,7 @@ const products: Product[] = [
       { label: 'Warranty', value: '5 – 10 Years' },
       { label: 'DoD', value: '95% Depth of Discharge' },
     ],
-    image: '/images/p05.jpg',
+    image: '/images/pwr_lithium_battery.jpg',
   },
   {
     id: 'tubular-batteries',
@@ -149,7 +149,7 @@ const products: Product[] = [
     description:
       "India's most trusted battery technology for home UPS systems. Tall tubular plates give superior performance in Kerala's hot climate and frequent power cuts. Low water topping frequency and robust construction.",
     icon: <BatteryCharging className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#38bdf8',
+    accentColor: '#facc15',
     features: [
       'Tall Tubular Plates',
       'Heat-Resistant Design',
@@ -162,7 +162,7 @@ const products: Product[] = [
       { label: 'Warranty', value: '3 – 5 Years' },
       { label: 'Life', value: '4 – 6 Years' },
     ],
-    image: '/images/p06.jpg',
+    image: '/images/pwr_tubular_battery.jpg',
   },
 ];
 
@@ -198,14 +198,14 @@ const PowerBackup: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-blue-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             Kerala's Power Backup Specialists
           </span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
             Power Backup <br className="hidden md:block" />
             Solutions
           </h1>
-          <p className="text-blue-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
             UPS, inverters, and batteries — built for Kerala's power conditions.
           </p>
         </div>
@@ -216,7 +216,7 @@ const PowerBackup: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-end justify-between mb-20 reveal">
             <div>
-              <span className="text-blue-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
                 Backup Portfolio
               </span>
               <h2 className="text-4xl md:text-7xl font-black uppercase text-white tracking-[-0.04em] leading-[0.9]">
@@ -224,7 +224,7 @@ const PowerBackup: React.FC = () => {
               </h2>
             </div>
             <div className="hidden md:flex items-center gap-3 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
-              <Battery className="w-4 h-4 text-blue-400" />
+              <Battery className="w-4 h-4 text-yellow-400" />
               <span>6 Engineered Solutions</span>
             </div>
           </div>
@@ -235,7 +235,7 @@ const PowerBackup: React.FC = () => {
                 <div
                   className={`relative border rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden ${
                     activeProduct === product.id
-                      ? 'border-blue-400/50 bg-zinc-900'
+                      ? 'border-yellow-400/50 bg-zinc-900'
                       : 'border-zinc-800 bg-zinc-900/40 hover:border-zinc-600 hover:bg-zinc-900/70'
                   }`}
                   onClick={() => setActiveProduct(activeProduct === product.id ? null : product.id)}
@@ -278,7 +278,7 @@ const PowerBackup: React.FC = () => {
                           {product.category}
                         </span>
                         {product.badge && (
-                          <span className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-blue-400/10 text-blue-400 border border-blue-400/30 flex-shrink-0">
+                          <span className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-yellow-400/10 text-yellow-400 border border-yellow-400/30 flex-shrink-0">
                             {product.badge}
                           </span>
                         )}
@@ -370,7 +370,7 @@ const PowerBackup: React.FC = () => {
 
       {/* CTA */}
       <section className="px-6 pb-10">
-        <div className="max-w-7xl mx-auto border border-blue-400/20 bg-zinc-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 reveal shadow-2xl">
+        <div className="max-w-7xl mx-auto border border-yellow-400/20 bg-zinc-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 reveal shadow-2xl">
           <div className="text-center md:text-left">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-4">
               Never Lose Power Again.

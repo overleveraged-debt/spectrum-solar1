@@ -42,7 +42,7 @@ const products: Product[] = [
       { label: 'Warranty', value: '25-Year Panel' },
       { label: 'ROI Period', value: '3 – 5 Years' },
     ],
-    image: '/images/banner1090x907.jpg',
+    image: '/images/sol_on_grid.jpg',
   },
   {
     id: 'hybrid',
@@ -53,7 +53,7 @@ const products: Product[] = [
     description:
       'The best of both worlds — solar generation during the day with a lithium or VRLA battery bank for uninterrupted power during outages or night hours. Ideal for homes and businesses in areas with frequent power cuts.',
     icon: <Zap className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#a78bfa',
+    accentColor: '#facc15',
     features: [
       'Day + Night Power',
       'Grid + Battery Hybrid',
@@ -66,7 +66,7 @@ const products: Product[] = [
       { label: 'Battery', value: 'Lithium / VRLA' },
       { label: 'Switch Time', value: '< 10ms' },
     ],
-    image: '/images/banner1090x908.jpg',
+    image: '/images/sol_hybrid.jpg',
   },
   {
     id: 'off-grid',
@@ -77,7 +77,7 @@ const products: Product[] = [
     description:
       'Fully autonomous solar+lithium battery systems designed for locations without reliable grid access. Hospitals, remote estates, islands, and industries requiring absolute power independence.',
     icon: <Leaf className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#4ade80',
+    accentColor: '#facc15',
     features: [
       'Zero Grid Dependency',
       'Lithium LFP Batteries',
@@ -90,7 +90,7 @@ const products: Product[] = [
       { label: 'Battery Tech', value: 'LFP Lithium' },
       { label: 'Cycles', value: '4000+ Charge Cycles' },
     ],
-    image: '/images/nature-kerala.jpg',
+    image: '/images/sol_off_grid.jpg',
   },
   {
     id: 'water-heaters',
@@ -101,7 +101,7 @@ const products: Product[] = [
     description:
       "High-efficiency vacuum tube thermal systems designed for India's diverse climatic conditions. Available in 100L to 2000L capacities for homes, hotels, hospitals, and industrial applications.",
     icon: <Thermometer className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#fb923c',
+    accentColor: '#facc15',
     features: [
       'Vacuum Tube Technology',
       'Stainless Steel Tank 316L',
@@ -114,7 +114,7 @@ const products: Product[] = [
       { label: 'Material', value: '316L Marine-Grade Steel' },
       { label: 'ROI Period', value: '< 2 Years' },
     ],
-    image: '/images/Banner04.jpg',
+    image: '/images/sol_water_heater.jpg',
   },
 ];
 

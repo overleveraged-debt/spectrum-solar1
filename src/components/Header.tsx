@@ -25,21 +25,21 @@ const navGroups: NavGroup[] = [
     to: '/solar',
     children: [
       { label: 'On-Grid Solar System',      to: '/solar#on-grid',       sub: 'Grid-Tied · Net Metering',   icon: Sun,          color: '#facc15' },
-      { label: 'Hybrid Solar System',        to: '/solar#hybrid',        sub: 'Grid + Battery',             icon: Zap,          color: '#a78bfa' },
-      { label: 'Lithium Off-Grid System',    to: '/solar#off-grid',      sub: 'Complete Independence',      icon: Leaf,         color: '#4ade80' },
-      { label: 'Solar Water Heaters',        to: '/solar#water-heaters', sub: 'Thermal Solutions',          icon: Thermometer,  color: '#fb923c' },
+      { label: 'Hybrid Solar System',        to: '/solar#hybrid',        sub: 'Grid + Battery',             icon: Zap,          color: '#facc15' },
+      { label: 'Lithium Off-Grid System',    to: '/solar#off-grid',      sub: 'Complete Independence',      icon: Leaf,         color: '#facc15' },
+      { label: 'Solar Water Heaters',        to: '/solar#water-heaters', sub: 'Thermal Solutions',          icon: Thermometer,  color: '#facc15' },
     ],
   },
   {
     label: 'Power Backup',
     to: '/power',
     children: [
-      { label: 'Lithium Inbuilt UPS',  to: '/power#lithium-ups',       sub: 'Zero-Switch Technology',   icon: Battery,        color: '#60a5fa' },
+      { label: 'Lithium Inbuilt UPS',  to: '/power#lithium-ups',       sub: 'Zero-Switch Technology',   icon: Battery,        color: '#facc15' },
       { label: 'Home UPS System',      to: '/power#home-ups',          sub: 'Residential Backup',       icon: Zap,            color: '#facc15' },
-      { label: 'Inverters',            to: '/power#inverters',         sub: 'Power Conversion',         icon: BatteryCharging,color: '#fb923c' },
-      { label: 'Online UPS',           to: '/power#online-ups',        sub: 'Critical Load Protection', icon: Server,         color: '#4ade80' },
-      { label: 'Lithium Batteries',    to: '/power#lithium-batteries', sub: 'LFP Energy Storage',       icon: Layers,         color: '#a78bfa' },
-      { label: 'Tubular Batteries',    to: '/power#tubular-batteries', sub: 'Lead-Acid Value',          icon: Cpu,            color: '#38bdf8' },
+      { label: 'Inverters',            to: '/power#inverters',         sub: 'Power Conversion',         icon: BatteryCharging,color: '#facc15' },
+      { label: 'Online UPS',           to: '/power#online-ups',        sub: 'Critical Load Protection', icon: Server,         color: '#facc15' },
+      { label: 'Lithium Batteries',    to: '/power#lithium-batteries', sub: 'LFP Energy Storage',       icon: Layers,         color: '#facc15' },
+      { label: 'Tubular Batteries',    to: '/power#tubular-batteries', sub: 'Lead-Acid Value',          icon: Cpu,            color: '#facc15' },
     ],
   },
   {
@@ -47,7 +47,7 @@ const navGroups: NavGroup[] = [
     to: '/calculator',
     children: [
       { label: 'Solar ROI Calculator',       to: '/calculator#solar',  icon: Sun,     color: '#facc15', sub: 'Savings & Payback' },
-      { label: 'Power Backup Calculator',    to: '/calculator#power',  icon: Battery, color: '#60a5fa', sub: 'Battery & UPS Sizing' },
+      { label: 'Power Backup Calculator',    to: '/calculator#power',  icon: Battery, color: '#facc15', sub: 'Battery & UPS Sizing' },
     ],
   },
   {
@@ -55,9 +55,9 @@ const navGroups: NavGroup[] = [
     to: '/opportunities',
     children: [
       { label: 'Franchise',         to: '/opportunities', icon: TrendingUp, color: '#facc15', sub: '12 Active Units' },
-      { label: 'Dealership',        to: '/opportunities', icon: Briefcase,  color: '#a78bfa', sub: 'Regional Distribution' },
-      { label: 'Referral Partner',  to: '/opportunities', icon: Users,      color: '#4ade80', sub: 'Commission Based' },
-      { label: 'Careers',           to: '/opportunities', icon: Waves,      color: '#38bdf8', sub: 'Join Our Team' },
+      { label: 'Dealership',        to: '/opportunities', icon: Briefcase,  color: '#facc15', sub: 'Regional Distribution' },
+      { label: 'Referral Partner',  to: '/opportunities', icon: Users,      color: '#facc15', sub: 'Commission Based' },
+      { label: 'Careers',           to: '/opportunities', icon: Waves,      color: '#facc15', sub: 'Join Our Team' },
     ],
   },
   {
@@ -65,9 +65,9 @@ const navGroups: NavGroup[] = [
     to: '/about',
     children: [
       { label: 'About Us',      to: '/about',     icon: Users,       color: '#facc15', sub: '25 Years of Excellence' },
-      { label: 'Testimonials',  to: '/feedback',  icon: BookOpen,    color: '#a78bfa', sub: '40,000+ Happy Customers' },
-      { label: 'Gallery',       to: '/gallery',   icon: Image,       color: '#4ade80', sub: 'Installation Portfolio' },
-      { label: 'Projects',      to: '/projects',  icon: FolderOpen,  color: '#38bdf8', sub: 'Case Studies' },
+      { label: 'Testimonials',  to: '/feedback',  icon: BookOpen,    color: '#facc15', sub: '40,000+ Happy Customers' },
+      { label: 'Gallery',       to: '/gallery',   icon: Image,       color: '#facc15', sub: 'Installation Portfolio' },
+      { label: 'Projects',      to: '/projects',  icon: FolderOpen,  color: '#facc15', sub: 'Case Studies' },
     ],
   },
 ];

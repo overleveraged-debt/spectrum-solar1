@@ -20,6 +20,35 @@ const allTestimonials = [
 const filterOptions = ['All', 'Solar', 'Backup', 'Battery', 'Other'];
 const CARDS_PER_PAGE = 6;
 
+const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial: t }) => (
+  <div className="group relative p-7 bg-zinc-900/50 border border-white/5 rounded-[2rem] hover:border-yellow-400/20 hover:bg-zinc-900 transition-all duration-500 shadow-lg overflow-hidden h-full">
+    <Quote className="absolute -top-2 -right-2 w-20 h-20 text-white/[0.03] group-hover:text-yellow-400/[0.06] transition-colors duration-500" />
+    <div className="flex gap-1 mb-4">
+      {[1, 2, 3, 4, 5].map((s) => (
+        <Star key={s} className={`w-4 h-4 ${s <= t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-zinc-700'}`} />
+      ))}
+    </div>
+    <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full mb-4 inline-block">
+      {t.product}
+    </span>
+    <p className="text-zinc-300 leading-relaxed mb-5 italic text-sm font-light">"{t.text}"</p>
+    <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+      <div className="w-10 h-10 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
+        <span className="text-yellow-400 font-black text-xs">{t.initials}</span>
+      </div>
+      <div>
+        <div className="font-black uppercase text-sm tracking-tight flex items-center gap-2 text-white">
+          {t.name}
+          <CheckCircle2 className="w-4 h-4 text-yellow-400" />
+        </div>
+        <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
+          {t.location} · {t.date}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const Feedback: React.FC = () => {
   useScrollReveal();
 
@@ -30,6 +59,7 @@ const Feedback: React.FC = () => {
   const [review, setReview] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
 
   const filtered = activeFilter === 'All'
     ? allTestimonials
@@ -44,6 +74,7 @@ const Feedback: React.FC = () => {
   const handleFilterChange = (f: string) => {
     setActiveFilter(f);
     setCurrentPage(0);
+    setMobileIndex(0);
   };
 
   return (
@@ -119,43 +150,62 @@ const Feedback: React.FC = () => {
             </div>
           </div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
             {currentCards.map((t, i) => (
-              <div
-                key={`${activeFilter}-${currentPage}-${i}`}
-                className="group relative p-7 bg-zinc-900/50 border border-white/5 rounded-[2rem] hover:border-yellow-400/20 hover:bg-zinc-900 transition-all duration-500 shadow-lg overflow-hidden"
-              >
-                <Quote className="absolute -top-2 -right-2 w-20 h-20 text-white/[0.03] group-hover:text-yellow-400/[0.06] transition-colors duration-500" />
-                <div className="flex gap-1 mb-4">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className={`w-4 h-4 ${s <= t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-zinc-700'}`} />
-                  ))}
-                </div>
-                <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full mb-4 inline-block">
-                  {t.product}
-                </span>
-                <p className="text-zinc-300 leading-relaxed mb-5 italic text-sm font-light">"{t.text}"</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                  <div className="w-10 h-10 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-yellow-400 font-black text-xs">{t.initials}</span>
-                  </div>
-                  <div>
-                    <div className="font-black uppercase text-sm tracking-tight flex items-center gap-2 text-white">
-                      {t.name}
-                      <CheckCircle2 className="w-4 h-4 text-yellow-400" />
-                    </div>
-                    <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
-                      {t.location} · {t.date}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <TestimonialCard key={i} testimonial={t} />
             ))}
           </div>
 
-          {/* Dot pagination */}
-          <div className="flex justify-center gap-2">
+          {/* Mobile Carousel */}
+          <div className="md:hidden mb-10">
+            <div className="relative overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-out"
+                style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
+              >
+                {filtered.map((t, i) => (
+                  <div key={i} className="w-full flex-shrink-0 px-1">
+                    <TestimonialCard testimonial={t} />
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile Nav Arrows */}
+              <div className="flex justify-between absolute top-1/2 -translate-y-1/2 w-full px-2 pointer-events-none">
+                <button
+                  onClick={() => setMobileIndex((p) => Math.max(p - 1, 0))}
+                  disabled={mobileIndex === 0}
+                  className="w-10 h-10 rounded-full bg-black/40 border border-white/10 flex items-center justify-center text-white backdrop-blur-sm pointer-events-auto disabled:opacity-0 transition-opacity"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setMobileIndex((p) => Math.min(p + 1, filtered.length - 1))}
+                  disabled={mobileIndex === filtered.length - 1}
+                  className="w-10 h-10 rounded-full bg-black/40 border border-white/10 flex items-center justify-center text-white backdrop-blur-sm pointer-events-auto disabled:opacity-0 transition-opacity"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Dots */}
+            <div className="flex justify-center gap-1.5 mt-6">
+              {filtered.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setMobileIndex(i)}
+                  className={`transition-all duration-300 ${
+                    i === mobileIndex ? 'w-5 h-1.5 bg-yellow-400 rounded-full' : 'w-1.5 h-1.5 bg-zinc-800 rounded-full'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Pagination */}
+          <div className="hidden md:flex justify-center gap-2">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}

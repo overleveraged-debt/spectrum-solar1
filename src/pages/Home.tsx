@@ -119,7 +119,7 @@ const Home: React.FC = () => {
           {/* Full-width photo — Tesla style */}
           <div className="reveal rounded-[2rem] overflow-hidden" style={{ height: 'clamp(240px, 50vw, 520px)' }}>
             <img
-              src="/images/banner1200x1000.jpg"
+              src="/images/home_why_solar.jpg"
               alt="Solar panels powering a beautiful home"
               className="w-full h-full object-cover object-center"
             />
@@ -166,7 +166,7 @@ const Home: React.FC = () => {
           {/* Section Banner Image — Solar */}
           <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(200px, 40vw, 420px)' }}>
             <img
-              src="/images/banner1090x907.jpg"
+              src="/images/home_solar_banner.jpg"
               alt="Solar panels on modern home"
               className="w-full h-full object-cover object-center"
             />
@@ -174,9 +174,9 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 reveal">
             {[
               { id: 'on-grid', icon: Sun, title: 'On-Grid Solar', sub: 'Grid-Tied', desc: 'Zero electricity bills with net metering. Fastest ROI. Best for homes & offices.', badge: 'Most Popular', color: '#facc15' },
-              { id: 'hybrid', icon: Zap, title: 'Hybrid Solar', sub: 'Grid + Battery', desc: 'Day & night power. Solar generation + lithium backup for seamless reliability.', badge: null, color: '#a78bfa' },
-              { id: 'off-grid', icon: Leaf, title: 'Lithium Off-Grid', sub: 'Off-Grid', desc: 'Complete energy independence. For remote sites, islands & hospitals.', badge: null, color: '#4ade80' },
-              { id: 'water-heaters', icon: Droplets, title: 'Solar Water Heaters', sub: 'Thermal Savings', desc: 'High-efficiency vacuum tube systems. 100L to 2000L for any scale.', badge: null, color: '#fb923c' },
+              { id: 'hybrid', icon: Zap, title: 'Hybrid Solar', sub: 'Grid + Battery', desc: 'Day & night power. Solar generation + lithium backup for seamless reliability.', badge: null, color: '#facc15' },
+              { id: 'off-grid', icon: Leaf, title: 'Lithium Off-Grid', sub: 'Off-Grid', desc: 'Complete energy independence. For remote sites, islands & hospitals.', badge: null, color: '#facc15' },
+              { id: 'water-heaters', icon: Droplets, title: 'Solar Water Heaters', sub: 'Thermal Savings', desc: 'High-efficiency vacuum tube systems. 100L to 2000L for any scale.', badge: null, color: '#facc15' },
             ].map((p) => {
               const Icon = p.icon;
               return (
@@ -222,7 +222,7 @@ const Home: React.FC = () => {
           {/* Section Banner Image — Power Backup */}
           <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(180px, 35vw, 380px)' }}>
             <img
-              src="/images/banner1090x908.jpg"
+              src="/images/home_backup_banner.jpg"
               alt="Modern backup power systems"
               className="w-full h-full object-cover object-center"
             />
@@ -298,7 +298,7 @@ const Home: React.FC = () => {
           {/* Heritage Banner Image */}
           <div className="reveal rounded-[2rem] overflow-hidden mb-16" style={{ height: 'clamp(240px, 45vw, 480px)' }}>
             <img
-              src="/images/Banner01.jpg"
+              src="/images/home_heritage_banner.jpg"
               alt="Spectrum Engineering Heritage"
               className="w-full h-full object-cover object-center"
             />
