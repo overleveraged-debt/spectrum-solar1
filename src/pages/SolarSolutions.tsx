@@ -42,7 +42,7 @@ const products: Product[] = [
       { label: 'Warranty', value: '25-Year Panel' },
       { label: 'ROI Period', value: '3 – 5 Years' },
     ],
-    image: '/images/Banner01.jpg',
+    image: '/images/banner1090x907.jpg',
   },
   {
     id: 'hybrid',
@@ -66,7 +66,7 @@ const products: Product[] = [
       { label: 'Battery', value: 'Lithium / VRLA' },
       { label: 'Switch Time', value: '< 10ms' },
     ],
-    image: '/images/Banner02.jpg',
+    image: '/images/banner1090x908.jpg',
   },
   {
     id: 'off-grid',
@@ -90,7 +90,7 @@ const products: Product[] = [
       { label: 'Battery Tech', value: 'LFP Lithium' },
       { label: 'Cycles', value: '4000+ Charge Cycles' },
     ],
-    image: '/images/banner03.jpg',
+    image: '/images/nature-kerala.jpg',
   },
   {
     id: 'water-heaters',
@@ -115,31 +115,6 @@ const products: Product[] = [
       { label: 'ROI Period', value: '< 2 Years' },
     ],
     image: '/images/Banner04.jpg',
-  },
-  {
-    id: 'energy-audit',
-    number: '05',
-    title: 'Energy Audit & Maintenance',
-    category: 'After-Sales',
-    tagline: 'Performance guaranteed. Always.',
-    description:
-      '24-year heritage in solar field service. Our 60+ certified engineers across Kerala conduct detailed site audits, preventive maintenance, panel cleaning, and performance optimization to keep your system at peak output.',
-    icon: <CheckCircle2 className="w-5 h-5 md:w-7 md:h-7" />,
-    accentColor: '#38bdf8',
-    badge: 'Kerala Govt. Award',
-    features: [
-      '60+ Service Engineers',
-      'Preventive Maintenance',
-      'ERP-Monitored Performance',
-      'Panel Cleaning & Inspection',
-    ],
-    specs: [
-      { label: 'Coverage', value: 'Pan-Kerala' },
-      { label: 'Response', value: '24-Hour SLA' },
-      { label: 'Engineers', value: '60+ Certified' },
-      { label: 'Uptime', value: '99% Guaranteed' },
-    ],
-    image: '/images/banner1090x907.jpg',
   },
 ];
 
@@ -176,7 +151,7 @@ const SolarSolutions: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
-            24 Years of Solar Excellence
+            25 Years of Solar Excellence
           </span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
             Solar <br className="hidden md:block" />
@@ -202,7 +177,7 @@ const SolarSolutions: React.FC = () => {
             </div>
             <div className="hidden md:flex items-center gap-3 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
               <Sun className="w-4 h-4 text-yellow-400" />
-              <span>5 Engineered Systems</span>
+              <span>4 Engineered Systems</span>
             </div>
           </div>
 
@@ -281,7 +256,7 @@ const SolarSolutions: React.FC = () => {
                   {/* Expanded Content */}
                   <div
                     className={`overflow-hidden transition-all duration-500 ${
-                      activeProduct === product.id ? 'max-h-[700px] opacity-100' : 'max-h-0 opacity-0'
+                      activeProduct === product.id ? 'max-h-[1200px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
                     <div className="px-6 md:px-14 pb-10 border-t border-white/5">
@@ -331,7 +306,7 @@ const SolarSolutions: React.FC = () => {
 
                         {/* Product Photo */}
                         <div className="md:col-span-1">
-                          <div className="rounded-2xl overflow-hidden h-52 md:h-full min-h-[180px] max-h-72">
+                          <div className="rounded-2xl overflow-hidden" style={{ height: 'clamp(200px, 30vw, 288px)' }}>
                             <img
                               src={product.image}
                               alt={product.title}

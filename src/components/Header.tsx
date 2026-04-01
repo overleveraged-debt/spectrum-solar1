@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Menu, X, ChevronDown, ChevronRight, Sun, Zap, Leaf, Thermometer, CheckCircle2, Battery, Server, BatteryCharging, Layers, Cpu, Waves, TrendingUp, Users, Briefcase, Image, BookOpen, FolderOpen } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Sun, Zap, Leaf, Thermometer, Battery, Server, BatteryCharging, Layers, Cpu, Waves, TrendingUp, Users, Briefcase, Image, BookOpen, FolderOpen } from 'lucide-react';
 import { useNavbarScroll } from '../hooks/useNavbarScroll';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -28,7 +28,6 @@ const navGroups: NavGroup[] = [
       { label: 'Hybrid Solar System',        to: '/solar#hybrid',        sub: 'Grid + Battery',             icon: Zap,          color: '#a78bfa' },
       { label: 'Lithium Off-Grid System',    to: '/solar#off-grid',      sub: 'Complete Independence',      icon: Leaf,         color: '#4ade80' },
       { label: 'Solar Water Heaters',        to: '/solar#water-heaters', sub: 'Thermal Solutions',          icon: Thermometer,  color: '#fb923c' },
-      { label: 'Energy Audit & Maintenance', to: '/solar#energy-audit',  sub: 'After-Sales Support',       icon: CheckCircle2, color: '#38bdf8' },
     ],
   },
   {
@@ -65,7 +64,7 @@ const navGroups: NavGroup[] = [
     label: 'About',
     to: '/about',
     children: [
-      { label: 'About Us',      to: '/about',     icon: Users,       color: '#facc15', sub: '24 Years of Excellence' },
+      { label: 'About Us',      to: '/about',     icon: Users,       color: '#facc15', sub: '25 Years of Excellence' },
       { label: 'Testimonials',  to: '/feedback',  icon: BookOpen,    color: '#a78bfa', sub: '40,000+ Happy Customers' },
       { label: 'Gallery',       to: '/gallery',   icon: Image,       color: '#4ade80', sub: 'Installation Portfolio' },
       { label: 'Projects',      to: '/projects',  icon: FolderOpen,  color: '#38bdf8', sub: 'Case Studies' },

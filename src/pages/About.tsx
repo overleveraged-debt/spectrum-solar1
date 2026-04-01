@@ -6,7 +6,7 @@ const About: React.FC = () => {
   useScrollReveal();
 
   const stats = [
-    { label: 'Years of Excellence', value: '24+', icon: <Clock className="w-6 h-6" />, sub: 'Since 2001' },
+    { label: 'Years of Excellence', value: '25+', icon: <Clock className="w-6 h-6" />, sub: 'Since 2000' },
     { label: 'Satisfied Customers', value: '40K+', icon: <Users className="w-6 h-6" />, sub: 'Across Kerala' },
     { label: 'Solar Projects', value: '4,000+', icon: <Zap className="w-6 h-6" />, sub: 'Installed & Running' },
     { label: 'Service Engineers', value: '60+', icon: <Shield className="w-6 h-6" />, sub: 'Certified Experts' },
@@ -34,7 +34,7 @@ const About: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Our Story</span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
-            24 YEARS OF <br className="hidden md:block" />
+            25 YEARS OF <br className="hidden md:block" />
             ENERGY EXCELLENCE
           </h1>
           <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">

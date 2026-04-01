@@ -58,7 +58,7 @@ const StatsBar: React.FC = () => {
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 items-center">
-          <StatItem value="24+" label="Years Industry Lead" icon={Award} />
+          <StatItem value="25+" label="Years Industry Lead" icon={Award} />
           <StatItem value="20" label="Regional Outlets" icon={Store} />
           <StatItem value="12" label="Franchise Units" icon={Users} />
           <StatItem value="ERP" label="Enabled since 2005" icon={ShieldCheck} />

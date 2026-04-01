@@ -302,7 +302,7 @@ const PowerBackup: React.FC = () => {
                   {/* Expanded */}
                   <div
                     className={`overflow-hidden transition-all duration-500 ${
-                      activeProduct === product.id ? 'max-h-[700px] opacity-100' : 'max-h-0 opacity-0'
+                      activeProduct === product.id ? 'max-h-[1200px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
                     <div className="px-6 md:px-14 pb-10 border-t border-white/5">
@@ -350,7 +350,7 @@ const PowerBackup: React.FC = () => {
 
                         {/* Product Photo */}
                         <div className="md:col-span-1">
-                          <div className="rounded-2xl overflow-hidden h-52 md:h-full min-h-[180px] max-h-72">
+                          <div className="rounded-2xl overflow-hidden" style={{ height: 'clamp(200px, 30vw, 288px)' }}>
                             <img
                               src={product.image}
                               alt={product.title}

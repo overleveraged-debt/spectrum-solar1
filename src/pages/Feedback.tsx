@@ -69,7 +69,7 @@ const Feedback: React.FC = () => {
       {/* Stats Strip */}
       <section className="border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8 reveal">
-          {[{ value: '40,000+', label: 'Happy Customers' }, { value: '4.9 / 5', label: 'Average Rating' }, { value: '24 Yrs', label: 'Track Record' }].map((stat, i) => (
+          {[{ value: '40,000+', label: 'Happy Customers' }, { value: '4.9 / 5', label: 'Average Rating' }, { value: '25 Yrs', label: 'Track Record' }].map((stat, i) => (
             <div key={i} className="text-center">
               <div className="text-2xl md:text-4xl font-black text-white tracking-tighter mb-1">{stat.value}</div>
               <div className="text-zinc-500 text-[10px] font-black uppercase tracking-widest">{stat.label}</div>

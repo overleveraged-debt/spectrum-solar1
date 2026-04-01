@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Link } from 'react-router-dom';
 import { Zap, TrendingUp, Leaf, Info, ArrowRight, Sun, IndianRupee, Battery, Clock, BatteryCharging } from 'lucide-react';
 
 const SolarCalculatorBody: React.FC = () => {
@@ -183,8 +184,8 @@ const SolarCalculatorBody: React.FC = () => {
               </div>
 
               {/* CTA */}
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="mt-6 flex items-center justify-between bg-black text-white rounded-[1.5rem] p-6 group hover:bg-zinc-900 transition-all shadow-xl"
               >
                 <div>
@@ -194,7 +195,7 @@ const SolarCalculatorBody: React.FC = () => {
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-all">
                   <ArrowRight className="w-5 h-5 text-black" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -207,7 +208,7 @@ const SolarCalculatorBody: React.FC = () => {
             "Every unit you generate is money you keep."
           </p>
           <div className="w-20 h-1 bg-yellow-400 mx-auto mb-4"></div>
-          <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest">Spectrum Powers — 24 Years of Solar Excellence</p>
+          <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest">Spectrum Powers — 25 Years of Solar Excellence</p>
         </div>
       </section>
     </>
@@ -330,7 +331,7 @@ const PowerCalculator: React.FC = () => {
                 <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">At {loadWatts}W load</p>
               </div>
             </div>
-            <a href="/contact" className="mt-6 flex items-center justify-between bg-black text-white rounded-[1.5rem] p-6 group hover:bg-zinc-900 transition-all shadow-xl">
+            <Link to="/contact" className="mt-6 flex items-center justify-between bg-black text-white rounded-[1.5rem] p-6 group hover:bg-zinc-900 transition-all shadow-xl">
               <div>
                 <span className="text-white font-black uppercase italic tracking-tighter block text-lg">Get Exact Quote</span>
                 <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Free assessment visit</span>
@@ -338,7 +339,7 @@ const PowerCalculator: React.FC = () => {
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-all">
                 <ArrowRight className="w-5 h-5 text-black" />
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
 
 const galleryItems = [
@@ -218,9 +219,9 @@ const Gallery: React.FC = () => {
       <section className="py-20 px-6 border-t border-white/5 text-center reveal">
         <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Want a project like this?</span>
         <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6 text-white">Let's Build Yours.</h2>
-        <a href="/contact" className="inline-flex items-center gap-2 bg-yellow-400 text-black px-10 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">
+        <Link to="/contact" className="inline-flex items-center gap-2 bg-yellow-400 text-black px-10 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">
           Get a Free Quote
-        </a>
+        </Link>
       </section>
     </div>
   );

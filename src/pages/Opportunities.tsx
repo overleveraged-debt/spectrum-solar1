@@ -10,7 +10,7 @@ const opportunities = [
     subtitle: 'Own a Spectrum Powers outlet',
     accentColor: '#facc15',
     description:
-      'Join India\'s fastest-growing solar franchise network. With 24 years of brand trust, proven business model, full ERP support, and exclusive territory rights — own a business backed by Kerala\'s most awarded solar company.',
+      'Join India\'s fastest-growing solar franchise network. With 25 years of brand trust, proven business model, full ERP support, and exclusive territory rights — own a business backed by Kerala\'s most awarded solar company.',
     benefits: [
       'Exclusive territory rights',
       'Full brand & marketing support',
@@ -107,7 +107,7 @@ const Opportunities: React.FC = () => {
             Opportunities
           </h1>
           <p className="text-white/70 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
-            Franchise, dealerships, referral partnerships, and careers — powered by 24 years of trust.
+            Franchise, dealerships, referral partnerships, and careers — powered by 25 years of trust.
           </p>
         </div>
       </section>
@@ -119,7 +119,7 @@ const Opportunities: React.FC = () => {
             { value: '12+', label: 'Active Franchises' },
             { value: '20+', label: 'Regional Outlets' },
             { value: '300+', label: 'Team Members' },
-            { value: '24+', label: 'Years of Trust' },
+            { value: '25+', label: 'Years of Trust' },
           ].map((s) => (
             <div key={s.label}>
               <p className="text-3xl md:text-4xl font-black text-yellow-400 tracking-tighter">{s.value}</p>

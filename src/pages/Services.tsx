@@ -23,7 +23,7 @@ const products: Product[] = [
     title: 'Solar Grid Integration',
     category: 'Energy Generation',
     tagline: 'Government-Awarded Architecture',
-    description: 'Custom-engineered On-Grid, Hybrid, and Lithium Off-Grid systems. 24-year heritage in large-scale solar architecture — from residential rooftops to industrial megawatt arrays.',
+    description: 'Custom-engineered On-Grid, Hybrid, and Lithium Off-Grid systems. 25-year heritage in large-scale solar architecture — from residential rooftops to industrial megawatt arrays.',
     icon: <Sun className="w-8 h-8" />,
     accentColor: '#facc15',
     features: ['Net-Metering Ready', 'Hybrid Capable', 'ERP-Monitored 24/7', 'Grid-Tied & Off-Grid'],
