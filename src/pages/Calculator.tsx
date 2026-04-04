@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Zap, TrendingUp, Leaf, Info, ArrowRight, Sun, IndianRupee, Battery, Clock, BatteryCharging } from 'lucide-react';
 
 const SolarCalculatorBody: React.FC = () => {
@@ -45,7 +45,7 @@ const SolarCalculatorBody: React.FC = () => {
   return (
     <>
       {/* Calculator Body */}
-      <section className="px-6 py-20 md:py-32" data-nav-light>
+      <section id="solar" className="px-6 py-20 md:py-32" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
@@ -236,7 +236,7 @@ const PowerCalculator: React.FC = () => {
   const totalCost = batteryCost + inverterCost;
 
   return (
-    <div className="px-6 py-16 md:py-24" data-nav-light>
+    <div id="power" className="px-6 py-16 md:py-24" data-nav-light>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="reveal">
@@ -350,13 +350,14 @@ const PowerCalculator: React.FC = () => {
 // ─── Main Calculator Page with Tabs ──────────────────────────────────────────
 
 const Calculator: React.FC = () => {
+  const { hash } = useLocation();
   const [activeTab, setActiveTab] = useState<'solar' | 'power'>('solar');
 
   useEffect(() => {
-    const hash = window.location.hash.replace('#', '');
-    if (hash === 'power') setActiveTab('power');
-    else setActiveTab('solar');
-  }, []);
+    const currentHash = hash.replace('#', '');
+    if (currentHash === 'power') setActiveTab('power');
+    else if (currentHash === 'solar') setActiveTab('solar');
+  }, [hash]);
 
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">

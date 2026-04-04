@@ -177,10 +177,6 @@ const PowerBackup: React.FC = () => {
     if (hash) {
       const id = hash.replace('#', '');
       setActiveProduct(id);
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 300);
     }
   }, [hash]);
 

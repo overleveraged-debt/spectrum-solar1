@@ -24,7 +24,7 @@ const navGroups: NavGroup[] = [
     label: 'Solar Solutions',
     to: '/solar',
     children: [
-      { label: 'On-Grid Solar System',      to: '/solar#on-grid',       sub: 'Grid-Tied · Net Metering',   icon: Sun,          color: '#facc15' },
+      { label: 'On-Grid Solar System',      to: '/solar/on-grid',       sub: 'Grid-Tied · Net Metering',   icon: Sun,          color: '#facc15' },
       { label: 'Hybrid Solar System',        to: '/solar#hybrid',        sub: 'Grid + Battery',             icon: Zap,          color: '#facc15' },
       { label: 'Lithium Off-Grid System',    to: '/solar#off-grid',      sub: 'Complete Independence',      icon: Leaf,         color: '#facc15' },
       { label: 'Solar Water Heaters',        to: '/solar#water-heaters', sub: 'Thermal Solutions',          icon: Thermometer,  color: '#facc15' },

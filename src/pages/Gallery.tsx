@@ -69,9 +69,8 @@ const Gallery: React.FC = () => {
             <button
               key={f}
               onClick={() => handleFilterChange(f)}
-              className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-200 ${
-                activeFilter === f ? 'bg-yellow-400 text-black' : 'bg-white/5 text-zinc-500 hover:bg-white/10 hover:text-white'
-              }`}
+              className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-200 ${activeFilter === f ? 'bg-yellow-400 text-black' : 'bg-white/5 text-zinc-500 hover:bg-white/10 hover:text-white'
+                }`}
             >
               {f}
             </button>
@@ -145,11 +144,10 @@ const Gallery: React.FC = () => {
                   <button
                     key={item.id}
                     onClick={() => setCurrentIndex(i)}
-                    className={`relative rounded-xl overflow-hidden transition-all duration-200 ${
-                      i === safeIndex
+                    className={`relative rounded-xl overflow-hidden transition-all duration-200 ${i === safeIndex
                         ? 'ring-2 ring-yellow-400 ring-offset-2 ring-offset-zinc-950 scale-[0.98]'
                         : 'opacity-60 hover:opacity-100'
-                    }`}
+                      }`}
                     style={{ aspectRatio: '1' }}
                   >
                     <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
@@ -163,9 +161,8 @@ const Gallery: React.FC = () => {
                   <button
                     key={i}
                     onClick={() => setCurrentIndex(i)}
-                    className={`rounded-full transition-all duration-200 ${
-                      i === safeIndex ? 'w-5 h-2 bg-yellow-400' : 'w-2 h-2 bg-zinc-700 hover:bg-zinc-500'
-                    }`}
+                    className={`rounded-full transition-all duration-200 ${i === safeIndex ? 'w-5 h-2 bg-yellow-400' : 'w-2 h-2 bg-zinc-700 hover:bg-zinc-500'
+                      }`}
                   />
                 ))}
                 <div className="ml-auto flex gap-2">

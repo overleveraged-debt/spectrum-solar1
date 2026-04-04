@@ -129,10 +129,6 @@ const SolarSolutions: React.FC = () => {
     if (hash) {
       const id = hash.replace('#', '');
       setActiveProduct(id);
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 300);
     }
   }, [hash]);
 
@@ -313,6 +309,16 @@ const SolarSolutions: React.FC = () => {
                               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
                           </div>
+                          {product.id === 'on-grid' && (
+                            <a
+                              href="/solar/on-grid"
+                              className="w-full mt-4 bg-yellow-400 text-black px-6 py-3 rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-xl"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              View Full Details
+                              <ArrowRight className="w-4 h-4" />
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>
