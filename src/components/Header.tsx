@@ -34,7 +34,7 @@ const navGroups: NavGroup[] = [
     label: 'Power Backup',
     to: '/power',
     children: [
-      { label: 'Lithium Inbuilt UPS',  to: '/power#lithium-ups',       sub: 'Zero-Switch Technology',   icon: Battery,        color: '#facc15' },
+      { label: 'Lithium Inbuilt UPS',  to: '/power/lithium-ups',       sub: 'Zero-Switch Technology',   icon: Battery,        color: '#facc15' },
       { label: 'Home UPS System',      to: '/power#home-ups',          sub: 'Residential Backup',       icon: Zap,            color: '#facc15' },
       { label: 'Inverters',            to: '/power#inverters',         sub: 'Power Conversion',         icon: BatteryCharging,color: '#facc15' },
       { label: 'Online UPS',           to: '/power#online-ups',        sub: 'Critical Load Protection', icon: Server,         color: '#facc15' },

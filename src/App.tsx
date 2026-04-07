@@ -6,6 +6,7 @@ import About from './pages/About';
 import SolarSolutions from './pages/SolarSolutions';
 import OnGridSolar from './pages/OnGridSolar';
 import PowerBackup from './pages/PowerBackup';
+import LithiumUps from './pages/LithiumUps';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
@@ -26,6 +27,7 @@ function App() {
           <Route path="solar" element={<SolarSolutions />} />
           <Route path="solar/on-grid" element={<OnGridSolar />} />
           <Route path="power" element={<PowerBackup />} />
+          <Route path="power/lithium-ups" element={<LithiumUps />} />
           <Route path="projects" element={<Projects />} />
           <Route path="contact" element={<Contact />} />
           <Route path="blog" element={<Blog />} />
