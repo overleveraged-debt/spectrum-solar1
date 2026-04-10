@@ -302,23 +302,21 @@ const SolarSolutions: React.FC = () => {
 
                         {/* Product Photo */}
                         <div className="md:col-span-1 order-first md:order-last">
-                          <div className="rounded-2xl overflow-hidden mb-6 md:mb-0" style={{ height: 'clamp(280px, 40vw, 320px)' }}>
+                          <div className="rounded-2xl overflow-hidden mb-4 md:mb-6" style={{ height: 'clamp(280px, 40vw, 320px)' }}>
                             <img
                               src={product.image}
                               alt={product.title}
                               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
                           </div>
-                          {product.id === 'on-grid' && (
-                            <a
-                              href="/solar/on-grid"
-                              className="w-full mt-4 bg-yellow-400 text-black px-6 py-3 rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-xl"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              View Full Details
-                              <ArrowRight className="w-4 h-4" />
-                            </a>
-                          )}
+                          <a
+                            href={`/solar/${product.id}`}
+                            className="w-full bg-yellow-400 text-black px-6 py-3 rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-xl"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            View Full Details
+                            <ArrowRight className="w-4 h-4" />
+                          </a>
                         </div>
                       </div>
                     </div>

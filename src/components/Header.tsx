@@ -24,22 +24,22 @@ const navGroups: NavGroup[] = [
     label: 'Solar Solutions',
     to: '/solar',
     children: [
-      { label: 'On-Grid Solar System',      to: '/solar/on-grid',       sub: 'Grid-Tied · Net Metering',   icon: Sun,          color: '#facc15' },
-      { label: 'Hybrid Solar System',        to: '/solar#hybrid',        sub: 'Grid + Battery',             icon: Zap,          color: '#facc15' },
-      { label: 'Lithium Off-Grid System',    to: '/solar#off-grid',      sub: 'Complete Independence',      icon: Leaf,         color: '#facc15' },
-      { label: 'Solar Water Heaters',        to: '/solar#water-heaters', sub: 'Thermal Solutions',          icon: Thermometer,  color: '#facc15' },
+      { label: 'On-Grid Solar System',      to: '/solar/on-grid',          sub: 'Grid-Tied · Net Metering',   icon: Sun,          color: '#facc15' },
+      { label: 'Hybrid Solar System',        to: '/solar/hybrid',            sub: 'Grid + Battery',             icon: Zap,          color: '#facc15' },
+      { label: 'Lithium Off-Grid System',    to: '/solar/off-grid',          sub: 'Complete Independence',      icon: Leaf,         color: '#facc15' },
+      { label: 'Solar Water Heaters',        to: '/solar/water-heaters',     sub: 'Thermal Solutions',          icon: Thermometer,  color: '#facc15' },
     ],
   },
   {
     label: 'Power Backup',
     to: '/power',
     children: [
-      { label: 'Lithium Inbuilt UPS',  to: '/power/lithium-ups',       sub: 'Zero-Switch Technology',   icon: Battery,        color: '#facc15' },
-      { label: 'Home UPS System',      to: '/power#home-ups',          sub: 'Residential Backup',       icon: Zap,            color: '#facc15' },
-      { label: 'Inverters',            to: '/power#inverters',         sub: 'Power Conversion',         icon: BatteryCharging,color: '#facc15' },
-      { label: 'Online UPS',           to: '/power#online-ups',        sub: 'Critical Load Protection', icon: Server,         color: '#facc15' },
-      { label: 'Lithium Batteries',    to: '/power#lithium-batteries', sub: 'LFP Energy Storage',       icon: Layers,         color: '#facc15' },
-      { label: 'Tubular Batteries',    to: '/power#tubular-batteries', sub: 'Lead-Acid Value',          icon: Cpu,            color: '#facc15' },
+      { label: 'Lithium Inbuilt UPS',  to: '/power/lithium-ups',        sub: 'Zero-Switch Technology',   icon: Battery,        color: '#facc15' },
+      { label: 'Home UPS System',      to: '/power/home-ups',           sub: 'Residential Backup',       icon: Zap,            color: '#facc15' },
+      { label: 'Inverters',            to: '/power/inverters',          sub: 'Power Conversion',         icon: BatteryCharging,color: '#facc15' },
+      { label: 'Online UPS',           to: '/power/online-ups',         sub: 'Critical Load Protection', icon: Server,         color: '#facc15' },
+      { label: 'Lithium Batteries',    to: '/power/lithium-batteries',  sub: 'LFP Energy Storage',       icon: Layers,         color: '#facc15' },
+      { label: 'Tubular Batteries',    to: '/power/tubular-batteries',  sub: 'Lead-Acid Value',          icon: Cpu,            color: '#facc15' },
     ],
   },
   {
@@ -276,6 +276,27 @@ const Header: React.FC = () => {
                 }`}
               >
                 <div className="px-4 pb-3 space-y-0.5">
+                  {/* View All hub link */}
+                  {group.to && group.children && (
+                    <Link
+                      to={group.to}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-3 py-2.5 px-3 rounded-xl bg-yellow-400/8 border border-yellow-400/20 mb-2 group/hub"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
+                        <ChevronRight className="w-4 h-4 text-yellow-400" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-sm font-black uppercase tracking-tight text-yellow-400 truncate">
+                          View All {group.label}
+                        </p>
+                        <p className="text-[9px] font-bold uppercase tracking-widest mt-0.5 text-yellow-400/60">
+                          See full product range
+                        </p>
+                      </div>
+                      <ChevronRight className="w-3.5 h-3.5 ml-auto flex-shrink-0 text-yellow-400/60" />
+                    </Link>
+                  )}
                   {group.children?.map((child) => {
                     const Icon = child.icon;
                     return (

@@ -383,7 +383,7 @@ const OnGridSolar: React.FC = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute left-[27px] top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block" />
+            <div className="absolute left-[27px] top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
             <div className="space-y-6">
               {[
                 { title: "Site Inspection", desc: "Our certified engineer visits your property and assesses your roof, shadow-free area, and existing load requirements.", icon: Settings },
@@ -421,7 +421,7 @@ const OnGridSolar: React.FC = () => {
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className={`reveal bg-zinc-900 rounded-2xl overflow-hidden border transition-all duration-300 ${activeFaq === i ? 'border-yellow-400/40' : 'border-white/5'}`}
+                className={`bg-zinc-900 rounded-2xl overflow-hidden border transition-all duration-300 ${activeFaq === i ? 'border-yellow-400/40' : 'border-white/5'}`}
               >
                 <button
                   className="w-full text-left px-8 py-6 flex items-center justify-between gap-4"
