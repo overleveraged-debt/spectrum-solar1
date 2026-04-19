@@ -10,7 +10,7 @@ const opportunities = [
     subtitle: 'Own a Spectrum Powers outlet',
     accentColor: '#facc15',
     description:
-      'Join India\'s fastest-growing solar franchise network. With 25 years of brand trust, proven business model, full ERP support, and exclusive territory rights — own a business backed by Kerala\'s most awarded solar company.',
+      'Join India\'s fastest-growing solar franchise network. With 25 years of brand trust, proven business model, full ERP support, and exclusive territory rights — own a business backed by India\'s most awarded solar company.',
     benefits: [
       'Exclusive territory rights',
       'Full brand & marketing support',
@@ -50,7 +50,7 @@ const opportunities = [
     benefits: [
       'Zero investment required',
       'Commission on every deal',
-      'Refer from anywhere in Kerala',
+      'Refer from anywhere in India',
       'Mobile tracking dashboard',
       'Monthly payout guaranteed',
     ],
@@ -64,7 +64,7 @@ const opportunities = [
     subtitle: 'Grow with Spectrum Powers',
     accentColor: '#fb923c',
     description:
-      'We are always looking for passionate engineers, sales professionals, and service technicians to join our 300+ team. Roles available across Kerala — from installation technicians to solar design engineers.',
+      'We are always looking for passionate engineers, sales professionals, and service technicians to join our 300+ team. Roles available across India — from installation technicians to solar design engineers.',
     benefits: [
       'Competitive salary + incentives',
       'Certified training programs',
@@ -103,7 +103,7 @@ const Opportunities: React.FC = () => {
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             Grow with us
           </span>
-          <h1 className="text-[2rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+          <h1 className="text-[2rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
             Opportunities
           </h1>
           <p className="text-white/70 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
@@ -134,7 +134,7 @@ const Opportunities: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 reveal">
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">What We Offer</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-4">
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none mb-4">
               Choose Your Path
             </h2>
             <p className="text-zinc-500 max-w-xl mx-auto text-sm font-light">
@@ -170,7 +170,7 @@ const Opportunities: React.FC = () => {
                   <span className="text-[9px] font-black uppercase tracking-widest mb-2 block" style={{ color: opp.accentColor }}>
                     {opp.subtitle}
                   </span>
-                  <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4">{opp.title}</h3>
+                  <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-4">{opp.title}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-light">{opp.description}</p>
 
                   {/* Benefits */}
@@ -211,7 +211,7 @@ const Opportunities: React.FC = () => {
         <div className="max-w-3xl mx-auto reveal">
           <div className="text-center mb-12">
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Register Interest</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-4">
               Get in Touch
             </h2>
             <p className="text-zinc-500 text-sm font-light">

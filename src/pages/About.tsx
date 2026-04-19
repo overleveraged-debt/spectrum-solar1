@@ -1,6 +1,7 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Award, Shield, Users, Zap, Clock, Globe, ArrowRight } from 'lucide-react';
+import MapSection from '../components/MapSection';
 
 const About: React.FC = () => {
   useScrollReveal();
@@ -33,7 +34,7 @@ const About: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Our Story</span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             25 YEARS OF <br className="hidden md:block" />
             ENERGY EXCELLENCE
           </h1>
@@ -69,7 +70,7 @@ const About: React.FC = () => {
               <Globe className="w-12 h-12 text-yellow-400" />
             </div>
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Heritage</span>
-            <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter italic uppercase text-white leading-tight">
+            <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight italic uppercase text-white leading-tight">
               Built from the ground up in Kerala.
             </h2>
             <p className="text-zinc-400 text-lg leading-relaxed mb-8">
@@ -117,7 +118,7 @@ const About: React.FC = () => {
               <Award className="w-12 h-12 text-yellow-400" />
             </div>
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Quality First</span>
-            <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter italic uppercase text-white leading-tight">
+            <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight italic uppercase text-white leading-tight">
               Only the world's best brands.
             </h2>
             <p className="text-zinc-400 text-lg leading-relaxed mb-8">
@@ -136,7 +137,7 @@ const About: React.FC = () => {
       <section className="py-20 border-t border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-12 reveal">
           <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-3 block text-center">Brands We Install</span>
-          <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-thin uppercase tracking-tight text-center text-white">
             Trusted Partners.
           </h2>
         </div>
@@ -160,11 +161,31 @@ const About: React.FC = () => {
         </div>
       </section>
 
+      {/* Presence Map */}
+      <section className="py-24 border-t border-white/5 bg-zinc-950">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6 reveal">
+            <div>
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Regional Presence</span>
+              <h2 className="text-4xl md:text-7xl font-thin uppercase tracking-[-0.04em] leading-[0.9] text-white">
+                Powering Every <br />District.
+              </h2>
+            </div>
+            <p className="text-zinc-500 text-sm max-w-xs leading-relaxed md:text-right">
+              Explore our extensive network of 18+ service centers and thousands of installations across the state.
+            </p>
+          </div>
+          <div className="reveal">
+            <MapSection height="600px" />
+          </div>
+        </div>
+      </section>
+
       {/* Yellow CTA */}
       <section className="px-6 pb-10">
         <div className="max-w-7xl mx-auto bg-yellow-400 text-black rounded-[2.5rem] md:rounded-[3rem] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 reveal">
           <div className="text-center md:text-left">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none italic uppercase mb-4">
+            <h2 className="text-4xl md:text-6xl font-thin tracking-tight leading-none italic uppercase mb-4">
               18+ Centers <br />Across Kerala.
             </h2>
             <p className="text-black/70 text-base max-w-md font-bold">

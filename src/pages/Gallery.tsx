@@ -2,19 +2,20 @@ import React, { useState, useCallback } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
+import MapSection from '../components/MapSection';
 
 const galleryItems = [
-  { id: 1, src: '/images/p01.jpg', category: 'residential', title: 'Residential Rooftop Solar', location: 'Kannur, Kerala', capacity: '5kW On-Grid' },
-  { id: 2, src: '/images/p02.jpg', category: 'commercial', title: 'Commercial Solar Array', location: 'Calicut, Kerala', capacity: '50kW Grid-Tied' },
-  { id: 3, src: '/images/p03.jpg', category: 'residential', title: 'Home Hybrid System', location: 'Thrissur, Kerala', capacity: '3kW Hybrid' },
-  { id: 4, src: '/images/p04.jpg', category: 'industrial', title: 'Industrial Power Backup', location: 'Kochi, Kerala', capacity: '100kVA UPS' },
-  { id: 5, src: '/images/p05.jpg', category: 'residential', title: 'Lithium Battery Storage', location: 'Palakkad, Kerala', capacity: '20kWh Lithium' },
-  { id: 6, src: '/images/p06.jpg', category: 'commercial', title: 'Hospital Solar Solution', location: 'Kozhikode, Kerala', capacity: '30kW + UPS' },
-  { id: 7, src: '/images/p07.jpg', category: 'industrial', title: 'Factory Solar Rooftop', location: 'Ernakulam, Kerala', capacity: '200kW On-Grid' },
-  { id: 8, src: '/images/banner1090x907.jpg', category: 'commercial', title: 'Large-Scale Solar Farm', location: 'Trivandrum, Kerala', capacity: '500kW On-Grid' },
-  { id: 9, src: '/images/banner1090x908.jpg', category: 'industrial', title: 'Industrial Solar Plant', location: 'Kollam, Kerala', capacity: '150kW Industrial' },
-  { id: 10, src: '/images/banner1090x909.jpg', category: 'residential', title: 'Villa Solar + Storage', location: 'Munnar, Kerala', capacity: '8kW + 20kWh' },
-  { id: 11, src: '/images/banner1200x1000.jpg', category: 'commercial', title: 'Resort Solar Integration', location: 'Alappuzha, Kerala', capacity: '25kW + Battery' },
+  { id: 1, src: '/images/p01.jpg', category: 'residential', title: 'Residential Rooftop Solar', location: 'Kannur', capacity: '5kW On-Grid' },
+  { id: 2, src: '/images/p02.jpg', category: 'commercial', title: 'Commercial Solar Array', location: 'Calicut', capacity: '50kW Grid-Tied' },
+  { id: 3, src: '/images/p03.jpg', category: 'residential', title: 'Home Hybrid System', location: 'Thrissur', capacity: '3kW Hybrid' },
+  { id: 4, src: '/images/p04.jpg', category: 'industrial', title: 'Industrial Power Backup', location: 'Kochi', capacity: '100kVA UPS' },
+  { id: 5, src: '/images/p05.jpg', category: 'residential', title: 'Lithium Battery Storage', location: 'Palakkad', capacity: '20kWh Lithium' },
+  { id: 6, src: '/images/p06.jpg', category: 'commercial', title: 'Hospital Solar Solution', location: 'Kozhikode', capacity: '30kW + UPS' },
+  { id: 7, src: '/images/p07.jpg', category: 'industrial', title: 'Factory Solar Rooftop', location: 'Ernakulam', capacity: '200kW On-Grid' },
+  { id: 8, src: '/images/banner1090x907.jpg', category: 'commercial', title: 'Large-Scale Solar Farm', location: 'Trivandrum', capacity: '500kW On-Grid' },
+  { id: 9, src: '/images/banner1090x908.jpg', category: 'industrial', title: 'Industrial Solar Plant', location: 'Kollam', capacity: '150kW Industrial' },
+  { id: 10, src: '/images/banner1090x909.jpg', category: 'residential', title: 'Villa Solar + Storage', location: 'Munnar', capacity: '8kW + 20kWh' },
+  { id: 11, src: '/images/banner1200x1000.jpg', category: 'commercial', title: 'Resort Solar Integration', location: 'Alappuzha', capacity: '25kW + Battery' },
 ];
 
 const filters = ['All', 'Residential', 'Commercial', 'Industrial'];
@@ -57,8 +58,8 @@ const Gallery: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Our Installations</span>
-          <h1 className="text-[2rem] sm:text-5xl md:text-6xl font-black tracking-tighter mb-4 leading-[0.9] italic uppercase text-white">Gallery</h1>
-          <p className="text-white/60 text-base max-w-xl mx-auto font-light">11 installations across Kerala — from rooftops to industrial plants.</p>
+          <h1 className="text-[2rem] sm:text-5xl md:text-6xl font-thin tracking-tight mb-4 leading-[0.9] uppercase text-white">Gallery</h1>
+          <p className="text-white/60 text-base max-w-xl mx-auto font-light">Installations across India — from rooftops to industrial plants.</p>
         </div>
       </section>
 
@@ -124,7 +125,7 @@ const Gallery: React.FC = () => {
                 <span className={`text-[9px] font-black uppercase tracking-widest mb-1 block ${categoryColor[safeItem.category]}`}>
                   {safeItem.category}
                 </span>
-                <h3 className="text-white font-black text-xl uppercase tracking-tight leading-tight">{safeItem.title}</h3>
+                <h3 className="text-white font-thin text-xl uppercase tracking-tight leading-tight">{safeItem.title}</h3>
                 <p className="text-white/60 text-xs mt-1">{safeItem.location} · {safeItem.capacity}</p>
               </div>
             </div>
@@ -132,7 +133,7 @@ const Gallery: React.FC = () => {
             {/* Right: Thumbnail Grid */}
             <div className="flex flex-col gap-4">
               <div>
-                <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none text-white mb-2">
+                <h2 className="text-3xl md:text-4xl font-thin uppercase tracking-tight leading-none text-white mb-2">
                   {safeItem.title}
                 </h2>
                 <p className="text-zinc-500 text-sm">{safeItem.location} · <span className="text-yellow-400 font-bold">{safeItem.capacity}</span></p>
@@ -201,7 +202,7 @@ const Gallery: React.FC = () => {
             <img src={safeItem.src} alt={safeItem.title} className="w-full max-h-[80vh] object-contain rounded-2xl" />
             <div className="mt-4 flex items-start justify-between gap-4">
               <div>
-                <h3 className="text-white font-black text-xl uppercase">{safeItem.title}</h3>
+                <h3 className="text-white font-thin text-xl uppercase">{safeItem.title}</h3>
                 <p className="text-zinc-400 text-sm mt-1">{safeItem.location} · {safeItem.capacity}</p>
               </div>
               <span className={`text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/10 flex-shrink-0 ${categoryColor[safeItem.category]}`}>
@@ -212,10 +213,31 @@ const Gallery: React.FC = () => {
         </div>
       )}
 
+      {/* Distribution Map */}
+      <section className="py-24 px-6 border-t border-white/5 bg-zinc-950">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 reveal">
+            <div className="text-center md:text-left">
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Geographic Spread</span>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-[-0.04em] leading-[0.9] text-white">
+                Mapping Our <br />Impact.
+              </h2>
+            </div>
+            <div className="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl reveal" style={{ transitionDelay: '100ms' }}>
+               <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-1">Serving Since</p>
+               <p className="text-xl font-black text-white">2000</p>
+            </div>
+          </div>
+          <div className="reveal">
+            <MapSection height="600px" />
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 px-6 border-t border-white/5 text-center reveal">
         <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Want a project like this?</span>
-        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6 text-white">Let's Build Yours.</h2>
+        <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none mb-6 text-white">Let's Build Yours.</h2>
         <Link to="/contact" className="inline-flex items-center gap-2 bg-yellow-400 text-black px-10 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">
           Get a Free Quote
         </Link>

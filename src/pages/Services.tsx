@@ -33,7 +33,7 @@ const products: Product[] = [
       { label: 'Warranty', value: '25-Year Panel Warranty' },
       { label: 'Monitoring', value: 'Real-Time ERP Dashboard' },
     ],
-    badge: 'Kerala Govt. Award',
+    badge: 'National Award',
   },
   {
     id: 'ups',
@@ -126,7 +126,7 @@ const Services: React.FC = () => {
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             Precision Engineering
           </span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
             INTEGRATED ENERGY <br className="hidden md:block" />
             ECOSYSTEMS
           </h1>
@@ -145,7 +145,7 @@ const Services: React.FC = () => {
               <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
                 Complete Portfolio
               </span>
-              <h2 className="text-4xl md:text-7xl font-black uppercase text-white tracking-[-0.04em] leading-[0.9]">
+              <h2 className="text-4xl md:text-7xl font-thin uppercase text-white tracking-tight leading-[0.9]">
                 Our <br />Products.
               </h2>
             </div>
@@ -189,7 +189,7 @@ const Services: React.FC = () => {
                       {product.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm md:text-3xl font-black uppercase text-white tracking-tight leading-tight">
+                      <h3 className="text-sm md:text-3xl font-thin uppercase text-white tracking-tight leading-tight">
                         {product.title}
                       </h3>
                       <div className="flex flex-wrap items-center gap-2 mt-2">
@@ -287,7 +287,7 @@ const Services: React.FC = () => {
         <div className="max-w-7xl mx-auto reveal">
           <div className="text-center mb-12 md:mb-16">
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">System Guide</span>
-            <h2 className="text-[2rem] sm:text-3xl md:text-4xl font-black uppercase italic tracking-tighter leading-none mb-4 text-white">
+            <h2 className="text-[2rem] sm:text-3xl md:text-4xl font-thin uppercase italic tracking-tight leading-none mb-4 text-white">
               Technical Selection Guide
             </h2>
             <p className="text-zinc-600 font-bold uppercase tracking-widest text-[10px]">Matching solutions to requirements</p>
@@ -326,7 +326,7 @@ const Services: React.FC = () => {
       <section className="px-6 pb-10">
         <div className="max-w-7xl mx-auto border border-yellow-400/20 bg-zinc-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 reveal shadow-2xl">
           <div className="text-center md:text-left">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin uppercase italic tracking-tight leading-none mb-4">
               Ready to Optimize?
             </h2>
             <p className="font-bold text-zinc-500 max-w-md mx-auto md:mx-0 text-sm md:text-base">

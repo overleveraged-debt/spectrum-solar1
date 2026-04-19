@@ -49,9 +49,9 @@ const products: Product[] = [
     number: '02',
     title: 'Home UPS System',
     category: 'Residential Backup',
-    tagline: 'Reliable power for every Kerala home.',
+    tagline: 'Reliable power for every home.',
     description:
-      'Designed specifically for residential loads — fans, lights, routers, and essential appliances. Pure sine wave output protects sensitive electronics. Simple, low-maintenance, and trusted by over 12,000 Kerala households.',
+      'Designed specifically for residential loads — fans, lights, routers, and essential appliances. Pure sine wave output protects sensitive electronics. Simple, low-maintenance, and trusted by over 12,000 households.',
     icon: <Zap className="w-5 h-5 md:w-7 md:h-7" />,
     accentColor: '#facc15',
     features: [
@@ -147,7 +147,7 @@ const products: Product[] = [
     category: 'Lead-Acid Storage',
     tagline: 'Proven technology. Unmatched value.',
     description:
-      "India's most trusted battery technology for home UPS systems. Tall tubular plates give superior performance in Kerala's hot climate and frequent power cuts. Low water topping frequency and robust construction.",
+      "India's most trusted battery technology for home UPS systems. Tall tubular plates give superior performance in high ambient temperatures and during frequent power cuts. Low water topping frequency and robust construction.",
     icon: <BatteryCharging className="w-5 h-5 md:w-7 md:h-7" />,
     accentColor: '#facc15',
     features: [
@@ -195,14 +195,14 @@ const PowerBackup: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
-            Kerala's Power Backup Specialists
+            Power Backup Specialists
           </span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
             Power Backup <br className="hidden md:block" />
             Solutions
           </h1>
           <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-            UPS, inverters, and batteries — built for Kerala's power conditions.
+            UPS, inverters, and batteries — built for India's power conditions.
           </p>
         </div>
       </section>
@@ -215,7 +215,7 @@ const PowerBackup: React.FC = () => {
               <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
                 Backup Portfolio
               </span>
-              <h2 className="text-4xl md:text-7xl font-black uppercase text-white tracking-[-0.04em] leading-[0.9]">
+              <h2 className="text-4xl md:text-7xl font-thin uppercase text-white tracking-tight leading-[0.9]">
                 Power <br />Backup.
               </h2>
             </div>
@@ -259,7 +259,7 @@ const PowerBackup: React.FC = () => {
                       {product.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm md:text-3xl font-black uppercase text-white tracking-tight leading-tight">
+                      <h3 className="text-sm md:text-3xl font-thin uppercase text-white tracking-tight leading-tight">
                         {product.title}
                       </h3>
                       <div className="flex flex-wrap items-center gap-2 mt-2">
@@ -376,7 +376,7 @@ const PowerBackup: React.FC = () => {
       <section className="px-6 pb-10">
         <div className="max-w-7xl mx-auto border border-yellow-400/20 bg-zinc-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 reveal shadow-2xl">
           <div className="text-center md:text-left">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin uppercase italic tracking-tight leading-none mb-4">
               Never Lose Power Again.
             </h2>
             <p className="font-bold text-zinc-500 max-w-md mx-auto md:mx-0 text-sm md:text-base">

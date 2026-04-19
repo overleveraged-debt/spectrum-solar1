@@ -42,7 +42,7 @@ const TubularBatteries: React.FC = () => {
               <Battery className="w-3.5 h-3.5 text-yellow-400" />
               <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Deep Cycle Energy Storage</span>
             </div>
-            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
               Tubular<br /><span className="text-yellow-400">Batteries</span>
             </h1>
             <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
@@ -81,12 +81,12 @@ const TubularBatteries: React.FC = () => {
       <section className="py-24 md:py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
+            <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
               <img src="/images/tubular_battery_support.png" alt="Tubular battery bank" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
-            <div className="reveal" style={{ transitionDelay: '150ms' }}>
+            <div className="reveal order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Proven Deep-Cycle Performance</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
                 Built for Long<br /><span className="text-yellow-400">Power Cuts.</span>
               </h2>
               <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
@@ -118,21 +118,21 @@ const TubularBatteries: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Why Tubular Batteries</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Key Benefits</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
               <Battery className="w-12 h-12 text-black" />
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Deep Discharge</div>
-                <h3 className="text-black text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight">More Backup<br />Per Charge.</h3>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">More Backup<br />Per Charge.</h3>
                 <p className="text-black/60 text-sm mt-3 font-medium">Designed for deep discharge cycles — ideal for regions with 6–12+ hour power cuts daily.</p>
               </div>
             </div>
             {[
               { icon: Zap, title: "Long Backup Hours", desc: "Engineered to deliver power over extended discharge periods." },
               { icon: Clock, title: "Proven Reliability", desc: "Battle-tested technology trusted across millions of Indian homes." },
-              { icon: ShieldCheck, title: "Heat Resistant", desc: "Performs well even in Kerala's high ambient temperature conditions." },
+              { icon: ShieldCheck, title: "Heat Resistant", desc: "Performs well even in high ambient temperature conditions." },
               { icon: Activity, title: "Wide Compatibility", desc: "Works with all major inverter and UPS brands available in market." },
               { icon: Layers, title: "Cost-Effective", desc: "Best value solution for long backup without the lithium price premium." },
             ].map((benefit, i) => (
@@ -141,7 +141,7 @@ const TubularBatteries: React.FC = () => {
                   <benefit.icon className="w-5 h-5 text-yellow-400" />
                 </div>
                 <div>
-                  <h3 className="font-black uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
                 </div>
               </div>
@@ -155,7 +155,7 @@ const TubularBatteries: React.FC = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">The Numbers</span>
-            <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter">Tubular vs Flat Plate Battery</h2>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Tubular vs Flat Plate Battery</h2>
           </div>
           <div className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] overflow-hidden shadow-2xl">
             <div className="grid grid-cols-3 border-b border-white/5">
@@ -204,8 +204,8 @@ const TubularBatteries: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 md:mb-8">Technical<br />Specifications</h2>
-              <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">Engineered tubular plate design delivers superior performance for deep-discharge applications in Kerala's environment.</p>
+              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8">Technical<br />Specifications</h2>
+              <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">Engineered tubular plate design delivers superior performance for deep-discharge applications in high-ambient-temperature environments.</p>
               <div className="flex flex-wrap gap-3">
                 {["Tubular Positive Plate","Deep Cycle Design","Wide AH Range (100–200AH+)","Multiple Voltage Options","Heat-Resistant Casing","Long Life Electrolyte","Overcharge Protection","Low Self-Discharge","Trusted Brand Partners"].map((tag, i) => (
                   <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
@@ -215,7 +215,7 @@ const TubularBatteries: React.FC = () => {
               </div>
             </div>
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
-              <img src="/images/tubular_battery_support.png" alt="Tubular battery detail" className="w-full h-full object-cover" />
+              <img src="/images/tubular_tech.png" alt="Tubular battery cell detail" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -227,9 +227,9 @@ const TubularBatteries: React.FC = () => {
           <div className="grid lg:grid-cols-5 gap-10 md:gap-12 items-start">
             <div className="lg:col-span-3 reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 md:mb-10">Perfect For</h2>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
-                <img src="/images/tubular_battery_support.png" alt="Tubular battery applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src="/images/tubular_lifestyle.png" alt="Tubular battery in home installation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">
@@ -260,7 +260,7 @@ const TubularBatteries: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Questions</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4">Frequently Asked</h2>
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight mb-4">Frequently Asked</h2>
             <p className="text-zinc-400 font-light text-base md:text-lg">Everything you need to know about Tubular Batteries.</p>
           </div>
           <div className="space-y-3">
@@ -290,7 +290,7 @@ const TubularBatteries: React.FC = () => {
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-10">
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-[0.4em] mb-3">Proven power storage</div>
-                <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter text-black leading-[0.9]">
+                <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight text-black leading-[0.9]">
                   Reliable Backup<br />You Can Trust.
                 </h2>
               </div>

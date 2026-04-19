@@ -1,15 +1,16 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Phone, Mail, MessageSquare, Send, Clock, ArrowRight } from 'lucide-react';
+import MapSection from '../components/MapSection';
 
 const Contact: React.FC = () => {
   useScrollReveal();
 
   const offices = [
-    { city: "Kannur (HQ)", address: "Spectrum Tower, Near KSEB, Kannur, Kerala 670001", icon: "🏢" },
-    { city: "Kochi", address: "Solar Hub, Edappally, Kochi, Kerala 682024", icon: "🌊" },
-    { city: "Calicut", address: "Power Plaza, Mavoor Road, Calicut, Kerala 673001", icon: "⚡" },
-    { city: "Trivandrum", address: "Energy Centre, Vazhuthacaud, TVM, Kerala 695010", icon: "🌞" },
+    { city: "Kannur (HQ)", address: "Spectrum Tower, Near KSEB, Kannur 670001", icon: "🏢" },
+    { city: "Kochi", address: "Solar Hub, Edappally, Kochi 682024", icon: "🌊" },
+    { city: "Calicut", address: "Power Plaza, Mavoor Road, Calicut 673001", icon: "⚡" },
+    { city: "Trivandrum", address: "Energy Centre, Vazhuthacaud, Trivandrum 695010", icon: "🌞" },
   ];
 
   return (
@@ -27,7 +28,7 @@ const Contact: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Global Network</span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             START YOUR <br className="hidden md:block" />
             SOLAR JOURNEY
           </h1>
@@ -62,67 +63,69 @@ const Contact: React.FC = () => {
 
           {/* Form */}
           <div className="lg:col-span-7 reveal">
-            <div className="mb-10">
-              <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Send us a message</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none">
-                Let's talk <br />about your project.
-              </h2>
+            <div className="premium-cream-card p-8 md:p-12 rounded-[3.5rem] border-2 border-transparent hover:border-black transition-all duration-500 shadow-2xl group/form">
+              <div className="mb-10">
+                <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Send us a message</span>
+                <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight leading-[0.9] text-black">
+                  Let's talk <br />about your project.
+                </h2>
+              </div>
+
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Full Name</label>
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-black transition-colors text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Phone Number</label>
+                    <input
+                      type="tel"
+                      placeholder="+91 9876 543 210"
+                      className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-black transition-colors text-sm"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Email Address</label>
+                  <input
+                    type="email"
+                    placeholder="john@example.com"
+                    className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-black transition-colors text-sm"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Inquiry Type</label>
+                  <select className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-black transition-colors appearance-none cursor-pointer text-sm">
+                    <option>Solar System Installation</option>
+                    <option>Power Backup & UPS</option>
+                    <option>Site Audit Request</option>
+                    <option>Service & Maintenance</option>
+                    <option>Franchise / Dealership</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">How can we help?</label>
+                  <textarea
+                    rows={5}
+                    placeholder="Describe your project requirements..."
+                    className="w-full bg-white border border-zinc-200 rounded-[1.5rem] px-7 py-5 text-black placeholder:text-zinc-300 focus:outline-none focus:border-black transition-colors resize-none text-sm"
+                  />
+                </div>
+
+                <button className="w-full bg-black text-white font-black uppercase tracking-[0.2em] py-5 rounded-full hover:bg-yellow-400 hover:text-black active:scale-[0.98] transition-all flex items-center justify-center gap-4 shadow-xl group">
+                  Send Message
+                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </form>
             </div>
-
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Full Name</label>
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full bg-zinc-50 border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-400 transition-colors text-sm"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Phone Number</label>
-                  <input
-                    type="tel"
-                    placeholder="+91 9876 543 210"
-                    className="w-full bg-zinc-50 border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-400 transition-colors text-sm"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Email Address</label>
-                <input
-                  type="email"
-                  placeholder="john@example.com"
-                  className="w-full bg-zinc-50 border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-400 transition-colors text-sm"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Inquiry Type</label>
-                <select className="w-full bg-zinc-50 border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-400 transition-colors appearance-none cursor-pointer text-sm">
-                  <option>Solar System Installation</option>
-                  <option>Power Backup & UPS</option>
-                  <option>Site Audit Request</option>
-                  <option>Service & Maintenance</option>
-                  <option>Franchise / Dealership</option>
-                </select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">How can we help?</label>
-                <textarea
-                  rows={5}
-                  placeholder="Describe your project, site size, current electricity bill, or any specific requirements..."
-                  className="w-full bg-zinc-50 border border-zinc-200 rounded-[1.5rem] px-7 py-5 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-400 transition-colors resize-none text-sm"
-                />
-              </div>
-
-              <button className="w-full bg-black text-white font-black uppercase tracking-[0.2em] py-5 rounded-full hover:bg-yellow-400 hover:text-black active:scale-[0.98] transition-all flex items-center justify-center gap-4 shadow-xl group">
-                Send Message
-                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
           </div>
 
           {/* Sidebar */}
@@ -185,6 +188,20 @@ const Contact: React.FC = () => {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      {/* Global Map Section */}
+      <section className="px-6 py-24 bg-zinc-50 border-t border-zinc-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 reveal">
+            <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Visit Our Facilities</span>
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight text-black leading-none">
+              Explore our <br className="md:hidden" /> Regional Hubs.
+            </h2>
+          </div>
+          <div className="reveal">
+            <MapSection theme="light" height="600px" />
           </div>
         </div>
       </section>

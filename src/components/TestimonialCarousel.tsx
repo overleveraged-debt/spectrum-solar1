@@ -1,39 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, CheckCircle2 } from 'lucide-react';
+import { allTestimonials } from '../data/testimonials';
 
-interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  location: string;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    quote: "With over a decade of partnership with Spectrum, their ERP-enabled operations ensure zero supply delays. Truly professional and reliable engineering.",
-    author: "Abraham Thomas",
-    role: "National Distribution Partner",
-    location: "Kochi, Kerala"
-  },
-  {
-    quote: "High referrals led me to Spectrum. The integrated solar and water purifier installation was completed in record time with a customer-centric focus.",
-    author: "Saira Khan",
-    role: "Residential Client",
-    location: "Trivandrum"
-  },
-  {
-    quote: "Their specialized power electronics and UPS systems are the best in the industry. Zero switch-over lag and excellent service support.",
-    author: "Dr. Rajesh Kumar",
-    role: "Medical Facility Director",
-    location: "Bangalore, Karnataka"
-  },
-  {
-    quote: "Award-winning grid integration for our industrial complex. Spectrum Powers has set the benchmark for solar engineering in India.",
-    author: "Meera Nair",
-    role: "Operations Manager",
-    location: "Chennai, TN"
-  }
-];
+const testimonials = allTestimonials.slice(0, 4); // Use first 4 for carousel
 
 const TestimonialCarousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,19 +35,22 @@ const TestimonialCarousel: React.FC = () => {
         
         <div className="relative z-10 flex-1 flex flex-col justify-center">
           <p className="text-zinc-300 text-lg md:text-xl font-light italic leading-relaxed mb-8 transition-all duration-500 transform animate-fade-in">
-            "{testimonials[activeIndex].quote}"
+            "{testimonials[activeIndex].text}"
           </p>
         </div>
 
         <div className="relative z-10 flex items-center justify-between pt-8 border-t border-zinc-900">
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[10px] text-white font-black">
-              {testimonials[activeIndex].author.split(' ').map(n => n[0]).join('')}
+              {testimonials[activeIndex].initials}
             </div>
             <div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-white">{testimonials[activeIndex].author}</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-white flex items-center gap-2">
+                {testimonials[activeIndex].name}
+                {testimonials[activeIndex].isVerified && <CheckCircle2 className="w-3.5 h-3.5 text-yellow-500" />}
+              </p>
               <p className="text-[9px] text-zinc-500 uppercase tracking-widest font-bold mt-0.5">
-                {testimonials[activeIndex].role} • {testimonials[activeIndex].location}
+                {testimonials[activeIndex].product}
               </p>
             </div>
           </div>

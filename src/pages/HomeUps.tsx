@@ -48,7 +48,7 @@ const HomeUps: React.FC = () => {
               <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Residential Backup Power</span>
             </div>
 
-            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
               Home UPS<br />
               <span className="text-yellow-400">System</span>
             </h1>
@@ -102,7 +102,7 @@ const HomeUps: React.FC = () => {
 
             <div className="reveal" style={{ transitionDelay: '150ms' }}>
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Comfort & Continuity for Your Home</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
                 Power That Keeps<br />
                 <span className="text-yellow-400">Your Home Running.</span>
               </h2>
@@ -136,7 +136,7 @@ const HomeUps: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">How Home UPS Works</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How Home UPS Works</h2>
           </div>
 
           <div className="hidden md:grid grid-cols-5 gap-0 relative reveal">
@@ -153,7 +153,7 @@ const HomeUps: React.FC = () => {
                   <item.icon className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
                 </div>
                 <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
-                <h3 className="text-lg font-black uppercase tracking-tight mb-2">{item.title}</h3>
+                <h3 className="text-lg font-thin uppercase tracking-tight mb-2">{item.title}</h3>
                 <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -176,7 +176,7 @@ const HomeUps: React.FC = () => {
                 </div>
                 <div className="pb-8 pt-1">
                   <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
-                  <h3 className="text-lg font-black uppercase tracking-tight mb-1">{item.title}</h3>
+                  <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -190,7 +190,7 @@ const HomeUps: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Why Home UPS</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Key Benefits</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -198,7 +198,7 @@ const HomeUps: React.FC = () => {
               <Zap className="w-12 h-12 text-black" />
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Instant Response</div>
-                <h3 className="text-black text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight">No Interruption<br />in Daily Life</h3>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">No Interruption<br />in Daily Life</h3>
                 <p className="text-black/60 text-sm mt-3 font-medium">Switches to battery power in milliseconds — your family doesn't even notice the power cut.</p>
               </div>
             </div>
@@ -215,7 +215,7 @@ const HomeUps: React.FC = () => {
                   <benefit.icon className="w-5 h-5 text-yellow-400" />
                 </div>
                 <div>
-                  <h3 className="font-black uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
                 </div>
               </div>
@@ -229,7 +229,7 @@ const HomeUps: React.FC = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">The Numbers</span>
-            <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter">Choose the Right UPS</h2>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Choose the Right UPS</h2>
           </div>
 
           {/* Capacity Guide */}
@@ -298,7 +298,7 @@ const HomeUps: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 md:mb-8">Advanced<br />Features</h2>
+              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8">Advanced<br />Features</h2>
               <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">
                 Spectrum Powers Home UPS systems are engineered with cutting-edge technology for maximum reliability and appliance safety.
               </p>
@@ -333,7 +333,7 @@ const HomeUps: React.FC = () => {
           <div className="grid lg:grid-cols-5 gap-10 md:gap-12 items-start">
             <div className="lg:col-span-3 reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 md:mb-10">Perfect For</h2>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
                   src="/images/home_ups_support.png"
@@ -372,7 +372,7 @@ const HomeUps: React.FC = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="max-w-4xl mx-auto text-center relative z-10 reveal">
           <div className="text-7xl md:text-8xl text-yellow-400/20 font-black leading-none mb-4">"</div>
-          <h2 className="text-2xl md:text-5xl font-black italic uppercase tracking-tighter mb-6 md:mb-8 leading-tight">
+          <h2 className="text-2xl md:text-5xl font-thin italic uppercase tracking-tight mb-6 md:mb-8 leading-tight">
             Stay Comfortable<br />During Power Cuts
           </h2>
           <p className="text-zinc-400 text-base md:text-xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">
@@ -398,7 +398,7 @@ const HomeUps: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Installation</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Installation</h2>
           </div>
 
           <div className="relative">
@@ -417,7 +417,7 @@ const HomeUps: React.FC = () => {
                   </div>
                   <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
                     <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-base md:text-lg font-black uppercase tracking-tight mb-1">{step.title}</h3>
+                    <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
                     <p className="text-zinc-500 text-sm">{step.desc}</p>
                   </div>
                 </div>
@@ -432,7 +432,7 @@ const HomeUps: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Questions</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4">Frequently Asked</h2>
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight mb-4">Frequently Asked</h2>
             <p className="text-zinc-400 font-light text-base md:text-lg">Everything you need to know about Home UPS Systems.</p>
           </div>
 
@@ -466,7 +466,7 @@ const HomeUps: React.FC = () => {
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-10">
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-[0.4em] mb-3">Power your home</div>
-                <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter text-black leading-[0.9]">
+                <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight text-black leading-[0.9]">
                   Power Without<br />Interruptions.
                 </h2>
               </div>

@@ -62,7 +62,7 @@ const Blog: React.FC = () => {
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             Insights & Updates
           </span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             ENERGY EXCELLENCE <br className="hidden md:block" />
             INSIGHTS
           </h1>
@@ -77,7 +77,7 @@ const Blog: React.FC = () => {
         <div className="max-w-7xl mx-auto reveal flex items-center justify-between">
           <div>
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-3 block">Latest from the Field</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-[-0.04em] leading-[0.9]">Our Vlog.</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-[-0.04em] leading-[0.9]">Our Vlog.</h2>
           </div>
           <div className="hidden md:flex items-center gap-2 text-zinc-600 text-[10px] font-black uppercase tracking-widest">
             <BookOpen className="w-4 h-4" />
@@ -120,7 +120,7 @@ const Blog: React.FC = () => {
                 <span className="flex items-center gap-1.5"><User className="w-3 h-3 text-yellow-400" /> {featured.author}</span>
                 <span>{featured.readTime}</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter mb-5 leading-none group-hover:text-yellow-400 transition-colors duration-300">
+              <h3 className="text-3xl md:text-4xl font-thin uppercase italic tracking-tight mb-5 leading-none group-hover:text-yellow-400 transition-colors duration-300">
                 {featured.title}
               </h3>
               <p className="text-zinc-400 leading-relaxed mb-8 font-light text-base">
@@ -171,7 +171,7 @@ const Blog: React.FC = () => {
                   <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3 text-yellow-400" /> {post.date}</span>
                   <span className="flex items-center gap-1.5"><User className="w-3 h-3 text-yellow-400" /> {post.author}</span>
                 </div>
-                <h3 className="text-2xl font-black uppercase italic tracking-tighter mb-3 leading-tight group-hover:text-yellow-400 transition-colors duration-300">
+                <h3 className="text-2xl font-thin uppercase italic tracking-tight mb-3 leading-tight group-hover:text-yellow-400 transition-colors duration-300">
                   {post.title}
                 </h3>
                 <p className="text-zinc-500 text-sm leading-relaxed mb-6 line-clamp-2 font-light">
@@ -186,31 +186,6 @@ const Blog: React.FC = () => {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="px-6 pb-10">
-        <div className="max-w-5xl mx-auto bg-zinc-900 border border-white/5 rounded-[3rem] p-12 md:p-16 text-center reveal shadow-2xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-transparent pointer-events-none"></div>
-          <div className="relative z-10">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Stay Informed</span>
-            <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter leading-none mb-4">
-              Energy in your inbox.
-            </h2>
-            <p className="text-zinc-400 font-medium mb-10 max-w-md mx-auto">
-              Join 5,000+ subscribers for the latest Kerala energy policies and technical insights.
-            </p>
-            <form className="max-w-md mx-auto flex flex-col sm:flex-row gap-3" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 bg-white/5 border border-white/10 rounded-full px-7 py-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-yellow-400 transition-colors text-sm"
-              />
-              <button className="bg-yellow-400 text-black px-8 py-4 rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg whitespace-nowrap">
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

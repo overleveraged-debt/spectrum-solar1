@@ -13,14 +13,14 @@ const faqs = [
   },
   {
     q: 'Do you provide after-sales service?',
-    a: 'Yes. We have 60+ dedicated service engineers across Kerala, available 24/7 for support. All installations include a 1-year comprehensive AMC, with extended plans available.',
+    a: 'Yes. We have 60+ dedicated service engineers across India, available 24/7 for support. All installations include a 1-year comprehensive AMC, with extended plans available.',
   },
   {
     q: 'How long is the warranty on solar panels?',
     a: 'We provide up to 25 years linear performance warranty on solar panels. Our inverters carry 5-year warranty, and lithium batteries are covered for 5–10 years depending on the model.',
   },
   {
-    q: 'What government subsidies are available for solar in Kerala?',
+    q: 'What government subsidies are available for solar?',
     a: 'The Central Government provides a 30% subsidy on residential on-grid systems up to 3kW (20% for 3–10kW). Additional benefits are available under the KSEB net-metering scheme. Our team handles all paperwork.',
   },
   {
@@ -71,11 +71,11 @@ const Support: React.FC = () => {
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             We're Here For You
           </span>
-          <h1 className="text-[2rem] sm:text-5xl md:text-6xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+          <h1 className="text-[2rem] sm:text-5xl md:text-6xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
             Support Desk
           </h1>
           <p className="text-white/70 text-base md:text-lg max-w-xl mx-auto font-light">
-            60+ engineers. 24-hour response. Pan-Kerala coverage.
+            60+ engineers. 24-hour response. Nationwide coverage.
           </p>
         </div>
       </section>
@@ -151,7 +151,7 @@ const Support: React.FC = () => {
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
               Quick Answers
             </span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-4">
               Frequently Asked Questions
             </h2>
           </div>
@@ -203,7 +203,7 @@ const Support: React.FC = () => {
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
               Raise a Ticket
             </span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-4">
               Submit a Support Request
             </h2>
             <p className="text-zinc-500 text-sm">Our team will respond within 24 hours.</p>

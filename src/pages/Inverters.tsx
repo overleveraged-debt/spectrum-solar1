@@ -42,7 +42,7 @@ const Inverters: React.FC = () => {
               <BatteryCharging className="w-3.5 h-3.5 text-yellow-400" />
               <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Power Conversion</span>
             </div>
-            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
               Inverters<br /><span className="text-yellow-400">by Spectrum</span>
             </h1>
             <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
@@ -82,12 +82,12 @@ const Inverters: React.FC = () => {
       <section className="py-24 md:py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
+            <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
               <img src="/images/inverter_support.png" alt="Inverter installation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
-            <div className="reveal" style={{ transitionDelay: '150ms' }}>
+            <div className="reveal order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Smart Power Conversion Solutions</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
                 Smart Conversion.<br /><span className="text-yellow-400">Reliable Power.</span>
               </h2>
               <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
@@ -119,7 +119,7 @@ const Inverters: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">How an Inverter Works</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How an Inverter Works</h2>
           </div>
           <div className="hidden md:grid grid-cols-5 gap-0 relative reveal">
             <div className="absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-yellow-400/20 via-yellow-400 to-yellow-400/20" />
@@ -135,7 +135,7 @@ const Inverters: React.FC = () => {
                   <item.icon className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
                 </div>
                 <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
-                <h3 className="text-lg font-black uppercase tracking-tight mb-2">{item.title}</h3>
+                <h3 className="text-lg font-thin uppercase tracking-tight mb-2">{item.title}</h3>
                 <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -157,7 +157,7 @@ const Inverters: React.FC = () => {
                 </div>
                 <div className="pb-8 pt-1">
                   <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
-                  <h3 className="text-lg font-black uppercase tracking-tight mb-1">{item.title}</h3>
+                  <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -171,14 +171,14 @@ const Inverters: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Why Our Inverters</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Key Benefits</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
               <Zap className="w-12 h-12 text-black" />
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Pure Output</div>
-                <h3 className="text-black text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight">Stable. Clean.<br />Pure Sine Wave.</h3>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">Stable. Clean.<br />Pure Sine Wave.</h3>
                 <p className="text-black/60 text-sm mt-3 font-medium">Output quality identical to grid electricity — safe for all your sensitive appliances and electronics.</p>
               </div>
             </div>
@@ -194,7 +194,7 @@ const Inverters: React.FC = () => {
                   <benefit.icon className="w-5 h-5 text-yellow-400" />
                 </div>
                 <div>
-                  <h3 className="font-black uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
                 </div>
               </div>
@@ -208,7 +208,7 @@ const Inverters: React.FC = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">The Numbers</span>
-            <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter">Types of Inverters</h2>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Types of Inverters</h2>
           </div>
 
           <div className="reveal grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
@@ -275,7 +275,7 @@ const Inverters: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 md:mb-8">Advanced<br />Features</h2>
+              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8">Advanced<br />Features</h2>
               <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">
                 Designed for efficiency and safety — our inverters protect your appliances while delivering consistent power performance.
               </p>
@@ -288,7 +288,7 @@ const Inverters: React.FC = () => {
               </div>
             </div>
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
-              <img src="/images/inverter_support.png" alt="Inverter unit close-up" className="w-full h-full object-cover" />
+              <img src="/images/inverter_tech.png" alt="Inverter unit close-up" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -300,9 +300,9 @@ const Inverters: React.FC = () => {
           <div className="grid lg:grid-cols-5 gap-10 md:gap-12 items-start">
             <div className="lg:col-span-3 reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 md:mb-10">Perfect For</h2>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
-                <img src="/images/inverter_support.png" alt="Inverter applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src="/images/inverter_lifestyle.png" alt="Inverter applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">
@@ -333,7 +333,7 @@ const Inverters: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Installation</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Installation</h2>
           </div>
           <div className="relative">
             <div className="absolute left-7 top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
@@ -351,7 +351,7 @@ const Inverters: React.FC = () => {
                   </div>
                   <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
                     <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-base md:text-lg font-black uppercase tracking-tight mb-1">{step.title}</h3>
+                    <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
                     <p className="text-zinc-500 text-sm">{step.desc}</p>
                   </div>
                 </div>
@@ -366,7 +366,7 @@ const Inverters: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Questions</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4">Frequently Asked</h2>
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight mb-4">Frequently Asked</h2>
             <p className="text-zinc-400 font-light text-base md:text-lg">Everything you need to know about Inverters.</p>
           </div>
           <div className="space-y-3">
@@ -396,7 +396,7 @@ const Inverters: React.FC = () => {
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-10">
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-[0.4em] mb-3">Find your inverter</div>
-                <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter text-black leading-[0.9]">
+                <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight text-black leading-[0.9]">
                   Choose the Right<br />Inverter Today.
                 </h2>
               </div>

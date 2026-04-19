@@ -47,7 +47,7 @@ const OffGridSolar: React.FC = () => {
               <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">100% Grid Independent</span>
             </div>
 
-            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
               Lithium Off-Grid<br />
               <span className="text-yellow-400">Solar System</span>
             </h1>
@@ -101,7 +101,7 @@ const OffGridSolar: React.FC = () => {
 
             <div className="reveal" style={{ transitionDelay: '150ms' }}>
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Power Without Grid Dependency</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
                 No Grid.<br />
                 <span className="text-yellow-400">No Limits.</span>
               </h2>
@@ -135,7 +135,7 @@ const OffGridSolar: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">How Off-Grid Solar Works</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How Off-Grid Solar Works</h2>
           </div>
 
           <div className="hidden md:grid grid-cols-5 gap-0 relative reveal">
@@ -152,7 +152,7 @@ const OffGridSolar: React.FC = () => {
                   <item.icon className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
                 </div>
                 <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
-                <h3 className="text-lg font-black uppercase tracking-tight mb-2">{item.title}</h3>
+                <h3 className="text-lg font-thin uppercase tracking-tight mb-2">{item.title}</h3>
                 <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -175,7 +175,7 @@ const OffGridSolar: React.FC = () => {
                 </div>
                 <div className="pb-8 pt-1">
                   <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
-                  <h3 className="text-lg font-black uppercase tracking-tight mb-1">{item.title}</h3>
+                  <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -189,7 +189,7 @@ const OffGridSolar: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Why Off-Grid</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Key Benefits</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -197,7 +197,7 @@ const OffGridSolar: React.FC = () => {
               <Leaf className="w-12 h-12 text-black" />
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Zero Dependency</div>
-                <h3 className="text-black text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight">No Grid.<br />No Bills.</h3>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">No Grid.<br />No Bills.</h3>
                 <p className="text-black/60 text-sm mt-3 font-medium">Generate your own power, pay zero electricity bills, and never rely on utility companies again.</p>
               </div>
             </div>
@@ -214,7 +214,7 @@ const OffGridSolar: React.FC = () => {
                   <benefit.icon className="w-5 h-5 text-yellow-400" />
                 </div>
                 <div>
-                  <h3 className="font-black uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
                 </div>
               </div>
@@ -228,7 +228,7 @@ const OffGridSolar: React.FC = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">The Difference</span>
-            <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter">Off-Grid Solar vs Traditional</h2>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Off-Grid Solar vs Traditional</h2>
           </div>
 
           <div className="reveal bg-zinc-950 border border-white/5 rounded-[2rem] overflow-hidden shadow-2xl">
@@ -281,7 +281,7 @@ const OffGridSolar: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 md:mb-8">Advanced<br />Components</h2>
+              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8">Advanced<br />Components</h2>
               <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">
                 Every Spectrum Powers Off-Grid system uses certified, premium components for decades of reliable, independent power generation.
               </p>
@@ -316,7 +316,7 @@ const OffGridSolar: React.FC = () => {
           <div className="grid lg:grid-cols-5 gap-10 md:gap-12 items-start">
             <div className="lg:col-span-3 reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 md:mb-10">Perfect For</h2>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
                   src="/images/offgrid_lifestyle.png"
@@ -355,7 +355,7 @@ const OffGridSolar: React.FC = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="max-w-4xl mx-auto text-center relative z-10 reveal">
           <div className="text-7xl md:text-8xl text-yellow-400/20 font-black leading-none mb-4">"</div>
-          <h2 className="text-2xl md:text-5xl font-black italic uppercase tracking-tighter mb-6 md:mb-8 leading-tight">
+          <h2 className="text-2xl md:text-5xl font-thin italic uppercase tracking-tight mb-6 md:mb-8 leading-tight">
             No Grid. No Bills.<br />Just Pure Solar Power.
           </h2>
           <p className="text-zinc-400 text-base md:text-xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">
@@ -381,7 +381,7 @@ const OffGridSolar: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Installation</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Installation</h2>
           </div>
 
           <div className="relative">
@@ -400,7 +400,7 @@ const OffGridSolar: React.FC = () => {
                   </div>
                   <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
                     <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-base md:text-lg font-black uppercase tracking-tight mb-1">{step.title}</h3>
+                    <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
                     <p className="text-zinc-500 text-sm">{step.desc}</p>
                   </div>
                 </div>
@@ -415,7 +415,7 @@ const OffGridSolar: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Questions</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4">Frequently Asked</h2>
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight mb-4">Frequently Asked</h2>
             <p className="text-zinc-400 font-light text-base md:text-lg">Everything you need to know about Off-Grid Solar.</p>
           </div>
 
@@ -449,7 +449,7 @@ const OffGridSolar: React.FC = () => {
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-10">
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-[0.4em] mb-3">Go Off-Grid with Confidence</div>
-                <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter text-black leading-[0.9]">
+                <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight text-black leading-[0.9]">
                   Live Without<br />Power Cuts.
                 </h2>
               </div>

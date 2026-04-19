@@ -50,7 +50,7 @@ const LithiumUps: React.FC = () => {
               <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Zero-Switch Technology</span>
             </div>
 
-            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
               Lithium Inbuilt<br />
               <span className="text-yellow-400">UPS System</span>
             </h1>
@@ -95,8 +95,8 @@ const LithiumUps: React.FC = () => {
       <section className="py-24 md:py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Image */}
-            <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
+            {/* Mobile: heading first, then image, then body. Desktop: image left, content right */}
+            <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
               <img
                 src="/images/lithium_intro.png"
                 alt="Lithium UPS technician with homeowner"
@@ -105,9 +105,9 @@ const LithiumUps: React.FC = () => {
             </div>
 
             {/* Content */}
-            <div className="reveal" style={{ transitionDelay: '150ms' }}>
+            <div className="reveal order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Next-Generation Solution</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
                 All-in-one.<br />
                 <span className="text-yellow-400">Always On.</span>
               </h2>
@@ -115,7 +115,7 @@ const LithiumUps: React.FC = () => {
                 A Lithium Inbuilt UPS System integrates the inverter and lithium battery into one compact, wall-mountable unit. Faster charging, longer life, zero maintenance.
               </p>
               <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                Spectrum Powers delivers advanced lithium UPS systems engineered for efficiency, reliability, and space-saving installation — trusted by homes and businesses across Kerala.
+                Spectrum Powers delivers advanced lithium UPS systems engineered for efficiency, reliability, and space-saving installation — trusted by homes and businesses nationwide.
               </p>
 
               {/* Mini stat cards */}
@@ -142,7 +142,7 @@ const LithiumUps: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">How It Works</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How It Works</h2>
           </div>
 
           {/* Desktop flow */}
@@ -159,7 +159,7 @@ const LithiumUps: React.FC = () => {
                   <item.icon className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
                 </div>
                 <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
-                <h3 className="text-xl font-black uppercase tracking-tight mb-2">{item.title}</h3>
+                <h3 className="text-xl font-thin uppercase tracking-tight mb-2">{item.title}</h3>
                 <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -182,7 +182,7 @@ const LithiumUps: React.FC = () => {
                 </div>
                 <div className="pb-8 pt-1">
                   <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
-                  <h3 className="text-lg font-black uppercase tracking-tight mb-1">{item.title}</h3>
+                  <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -196,7 +196,7 @@ const LithiumUps: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Why Lithium</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Key Benefits</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
 
           {/* Mobile: simple grid; Desktop: bento */}
@@ -206,7 +206,7 @@ const LithiumUps: React.FC = () => {
               <Zap className="w-12 h-12 text-black" />
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Instant Response</div>
-                <h3 className="text-black text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight">Zero Delay<br />Backup</h3>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">Zero Delay<br />Backup</h3>
                 <p className="text-black/60 text-sm mt-3 font-medium">Switches to battery power in under 10 milliseconds — imperceptible to any device.</p>
               </div>
             </div>
@@ -223,7 +223,7 @@ const LithiumUps: React.FC = () => {
                   <benefit.icon className="w-5 h-5 text-yellow-400" />
                 </div>
                 <div>
-                  <h3 className="font-black uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
                 </div>
               </div>
@@ -237,7 +237,7 @@ const LithiumUps: React.FC = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">The Upgrade</span>
-            <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter">Why Switch to Lithium?</h2>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Why Switch to Lithium?</h2>
           </div>
 
           <div className="reveal bg-zinc-950 border border-white/5 rounded-[2rem] overflow-hidden shadow-2xl">
@@ -291,7 +291,7 @@ const LithiumUps: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 md:mb-8">Advanced<br />Features</h2>
+              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8">Advanced<br />Features</h2>
               <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">
                 Every Spectrum Powers Lithium UPS system is engineered with cutting-edge components and intelligent management software for maximum reliability.
               </p>
@@ -327,7 +327,7 @@ const LithiumUps: React.FC = () => {
             {/* Left: heading + image */}
             <div className="lg:col-span-3 reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 md:mb-10">Perfect For</h2>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
                   src="/images/lithium_lifestyle.png"
@@ -367,7 +367,7 @@ const LithiumUps: React.FC = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="max-w-4xl mx-auto text-center relative z-10 reveal">
           <div className="text-7xl md:text-8xl text-yellow-400/20 font-black leading-none mb-4">"</div>
-          <h2 className="text-2xl md:text-5xl font-black italic uppercase tracking-tighter mb-6 md:mb-8 leading-tight">
+          <h2 className="text-2xl md:text-5xl font-thin italic uppercase tracking-tight mb-6 md:mb-8 leading-tight">
             Seamless Backup for<br />Modern Living
           </h2>
           <p className="text-zinc-400 text-base md:text-xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">
@@ -393,7 +393,7 @@ const LithiumUps: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Installation</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Installation</h2>
           </div>
 
           <div className="relative">
@@ -412,7 +412,7 @@ const LithiumUps: React.FC = () => {
                   </div>
                   <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
                     <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-base md:text-lg font-black uppercase tracking-tight mb-1">{step.title}</h3>
+                    <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
                     <p className="text-zinc-500 text-sm">{step.desc}</p>
                   </div>
                 </div>
@@ -427,7 +427,7 @@ const LithiumUps: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Questions</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4">Frequently Asked</h2>
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight mb-4">Frequently Asked</h2>
             <p className="text-zinc-400 font-light text-base md:text-lg">Everything you need to know about Lithium UPS technology.</p>
           </div>
 
@@ -461,8 +461,8 @@ const LithiumUps: React.FC = () => {
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-10">
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-[0.4em] mb-3">Ready to upgrade?</div>
-                <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tighter text-black leading-[0.9]">
-                  Upgrade your<br />backup today.
+                <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight text-black leading-[0.9]">
+                   Upgrade your<br />backup today.
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full md:w-auto">

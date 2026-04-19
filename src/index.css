@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
 
 :root {
   --accent: #facc15;
@@ -7,9 +7,10 @@
   --bg-light: #ffffff;
   --border-light: rgba(0, 0, 0, 0.08);
   --border-dark: rgba(255, 255, 255, 0.05);
-  --cream-bg: #fdfae9;
-  /* Light yellowish cream */
-  --cream-border: #f5f0d5;
+  --cream-bg: #fef9c3;
+  /* Slightly darker Tailwind-like yellow-100 */
+  --cream-border: #fde68a;
+  /* Stronger border definition */
   font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 1.5;
   font-weight: 400;

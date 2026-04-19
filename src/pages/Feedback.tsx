@@ -2,20 +2,7 @@ import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Star, Quote, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const allTestimonials = [
-  { name: 'Abdul Rahman', location: 'Kannur', initials: 'AR', text: 'Spectrum Powers installed a 5KW Hybrid system at my home. The service team was extremely professional, and my electricity bill has literally dropped to zero.', rating: 5, date: '2 months ago', product: '5KW Hybrid Solar', category: 'Solar' },
-  { name: 'Dr. Somashekharan', location: 'Koyili Hospital', initials: 'DS', text: 'Their 50KW installation has been performing flawlessly for over 3 years. One of the most reliable power partners in Kerala. Highly recommended.', rating: 5, date: '1 year ago', product: '50KW Commercial', category: 'Solar' },
-  { name: 'Suresh Babu', location: 'Malappuram', initials: 'SB', text: "Switched to their Lithium backup system recently. The transition is so smooth I don't even know when the power goes out. Exceptional quality.", rating: 5, date: '5 months ago', product: 'Lithium UPS', category: 'Backup' },
-  { name: 'Priya Menon', location: 'Thrissur', initials: 'PM', text: 'Our factory runs on Spectrum\'s 200kW solar plant now. ROI happened faster than they estimated. Their after-sales team is always available.', rating: 5, date: '8 months ago', product: '200kW On-Grid', category: 'Solar' },
-  { name: 'Rajesh Kumar', location: 'Calicut', initials: 'RK', text: 'Home UPS from Spectrum has been rock solid for 2 years. Pure sine wave output — my computers and inverter AC run perfectly. Worth every rupee.', rating: 5, date: '10 months ago', product: 'Home UPS', category: 'Backup' },
-  { name: 'Aisha Fathima', location: 'Thiruvananthapuram', initials: 'AF', text: 'Solar water heater installed 3 years back. Zero issues. Saves us about ₹1,500 per month in electricity. Excellent post-sale service too.', rating: 5, date: '3 months ago', product: 'Solar Water Heater', category: 'Solar' },
-  { name: 'Thomas Varghese', location: 'Kottayam', initials: 'TV', text: 'They handled everything from KSEB paperwork to commissioning. Hybrid 10KW system now covers our entire household. Professional and trustworthy.', rating: 5, date: '6 months ago', product: '10kW Hybrid', category: 'Solar' },
-  { name: 'Mohammed Ashraf', location: 'Palakkad', initials: 'MA', text: 'Installed Online UPS for our server room. True online double conversion — absolutely no interruption. Our IT infrastructure has been flawless since.', rating: 5, date: '4 months ago', product: '20kVA Online UPS', category: 'Backup' },
-  { name: 'Anitha Krishnan', location: 'Kozhikode', initials: 'AK', text: 'Best solar company in Kerala without a doubt. Honest advice, premium products, and a team that genuinely cares about long-term performance.', rating: 5, date: '7 months ago', product: '6kW On-Grid', category: 'Solar' },
-  { name: 'Vinod Nair', location: 'Ernakulam', initials: 'VN', text: 'Lithium battery bank they installed has transformed our power situation. 8 hours of backup on a fully charged system. Incredible technology.', rating: 5, date: '1 month ago', product: '20kWh Lithium', category: 'Battery' },
-  { name: 'Santha Lakshmi', location: 'Kochi', initials: 'SL', text: 'The team was punctual, professional, and cleaned up after the installation. The system has been working perfectly for 18 months without a single issue.', rating: 5, date: '9 months ago', product: '4kW Hybrid', category: 'Solar' },
-  { name: 'George Philip', location: 'Muvattupuzha', initials: 'GP', text: 'Franchise partner for 2 years now. Great backend support, quality products, and the brand name opens doors. Highly profitable partnership.', rating: 5, date: '2 years ago', product: 'Franchise Partner', category: 'Other' },
-];
+import { allTestimonials } from '../data/testimonials';
 
 const filterOptions = ['All', 'Solar', 'Backup', 'Battery', 'Other'];
 const CARDS_PER_PAGE = 6;
@@ -39,10 +26,13 @@ const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial: t }) => 
       <div>
         <div className="font-black uppercase text-sm tracking-tight flex items-center gap-2 text-white">
           {t.name}
-          <CheckCircle2 className="w-4 h-4 text-yellow-400" />
+          <div className="flex items-center gap-1">
+            <CheckCircle2 className="w-4 h-4 text-yellow-400" />
+            {t.isVerified && <span className="text-[8px] text-zinc-500 font-bold tracking-widest uppercase">Google Verified</span>}
+          </div>
         </div>
         <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
-          {t.location} · {t.date}
+          {t.date}
         </div>
       </div>
     </div>
@@ -52,11 +42,6 @@ const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial: t }) => 
 const Feedback: React.FC = () => {
   useScrollReveal();
 
-  const [rating, setRating] = useState(0);
-  const [hoveredRating, setHoveredRating] = useState(0);
-  const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
-  const [review, setReview] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(0);
   const [mobileIndex, setMobileIndex] = useState(0);
@@ -88,11 +73,11 @@ const Feedback: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Social Proof</span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             Trusted By <br className="hidden md:block" /> Thousands
           </h1>
           <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter">
-            Over 40,000 satisfied customers across Kerala.
+            Over 40,000 satisfied customers across India.
           </p>
         </div>
       </section>
@@ -219,41 +204,29 @@ const Feedback: React.FC = () => {
         </div>
       </section>
 
-      {/* Leave a Review */}
-      <section className="px-6 pb-10 border-t border-white/5 pt-16">
-        <div className="max-w-2xl mx-auto reveal">
-          <div className="bg-zinc-900 border border-white/5 p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
+      {/* Leave a Review CTA */}
+      <section className="px-6 pb-20 border-t border-white/5 pt-16">
+        <div className="max-w-4xl mx-auto reveal text-center">
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Experience</span>
-            <h3 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter mb-8 text-white leading-tight">
-              Share your story with us.
+            <h3 className="text-3xl md:text-5xl font-thin italic uppercase tracking-tight mb-8 text-white leading-tight">
+              Share your story on Google.
             </h3>
-            <div className="flex gap-2 mb-6">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <button
-                  key={star}
-                  onMouseEnter={() => setHoveredRating(star)}
-                  onMouseLeave={() => setHoveredRating(0)}
-                  onClick={() => setRating(star)}
-                  className="transition-transform hover:scale-125"
-                >
-                  <Star className={`w-8 h-8 transition-all duration-200 ${(hoveredRating || rating) >= star ? 'fill-yellow-400 text-yellow-400' : 'text-zinc-700'}`} />
-                </button>
-              ))}
+            <p className="text-zinc-500 text-lg mb-10 max-w-2xl mx-auto">
+              Your feedback helps us improve and helps others make informed decisions about their clean energy journey.
+            </p>
+            <a 
+              href="https://maps.app.goo.gl/kukTmitZZYJ9z69w8" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-4 bg-yellow-400 text-black font-black uppercase tracking-[0.2em] px-12 py-6 rounded-full hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-yellow-400/20 group"
+            >
+              Write a Review 
+              <Star className="w-5 h-5 fill-black group-hover:rotate-12 transition-transform" />
+            </a>
+            <div className="flex items-center justify-center gap-8 mt-16 opacity-30 grayscale">
+               <img src="/images/google-logo.png" alt="Google" className="h-6 object-contain" />
+               <img src="/images/maps-logo.png" alt="Google Maps" className="h-6 object-contain" />
             </div>
-            {rating > 0 && (
-              <p className="text-yellow-400 text-[10px] font-black uppercase tracking-widest mb-6">
-                {['', 'Poor', 'Fair', 'Good', 'Great', 'Excellent!'][rating]}
-              </p>
-            )}
-            <div className="space-y-4">
-              <input type="text" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-3.5 text-white placeholder:text-zinc-600 focus:outline-none focus:border-yellow-400 transition-colors text-sm" />
-              <input type="text" placeholder="Your city / location" value={location} onChange={(e) => setLocation(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-3.5 text-white placeholder:text-zinc-600 focus:outline-none focus:border-yellow-400 transition-colors text-sm" />
-              <textarea placeholder="Tell us about your experience..." value={review} onChange={(e) => setReview(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-[1.5rem] px-6 py-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-yellow-400 transition-colors resize-none text-sm" rows={4} />
-              <button className="w-full bg-yellow-400 text-black font-black uppercase tracking-widest py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-yellow-400/20">
-                Submit Review
-              </button>
-            </div>
-          </div>
         </div>
       </section>
     </div>

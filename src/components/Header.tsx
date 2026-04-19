@@ -118,7 +118,7 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className={`hidden lg:flex items-center gap-1 xl:gap-2 text-[10px] font-black uppercase tracking-[0.18em] ${textColor}`}>
+          <div className={`hidden lg:flex items-center gap-1 xl:gap-2 text-[10px] font-light uppercase tracking-[0.22em] ${textColor}`}>
             {navGroups.map((group) => (
               <div
                 key={group.label}
@@ -143,7 +143,11 @@ const Header: React.FC = () => {
                 {/* Dropdown Panel */}
                 {group.children && (
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden transition-all duration-200 origin-top ${
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 border rounded-2xl shadow-2xl overflow-hidden transition-all duration-200 origin-top ${
+                      isLightMode
+                        ? 'bg-white border-black/8 shadow-black/10'
+                        : 'bg-zinc-950 border-white/10'
+                    } ${
                       activeDropdown === group.label
                         ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
                         : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
@@ -159,21 +163,25 @@ const Header: React.FC = () => {
                           <Link
                             key={child.label}
                             to={child.to}
-                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-zinc-400 hover:text-yellow-400 hover:bg-white/5 transition-all duration-150 group/item"
+                            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 group/item ${
+                              isLightMode
+                                ? 'text-zinc-600 hover:text-yellow-600 hover:bg-black/5'
+                                : 'text-zinc-400 hover:text-yellow-400 hover:bg-white/5'
+                            }`}
                             onClick={() => setActiveDropdown(null)}
                           >
                             {Icon && (
                               <div
                                 className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 transition-all group-hover/item:scale-110"
-                                style={{ backgroundColor: (child.color ?? '#facc15') + '18' }}
+                                style={{ backgroundColor: (child.color ?? '#facc15') + (isLightMode ? '22' : '18') }}
                               >
                                 <Icon className="w-3 h-3" style={{ color: child.color ?? '#facc15' }} />
                               </div>
                             )}
                             <div className="min-w-0">
-                              <p className="text-[10px] font-black uppercase tracking-widest leading-tight truncate">{child.label}</p>
+                              <p className={`text-[10px] font-medium uppercase tracking-widest leading-tight truncate ${isLightMode ? 'text-zinc-700' : ''}`}>{child.label}</p>
                               {child.sub && (
-                                <p className="text-[8px] font-bold uppercase tracking-widest truncate mt-0.5 opacity-50">{child.sub}</p>
+                                <p className={`text-[8px] font-bold uppercase tracking-widest truncate mt-0.5 opacity-50 ${isLightMode ? 'text-zinc-500' : ''}`}>{child.sub}</p>
                               )}
                             </div>
                             <ChevronRight className="w-3 h-3 ml-auto flex-shrink-0 opacity-0 group-hover/item:opacity-100 transition-opacity" style={{ color: child.color ?? '#facc15' }} />
@@ -183,6 +191,7 @@ const Header: React.FC = () => {
                     </div>
                   </div>
                 )}
+
               </div>
             ))}
 
@@ -260,7 +269,7 @@ const Header: React.FC = () => {
               >
                 <div className="flex items-center gap-3">
                   <div className={`w-1.5 h-1.5 rounded-full ${isGroupActive(group) ? 'bg-yellow-400' : 'bg-zinc-700'}`} />
-                  <span className="text-base font-black uppercase tracking-tight">{group.label}</span>
+                  <span className="text-base font-light uppercase tracking-widest">{group.label}</span>
                 </div>
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-200 ${
@@ -341,7 +350,7 @@ const Header: React.FC = () => {
           >
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-yellow-400 transition-colors" />
-              <span className="text-base font-black uppercase tracking-tight">Blog</span>
+              <span className="text-base font-light uppercase tracking-widest">Blog</span>
             </div>
             <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-yellow-400 transition-colors" />
           </Link>

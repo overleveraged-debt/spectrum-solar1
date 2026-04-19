@@ -52,7 +52,7 @@ const SolarCalculatorBody: React.FC = () => {
             {/* LEFT: Inputs */}
             <div className="reveal">
               <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Details</span>
-              <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-8 md:mb-12">
+              <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-8 md:mb-12">
                 Tell us <br />about your home.
               </h2>
 
@@ -204,7 +204,7 @@ const SolarCalculatorBody: React.FC = () => {
       {/* Quote Footer */}
       <section className="px-6 py-24 border-t border-zinc-100">
         <div className="max-w-4xl mx-auto text-center reveal">
-          <p className="text-3xl md:text-4xl font-black italic uppercase tracking-tighter mb-6 text-zinc-100" style={{ WebkitTextStroke: '1px #d4d4d8' }}>
+          <p className="text-3xl md:text-4xl font-black italic uppercase tracking-tighter mb-6 text-black">
             "Every unit you generate is money you keep."
           </p>
           <div className="w-20 h-1 bg-yellow-400 mx-auto mb-4"></div>
@@ -241,7 +241,7 @@ const PowerCalculator: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="reveal">
             <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Load Details</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-8 md:mb-12">
               Size your <br />backup system.
             </h2>
             <div className="space-y-10">
@@ -370,7 +370,7 @@ const Calculator: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Yield & Backup Analytics</span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             Energy <br className="hidden md:block" />Calculator
           </h1>
         </div>

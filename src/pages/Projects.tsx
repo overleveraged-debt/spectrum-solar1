@@ -2,6 +2,8 @@ import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { MapPin, Building2, Hospital, ArrowRight } from 'lucide-react';
 
+import MapSection from '../components/MapSection';
+
 const Projects: React.FC = () => {
   useScrollReveal();
 
@@ -71,7 +73,7 @@ const Projects: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Our Portfolio</span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-[0.9] italic uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
+          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             4000+ SUCCESSFUL <br className="hidden sm:block" />
             INSTALLATIONS
           </h1>
@@ -87,12 +89,12 @@ const Projects: React.FC = () => {
           <div className="flex items-end justify-between">
             <div>
               <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Featured Work</span>
-              <h2 className="text-4xl md:text-7xl font-black uppercase tracking-[-0.04em] leading-[0.9]">
+              <h2 className="text-4xl md:text-7xl font-thin uppercase tracking-[-0.04em] leading-[0.9]">
                 Landmark <br />Projects.
               </h2>
             </div>
             <p className="hidden md:block text-zinc-500 text-sm max-w-xs leading-relaxed text-right">
-              A selection of our most impactful installations across Kerala.
+              A selection of our most impactful installations.
             </p>
           </div>
         </div>
@@ -134,10 +136,10 @@ const Projects: React.FC = () => {
                   <div className="flex items-center gap-2 text-zinc-400 mb-2 text-[10px] font-bold uppercase tracking-widest">
                     {project.icon}
                     <MapPin className="w-3 h-3" />
-                    <span>{project.location}, Kerala</span>
+                    <span>{project.location}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-black uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">
+                    <h3 className="text-xl font-thin uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">
                       {project.name}
                     </h3>
                     <div className="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center group-hover:bg-yellow-400 group-hover:border-yellow-400 transition-all">
@@ -156,13 +158,13 @@ const Projects: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 reveal">
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">By The Numbers</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none">
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none">
               Our Impact.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 reveal">
             {[
-              { value: '50MW+', label: 'Total Installed Capacity', sub: 'Across Kerala & beyond' },
+              { value: '50MW+', label: 'Total Installed Capacity', sub: 'Nationwide installations' },
               { value: '1,200+', label: 'Commercial Solutions', sub: 'Hospitals, offices, factories' },
               { value: '2,800+', label: 'Residential Projects', sub: 'Homes powered by sun' },
             ].map((stat, i) => (
@@ -178,11 +180,26 @@ const Projects: React.FC = () => {
         </div>
       </section>
 
+      {/* Project Map */}
+      <section className="py-24 px-6 bg-zinc-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 reveal">
+            <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">State-wide Footprint</span>
+            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight text-black">
+              Engineering <br className="md:hidden" /> Excellence Everywhere.
+            </h2>
+          </div>
+          <div className="reveal">
+            <MapSection height="550px" theme="light" />
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="px-6 pb-10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
           <div>
-            <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter mb-2">
+            <h3 className="text-3xl md:text-4xl font-thin uppercase italic tracking-tight mb-2">
               Want us to build yours?
             </h3>
             <p className="text-zinc-500 text-sm font-medium">

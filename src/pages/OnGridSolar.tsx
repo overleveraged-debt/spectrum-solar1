@@ -50,7 +50,7 @@ const OnGridSolar: React.FC = () => {
               <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Grid-Connected · Net Metering</span>
             </div>
 
-            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
               On-Grid<br />
               <span className="text-yellow-400">Solar System</span>
             </h1>
@@ -79,7 +79,7 @@ const OnGridSolar: React.FC = () => {
                 { value: "90%", label: "Bill Reduction" },
                 { value: "25 Yrs", label: "Panel Warranty" },
                 { value: "3–4 Yrs", label: "ROI Period" },
-                { value: "1000+", label: "Kerala Installations" },
+                { value: "1000+", label: "Nationwide Installations" },
               ].map((stat, i) => (
                 <div key={i} className={`py-6 md:py-8 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
                   <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
@@ -99,7 +99,7 @@ const OnGridSolar: React.FC = () => {
             {/* Content — left on this page for variety */}
             <div className="reveal order-2 lg:order-1">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Smart Solar Solution</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
                 Grid-tied.<br />
                 <span className="text-yellow-400">Always Saving.</span>
               </h2>
@@ -142,7 +142,7 @@ const OnGridSolar: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">How It Works</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How It Works</h2>
           </div>
 
           {/* Desktop flow */}
@@ -159,7 +159,7 @@ const OnGridSolar: React.FC = () => {
                   <item.icon className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
                 </div>
                 <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
-                <h3 className="text-xl font-black uppercase tracking-tight mb-2">{item.title}</h3>
+                <h3 className="text-xl font-thin uppercase tracking-tight mb-2">{item.title}</h3>
                 <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -182,7 +182,7 @@ const OnGridSolar: React.FC = () => {
                 </div>
                 <div className="pb-10">
                   <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
-                  <h3 className="text-lg font-black uppercase tracking-tight mb-1">{item.title}</h3>
+                  <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -205,7 +205,7 @@ const OnGridSolar: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Advantages</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Key Benefits</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
@@ -214,7 +214,7 @@ const OnGridSolar: React.FC = () => {
               <TrendingUp className="w-12 h-12 text-black" />
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Maximum ROI</div>
-                <h3 className="text-black text-3xl font-black uppercase tracking-tight leading-tight">Save Up to<br />90% on Bills</h3>
+                <h3 className="text-black text-3xl font-thin uppercase tracking-tight leading-tight">Save Up to<br />90% on Bills</h3>
                 <p className="text-black/60 text-sm mt-3 font-medium">Break even in 3–4 years. Then enjoy 20+ years of near-free electricity.</p>
               </div>
             </div>
@@ -231,7 +231,7 @@ const OnGridSolar: React.FC = () => {
                   <benefit.icon className="w-5 h-5 text-yellow-400" />
                 </div>
                 <div>
-                  <h3 className="font-black uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
                   <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
                 </div>
               </div>
@@ -245,7 +245,7 @@ const OnGridSolar: React.FC = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">The Numbers</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Grid Solar vs Grid Power</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Grid Solar vs Grid Power</h2>
           </div>
 
           <div className="reveal bg-zinc-950 border border-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl">
@@ -307,7 +307,7 @@ const OnGridSolar: React.FC = () => {
 
             <div className="reveal" style={{ transitionDelay: '150ms' }}>
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-8">Technical<br />Features</h2>
+              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-8">Technical<br />Features</h2>
               <p className="text-zinc-400 leading-relaxed mb-10">
                 Every Spectrum Powers on-grid system is built with certified, premium components for decades of reliable power generation.
               </p>
@@ -341,7 +341,7 @@ const OnGridSolar: React.FC = () => {
           <div className="grid lg:grid-cols-5 gap-12 items-start">
             <div className="lg:col-span-3 reveal">
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-10">Perfect For</h2>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-10">Perfect For</h2>
               <div className="rounded-[2.5rem] overflow-hidden aspect-[4/3] border border-white/5 shadow-2xl">
                 <img
                   src="/images/ongrid_applications_demo.png"
@@ -379,7 +379,7 @@ const OnGridSolar: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-20 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Our Installation Process</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Our Installation Process</h2>
           </div>
 
           <div className="relative">
@@ -398,7 +398,7 @@ const OnGridSolar: React.FC = () => {
                   </div>
                   <div className="flex-1 bg-zinc-900 border border-white/5 rounded-2xl p-6 group-hover:border-yellow-400/20 transition-all">
                     <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-lg font-black uppercase tracking-tight mb-1">{step.title}</h3>
+                    <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{step.title}</h3>
                     <p className="text-zinc-500 text-sm">{step.desc}</p>
                   </div>
                 </div>
@@ -413,7 +413,7 @@ const OnGridSolar: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Questions</span>
-            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4">Frequently Asked</h2>
+            <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-4">Frequently Asked</h2>
             <p className="text-zinc-400 font-light text-lg">Everything you need to know about On-Grid Solar.</p>
           </div>
 
@@ -451,7 +451,7 @@ const OnGridSolar: React.FC = () => {
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-[0.4em] mb-3">Start saving today</div>
-                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-black leading-[0.9]">
+                <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight text-black leading-[0.9]">
                   Ready to go<br />solar?
                 </h2>
               </div>
