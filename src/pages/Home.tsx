@@ -86,12 +86,12 @@ const Home: React.FC = () => {
             Precision <span className="text-yellow-400">Since 2000.</span>
           </h1>
           <div className="flex flex-col gap-3">
-            <a href="#solutions" className="w-full flex items-center justify-center gap-3 bg-yellow-400 text-black px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300 shadow-lg shadow-yellow-400/20">
+            <Link to="/solar" className="w-full flex items-center justify-center gap-3 bg-yellow-400 text-black px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300 shadow-lg shadow-yellow-400/20">
               Solar Solutions <Sun className="w-4 h-4" />
-            </a>
-            <a href="#backup" className="w-full flex items-center justify-center gap-3 bg-zinc-950 text-white border border-white/10 px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300">
+            </Link>
+            <Link to="/power" className="w-full flex items-center justify-center gap-3 bg-zinc-950 text-white border border-white/10 px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300">
               Power Systems <BatteryCharging className="w-4 h-4 text-yellow-400" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

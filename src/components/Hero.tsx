@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, BatteryCharging, Settings2, ChevronDown } from 'lucide-react';
 
+import { Link } from 'react-router-dom';
+
 interface HeroProps {
   onLoaded?: () => void;
 }
@@ -62,12 +64,12 @@ const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
           Precision <br /><span className="text-yellow-400">Since 2000.</span>
         </h1>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 reveal" style={{ transitionDelay: '300ms' }}>
-          <a href="#solutions" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300">
+          <Link to="/solar" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300">
             Solar Solutions <Sun className="w-3.5 h-3.5" />
-          </a>
-          <a href="#backup" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300">
+          </Link>
+          <Link to="/power" className="w-full sm:w-auto group flex items-center justify-center gap-3 bg-zinc-950 text-yellow-400 border border-yellow-400/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:border-white transition-all duration-300">
             Power Systems <BatteryCharging className="w-3.5 h-3.5" />
-          </a>
+          </Link>
         </div>
       </div>
 

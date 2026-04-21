@@ -30,15 +30,15 @@ const SupportWidget: React.FC = () => {
       </button>
 
       {/* Popup Modal */}
-      <div className={`absolute bottom-20 right-0 w-[400px] max-w-[calc(100vw-4rem)] max-h-[calc(100vh-8rem)] flex flex-col bg-zinc-900 border border-white/10 rounded-[2.5rem] shadow-2xl transition-all duration-500 origin-bottom-right overflow-hidden ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-10 pointer-events-none'}`}>
+      <div className={`absolute bottom-[4.5rem] right-0 w-[400px] max-w-[calc(100vw-4rem)] max-h-[calc(100svh-10rem)] sm:max-h-[calc(100vh-8rem)] flex flex-col bg-zinc-900 border border-white/10 rounded-[2.5rem] shadow-2xl transition-all duration-500 origin-bottom-right overflow-hidden ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-10 pointer-events-none'}`}>
 
         {/* Header */}
-        <div className="p-8 pb-4 border-b border-white/5">
-          <h3 className="text-white text-2xl font-black uppercase italic tracking-tighter mb-2">Support Hub</h3>
-          <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">How can we help you today?</p>
+        <div className="p-6 sm:p-8 pb-4 border-b border-white/5">
+          <h3 className="text-white text-xl sm:text-2xl font-black uppercase italic tracking-tighter mb-1 sm:mb-2">Support Hub</h3>
+          <p className="text-zinc-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest uppercase">How can we help you today?</p>
         </div>
 
-        <div className="p-8 flex-1 overflow-y-auto no-scrollbar space-y-8">
+        <div className="p-6 sm:p-8 flex-1 overflow-y-auto no-scrollbar space-y-6 sm:space-y-8">
           {/* Main Action - Enquiry */}
           <div className="space-y-4">
             <h4 className="text-white text-[10px] font-black uppercase tracking-widest mb-2 px-1 opacity-50">Quick Actions</h4>
@@ -56,11 +56,11 @@ const SupportWidget: React.FC = () => {
             <h4 className="text-white text-[10px] font-black uppercase tracking-widest mb-2 px-1 opacity-50">Frequently Asked</h4>
             <div className="space-y-3">
               {faqs.map((faq, i) => (
-                <div key={i} className="p-5 bg-white/5 rounded-2xl border border-white/5 group hover:border-white/10 transition-colors">
-                  <h4 className="text-white text-[11px] font-black uppercase tracking-tighter mb-2 flex items-center gap-2">
+                <div key={i} className="p-4 sm:p-5 bg-white/5 rounded-2xl border border-white/5 group hover:border-white/10 transition-colors">
+                  <h4 className="text-white text-[10px] sm:text-[11px] font-black uppercase tracking-tighter mb-1.5 sm:mb-2 flex items-center gap-2">
                     <HelpCircle className="w-3 h-3 text-yellow-400" /> {faq.q}
                   </h4>
-                  <p className="text-zinc-500 text-[10px] font-bold leading-relaxed">{faq.a}</p>
+                  <p className="text-zinc-500 text-[9px] sm:text-[10px] font-bold leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -68,7 +68,7 @@ const SupportWidget: React.FC = () => {
         </div>
 
         {/* Footer Quick Contact */}
-        <div className="p-8 bg-white/5 rounded-b-[2.5rem] border-t border-white/5 flex items-center justify-between">
+        <div className="p-6 sm:p-8 bg-white/5 rounded-b-[2.5rem] border-t border-white/5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center">
               <MessageSquare className="w-4 h-4" />
