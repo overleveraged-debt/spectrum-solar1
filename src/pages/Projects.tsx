@@ -1,6 +1,7 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { MapPin, Building2, Hospital, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import MapSection from '../components/MapSection';
 
@@ -206,12 +207,12 @@ const Projects: React.FC = () => {
               Get a free feasibility audit from our senior engineers.
             </p>
           </div>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="flex-shrink-0 bg-black text-white px-10 py-5 rounded-full font-black uppercase tracking-[0.2em] hover:bg-yellow-400 hover:text-black transition-all shadow-xl"
           >
             Request Site Audit
-          </a>
+          </Link>
         </div>
       </section>
     </div>

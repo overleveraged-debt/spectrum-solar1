@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Battery, Sun, Thermometer, ShieldCheck, Waves, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface Product {
   id: string;
@@ -262,15 +263,15 @@ const Services: React.FC = () => {
                               </div>
                             ))}
                           </div>
-                          <a
-                            href="/contact"
+                          <Link
+                            to="/contact"
                             className="inline-flex items-center gap-2 mt-6 font-black text-[10px] uppercase tracking-[0.3em] transition-all group/cta"
                             style={{ color: product.accentColor }}
                             onClick={(e) => e.stopPropagation()}
                           >
                             Request Quote
                             <ArrowRight className="w-3 h-3 group-hover/cta:translate-x-1 transition-transform" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -333,12 +334,12 @@ const Services: React.FC = () => {
               Our certified engineers provide a detailed site audit to ensure maximum efficiency.
             </p>
           </div>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="w-full md:w-auto bg-yellow-400 text-black px-12 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform whitespace-nowrap shadow-xl text-center"
           >
             Get Energy Audit
-          </a>
+          </Link>
         </div>
       </section>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Droplets, Cpu, Layers, ShieldCheck, Waves, TrendingUp, Sun, Star, CheckCircle2, Quote, ArrowRight, ChevronLeft, ChevronRight, Zap, Leaf, ExternalLink } from 'lucide-react';
+import { Droplets, Cpu, Layers, ShieldCheck, Waves, TrendingUp, Sun, Star, CheckCircle2, Quote, ArrowRight, ChevronLeft, ChevronRight, Zap, Leaf, ExternalLink, BatteryCharging } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
@@ -78,6 +78,24 @@ const Home: React.FC = () => {
     <div className={`flex flex-col bg-zinc-950 noise-bg overflow-x-hidden ${!isVideoLoaded ? 'h-screen overflow-hidden' : ''}`}>
       <LoadingScreen isVisible={!isVideoLoaded} />
       <Hero onLoaded={() => setIsVideoLoaded(true)} />
+      
+      {/* Mobile CTA: Below Hero video, before Stats */}
+      <div className="md:hidden px-5 pb-8 pt-0 bg-zinc-950">
+        <div className="bg-zinc-900/60 backdrop-blur-sm rounded-[2.5rem] p-6 border border-white/5 reveal shadow-2xl relative z-10 mt-4">
+          <h1 className="text-2xl font-thin mb-5 tracking-[0.05em] leading-[1.1] text-white uppercase italic text-center">
+            Precision <span className="text-yellow-400">Since 2000.</span>
+          </h1>
+          <div className="flex flex-col gap-3">
+            <a href="#solutions" className="w-full flex items-center justify-center gap-3 bg-yellow-400 text-black px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300 shadow-lg shadow-yellow-400/20">
+              Solar Solutions <Sun className="w-4 h-4" />
+            </a>
+            <a href="#backup" className="w-full flex items-center justify-center gap-3 bg-zinc-950 text-white border border-white/10 px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300">
+              Power Systems <BatteryCharging className="w-4 h-4 text-yellow-400" />
+            </a>
+          </div>
+        </div>
+      </div>
+
       <StatsBar />
 
       {/* ─── Why Solar? Section ─────────────────────────────────────── */}
@@ -144,16 +162,16 @@ const Home: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 reveal">
             {[
-              { id: 'on-grid', icon: Sun, title: 'On-Grid Solar', sub: 'Grid-Tied', desc: 'Zero electricity bills with net metering. Fastest ROI. Best for homes & offices.', badge: 'Most Popular', color: '#facc15' },
-              { id: 'hybrid', icon: Zap, title: 'Hybrid Solar', sub: 'Grid + Battery', desc: 'Day & night power. Solar generation + lithium backup for seamless reliability.', badge: null, color: '#facc15' },
-              { id: 'off-grid', icon: Leaf, title: 'Lithium Off-Grid', sub: 'Off-Grid', desc: 'Complete energy independence. For remote sites, islands & hospitals.', badge: null, color: '#facc15' },
-              { id: 'water-heaters', icon: Droplets, title: 'Solar Water Heaters', sub: 'Thermal Savings', desc: 'High-efficiency vacuum tube systems. 100L to 2000L for any scale.', badge: null, color: '#facc15' },
+              { id: 'on-grid', icon: Sun, title: 'On-Grid Solar', sub: 'Grid-Tied', desc: 'Zero electricity bills with net metering. Fastest ROI. Best for homes & offices.', badge: 'Most Popular', color: '#facc15', to: '/solar/on-grid' },
+              { id: 'hybrid', icon: Zap, title: 'Hybrid Solar', sub: 'Grid + Battery', desc: 'Day & night power. Solar generation + lithium backup for seamless reliability.', badge: null, color: '#facc15', to: '/solar/hybrid' },
+              { id: 'off-grid', icon: Leaf, title: 'Lithium Off-Grid', sub: 'Off-Grid', desc: 'Complete energy independence. For remote sites, islands & hospitals.', badge: null, color: '#facc15', to: '/solar/off-grid' },
+              { id: 'water-heaters', icon: Droplets, title: 'Solar Water Heaters', sub: 'Thermal Savings', desc: 'High-efficiency vacuum tube systems. 100L to 2000L for any scale.', badge: null, color: '#facc15', to: '/solar/water-heaters' },
             ].map((p) => {
               const Icon = p.icon;
               return (
                 <Link
                   key={p.id}
-                  to={`/solar#${p.id}`}
+                  to={p.to}
                   className="group relative p-6 md:p-8 bg-zinc-900/50 border border-zinc-800 rounded-[2rem] hover:border-opacity-60 transition-all duration-400 flex flex-col justify-between min-h-[240px] overflow-hidden hover:bg-zinc-900"
                   style={{ borderColor: 'rgba(255,255,255,0.08)' }}
                   onMouseEnter={e => (e.currentTarget.style.borderColor = p.color + '60')}
@@ -200,18 +218,18 @@ const Home: React.FC = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 reveal">
             {[
-              { id: 'lithium-ups', icon: Cpu, title: 'Lithium UPS', sub: 'Pure Sine Wave' },
-              { id: 'home-ups', icon: Zap, title: 'Home UPS', sub: 'Zero Interruption' },
-              { id: 'inverters', icon: TrendingUp, title: 'Inverters', sub: 'All Capacities' },
-              { id: 'online-ups', icon: ShieldCheck, title: 'Online UPS', sub: 'IT & Server' },
-              { id: 'lithium-batteries', icon: Layers, title: 'Lithium Batteries', sub: '4000+ Cycles' },
-              { id: 'tubular-batteries', icon: Waves, title: 'Tubular Batteries', sub: 'Lead-Acid Value' },
+              { id: 'lithium-ups', icon: Cpu, title: 'Lithium UPS', sub: 'Pure Sine Wave', to: '/power/lithium-ups' },
+              { id: 'home-ups', icon: Zap, title: 'Home UPS', sub: 'Zero Interruption', to: '/power/home-ups' },
+              { id: 'inverters', icon: TrendingUp, title: 'Inverters', sub: 'All Capacities', to: '/power/inverters' },
+              { id: 'online-ups', icon: ShieldCheck, title: 'Online UPS', sub: 'IT & Server', to: '/power/online-ups' },
+              { id: 'lithium-batteries', icon: Layers, title: 'Lithium Batteries', sub: '4000+ Cycles', to: '/power/lithium-batteries' },
+              { id: 'tubular-batteries', icon: Waves, title: 'Tubular Batteries', sub: 'Lead-Acid Value', to: '/power/tubular-batteries' },
             ].map((p) => {
               const Icon = p.icon;
               return (
                 <Link
                   key={p.id}
-                  to={`/power#${p.id}`}
+                  to={p.to}
                   className="group p-5 premium-cream-card rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-3 hover:-translate-y-1"
                 >
                   <div className="w-10 h-10 bg-yellow-400/10 rounded-xl flex items-center justify-center">

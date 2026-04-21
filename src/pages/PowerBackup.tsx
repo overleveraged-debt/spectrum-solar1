@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Battery, Zap, Server, BatteryCharging, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface Product {
@@ -333,15 +333,15 @@ const PowerBackup: React.FC = () => {
                               </div>
                             ))}
                           </div>
-                          <a
-                            href="/contact"
+                          <Link
+                            to="/contact"
                             className="inline-flex items-center gap-2 mt-6 font-black text-[10px] uppercase tracking-[0.3em] transition-all group/cta"
                             style={{ color: product.accentColor }}
                             onClick={(e) => e.stopPropagation()}
                           >
                             Request Quote
                             <ArrowRight className="w-3 h-3 group-hover/cta:translate-x-1 transition-transform" />
-                          </a>
+                          </Link>
                         </div>
 
                         {/* Product Photo */}
@@ -353,14 +353,14 @@ const PowerBackup: React.FC = () => {
                               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
                           </div>
-                          <a
-                            href={`/power/${product.id}`}
+                          <Link
+                            to={`/power/${product.id}`}
                             className="w-full bg-yellow-400 text-black px-6 py-3 rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-xl"
                             onClick={(e) => e.stopPropagation()}
                           >
                             View Full Details
                             <ArrowRight className="w-4 h-4" />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -383,12 +383,12 @@ const PowerBackup: React.FC = () => {
               Our engineers will assess your load requirements and recommend the perfect backup solution.
             </p>
           </div>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="w-full md:w-auto bg-yellow-400 text-black px-12 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform whitespace-nowrap shadow-xl text-center"
           >
             Get Power Assessment
-          </a>
+          </Link>
         </div>
       </section>
     </div>

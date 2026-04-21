@@ -6,6 +6,7 @@ import {
   PhoneCall, Settings, FileText, Wrench, Play, ChevronDown,
   Activity, Battery, TrendingUp, Leaf, X
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const OnGridSolar: React.FC = () => {
   useScrollReveal();
@@ -59,10 +60,10 @@ const OnGridSolar: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)]">
+              <Link to="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)]">
                 <ArrowRight className="w-5 h-5" />
                 Get Free Quote
-              </a>
+              </Link>
               <a href="tel:+919745660055" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-9 py-4 rounded-full font-black uppercase tracking-widest hover:bg-white/20 transition-all flex items-center gap-2">
                 <PhoneCall className="w-5 h-5" />
                 Call Now
@@ -284,10 +285,10 @@ const OnGridSolar: React.FC = () => {
           </div>
 
           <div className="text-center mt-12 reveal">
-            <a href="/contact" className="inline-flex items-center gap-3 bg-yellow-400 text-black px-10 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all shadow-[0_0_40px_rgba(250,204,21,0.25)]">
+            <Link to="/contact" className="inline-flex items-center gap-3 bg-yellow-400 text-black px-10 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all shadow-[0_0_40px_rgba(250,204,21,0.25)]">
               Calculate My Savings — Free
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -456,13 +457,13 @@ const OnGridSolar: React.FC = () => {
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="bg-black text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center gap-2 shadow-xl"
                 >
                   Get Free Site Audit
                   <ArrowRight className="w-5 h-5" />
-                </a>
+                </Link>
                 <a
                   href="tel:+919745660055"
                   className="bg-white/30 text-black px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white/40 transition-all flex items-center gap-2 border border-black/10"

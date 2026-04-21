@@ -1,6 +1,7 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Award, Shield, Users, Zap, Clock, Globe, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import MapSection from '../components/MapSection';
 
 const About: React.FC = () => {
@@ -192,13 +193,13 @@ const About: React.FC = () => {
               From Kannur to Thiruvananthapuram — our network ensures you're never far from expert power support.
             </p>
           </div>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="flex-shrink-0 flex items-center gap-3 bg-black text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform whitespace-nowrap shadow-xl group"
           >
             Find an office
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
         </div>
       </section>
     </div>

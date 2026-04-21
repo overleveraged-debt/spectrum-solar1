@@ -16,7 +16,7 @@ const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[60vh] md:h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
         <video 
           autoPlay 
@@ -52,25 +52,6 @@ const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
         </span>
       </button>
 
-      {/* Mobile: bottom-anchored overlay — does not block video */}
-      <div
-        className="absolute bottom-20 left-0 right-0 z-10 px-5 sm:hidden"
-        style={{ opacity: 1 - scrollY * 0.003 }}
-      >
-        <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-5 border border-white/10">
-          <h1 className="text-3xl font-thin mb-4 tracking-[0.05em] leading-[1.1] text-white uppercase">
-            Precision <span className="text-yellow-400">Since 2000.</span>
-          </h1>
-          <div className="flex flex-col gap-2.5">
-            <a href="#solutions" className="w-full flex items-center justify-center gap-2 bg-yellow-400 text-black px-6 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.3em] transition-all duration-300">
-              Solar Solutions <Sun className="w-3 h-3" />
-            </a>
-            <a href="#backup" className="w-full flex items-center justify-center gap-2 bg-zinc-950/80 text-yellow-400 border border-yellow-400/30 px-6 py-3 rounded-full font-black text-[10px] uppercase tracking-[0.3em] transition-all duration-300">
-              Power Systems <BatteryCharging className="w-3 h-3" />
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* Desktop: centred hero text */}
       <div 
