@@ -80,7 +80,7 @@ const OnGridSolar: React.FC = () => {
                 { value: "90%", label: "Bill Reduction" },
                 { value: "25 Yrs", label: "Panel Warranty" },
                 { value: "3–4 Yrs", label: "ROI Period" },
-                { value: "1000+", label: "Nationwide Installations" },
+                { value: "6,145+", label: "Successful Installations" },
               ].map((stat, i) => (
                 <div key={i} className={`py-6 md:py-8 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
                   <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>

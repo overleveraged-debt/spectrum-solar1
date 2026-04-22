@@ -1,16 +1,16 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Phone, Mail, MessageSquare, Send, Clock, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MessageSquare, Send, Clock, ArrowRight, Building2, MapPin } from 'lucide-react';
 import MapSection from '../components/MapSection';
 
 const Contact: React.FC = () => {
   useScrollReveal();
 
   const offices = [
-    { city: "Kannur (HQ)", address: "Spectrum Tower, Near KSEB, Kannur 670001", icon: "🏢" },
-    { city: "Kochi", address: "Solar Hub, Edappally, Kochi 682024", icon: "🌊" },
-    { city: "Calicut", address: "Power Plaza, Mavoor Road, Calicut 673001", icon: "⚡" },
-    { city: "Trivandrum", address: "Energy Centre, Vazhuthacaud, Trivandrum 695010", icon: "🌞" },
+    { city: "Kannur (HQ)", address: "Spectrum Tower, Near KSEB, Kannur 670001", icon: Building2 },
+    { city: "Kochi", address: "Solar Hub, Edappally, Kochi 682024", icon: MapPin },
+    { city: "Calicut", address: "Power Plaza, Mavoor Road, Calicut 673001", icon: MapPin },
+    { city: "Trivandrum", address: "Energy Centre, Vazhuthacaud, Trivandrum 695010", icon: MapPin },
   ];
 
   return (
@@ -178,7 +178,7 @@ const Contact: React.FC = () => {
                 {offices.map((office, i) => (
                   <div key={i} className="flex gap-4 group cursor-default">
                     <div className="w-9 h-9 bg-white border border-zinc-200 rounded-xl flex items-center justify-center text-sm group-hover:bg-yellow-400 group-hover:border-yellow-400 transition-colors shadow-sm flex-shrink-0">
-                      {office.icon}
+                      <office.icon className={`w-4 h-4 ${office.city.includes('HQ') ? 'text-black' : 'text-zinc-400'} group-hover:text-black transition-colors`} />
                     </div>
                     <div>
                       <p className="font-black uppercase text-[11px] text-zinc-900 mb-0.5">{office.city}</p>

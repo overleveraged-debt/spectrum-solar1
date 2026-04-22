@@ -215,9 +215,9 @@ const Home: React.FC = () => {
           <div className="max-w-2xl reveal">
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Why Spectrum</span>
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none text-white mb-8">India's Most Trusted <br />Solar Partner.</h2>
-            <p className="text-white/70 text-lg font-light leading-relaxed mb-10">25 years. 40,000+ installations. Government-awarded excellence. Engineered for India's diverse climate.</p>
+            <p className="text-white/70 text-lg font-light leading-relaxed mb-10">25 years. 6,145+ Solar Installations. Government-awarded excellence. Engineered for India's diverse climate.</p>
             <div className="grid grid-cols-3 gap-6">
-              {[{ v: '40K+', l: 'Installations' }, { v: '25yr', l: 'Track Record' }, { v: '100%', l: 'Service Rate' }].map((s, i) => (
+              {[{ v: '6,145+', l: 'Installations' }, { v: '25yr', l: 'Track Record' }, { v: '100%', l: 'Service Rate' }].map((s, i) => (
                 <div key={i} className="border-l border-yellow-400/40 pl-4">
                   <div className="text-3xl font-black text-yellow-400 tracking-tighter">{s.v}</div>
                   <div className="text-[10px] font-black uppercase tracking-widest text-white/50 mt-1">{s.l}</div>
@@ -315,7 +315,7 @@ const Home: React.FC = () => {
         <div className="relative z-10 max-w-3xl mx-auto px-6 reveal">
           <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Since 2000</span>
           <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-tight mb-4 text-white uppercase leading-none">25 Years of <br className="hidden md:block" />Reliability.</h2>
-          <p className="text-white/60 text-base md:text-lg font-light mb-10 max-w-md mx-auto">India's most trusted solar and power solutions provider. Award-winning. Engineer-certified.</p>
+          <p className="text-white/60 text-base md:text-lg font-light mb-10 max-w-md mx-auto">4.9 Overall Rating from 10,000+ Verified Reviews. India's most trusted solar and power solutions provider.</p>
           <Link to="/contact" className="inline-block w-full sm:w-auto bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:scale-105 hover:bg-yellow-300 transition-all shadow-2xl">Connect with Experts</Link>
         </div>
       </section>

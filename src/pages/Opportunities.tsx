@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Briefcase, MapPin, Users, Rocket, ArrowRight, CheckCircle2, Send } from 'lucide-react';
+import { Briefcase, MapPin, Users, Rocket, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const opportunities = [
   {
@@ -79,12 +80,6 @@ const opportunities = [
 
 const Opportunities: React.FC = () => {
   useScrollReveal();
-  const [form, setForm] = useState({ name: '', email: '', phone: '', role: '', message: '' });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
       {/* Hero */}
@@ -191,14 +186,14 @@ const Opportunities: React.FC = () => {
                     <p className="text-white font-black text-sm">{opp.investment}</p>
                   </div>
 
-                  <a
-                    href={`/contact`}
+                  <Link
+                    to={`/contact`}
                     className="inline-flex items-center gap-2 font-black text-[11px] uppercase tracking-[0.3em] transition-all group/cta"
                     style={{ color: opp.accentColor }}
                   >
                     Enquire Now
                     <ArrowRight className="w-3 h-3 group-hover/cta:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -206,75 +201,22 @@ const Opportunities: React.FC = () => {
         </div>
       </section>
 
-      {/* Apply Form */}
-      <section id="apply" className="py-20 px-6 border-t border-white/5">
-        <div className="max-w-3xl mx-auto reveal">
-          <div className="text-center mb-12">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Register Interest</span>
-            <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-4">
-              Get in Touch
-            </h2>
-            <p className="text-zinc-500 text-sm font-light">
-              Fill in the form and our partnerships team will contact you within 24 hours.
-            </p>
-          </div>
-
-          <form className="space-y-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={form.name}
-                onChange={handleChange}
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 text-white text-sm focus:outline-none focus:border-yellow-400/50 transition-colors placeholder-zinc-600"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={form.email}
-                onChange={handleChange}
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 text-white text-sm focus:outline-none focus:border-yellow-400/50 transition-colors placeholder-zinc-600"
-              />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                value={form.phone}
-                onChange={handleChange}
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 text-white text-sm focus:outline-none focus:border-yellow-400/50 transition-colors placeholder-zinc-600"
-              />
-              <select
-                name="role"
-                value={form.role}
-                onChange={handleChange}
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 text-white text-sm focus:outline-none focus:border-yellow-400/50 transition-colors"
-              >
-                <option value="">Select Opportunity</option>
-                <option value="franchise">Franchise</option>
-                <option value="dealership">Dealership</option>
-                <option value="freelance">Freelance Dealer</option>
-                <option value="jobs">Job Opportunity</option>
-              </select>
-            </div>
-            <textarea
-              name="message"
-              placeholder="Tell us about yourself / your business..."
-              rows={4}
-              value={form.message}
-              onChange={handleChange}
-              className="w-full bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4 text-white text-sm focus:outline-none focus:border-yellow-400/50 transition-colors placeholder-zinc-600 resize-none"
-            />
-            <button
-              type="submit"
-              className="w-full bg-yellow-400 text-black px-8 py-5 rounded-full font-black uppercase tracking-widest hover:scale-[1.02] transition-transform flex items-center justify-center gap-3"
-            >
-              Submit Application <Send className="w-4 h-4" />
-            </button>
-          </form>
+      {/* CTA section instead of form */}
+      <section className="py-24 px-6 border-t border-white/5">
+        <div className="max-w-4xl mx-auto text-center reveal">
+          <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Ready to Begin?</span>
+          <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none mb-8">
+            Let's Build the Future<br />of Energy Together.
+          </h2>
+          <p className="text-zinc-500 text-lg font-light mb-12 max-w-xl mx-auto">
+            Our partnerships team is ready to discuss how we can grow together. Visit our enquiry page to start the conversation.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-3 bg-yellow-400 text-black px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-[0_0_50px_rgba(250,204,21,0.2)]"
+          >
+            Go to Enquiry Form <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </section>
     </div>

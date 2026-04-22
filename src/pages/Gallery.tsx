@@ -5,17 +5,17 @@ import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
 import MapSection from '../components/MapSection';
 
 const galleryItems = [
-  { id: 1, src: '/images/p01.jpg', category: 'residential', title: 'Residential Rooftop Solar', location: 'Kannur', capacity: '5kW On-Grid' },
-  { id: 2, src: '/images/p02.jpg', category: 'commercial', title: 'Commercial Solar Array', location: 'Calicut', capacity: '50kW Grid-Tied' },
+  { id: 1, src: '/images/p01.jpg', category: 'residential', title: 'Premium Residential Solar', location: 'Kannur', capacity: '5kW On-Grid' },
+  { id: 2, src: '/images/p02.jpg', category: 'commercial', title: 'Koyili Hospital', location: 'Kannur', capacity: '50kW Grid-Tied' },
   { id: 3, src: '/images/p03.jpg', category: 'residential', title: 'Home Hybrid System', location: 'Thrissur', capacity: '3kW Hybrid' },
-  { id: 4, src: '/images/p04.jpg', category: 'industrial', title: 'Industrial Power Backup', location: 'Kochi', capacity: '100kVA UPS' },
+  { id: 4, src: '/images/p04.jpg', category: 'industrial', title: 'DSC Centre', location: 'Kannur', capacity: '100kVA UPS' },
   { id: 5, src: '/images/p05.jpg', category: 'residential', title: 'Lithium Battery Storage', location: 'Palakkad', capacity: '20kWh Lithium' },
-  { id: 6, src: '/images/p06.jpg', category: 'commercial', title: 'Hospital Solar Solution', location: 'Kozhikode', capacity: '30kW + UPS' },
-  { id: 7, src: '/images/p07.jpg', category: 'industrial', title: 'Factory Solar Rooftop', location: 'Ernakulam', capacity: '200kW On-Grid' },
-  { id: 8, src: '/images/banner1090x907.jpg', category: 'commercial', title: 'Large-Scale Solar Farm', location: 'Trivandrum', capacity: '500kW On-Grid' },
+  { id: 6, src: '/images/p06.jpg', category: 'commercial', title: 'Ranni Taluk Hospital', location: 'Pathanamthitta', capacity: '30kW + UPS' },
+  { id: 7, src: '/images/p07.jpg', category: 'industrial', title: 'LEO Lab Solution', location: 'Kozhikode', capacity: '200kW On-Grid' },
+  { id: 8, src: '/images/banner1090x907.jpg', category: 'commercial', title: 'Sreenarayana Hospital', location: 'Ernakulam', capacity: '500kW On-Grid' },
   { id: 9, src: '/images/banner1090x908.jpg', category: 'industrial', title: 'Industrial Solar Plant', location: 'Kollam', capacity: '150kW Industrial' },
   { id: 10, src: '/images/banner1090x909.jpg', category: 'residential', title: 'Villa Solar + Storage', location: 'Munnar', capacity: '8kW + 20kWh' },
-  { id: 11, src: '/images/banner1200x1000.jpg', category: 'commercial', title: 'Resort Solar Integration', location: 'Alappuzha', capacity: '25kW + Battery' },
+  { id: 11, src: '/images/banner1200x1000.jpg', category: 'commercial', title: 'Resort Solar Integration', location: 'Wayanad', capacity: '25kW + Battery' },
 ];
 
 const filters = ['All', 'Residential', 'Commercial', 'Industrial'];

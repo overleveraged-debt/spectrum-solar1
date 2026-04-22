@@ -10,7 +10,7 @@ const About: React.FC = () => {
   const stats = [
     { label: 'Years of Excellence', value: '25+', icon: <Clock className="w-6 h-6" />, sub: 'Since 2000' },
     { label: 'Satisfied Customers', value: '40K+', icon: <Users className="w-6 h-6" />, sub: 'Across Kerala' },
-    { label: 'Solar Projects', value: '4,000+', icon: <Zap className="w-6 h-6" />, sub: 'Installed & Running' },
+    { label: 'Solar Projects', value: '6,145+', icon: <Zap className="w-6 h-6" />, sub: 'Installed & Running' },
     { label: 'Service Engineers', value: '60+', icon: <Shield className="w-6 h-6" />, sub: 'Certified Experts' },
   ];
 
