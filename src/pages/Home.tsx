@@ -98,42 +98,52 @@ const Home: React.FC = () => {
 
       <StatsBar />
 
-      {/* ─── Why Solar? Section ─────────────────────────────────────── */}
-      <section className="bg-white pt-20 md:pt-28 pb-0 overflow-hidden text-black" data-nav-light>
+      {/* Power Backup Section */}
+      <section id="backup" className="py-24 md:py-32 bg-white text-black" data-nav-light>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="reveal mb-8">
-            <span className="text-yellow-600 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">The Solar Advantage</span>
-            <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] text-black uppercase leading-[0.9]">Why <br />Go Solar?</h2>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-6">
+            <div className="reveal">
+              <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Backup</span>
+              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] uppercase leading-[0.9]">Backup <br />Systems.</h2>
+            </div>
+            <Link to="/power" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:gap-3 transition-all reveal">
+              All Power Products <ArrowRight className="w-3 h-3" />
+            </Link>
           </div>
-          {/* Full-width photo — Tesla style */}
-          <div className="reveal rounded-[2rem] overflow-hidden" style={{ height: 'clamp(480px, 80vw, 520px)' }}>
+          <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 380px)' }}>
             <img
-              src="/images/home_why_solar.jpg"
-              alt="Solar panels powering a beautiful home"
-              className="w-full h-full object-cover object-center"
+              src="/images/home_backup_banner.jpg"
+              alt="Modern backup power systems"
+              className="w-full h-full object-cover object-[center_30%]"
             />
           </div>
-          {/* Benefit cards below the image */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-12 reveal">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 reveal">
             {[
-              { icon: Sun, title: 'Zero Electricity Bills', desc: 'Net-metered solar plants can reduce your KSEB bill to ₹0. Pay for the system once, generate free power for 25 years.' },
-              { icon: Leaf, title: 'Clean & Sustainable', desc: 'Every kW of solar installed avoids hundreds of kg of CO₂ per year. Power your home without harming the planet.' },
-              { icon: TrendingUp, title: 'Fast ROI — 3 to 5 Years', desc: 'With government subsidies and KSEB net metering, most systems pay for themselves in under 5 years.' },
-            ].map((b, i) => {
-              const Icon = b.icon;
+              { id: 'lithium-ups', icon: Cpu, title: 'Lithium UPS', sub: 'Pure Sine Wave', to: '/power/lithium-ups' },
+              { id: 'home-ups', icon: Zap, title: 'Home UPS', sub: 'Zero Interruption', to: '/power/home-ups' },
+              { id: 'inverters', icon: TrendingUp, title: 'Inverters', sub: 'All Capacities', to: '/power/inverters' },
+              { id: 'online-ups', icon: ShieldCheck, title: 'Online UPS', sub: 'IT & Server', to: '/power/online-ups' },
+              { id: 'lithium-batteries', icon: Layers, title: 'Lithium Batteries', sub: '4000+ Cycles', to: '/power/lithium-batteries' },
+              { id: 'tubular-batteries', icon: Waves, title: 'Tubular Batteries', sub: 'Lead-Acid Value', to: '/power/tubular-batteries' },
+            ].map((p) => {
+              const Icon = p.icon;
               return (
-                <div key={i} className="group p-6 premium-cream-card rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-4">
-                  <div className="w-12 h-12 bg-yellow-400/10 border border-yellow-400/20 rounded-xl flex items-center justify-center transition-colors group-hover:bg-yellow-400/20">
-                    <Icon className="w-6 h-6 text-yellow-600" />
+                <Link
+                  key={p.id}
+                  to={p.to}
+                  className="group p-5 premium-cream-card rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-3 hover:-translate-y-1"
+                >
+                  <div className="w-10 h-10 bg-yellow-400/10 rounded-xl flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-yellow-600 group-hover:text-yellow-500 transition-colors" />
                   </div>
                   <div>
-                    <h3 className="text-black font-thin text-base uppercase tracking-tight leading-tight mb-2">{b.title}</h3>
-                    <p className="text-zinc-500 text-sm leading-relaxed font-light">{b.desc}</p>
+                    <h4 className="font-black text-sm uppercase tracking-tight text-black leading-tight">{p.title}</h4>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-0.5 block">{p.sub}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-yellow-600 mt-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                    Solar Solutions <ArrowRight className="w-3 h-3" />
+                  <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-yellow-600 mt-auto">
+                    View <ArrowRight className="w-2.5 h-2.5" />
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -152,7 +162,6 @@ const Home: React.FC = () => {
               All Solar Products <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
-          {/* Section Banner Image — Solar */}
           <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 420px)' }}>
             <img
               src="/images/home_solar_banner.jpg"
@@ -196,61 +205,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Power Backup Section */}
-      <section id="backup" className="py-24 md:py-32 bg-white text-black" data-nav-light>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-6">
-            <div className="reveal">
-              <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Backup</span>
-              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] uppercase leading-[0.9]">Backup <br />Systems.</h2>
-            </div>
-            <Link to="/power" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:gap-3 transition-all reveal">
-              All Power Products <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-          {/* Section Banner Image — Power Backup */}
-          <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 380px)' }}>
-            <img
-              src="/images/home_backup_banner.jpg"
-              alt="Modern backup power systems"
-              className="w-full h-full object-cover object-[center_30%]"
-            />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 reveal">
-            {[
-              { id: 'lithium-ups', icon: Cpu, title: 'Lithium UPS', sub: 'Pure Sine Wave', to: '/power/lithium-ups' },
-              { id: 'home-ups', icon: Zap, title: 'Home UPS', sub: 'Zero Interruption', to: '/power/home-ups' },
-              { id: 'inverters', icon: TrendingUp, title: 'Inverters', sub: 'All Capacities', to: '/power/inverters' },
-              { id: 'online-ups', icon: ShieldCheck, title: 'Online UPS', sub: 'IT & Server', to: '/power/online-ups' },
-              { id: 'lithium-batteries', icon: Layers, title: 'Lithium Batteries', sub: '4000+ Cycles', to: '/power/lithium-batteries' },
-              { id: 'tubular-batteries', icon: Waves, title: 'Tubular Batteries', sub: 'Lead-Acid Value', to: '/power/tubular-batteries' },
-            ].map((p) => {
-              const Icon = p.icon;
-              return (
-                <Link
-                  key={p.id}
-                  to={p.to}
-                  className="group p-5 premium-cream-card rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-3 hover:-translate-y-1"
-                >
-                  <div className="w-10 h-10 bg-yellow-400/10 rounded-xl flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-yellow-600 group-hover:text-yellow-500 transition-colors" />
-                  </div>
-                  <div>
-                    <h4 className="font-black text-sm uppercase tracking-tight text-black leading-tight">{p.title}</h4>
-                    <span className="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-0.5 block">{p.sub}</span>
-                  </div>
-                  <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-yellow-600 mt-auto">
-                    View <ArrowRight className="w-2.5 h-2.5" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-
-
       {/* Full-Bleed Nature Photo Background — Why Spectrum */}
       <section className="relative py-28 md:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -274,6 +228,46 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* The Solar Advantage (Why Go Solar) */}
+      <section className="bg-white pt-20 md:pt-28 pb-12 overflow-hidden text-black" data-nav-light>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="reveal mb-8">
+            <span className="text-yellow-600 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">The Solar Advantage</span>
+            <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] text-black uppercase leading-[0.9]">Why <br />Go Solar?</h2>
+          </div>
+          <div className="reveal rounded-[2rem] overflow-hidden" style={{ height: 'clamp(480px, 80vw, 520px)' }}>
+            <img
+              src="/images/home_why_solar.jpg"
+              alt="Solar panels powering a beautiful home"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-12 reveal">
+            {[
+              { icon: Sun, title: 'Zero Electricity Bills', desc: 'Net-metered solar plants can reduce your KSEB bill to ₹0. Pay for the system once, generate free power for 25 years.' },
+              { icon: Leaf, title: 'Clean & Sustainable', desc: 'Every kW of solar installed avoids hundreds of kg of CO₂ per year. Power your home without harming the planet.' },
+              { icon: TrendingUp, title: 'Fast ROI — 3 to 5 Years', desc: 'With government subsidies and KSEB net metering, most systems pay for themselves in under 5 years.' },
+            ].map((b, i) => {
+              const Icon = b.icon;
+              return (
+                <div key={i} className="group p-6 premium-cream-card rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-4">
+                  <div className="w-12 h-12 bg-yellow-400/10 border border-yellow-400/20 rounded-xl flex items-center justify-center transition-colors group-hover:bg-yellow-400/20">
+                    <Icon className="w-6 h-6 text-yellow-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-black font-thin text-base uppercase tracking-tight leading-tight mb-2">{b.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed font-light">{b.desc}</p>
+                  </div>
+                  <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-yellow-600 mt-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                    Solar Solutions <ArrowRight className="w-3 h-3" />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* About & Testimonials */}
       <section id="about" className="py-20 md:py-32 bg-zinc-950 text-white border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6">
@@ -284,7 +278,6 @@ const Home: React.FC = () => {
             </h2>
           </div>
 
-          {/* Heritage Banner Image */}
           <div className="reveal rounded-[2rem] overflow-hidden mb-16" style={{ height: 'clamp(480px, 80vw, 480px)' }}>
             <img
               src="/images/home_heritage_banner.jpg"
@@ -294,7 +287,6 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left: Heritage text */}
             <div className="reveal">
               <p className="text-zinc-400 mb-8 text-base md:text-lg font-light leading-relaxed max-w-lg">
                 Specializing in power electronics and solar system integration, we prioritize a customer-centric approach that drives our high referral rates.
@@ -306,14 +298,11 @@ const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Right: Testimonial Carousel */}
             <div className="reveal" style={{ transitionDelay: '150ms' }}>
               <HomeTestimonialCarousel />
             </div>
           </div>
-        </div>
       </section>
-
 
       {/* Contact CTA — Solar Image Background */}
       <section id="contact" className="relative py-32 text-center overflow-hidden">
