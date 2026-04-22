@@ -302,6 +302,7 @@ const Home: React.FC = () => {
               <HomeTestimonialCarousel />
             </div>
           </div>
+        </div>
       </section>
 
       {/* Contact CTA — Solar Image Background */}
