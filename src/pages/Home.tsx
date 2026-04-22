@@ -98,15 +98,67 @@ const Home: React.FC = () => {
 
       <StatsBar />
 
-      {/* Power Backup Section */}
-      <section id="backup" className="py-24 md:py-32 bg-white text-black" data-nav-light>
+      {/* Core Solar Solutions Section */}
+      <section id="solutions" className="py-24 md:py-32 bg-white text-black" data-nav-light>
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-6">
             <div className="reveal">
-              <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Backup</span>
+              <span className="text-yellow-600 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Solar Solutions</span>
+              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] text-black uppercase leading-[0.9]">Solar <br />Systems.</h2>
+            </div>
+            <Link to="/solar" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:gap-3 transition-all reveal">
+              All Solar Products <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+          <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 420px)' }}>
+            <img
+              src="/images/home_solar_banner.jpg"
+              alt="Solar panels on modern home"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 reveal">
+            {[
+              { id: 'on-grid', icon: Sun, title: 'On-Grid Solar', sub: 'Grid-Tied', desc: 'Zero electricity bills with net metering. Fastest ROI. Best for homes & offices.', badge: 'Most Popular', color: '#ca8a04', to: '/solar/on-grid' },
+              { id: 'hybrid', icon: Zap, title: 'Hybrid Solar', sub: 'Grid + Battery', desc: 'Day & night power. Solar generation + lithium backup for seamless reliability.', badge: null, color: '#ca8a04', to: '/solar/hybrid' },
+              { id: 'off-grid', icon: Leaf, title: 'Lithium Off-Grid', sub: 'Off-Grid', desc: 'Complete energy independence. For remote sites, islands & hospitals.', badge: null, color: '#ca8a04', to: '/solar/off-grid' },
+              { id: 'water-heaters', icon: Droplets, title: 'Solar Water Heaters', sub: 'Thermal Savings', desc: 'High-efficiency vacuum tube systems. 100L to 2000L for any scale.', badge: null, color: '#ca8a04', to: '/solar/water-heaters' },
+            ].map((p) => {
+              const Icon = p.icon;
+              return (
+                <Link
+                  key={p.id}
+                  to={p.to}
+                  className="group relative p-6 md:p-8 premium-cream-card rounded-[2rem] hover:border-yellow-400/50 transition-all duration-400 flex flex-col justify-between min-h-[240px] overflow-hidden hover:shadow-xl"
+                >
+                  <div>
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300" style={{ backgroundColor: p.color + '15', border: `1px solid ${p.color}30` }}>
+                      <Icon className="w-5 h-5" style={{ color: p.color }} />
+                    </div>
+                    {p.badge && <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full mb-3 inline-block" style={{ color: p.color, backgroundColor: p.color + '15', border: `1px solid ${p.color}30` }}>{p.badge}</span>}
+                    <h3 className="text-lg font-light text-black uppercase tracking-tight mb-2">{p.title}</h3>
+                    <span className="text-[9px] font-black uppercase tracking-widest mb-3 block" style={{ color: p.color }}>{p.sub}</span>
+                    <p className="text-zinc-500 text-xs leading-relaxed">{p.desc}</p>
+                  </div>
+                  <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest mt-6 transition-all group-hover:gap-2" style={{ color: p.color }}>
+                    Learn More <ArrowRight className="w-3 h-3" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Power Backup Section */}
+      <section id="backup" className="py-24 md:py-32 bg-zinc-950 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-6">
+            <div className="reveal">
+              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Backup</span>
               <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] uppercase leading-[0.9]">Backup <br />Systems.</h2>
             </div>
-            <Link to="/power" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:gap-3 transition-all reveal">
+            <Link to="/power" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-400 hover:gap-3 transition-all reveal">
               All Power Products <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -131,72 +183,17 @@ const Home: React.FC = () => {
                 <Link
                   key={p.id}
                   to={p.to}
-                  className="group p-5 premium-cream-card rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-3 hover:-translate-y-1"
+                  className="group p-5 bg-zinc-900/40 border border-white/5 rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-3 hover:-translate-y-1 hover:bg-zinc-900/60"
                 >
                   <div className="w-10 h-10 bg-yellow-400/10 rounded-xl flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-yellow-600 group-hover:text-yellow-500 transition-colors" />
+                    <Icon className="w-5 h-5 text-yellow-400 group-hover:text-yellow-300 transition-colors" />
                   </div>
                   <div>
-                    <h4 className="font-black text-sm uppercase tracking-tight text-black leading-tight">{p.title}</h4>
-                    <span className="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-0.5 block">{p.sub}</span>
+                    <h4 className="font-black text-sm uppercase tracking-tight text-white leading-tight">{p.title}</h4>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 mt-0.5 block">{p.sub}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-yellow-600 mt-auto">
+                  <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-yellow-400 mt-auto">
                     View <ArrowRight className="w-2.5 h-2.5" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Solar Solutions Section */}
-      <section id="solutions" className="py-24 md:py-32 bg-zinc-950">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-6">
-            <div className="reveal">
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Solar Solutions</span>
-              <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] text-white uppercase leading-[0.9]">Solar <br />Systems.</h2>
-            </div>
-            <Link to="/solar" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-400 hover:gap-3 transition-all reveal">
-              All Solar Products <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-          <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 420px)' }}>
-            <img
-              src="/images/home_solar_banner.jpg"
-              alt="Solar panels on modern home"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 reveal">
-            {[
-              { id: 'on-grid', icon: Sun, title: 'On-Grid Solar', sub: 'Grid-Tied', desc: 'Zero electricity bills with net metering. Fastest ROI. Best for homes & offices.', badge: 'Most Popular', color: '#facc15', to: '/solar/on-grid' },
-              { id: 'hybrid', icon: Zap, title: 'Hybrid Solar', sub: 'Grid + Battery', desc: 'Day & night power. Solar generation + lithium backup for seamless reliability.', badge: null, color: '#facc15', to: '/solar/hybrid' },
-              { id: 'off-grid', icon: Leaf, title: 'Lithium Off-Grid', sub: 'Off-Grid', desc: 'Complete energy independence. For remote sites, islands & hospitals.', badge: null, color: '#facc15', to: '/solar/off-grid' },
-              { id: 'water-heaters', icon: Droplets, title: 'Solar Water Heaters', sub: 'Thermal Savings', desc: 'High-efficiency vacuum tube systems. 100L to 2000L for any scale.', badge: null, color: '#facc15', to: '/solar/water-heaters' },
-            ].map((p) => {
-              const Icon = p.icon;
-              return (
-                <Link
-                  key={p.id}
-                  to={p.to}
-                  className="group relative p-6 md:p-8 bg-zinc-900/50 border border-zinc-800 rounded-[2rem] hover:border-opacity-60 transition-all duration-400 flex flex-col justify-between min-h-[240px] overflow-hidden hover:bg-zinc-900"
-                  style={{ borderColor: 'rgba(255,255,255,0.08)' }}
-                  onMouseEnter={e => (e.currentTarget.style.borderColor = p.color + '60')}
-                  onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
-                >
-                  <div>
-                    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300" style={{ backgroundColor: p.color + '15', border: `1px solid ${p.color}30` }}>
-                      <Icon className="w-5 h-5" style={{ color: p.color }} />
-                    </div>
-                    {p.badge && <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full mb-3 inline-block" style={{ color: p.color, backgroundColor: p.color + '15', border: `1px solid ${p.color}30` }}>{p.badge}</span>}
-                    <h3 className="text-lg font-light text-white uppercase tracking-tight mb-2">{p.title}</h3>
-                    <span className="text-[9px] font-black uppercase tracking-widest mb-3 block" style={{ color: p.color }}>{p.sub}</span>
-                    <p className="text-zinc-500 text-xs leading-relaxed">{p.desc}</p>
-                  </div>
-                  <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-widest mt-6 transition-all group-hover:gap-2" style={{ color: p.color }}>
-                    Learn More <ArrowRight className="w-3 h-3" />
                   </div>
                 </Link>
               );

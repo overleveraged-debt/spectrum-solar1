@@ -77,7 +77,7 @@ const Blog: React.FC = () => {
         <div className="max-w-7xl mx-auto reveal flex items-center justify-between">
           <div>
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-3 block">Latest from the Field</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-[-0.04em] leading-[0.9]">Our Vlog.</h2>
+            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-[-0.04em] leading-[0.9]">Our Blog.</h2>
           </div>
           <div className="hidden md:flex items-center gap-2 text-zinc-600 text-[10px] font-black uppercase tracking-widest">
             <BookOpen className="w-4 h-4" />

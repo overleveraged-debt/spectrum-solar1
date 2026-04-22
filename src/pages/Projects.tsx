@@ -65,7 +65,7 @@ const Projects: React.FC = () => {
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/projects-hero.jpg"
+            src="/images/projects pg.jpeg"
             className="w-full h-full object-cover scale-[1.05]"
             alt="Solar Projects Portfolio"
           />

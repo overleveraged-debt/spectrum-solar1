@@ -72,7 +72,7 @@ const About: React.FC = () => {
             </div>
             <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Heritage</span>
             <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight italic uppercase text-white leading-tight">
-              Built from the ground up in Kerala.
+              Built from the ground up in India.
             </h2>
             <p className="text-zinc-400 text-lg leading-relaxed mb-8">
               Founded in 2001, Spectrum Powers has been at the forefront of Kerala's energy revolution. We've grown from a local power electronics firm to a state-wide leader in sustainable energy — serving everything from humble households to 100KW industrial megaprojects.
@@ -187,7 +187,7 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto bg-yellow-400 text-black rounded-[2.5rem] md:rounded-[3rem] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 reveal">
           <div className="text-center md:text-left">
             <h2 className="text-4xl md:text-6xl font-thin tracking-tight leading-none italic uppercase mb-4">
-              18+ Centers <br />Across Kerala.
+              18+ Centers <br />Across India.
             </h2>
             <p className="text-black/70 text-base max-w-md font-bold">
               From Kannur to Thiruvananthapuram — our network ensures you're never far from expert power support.
