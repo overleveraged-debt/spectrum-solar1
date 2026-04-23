@@ -3,13 +3,14 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Award, Shield, Users, Zap, Clock, Globe, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MapSection from '../components/MapSection';
+import SEO from '../components/SEO';
 
 const About: React.FC = () => {
   useScrollReveal();
 
   const stats = [
     { label: 'Years of Excellence', value: '25+', icon: <Clock className="w-6 h-6" />, sub: 'Since 2000' },
-    { label: 'Satisfied Customers', value: '40K+', icon: <Users className="w-6 h-6" />, sub: 'Across Kerala' },
+    { label: 'Satisfied Customers', value: '40K+', icon: <Users className="w-6 h-6" />, sub: 'Across India' },
     { label: 'Solar Projects', value: '6,145+', icon: <Zap className="w-6 h-6" />, sub: 'Installed & Running' },
     { label: 'Service Engineers', value: '60+', icon: <Shield className="w-6 h-6" />, sub: 'Certified Experts' },
   ];
@@ -22,6 +23,10 @@ const About: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden">
+      <SEO 
+        title="About Spectrum Solar | India's Leading Solar Solutions Provider"
+        description="With 25+ years of excellence, 40K+ satisfied customers, and 6,145+ solar projects, Spectrum Solar is India's trusted name in renewable energy."
+      />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">

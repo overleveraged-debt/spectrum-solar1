@@ -3,6 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useLocation } from 'react-router-dom';
 import { Sun, Zap, Thermometer, CheckCircle2, ArrowRight, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 interface Product {
   id: string;
@@ -133,8 +134,32 @@ const SolarSolutions: React.FC = () => {
     }
   }, [hash]);
 
+  const categorySchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": products.map((p, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.title,
+        "description": p.description,
+        "category": "Solar Energy Equipment",
+        "brand": {
+          "@type": "Brand",
+          "name": "Spectrum Solar"
+        }
+      }
+    }))
+  };
+
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
+      <SEO 
+        title="Solar Solutions for Homes & Businesses | Spectrum Solar India"
+        description="Discover top-tier On-Grid, Hybrid, and Off-Grid solar systems. Engineered for India's diverse climate with 25-year warranties."
+        schema={categorySchema}
+      />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
@@ -291,7 +316,7 @@ const SolarSolutions: React.FC = () => {
                             ))}
                           </div>
                           <Link
-                            to="/contact"
+                            to="/contact?type=solar"
                             className="inline-flex items-center gap-2 mt-6 font-black text-[10px] uppercase tracking-[0.3em] transition-all group/cta"
                             style={{ color: product.accentColor }}
                             onClick={(e) => e.stopPropagation()}
@@ -341,7 +366,7 @@ const SolarSolutions: React.FC = () => {
             </p>
           </div>
           <Link
-            to="/contact"
+            to="/contact?type=solar"
             className="w-full md:w-auto bg-yellow-400 text-black px-12 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform whitespace-nowrap shadow-xl text-center"
           >
             Get Free Site Audit

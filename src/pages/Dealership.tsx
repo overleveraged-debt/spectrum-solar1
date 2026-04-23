@@ -2,6 +2,7 @@ import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Briefcase, CheckCircle2, ArrowRight, BarChart3, Users, GraduationCap, Megaphone, Store } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const whyItems = [
   { number: '01', title: 'High-Demand Product Range', desc: 'Dealers get access to top-quality solar panels, inverters, batteries, hybrid & off-grid systems, solar water heaters, and UPS — all from a trusted brand.', icon: Store },
@@ -33,8 +34,37 @@ const benefits = [
 
 const Dealership: React.FC = () => {
   useScrollReveal();
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why become a Spectrum Solar Dealer in India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dealers get access to high-demand solar products, strong profit margins, and full marketing support from a recognized national brand."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What products can a dealer sell?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Solar Panels, Solar Inverters, Lithium & Lead Acid Batteries, Hybrid & Off-Grid Systems, Solar Water Heaters, and UPS."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
+      <SEO 
+        title="Solar Dealership Network India | Partner with Spectrum Solar"
+        description="Become an authorized solar dealer in India. High-demand products, strong margins, and full marketing support from Spectrum Solar."
+        schema={faqSchema}
+      />
 
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
@@ -54,7 +84,7 @@ const Dealership: React.FC = () => {
             Become a Certified Dealer of Spectrum Solar Products
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
+            <Link to="/contact?type=dealership" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
               <ArrowRight className="w-5 h-5" /> Become a Dealer
             </Link>
           </div>
@@ -196,7 +226,7 @@ const Dealership: React.FC = () => {
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full md:w-auto">
-                <Link to="/contact" className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm">
+                <Link to="/contact?type=dealership" className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm">
                   Register Now <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link to="/opportunities" className="bg-white/30 text-black px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:bg-white/40 transition-all flex items-center justify-center gap-2 border border-black/10 text-sm">

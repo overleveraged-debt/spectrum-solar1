@@ -2,6 +2,7 @@ import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Briefcase, MapPin, Users, Rocket, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const opportunities = [
   {
@@ -86,6 +87,10 @@ const Opportunities: React.FC = () => {
   useScrollReveal();
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
+      <SEO 
+        title="Business Opportunities & Careers | Spectrum Solar India"
+        description="Grow with India's fastest-growing solar network. Explore our Franchise, Dealership, Freelance, and Career opportunities nationwide."
+      />
       {/* Hero */}
       <section className="relative h-[75vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">

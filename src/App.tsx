@@ -30,6 +30,9 @@ const Freelance = lazy(() => import('./pages/Freelance'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Support = lazy(() => import('./pages/Support'));
 const Careers = lazy(() => import('./pages/Careers'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsConditions = lazy(() => import('./pages/TermsConditions'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Simple loading fallback
 const PageLoader = () => (
@@ -74,6 +77,10 @@ function App() {
             <Route path="gallery" element={<Gallery />} />
             <Route path="support" element={<Support />} />
             <Route path="careers" element={<Careers />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="terms-conditions" element={<TermsConditions />} />
+            {/* Catch-all 404 */}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Suspense>

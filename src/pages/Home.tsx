@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import StatsBar from '../components/StatsBar';
 import LoadingScreen from '../components/LoadingScreen';
+import SEO from '../components/SEO';
 
 import { allTestimonials } from '../data/testimonials';
 
@@ -74,8 +75,28 @@ const Home: React.FC = () => {
   useScrollReveal();
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
+  // Organization Schema for Nationwide presence
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Spectrum Solar",
+    "url": "https://spectrumsolar.in",
+    "logo": "https://spectrumsolar.in/logo.png",
+    "description": "India's trusted leader in solar energy and power backup solutions, serving nationwide.",
+    "foundingDate": "2000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN"
+    }
+  };
+
   return (
     <div className={`flex flex-col bg-zinc-950 noise-bg overflow-x-hidden ${!isVideoLoaded ? 'h-screen overflow-hidden' : ''}`}>
+      <SEO 
+        title="Spectrum Solar | India's Trusted Solar Energy & Power Backup Brand"
+        description="Empowering India with sustainable energy. 25+ years of excellence in solar installations, power backups, and nationwide franchise opportunities."
+        schema={orgSchema}
+      />
       <LoadingScreen isVisible={!isVideoLoaded} />
       <Hero onLoaded={() => setIsVideoLoaded(true)} />
       

@@ -2,10 +2,11 @@ import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Users, CheckCircle2, ArrowRight, Banknote, MapPin, Zap, UserCheck, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const howItWorks = [
   { step: '01', title: 'Join as a Freelance Partner', desc: "Register with us for free — no investment, no paperwork hassle. Just fill out the form and we'll onboard you within 24 hours." },
-  { step: '02', title: 'Refer Customers', desc: 'Refer customers who need solar installation, power backup solutions, or energy audit services anywhere in Kerala.' },
+  { step: '02', title: 'Refer Customers', desc: 'Refer customers who need solar installation, power backup solutions, or energy audit services anywhere in India.' },
   { step: '03', title: 'We Handle Everything', desc: "Our expert team handles consultation, site survey, installation, and after-sales service — you don't have to do a thing." },
   { step: '04', title: 'Earn Your Commission', desc: 'You earn an attractive commission for every successful conversion. Quick payouts, no delays.' },
 ];
@@ -22,11 +23,11 @@ const whoCanJoin = [
   { label: 'Business Networking Groups', icon: Users },
   { label: 'Real Estate Agents', icon: MapPin },
   { label: 'Electricians & Technicians', icon: Zap },
-  { label: 'Anyone with Contacts in Kerala', icon: Users },
+  { label: 'Anyone with a Network in India', icon: Users },
 ];
 
 const benefits = [
-  'No investment required', 'Work from anywhere in Kerala',
+  'No investment required', 'Work from anywhere in India',
   'Unlimited earning potential', 'Quick payouts on every deal',
   'Training & support provided', 'No experience required',
   'Flexible working hours', 'Join a 24+ year trusted brand',
@@ -34,8 +35,37 @@ const benefits = [
 
 const Freelance: React.FC = () => {
   useScrollReveal();
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the Spectrum Solar Freelance Partner program work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Join for free, refer customers across India for solar installations, and earn an attractive commission. We handle all the technical work and support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who can join the freelance solar program?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Students, freelancers, real estate agents, electricians, and anyone with a network in India can join with zero investment."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
+      <SEO 
+        title="Freelance Solar Partner Program India | Refer & Earn"
+        description="Earn attractive commissions with zero investment. Refer solar customers across India and partner with Spectrum Solar's trusted network."
+        schema={faqSchema}
+      />
 
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
@@ -55,7 +85,7 @@ const Freelance: React.FC = () => {
             No investment. No experience required. Just refer &amp; earn.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
+            <Link to="/contact?type=freelance" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
               <ArrowRight className="w-5 h-5" /> Join Free – Start Earning
             </Link>
           </div>
@@ -182,7 +212,7 @@ const Freelance: React.FC = () => {
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full md:w-auto">
-                <Link to="/contact" className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm">
+                <Link to="/contact?type=freelance" className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm">
                   Join Now – Free <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link to="/opportunities" className="bg-white/30 text-black px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:bg-white/40 transition-all flex items-center justify-center gap-2 border border-black/10 text-sm">

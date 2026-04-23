@@ -1,10 +1,16 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Phone, Mail, MessageSquare, Send, Clock, ArrowRight, Building2, MapPin } from 'lucide-react';
+import { Phone, Mail, MessageSquare, Clock, ArrowRight, Building2, MapPin } from 'lucide-react';
 import MapSection from '../components/MapSection';
+import SEO from '../components/SEO';
+import SmartForm from '../components/SmartForm';
+import type { InquiryType } from '../components/SmartForm';
 
 const Contact: React.FC = () => {
   useScrollReveal();
+  const [searchParams] = useSearchParams();
+  const initialType = (searchParams.get('type') as InquiryType) || 'general';
 
   const offices = [
     { city: "Kannur (HQ)", address: "Spectrum Tower, Near KSEB, Kannur 670001", icon: Building2 },
@@ -13,8 +19,24 @@ const Contact: React.FC = () => {
     { city: "Trivandrum", address: "Energy Centre, Vazhuthacaud, Trivandrum 695010", icon: MapPin },
   ];
 
+  const seoData = {
+    general: { title: "Contact Us", desc: "Get in touch with Spectrum Solar for expert consultation and support across India." },
+    solar: { title: "Get a Solar Quote", desc: "Request a free solar site audit and customized quote for your home or business in India." },
+    backup: { title: "Power Backup Consultation", desc: "Talk to our engineers about high-performance UPS and Lithium battery solutions." },
+    franchise: { title: "Franchise Application", desc: "Start your journey as a Spectrum Solar franchise partner. Apply today for exclusive territory rights." },
+    dealership: { title: "Become a Dealer", desc: "Register to become an authorized dealer of Spectrum Solar products nationwide." },
+    freelance: { title: "Freelance Partner Program", desc: "Join our referral network and earn commissions on solar projects across India." },
+    careers: { title: "Join Our Team", desc: "Apply for exciting career opportunities in solar engineering, sales, and service." }
+  };
+
+  const currentSeo = seoData[initialType] || seoData.general;
+
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
+      <SEO 
+        title={`${currentSeo.title} | Spectrum Solar India`}
+        description={currentSeo.desc}
+      />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
@@ -63,69 +85,13 @@ const Contact: React.FC = () => {
 
           {/* Form */}
           <div className="lg:col-span-7 reveal">
-            <div className="premium-cream-card p-8 md:p-12 rounded-[3.5rem] border-2 border-transparent hover:border-black transition-all duration-500 shadow-2xl group/form">
-              <div className="mb-10">
-                <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Send us a message</span>
-                <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight leading-[0.9] text-black">
-                  Let's talk <br />about your project.
-                </h2>
-              </div>
-
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Full Name</label>
-                    <input
-                      type="text"
-                      placeholder="John Doe"
-                      className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-black transition-colors text-sm"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Phone Number</label>
-                    <input
-                      type="tel"
-                      placeholder="+91 9876 543 210"
-                      className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-black transition-colors text-sm"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Email Address</label>
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-black transition-colors text-sm"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">Inquiry Type</label>
-                  <select className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-black transition-colors appearance-none cursor-pointer text-sm">
-                    <option>Solar System Installation</option>
-                    <option>Power Backup & UPS</option>
-                    <option>Site Audit Request</option>
-                    <option>Service & Maintenance</option>
-                    <option>Franchise / Dealership</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">How can we help?</label>
-                  <textarea
-                    rows={5}
-                    placeholder="Describe your project requirements..."
-                    className="w-full bg-white border border-zinc-200 rounded-[1.5rem] px-7 py-5 text-black placeholder:text-zinc-300 focus:outline-none focus:border-black transition-colors resize-none text-sm"
-                  />
-                </div>
-
-                <button className="w-full bg-black text-white font-black uppercase tracking-[0.2em] py-5 rounded-full hover:bg-yellow-400 hover:text-black active:scale-[0.98] transition-all flex items-center justify-center gap-4 shadow-xl group">
-                  Send Message
-                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </form>
+            <div className="mb-10">
+              <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Send us a message</span>
+              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight leading-[0.9] text-black">
+                Let's talk <br />about your project.
+              </h2>
             </div>
+            <SmartForm initialType={initialType} />
           </div>
 
           {/* Sidebar */}

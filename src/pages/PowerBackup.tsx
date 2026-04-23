@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useLocation, Link } from 'react-router-dom';
 import { Battery, Zap, Server, BatteryCharging, ArrowRight, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 interface Product {
   id: string;
@@ -180,8 +181,32 @@ const PowerBackup: React.FC = () => {
     }
   }, [hash]);
 
+  const categorySchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": products.map((p, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Product",
+        "name": p.title,
+        "description": p.description,
+        "category": "Power Backup Equipment",
+        "brand": {
+          "@type": "Brand",
+          "name": "Spectrum Solar"
+        }
+      }
+    }))
+  };
+
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
+      <SEO 
+        title="Power Backup Solutions | UPS, Inverters & Batteries India"
+        description="Never lose power again. Explore our advanced Lithium UPS, Home Inverters, and Tubular Batteries designed for Indian power conditions."
+        schema={categorySchema}
+      />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
@@ -334,7 +359,7 @@ const PowerBackup: React.FC = () => {
                             ))}
                           </div>
                           <Link
-                            to="/contact"
+                            to="/contact?type=backup"
                             className="inline-flex items-center gap-2 mt-6 font-black text-[10px] uppercase tracking-[0.3em] transition-all group/cta"
                             style={{ color: product.accentColor }}
                             onClick={(e) => e.stopPropagation()}

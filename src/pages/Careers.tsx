@@ -5,6 +5,7 @@ import {
   ChevronDown, CheckCircle2, Zap, HeadphonesIcon, Settings, PhoneCall
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const faqs = [
   { q: 'What roles are available?', a: 'We have openings in Sales, Engineering, Operations, and Customer Support. Check our open positions below or reach out through the enquiry form.' },
@@ -12,29 +13,47 @@ const faqs = [
   { q: 'Do you hire freshers?', a: 'Absolutely. We welcome freshers across all departments and provide full onboarding and on-the-job training to help you grow quickly.' },
   { q: 'What is the work culture like?', a: 'Collaborative and growth-focused. We believe in open communication, continuous learning, and giving our team the tools they need to succeed.' },
   { q: 'Are there growth opportunities?', a: 'Yes. Many of our senior team members started in junior roles. We actively promote from within and invest in the professional development of our people.' },
-  { q: 'Why join Spectrum Solar?', a: "You'll be building a career in one of India's fastest-growing industries, backed by a 24+ year brand with a strong reputation in Kerala's renewable energy market." },
+  { q: 'Why join Spectrum Solar?', a: "You'll be building a career in one of India's fastest-growing industries, backed by a 24+ year brand with a strong national reputation in renewable energy." },
 ];
 
 const openPositions = [
-  { title: 'Sales Executive', type: 'Full Time', location: 'Kannur / Kochi / Calicut', desc: 'Drive customer acquisition for solar and power backup solutions across Kerala. Strong communication skills required.', icon: TrendingUp },
-  { title: 'Site Engineer', type: 'Full Time', location: 'Pan Kerala', desc: 'Design, install, and commission solar energy systems at residential and commercial sites. Electrical engineering background preferred.', icon: Settings },
-  { title: 'Operations Executive', type: 'Full Time', location: 'Kannur (HQ)', desc: 'Manage day-to-day operations, coordinate with field teams, and handle project tracking and documentation.', icon: Briefcase },
-  { title: 'Customer Support', type: 'Full Time', location: 'Kannur (HQ)', desc: 'Handle customer queries, coordinate service visits, and ensure post-installation satisfaction for our growing client base.', icon: HeadphonesIcon },
+  { title: 'Sales Executive', type: 'Full Time', location: 'Pan India', desc: 'Drive customer acquisition for solar and power backup solutions across India. Strong communication skills required.', icon: TrendingUp },
+  { title: 'Site Engineer', type: 'Full Time', location: 'Pan India', desc: 'Design, install, and commission solar energy systems at residential and commercial sites. Electrical engineering background preferred.', icon: Settings },
+  { title: 'Operations Executive', type: 'Full Time', location: 'Remote / HQ', desc: 'Manage day-to-day operations, coordinate with field teams, and handle project tracking and documentation.', icon: Briefcase },
+  { title: 'Customer Support', type: 'Full Time', location: 'Remote / HQ', desc: 'Handle customer queries, coordinate service visits, and ensure post-installation satisfaction for our growing client base.', icon: HeadphonesIcon },
 ];
 
 const whyItems = [
   { icon: TrendingUp, title: 'Growth Opportunities', desc: 'Clear career progression paths and internal promotions. We invest in your professional development from day one.' },
   { icon: BookOpen, title: 'Learning Environment', desc: 'Regular training sessions, industry workshops, and access to the latest solar technology keep you ahead of the curve.' },
-  { icon: Zap, title: 'Industry Exposure', desc: "Work on some of Kerala's most exciting solar and energy storage projects — from residential rooftops to large commercial installations." },
-  { icon: Heart, title: 'Meaningful Work', desc: "Every project you work on contributes to a greener Kerala. Build a career that you're proud of — one that makes a real difference." },
+  { icon: Zap, title: 'Industry Exposure', desc: "Work on some of India's most exciting solar and energy storage projects — from residential rooftops to large commercial installations." },
+  { icon: Heart, title: 'Meaningful Work', desc: "Every project you work on contributes to a greener India. Build a career that you're proud of — one that makes a real difference." },
 ];
 
 const Careers: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
+
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
+      <SEO 
+        title="Careers at Spectrum Solar | Join the Green Energy Revolution in India"
+        description="Build your career with India's leading solar energy brand. We are hiring for Sales, Engineering, Operations, and more. Apply today!"
+        schema={faqSchema}
+      />
 
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
@@ -53,7 +72,7 @@ const Careers: React.FC = () => {
           <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
             Be part of a team powering a sustainable future.
           </p>
-          <Link to="/contact" className="inline-flex items-center gap-2 bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
+          <Link to="/contact?type=careers" className="inline-flex items-center gap-2 bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
             Apply Now <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -92,7 +111,7 @@ const Careers: React.FC = () => {
               Join us and contribute to a greener, more sustainable future — while building a career you're proud of.
             </p>
             <Link
-              to="/contact"
+              to="/contact?type=careers"
               className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-black uppercase tracking-widest hover:bg-yellow-400 hover:text-black transition-all text-sm shadow-xl"
             >
               View Open Positions <ArrowRight className="w-4 h-4" />
@@ -220,7 +239,7 @@ const Careers: React.FC = () => {
                     <p className="text-zinc-500 text-sm leading-relaxed">{pos.desc}</p>
                   </div>
                   <Link
-                    to="/contact"
+                    to="/contact?type=careers"
                     className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-black uppercase tracking-widest text-xs hover:bg-yellow-400 hover:text-black transition-all flex-shrink-0 shadow-lg"
                   >
                     Apply <ArrowRight className="w-3 h-3" />
@@ -279,7 +298,7 @@ const Careers: React.FC = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full md:w-auto">
                 <Link
-                  to="/contact"
+                  to="/contact?type=careers"
                   className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm"
                 >
                   Apply Now <ArrowRight className="w-4 h-4" />

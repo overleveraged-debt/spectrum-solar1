@@ -2,6 +2,7 @@ import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { TrendingUp, CheckCircle2, ArrowRight, Star, MapPin, Zap, BarChart3, Headphones } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const whyItems = [
   { number: '01', title: "Kerala's Fast-Growing Solar Market", desc: 'Solar adoption is rising across homes, businesses, and industries — creating massive demand for premium solar solutions across every district.', icon: TrendingUp },
@@ -25,8 +26,37 @@ const benefits = [
 
 const Franchise: React.FC = () => {
   useScrollReveal();
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why start a Spectrum Solar Franchise in India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Spectrum Solar offers an exciting Franchise Opportunity with decades of trust, high growth model, full training, and a nationwide presence."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What products are included in the franchise?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On-Grid Solar Systems, Hybrid Solar Systems, Lithium Off-Grid Systems, Solar Water Heaters, Lithium LFP & Lead Acid Batteries, and UPS & Inverters."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
+      <SEO 
+        title="Start a Solar Franchise in India | Low Investment | Spectrum Solar"
+        description="Partner with India's most trusted solar energy brand. High growth, low investment franchise opportunities with full training and support nationwide."
+        schema={faqSchema}
+      />
 
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
@@ -46,7 +76,7 @@ const Franchise: React.FC = () => {
             Partner With Kerala's Most Trusted Solar Energy Brand
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
+            <Link to="/contact?type=franchise" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
               <ArrowRight className="w-5 h-5" /> Apply for Franchise
             </Link>
           </div>
@@ -177,7 +207,7 @@ const Franchise: React.FC = () => {
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full md:w-auto">
-                <Link to="/contact" className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm">
+                <Link to="/contact?type=franchise" className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm">
                   Apply Now <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link to="/opportunities" className="bg-white/30 text-black px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:bg-white/40 transition-all flex items-center justify-center gap-2 border border-black/10 text-sm">
