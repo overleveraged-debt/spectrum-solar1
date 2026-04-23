@@ -57,6 +57,7 @@ const navGroups: NavGroup[] = [
       { label: 'Franchise',         to: '/opportunities/franchise',  icon: TrendingUp, color: '#facc15', sub: '12 Active Units' },
       { label: 'Dealership',        to: '/opportunities/dealership', icon: Briefcase,  color: '#facc15', sub: 'Regional Distribution' },
       { label: 'Freelance Partner', to: '/opportunities/freelance',  icon: Users,      color: '#facc15', sub: 'Commission Based' },
+      { label: 'Careers',           to: '/careers',                  icon: Briefcase,  color: '#facc15', sub: 'Join Our Team' },
     ],
   },
   {
@@ -72,7 +73,6 @@ const navGroups: NavGroup[] = [
 ];
 
 const singleLinks: { label: string; to: string }[] = [
-  { label: 'Careers', to: '/careers' },
   { label: 'Blog', to: '/blog' }
 ];
 
