@@ -24,8 +24,12 @@ const Blog = lazy(() => import('./pages/Blog'));
 const Calculator = lazy(() => import('./pages/Calculator'));
 const Feedback = lazy(() => import('./pages/Feedback'));
 const Opportunities = lazy(() => import('./pages/Opportunities'));
+const Franchise = lazy(() => import('./pages/Franchise'));
+const Dealership = lazy(() => import('./pages/Dealership'));
+const Freelance = lazy(() => import('./pages/Freelance'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Support = lazy(() => import('./pages/Support'));
+const Careers = lazy(() => import('./pages/Careers'));
 
 // Simple loading fallback
 const PageLoader = () => (
@@ -64,8 +68,12 @@ function App() {
             <Route path="calculator" element={<Calculator />} />
             <Route path="feedback" element={<Feedback />} />
             <Route path="opportunities" element={<Opportunities />} />
+            <Route path="opportunities/franchise" element={<Franchise />} />
+            <Route path="opportunities/dealership" element={<Dealership />} />
+            <Route path="opportunities/freelance" element={<Freelance />} />
             <Route path="gallery" element={<Gallery />} />
             <Route path="support" element={<Support />} />
+            <Route path="careers" element={<Careers />} />
           </Route>
         </Routes>
       </Suspense>

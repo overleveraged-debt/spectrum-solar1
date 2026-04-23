@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Menu, X, ChevronDown, ChevronRight, Sun, Zap, Leaf, Thermometer, Battery, Server, BatteryCharging, Layers, Cpu, Waves, TrendingUp, Users, Briefcase, Image, BookOpen, FolderOpen } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Sun, Zap, Leaf, Thermometer, Battery, Server, BatteryCharging, Layers, Cpu, TrendingUp, Users, Briefcase, Image, BookOpen, FolderOpen } from 'lucide-react';
 import { useNavbarScroll } from '../hooks/useNavbarScroll';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -54,10 +54,10 @@ const navGroups: NavGroup[] = [
     label: 'Opportunities',
     to: '/opportunities',
     children: [
-      { label: 'Franchise',         to: '/opportunities', icon: TrendingUp, color: '#facc15', sub: '12 Active Units' },
-      { label: 'Dealership',        to: '/opportunities', icon: Briefcase,  color: '#facc15', sub: 'Regional Distribution' },
-      { label: 'Referral Partner',  to: '/opportunities', icon: Users,      color: '#facc15', sub: 'Commission Based' },
-      { label: 'Careers',           to: '/opportunities', icon: Waves,      color: '#facc15', sub: 'Join Our Team' },
+      { label: 'Franchise',         to: '/opportunities/franchise',  icon: TrendingUp, color: '#facc15', sub: '12 Active Units' },
+      { label: 'Dealership',        to: '/opportunities/dealership', icon: Briefcase,  color: '#facc15', sub: 'Regional Distribution' },
+      { label: 'Freelance Partner', to: '/opportunities/freelance',  icon: Users,      color: '#facc15', sub: 'Commission Based' },
+      { label: 'Careers',           to: '/careers',                  icon: Briefcase,  color: '#facc15', sub: 'Join Our Team' },
     ],
   },
   {
