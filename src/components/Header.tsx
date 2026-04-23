@@ -57,7 +57,6 @@ const navGroups: NavGroup[] = [
       { label: 'Franchise',         to: '/opportunities/franchise',  icon: TrendingUp, color: '#facc15', sub: '12 Active Units' },
       { label: 'Dealership',        to: '/opportunities/dealership', icon: Briefcase,  color: '#facc15', sub: 'Regional Distribution' },
       { label: 'Freelance Partner', to: '/opportunities/freelance',  icon: Users,      color: '#facc15', sub: 'Commission Based' },
-      { label: 'Careers',           to: '/careers',                  icon: Briefcase,  color: '#facc15', sub: 'Join Our Team' },
     ],
   },
   {
@@ -72,7 +71,10 @@ const navGroups: NavGroup[] = [
   },
 ];
 
-const singleLinks: NavGroup[] = [{ label: 'Blog', to: '/blog' }];
+const singleLinks: { label: string; to: string }[] = [
+  { label: 'Careers', to: '/careers' },
+  { label: 'Blog', to: '/blog' }
+];
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -342,18 +344,21 @@ const Header: React.FC = () => {
             </div>
           ))}
 
-          {/* Blog */}
-          <Link
-            to="/blog"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center justify-between px-6 py-4 border-b border-white/5 text-white hover:text-yellow-400 transition-colors group"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-yellow-400 transition-colors" />
-              <span className="text-base font-light uppercase tracking-widest">Blog</span>
-            </div>
-            <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-yellow-400 transition-colors" />
-          </Link>
+          {/* Single Links (Careers, Blog) */}
+          {singleLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between px-6 py-4 border-b border-white/5 text-white hover:text-yellow-400 transition-colors group"
+            >
+              <div className="flex items-center gap-3">
+                <div className={`w-1.5 h-1.5 rounded-full transition-colors ${location.pathname === link.to ? 'bg-yellow-400' : 'bg-zinc-700 group-hover:bg-yellow-400'}`} />
+                <span className={`text-base font-light uppercase tracking-widest ${location.pathname === link.to ? 'text-yellow-400' : ''}`}>{link.label}</span>
+              </div>
+              <ChevronRight className={`w-4 h-4 transition-colors ${location.pathname === link.to ? 'text-yellow-400' : 'text-zinc-600 group-hover:text-yellow-400'}`} />
+            </Link>
+          ))}
 
           {/* CTAs */}
           <div className="px-6 pt-6 pb-4 space-y-3">

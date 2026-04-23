@@ -10,6 +10,7 @@ const opportunities = [
     title: 'Franchise',
     subtitle: 'Own a Spectrum Powers outlet',
     accentColor: '#facc15',
+    link: '/opportunities/franchise',
     description:
       'Join India\'s fastest-growing solar franchise network. With 25 years of brand trust, proven business model, full ERP support, and exclusive territory rights — own a business backed by India\'s most awarded solar company.',
     benefits: [
@@ -20,7 +21,7 @@ const opportunities = [
       'Priority product allocation',
     ],
     investment: '₹15L – ₹50L (varies by location & size)',
-    image: '/images/banner1090x907.jpg',
+    image: '/images/franchise.jpeg',
   },
   {
     id: 'dealership',
@@ -28,6 +29,7 @@ const opportunities = [
     title: 'Dealership',
     subtitle: 'Distribute our product range',
     accentColor: '#60a5fa',
+    link: '/opportunities/dealership',
     description:
       'Become an authorised dealer for Spectrum\'s complete product line — solar systems, UPS, inverters, and batteries. Low investment, high margins, and the backing of a brand with 12 franchise units and 20 regional outlets.',
     benefits: [
@@ -38,7 +40,7 @@ const opportunities = [
       'Product demonstration support',
     ],
     investment: '₹5L – ₹15L (stock & showroom)',
-    image: '/images/banner1090x908.jpg',
+    image: '/images/dealership.jpeg',
   },
   {
     id: 'freelance',
@@ -46,6 +48,7 @@ const opportunities = [
     title: 'Freelance Dealer',
     subtitle: 'Earn on every referral',
     accentColor: '#4ade80',
+    link: '/opportunities/freelance',
     description:
       'No investment required. Simply refer customers who buy solar systems or backup solutions — earn a competitive commission on every closed deal. Perfect for electricians, contractors, and real estate professionals.',
     benefits: [
@@ -56,7 +59,7 @@ const opportunities = [
       'Monthly payout guaranteed',
     ],
     investment: 'No investment — revenue share model',
-    image: '/images/banner1090x909.jpg',
+    image: '/images/Freelance.jpeg',
   },
   {
     id: 'jobs',
@@ -64,6 +67,7 @@ const opportunities = [
     title: 'Job Opportunities',
     subtitle: 'Grow with Spectrum Powers',
     accentColor: '#fb923c',
+    link: '/careers',
     description:
       'We are always looking for passionate engineers, sales professionals, and service technicians to join our 300+ team. Roles available across India — from installation technicians to solar design engineers.',
     benefits: [
@@ -74,7 +78,7 @@ const opportunities = [
       'Field + office roles available',
     ],
     investment: 'Apply with your CV — we will reach out',
-    image: '/images/video1115x650.jpg',
+    image: '/images/Careers.jpeg',
   },
 ];
 
@@ -139,9 +143,10 @@ const Opportunities: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {opportunities.map((opp, index) => (
-              <div
+              <Link
                 key={opp.id}
-                className="reveal group relative border border-zinc-800 rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:border-zinc-600"
+                to={opp.link}
+                className="reveal group relative border border-zinc-800 rounded-3xl overflow-hidden transition-all duration-500 hover:border-zinc-600 block"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 {/* Image with overlay */}
@@ -186,16 +191,15 @@ const Opportunities: React.FC = () => {
                     <p className="text-white font-black text-sm">{opp.investment}</p>
                   </div>
 
-                  <Link
-                    to={`/contact`}
+                  <div
                     className="inline-flex items-center gap-2 font-black text-[11px] uppercase tracking-[0.3em] transition-all group/cta"
                     style={{ color: opp.accentColor }}
                   >
-                    Enquire Now
+                    Know More
                     <ArrowRight className="w-3 h-3 group-hover/cta:translate-x-1 transition-transform" />
-                  </Link>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
