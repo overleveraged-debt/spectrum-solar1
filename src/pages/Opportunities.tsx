@@ -22,7 +22,7 @@ const opportunities = [
       'Priority product allocation',
     ],
     investment: '₹15L – ₹50L (varies by location & size)',
-    image: '/images/franchise.jpeg',
+    image: '/images/franchise.webp',
   },
   {
     id: 'dealership',
@@ -41,7 +41,7 @@ const opportunities = [
       'Product demonstration support',
     ],
     investment: '₹5L – ₹15L (stock & showroom)',
-    image: '/images/dealership.jpeg',
+    image: '/images/dealership.webp',
   },
   {
     id: 'freelance',
@@ -60,7 +60,7 @@ const opportunities = [
       'Monthly payout guaranteed',
     ],
     investment: 'No investment — revenue share model',
-    image: '/images/Freelance.jpeg',
+    image: '/images/Freelance.webp',
   },
   {
     id: 'jobs',
@@ -79,7 +79,7 @@ const opportunities = [
       'Field + office roles available',
     ],
     investment: 'Apply with your CV — we will reach out',
-    image: '/images/Careers.jpeg',
+    image: '/images/Careers.webp',
   },
 ];
 
@@ -95,7 +95,7 @@ const Opportunities: React.FC = () => {
       <section className="relative h-[75vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/about-hero.jpg"
+            src="/images/about-hero.webp"
             className="w-full h-full object-cover scale-[1.05]"
             alt="Opportunities at Spectrum Powers"
           />

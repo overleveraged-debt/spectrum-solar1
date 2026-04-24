@@ -7,6 +7,7 @@ import {
   Activity, Clock, Layers, Sun, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const Inverters: React.FC = () => {
   useScrollReveal();
@@ -29,11 +30,15 @@ const Inverters: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
+      <SEO 
+        title="Pure Sine Wave Inverters | Stable Power Output | Spectrum Solar"
+        description="High-performance pure sine wave inverters for homes and businesses. Safe for sensitive electronics and built for long-lasting performance."
+      />
 
       {/* ── HERO + STAT STRIP ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/inverter_hero.png" className="w-full h-full object-cover object-center" alt="Inverters" />
+          <img src="/images/inverter_hero.webp" className="w-full h-full object-cover object-center" alt="Inverters" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85" />
         </div>
 
@@ -84,7 +89,7 @@ const Inverters: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
-              <img src="/images/inverter_support.png" alt="Inverter installation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <img src="/images/inverter_support.webp" alt="Inverter installation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="reveal order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Smart Power Conversion Solutions</span>
@@ -289,7 +294,7 @@ const Inverters: React.FC = () => {
               </div>
             </div>
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
-              <img src="/images/inverter_tech.png" alt="Inverter unit close-up" className="w-full h-full object-cover" />
+              <img src="/images/inverter_tech.webp" alt="Inverter unit close-up" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -303,7 +308,7 @@ const Inverters: React.FC = () => {
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
-                <img src="/images/inverter_lifestyle.png" alt="Inverter applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src="/images/inverter_lifestyle.webp" alt="Inverter applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">

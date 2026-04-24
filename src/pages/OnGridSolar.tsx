@@ -7,6 +7,7 @@ import {
   Activity, Battery, TrendingUp, Leaf, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const OnGridSolar: React.FC = () => {
   useScrollReveal();
@@ -29,13 +30,17 @@ const OnGridSolar: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
+      <SEO 
+        title="On-Grid Solar Systems | Net Metering & Zero Bills | Spectrum Solar"
+        description="Slash your electricity bills to near zero with high-efficiency grid-connected solar systems. Export excess power and earn credits through net metering nationwide."
+      />
 
       {/* ── HERO + STAT STRIP (integrated) ───────────────────────────────── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/ongrid_hero_wide.png"
+            src="/images/ongrid_hero_wide.webp"
             className="w-full h-full object-cover object-center"
             alt="On-Grid Solar System"
           />
@@ -129,7 +134,7 @@ const OnGridSolar: React.FC = () => {
             {/* Image */}
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/ongrid_intro.png"
+                src="/images/ongrid_intro.webp"
                 alt="On-Grid Solar installation"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -193,7 +198,7 @@ const OnGridSolar: React.FC = () => {
           {/* Wide image below stepper */}
           <div className="reveal rounded-[2rem] overflow-hidden border border-white/10 mt-16 shadow-2xl aspect-video xl:aspect-[21/9]">
             <img
-              src="/images/ongrid_working.png"
+              src="/images/ongrid_working.webp"
               alt="On-Grid Solar Energy Flow"
               className="w-full h-full object-cover"
             />
@@ -300,7 +305,7 @@ const OnGridSolar: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5">
               <img
-                src="/images/ongrid_perfect.png"
+                src="/images/ongrid_perfect.webp"
                 alt="On-grid solar technical detail"
                 className="w-full h-full object-cover"
               />

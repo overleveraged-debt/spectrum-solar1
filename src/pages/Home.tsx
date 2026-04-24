@@ -80,8 +80,8 @@ const Home: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Spectrum Solar",
-    "url": "https://spectrumsolar.in",
-    "logo": "https://spectrumsolar.in/logo.png",
+    "url": "https://spectrum-solar1.vercel.app",
+    "logo": "https://spectrum-solar1.vercel.app/logo.png",
     "description": "India's trusted leader in solar energy and power backup solutions, serving nationwide.",
     "foundingDate": "2000",
     "address": {

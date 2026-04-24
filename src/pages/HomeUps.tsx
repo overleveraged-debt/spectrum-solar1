@@ -7,6 +7,7 @@ import {
   Activity, Clock, Layers, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 
 const HomeUps: React.FC = () => {
@@ -30,12 +31,16 @@ const HomeUps: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
+      <SEO 
+        title="Home UPS Systems | Reliable Power Backup | Spectrum Solar"
+        description="Keep your home powered during outages with our reliable UPS systems. Instant switching and stable voltage for all your household appliances."
+      />
 
       {/* ── HERO + STAT STRIP ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/home_ups_hero.png"
+            src="/images/home_ups_hero.webp"
             className="w-full h-full object-cover object-center"
             alt="Home UPS System"
           />
@@ -95,7 +100,7 @@ const HomeUps: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
               <img
-                src="/images/home_ups_support.png"
+                src="/images/home_ups_support.webp"
                 alt="Home UPS system installed"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -319,7 +324,7 @@ const HomeUps: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/home_ups_support.png"
+                src="/images/home_ups_support.webp"
                 alt="Home UPS system detail"
                 className="w-full h-full object-cover"
               />
@@ -337,7 +342,7 @@ const HomeUps: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/home_ups_support.png"
+                  src="/images/home_ups_support.webp"
                   alt="Home UPS usage scenarios"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

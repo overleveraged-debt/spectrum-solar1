@@ -7,10 +7,22 @@ import {
   Activity, Clock, Layers
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const HybridSolar: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
+  const hybridSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Hybrid Solar System",
+    "description": "Premium solar energy solution combining grid-tie savings with battery backup reliability. 24/7 power for homes and businesses.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Spectrum Solar"
+    }
+  };
 
   const faqs = [
     {
@@ -29,12 +41,17 @@ const HybridSolar: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
+      <SEO 
+        title="Hybrid Solar Systems with Battery Backup | Spectrum Solar India"
+        description="Enjoy the best of both worlds: zero electricity bills and 24/7 power backup. Our hybrid solar systems feature advanced lithium storage and smart grid switching."
+        schema={hybridSchema}
+      />
 
       {/* ── HERO + STAT STRIP ───────────────────────────────── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/hybrid_hero.png"
+            src="/images/hybrid_hero.webp"
             className="w-full h-full object-cover object-center"
             alt="Hybrid Solar System"
           />
@@ -94,7 +111,7 @@ const HybridSolar: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
               <img
-                src="/images/hybrid_intro.png"
+                src="/images/hybrid_intro.webp"
                 alt="Hybrid Solar consultation"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -303,7 +320,7 @@ const HybridSolar: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/hybrid_tech.png"
+                src="/images/hybrid_tech.webp"
                 alt="Hybrid inverter unit"
                 className="w-full h-full object-cover"
               />
@@ -321,7 +338,7 @@ const HybridSolar: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/hybrid_lifestyle.png"
+                  src="/images/hybrid_lifestyle.webp"
                   alt="Hybrid solar applications"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

@@ -4,6 +4,7 @@ import { MapPin, Building2, Hospital, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import MapSection from '../components/MapSection';
+import SEO from '../components/SEO';
 
 const Projects: React.FC = () => {
   useScrollReveal();
@@ -61,6 +62,10 @@ const Projects: React.FC = () => {
 
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
+      <SEO 
+        title="Our Solar Portfolio | 4000+ Installations Across India"
+        description="Explore Spectrum Solar's extensive portfolio of residential, commercial, and government projects. Over 4000 successful installations powering India."
+      />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">

@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://spectrumsolar.in/</loc>
+    <loc>https://spectrum-solar1.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://spectrumsolar.in/about</loc>
+    <loc>https://spectrum-solar1.vercel.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://spectrumsolar.in/solar</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://spectrumsolar.in/power</loc>
+    <loc>https://spectrum-solar1.vercel.app/solar</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://spectrumsolar.in/opportunities</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://spectrumsolar.in/opportunities/franchise</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://spectrumsolar.in/opportunities/dealership</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://spectrumsolar.in/opportunities/freelance</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://spectrumsolar.in/opportunities/careers</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://spectrumsolar.in/contact</loc>
+    <loc>https://spectrum-solar1.vercel.app/power</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://spectrumsolar.in/privacy-policy</loc>
+    <loc>https://spectrum-solar1.vercel.app/opportunities</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spectrum-solar1.vercel.app/opportunities/franchise</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spectrum-solar1.vercel.app/opportunities/dealership</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spectrum-solar1.vercel.app/opportunities/freelance</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spectrum-solar1.vercel.app/opportunities/careers</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spectrum-solar1.vercel.app/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://spectrum-solar1.vercel.app/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://spectrumsolar.in/terms-conditions</loc>
+    <loc>https://spectrum-solar1.vercel.app/terms-conditions</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

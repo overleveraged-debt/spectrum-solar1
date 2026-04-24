@@ -1,15 +1,15 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { TrendingUp, CheckCircle2, ArrowRight, Star, MapPin, Zap, BarChart3, Headphones } from 'lucide-react';
+import { TrendingUp, CheckCircle2, ArrowRight, Star, MapPin, Zap, ShieldCheck, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
 const whyItems = [
-  { number: '01', title: "Kerala's Fast-Growing Solar Market", desc: 'Solar adoption is rising across homes, businesses, and industries — creating massive demand for premium solar solutions across every district.', icon: TrendingUp },
-  { number: '02', title: 'Strong Brand Recognition', desc: "With decades of trust, government awards, and thousands of happy clients, Spectrum Solar is the leading name in Kerala's renewable energy space.", icon: Star },
-  { number: '03', title: 'Low Investment – High Growth Model', desc: 'Our franchise model is designed for maximum profitability with minimal risk and strong, consistent returns from day one.', icon: BarChart3 },
-  { number: '04', title: 'Full Training & Support', desc: 'Product training, technical guidance, installation support, and dedicated sales & operational assistance every step of the way.', icon: Headphones },
-  { number: '05', title: 'State-Wide Presence', desc: 'Join our growing network of 20+ outlets and 12 franchise units. Expand under a brand Kerala already trusts.', icon: MapPin },
+  { number: '01', title: "India's Fast-Growing Solar Market", desc: 'Solar adoption is rising across homes, businesses, and industries — creating massive demand for premium solar solutions nationwide.', icon: TrendingUp },
+  { number: '02', title: 'Strong Brand Recognition', desc: "With decades of trust, government awards, and thousands of happy clients, Spectrum Solar is a leading name in the renewable energy space.", icon: Star },
+  { number: '03', title: 'Full Technical Support', desc: 'From site feasibility audits to installation and after-sales service — our central engineering team supports you every step of the way.', icon: ShieldCheck },
+  { number: '04', title: 'Marketing Ecosystem', desc: 'Get access to high-quality leads, marketing collateral, and digital support to grow your business effectively.', icon: Layers },
+  { number: '05', title: 'Nationwide Presence', desc: 'Join our growing network of 20+ outlets and 12 franchise units. Expand under a brand that households trust.', icon: MapPin },
 ];
 
 const products = [
@@ -61,7 +61,7 @@ const Franchise: React.FC = () => {
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/franchise.jpeg" className="w-full h-full object-cover object-center" alt="Franchise Opportunity" />
+          <img src="/images/franchise.webp" className="w-full h-full object-cover object-center" alt="Franchise Opportunity" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
         </div>
 
@@ -70,10 +70,10 @@ const Franchise: React.FC = () => {
             <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Business Opportunity</span>
           </div>
           <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-            Spectrum Solar<br /><span className="text-yellow-400">Franchise</span> in Kerala
+            Spectrum Solar<br /><span className="text-yellow-400">Franchise</span> in India
           </h1>
           <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
-            Partner With Kerala's Most Trusted Solar Energy Brand
+            Partner With India's Most Trusted Solar Energy Brand
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact?type=franchise" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
@@ -150,7 +150,7 @@ const Franchise: React.FC = () => {
               What You Can Sell<br />as a Partner
             </h2>
             <p className="text-zinc-500 text-base leading-relaxed mb-8">
-              As a Spectrum Solar Franchise Partner, you get access to our complete product ecosystem — one of the most comprehensive solar and backup ranges in Kerala.
+              As a Spectrum Solar Franchise Partner, you get access to our complete product ecosystem — one of the most comprehensive solar and backup ranges in India.
             </p>
             <ul className="space-y-3">
               {products.map((product) => (

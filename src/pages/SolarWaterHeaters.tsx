@@ -7,6 +7,7 @@ import {
   Activity, Clock, Layers, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const SolarWaterHeaters: React.FC = () => {
   useScrollReveal();
@@ -29,12 +30,16 @@ const SolarWaterHeaters: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
+      <SEO 
+        title="Solar Water Heaters | Energy Saving Solutions | Spectrum Solar"
+        description="Save up to 80% on water heating costs with our high-efficiency solar water heaters. ETC and FPC systems designed for maximum performance in all climates."
+      />
 
       {/* ── HERO + STAT STRIP ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/water_heater_hero.png"
+            src="/images/water_heater_hero.webp"
             className="w-full h-full object-cover object-center"
             alt="Solar Water Heaters"
           />
@@ -94,7 +99,7 @@ const SolarWaterHeaters: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
               <img
-                src="/images/water_heater_intro.png"
+                src="/images/water_heater_intro.webp"
                 alt="Solar water heater benefits"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -318,7 +323,7 @@ const SolarWaterHeaters: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/water_heater_tech.png"
+                src="/images/water_heater_tech.webp"
                 alt="Solar water heater technical detail"
                 className="w-full h-full object-cover"
               />
@@ -336,7 +341,7 @@ const SolarWaterHeaters: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/water_heater_lifestyle.png"
+                  src="/images/water_heater_lifestyle.webp"
                   alt="Solar water heater applications"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

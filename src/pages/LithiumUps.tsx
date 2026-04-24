@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const LithiumUps: React.FC = () => {
   useScrollReveal();
@@ -30,13 +31,17 @@ const LithiumUps: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
+      <SEO 
+        title="Lithium Inbuilt UPS Systems | Zero-Switch Backup | Spectrum Solar"
+        description="Smart, compact, and long-lasting lithium inbuilt UPS systems. Zero-switch technology for mission-critical power backup. Maintenance-free performance for homes and offices."
+      />
 
       {/* ── HERO + STAT STRIP (integrated) ───────────────────────────────── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/lithium_hero.png"
+            src="/images/lithium_hero.webp"
             className="w-full h-full object-cover object-center"
             alt="Lithium Inbuilt UPS System"
           />
@@ -100,7 +105,7 @@ const LithiumUps: React.FC = () => {
             {/* Mobile: heading first, then image, then body. Desktop: image left, content right */}
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
               <img
-                src="/images/lithium_intro.png"
+                src="/images/lithium_intro.webp"
                 alt="Lithium UPS technician with homeowner"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -313,7 +318,7 @@ const LithiumUps: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/lithium_tech.png"
+                src="/images/lithium_tech.webp"
                 alt="Lithium UPS unit close up"
                 className="w-full h-full object-cover"
               />
@@ -332,7 +337,7 @@ const LithiumUps: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/lithium_lifestyle.png"
+                  src="/images/lithium_lifestyle.webp"
                   alt="Ideal installation"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

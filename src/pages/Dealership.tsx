@@ -8,7 +8,7 @@ const whyItems = [
   { number: '01', title: 'High-Demand Product Range', desc: 'Dealers get access to top-quality solar panels, inverters, batteries, hybrid & off-grid systems, solar water heaters, and UPS — all from a trusted brand.', icon: Store },
   { number: '02', title: 'Strong Profit Margins', desc: 'Our dealership model ensures competitive pricing, attractive margins, and consistent demand that keeps your business growing month after month.', icon: BarChart3 },
   { number: '03', title: 'Marketing & Branding Support', desc: 'Dealers receive product brochures, digital marketing support, and the full brand credibility of Spectrum Solar to win customers faster.', icon: Megaphone },
-  { number: '04', title: 'Wide Customer Base', desc: 'Sell to households, shops & businesses, schools & institutions, and factories & industries — demand spans every segment in Kerala.', icon: Users },
+  { number: '04', title: 'Wide Customer Base', desc: 'Sell to households, shops & businesses, schools & institutions, and factories & industries — demand spans every segment nationwide.', icon: Users },
   { number: '05', title: 'Training & Product Knowledge', desc: 'We offer regular technical and sales training to ensure your team stays current and serves customers effectively.', icon: GraduationCap },
 ];
 
@@ -69,7 +69,7 @@ const Dealership: React.FC = () => {
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/dealership.jpeg" className="w-full h-full object-cover object-center" alt="Dealership Opportunity" />
+          <img src="/images/dealership.webp" className="w-full h-full object-cover object-center" alt="Dealership Opportunity" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
         </div>
 
@@ -78,7 +78,7 @@ const Dealership: React.FC = () => {
             <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Dealership Opportunity</span>
           </div>
           <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-            Solar <span className="text-yellow-400">Dealership</span><br />in Kerala
+            Solar <span className="text-yellow-400">Dealership</span><br />in India
           </h1>
           <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
             Become a Certified Dealer of Spectrum Solar Products
@@ -97,7 +97,7 @@ const Dealership: React.FC = () => {
                 { value: '24+', label: 'Years of Trust' },
                 { value: '10K+', label: 'Installations Done' },
                 { value: '20+', label: 'Regional Outlets' },
-                { value: 'Kerala', label: 'Coverage Area' },
+                { value: 'Nationwide', label: 'Coverage Area' },
               ].map((s, i) => (
                 <div key={s.label} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
                   <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{s.value}</div>

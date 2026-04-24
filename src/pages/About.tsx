@@ -23,7 +23,7 @@ const About: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden">
-      <SEO 
+      <SEO
         title="About Spectrum Solar | India's Leading Solar Solutions Provider"
         description="With 25+ years of excellence, 40K+ satisfied customers, and 6,145+ solar projects, Spectrum Solar is India's trusted name in renewable energy."
       />
@@ -31,7 +31,7 @@ const About: React.FC = () => {
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/about-hero.jpg"
+            src="/images/about-hero.webp"
             className="w-full h-full object-cover scale-[1.05]"
             alt="Spectrum Engineering Team"
           />

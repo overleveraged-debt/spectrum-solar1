@@ -58,7 +58,7 @@ const Careers: React.FC = () => {
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/Careers.jpeg" className="w-full h-full object-cover object-center" alt="Careers at Spectrum Solar" />
+          <img src="/images/Careers.webp" className="w-full h-full object-cover object-center" alt="Careers at Spectrum Solar" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
         </div>
 
@@ -84,7 +84,7 @@ const Careers: React.FC = () => {
                 { value: '24+', label: 'Years in Business' },
                 { value: '10K+', label: 'Installations Done' },
                 { value: '4', label: 'Open Positions' },
-                { value: 'Kerala', label: 'Where We Operate' },
+                { value: 'Nationwide', label: 'Where We Operate' },
               ].map((s, i) => (
                 <div key={s.label} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
                   <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{s.value}</div>
@@ -105,7 +105,7 @@ const Careers: React.FC = () => {
               Careers That<br />Matter
             </h2>
             <p className="text-zinc-500 text-base leading-relaxed mb-6">
-              At Spectrum Solar Power, we believe in building careers that make a real difference. With 24+ years of industry leadership and 10,000+ successful installations, we are one of Kerala's most established solar energy companies.
+              At Spectrum Solar Power, we believe in building careers that make a real difference. With 24+ years of industry leadership and 10,000+ successful installations, we are one of India's most established solar energy companies.
             </p>
             <p className="text-zinc-500 text-base leading-relaxed mb-8">
               Join us and contribute to a greener, more sustainable future — while building a career you're proud of.
@@ -118,7 +118,7 @@ const Careers: React.FC = () => {
             </Link>
           </div>
           <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl border border-black/5" style={{ transitionDelay: '150ms' }}>
-            <img src="/images/Careers.jpeg" alt="Spectrum Solar Team" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            <img src="/images/Careers.webp" alt="Spectrum Solar Team" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
       </section>

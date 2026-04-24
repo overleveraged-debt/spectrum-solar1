@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
+import SEO from '../components/SEO';
 import MapSection from '../components/MapSection';
 
 const galleryItems = [
@@ -49,6 +50,10 @@ const Gallery: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
+      <SEO 
+        title="Solar Installation Gallery | Spectrum Solar Projects"
+        description="Explore our portfolio of residential, commercial, and industrial solar installations across India. See our engineering excellence in action."
+      />
       {/* Hero */}
       <section className="relative h-[55vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">

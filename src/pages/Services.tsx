@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Battery, Sun, Thermometer, ShieldCheck, Waves, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 interface Product {
   id: string;
@@ -112,11 +113,15 @@ const Services: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
+      <SEO 
+        title="Integrated Energy Ecosystems | Our Services | Spectrum Solar"
+        description="Comprehensive solar energy solutions including grid integration, power reliability systems, water heating, and smart surveillance for homes and industries."
+      />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/services-hero.jpg"
+            src="/images/services-hero.webp"
             className="w-full h-full object-cover scale-[1.05]"
             alt="Industrial Solar Infrastructure"
           />

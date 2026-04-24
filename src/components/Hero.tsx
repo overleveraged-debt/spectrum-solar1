@@ -55,12 +55,12 @@ const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
       </button>
 
 
-      {/* Desktop: centred hero text */}
+      {/* Hero Content */}
       <div 
-        className="relative z-10 text-center px-6 max-w-5xl mt-12 hidden sm:block"
+        className="relative z-10 text-center px-6 max-w-5xl mt-12"
         style={{ transform: `translateY(${-scrollY * 0.1}px)`, opacity: 1 - scrollY * 0.002 }}
       >
-        <h1 className="text-6xl md:text-8xl lg:text-[5rem] font-thin mb-12 tracking-[0.05em] leading-[0.92] text-white reveal uppercase" style={{ transitionDelay: '150ms' }}>
+        <h1 className="text-[2.2rem] sm:text-6xl md:text-8xl lg:text-[5rem] font-thin mb-8 md:mb-12 tracking-[0.05em] leading-[1] md:leading-[0.92] text-white reveal uppercase" style={{ transitionDelay: '150ms' }}>
           Precision <br /><span className="text-yellow-400">Since 2000.</span>
         </h1>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 reveal" style={{ transitionDelay: '300ms' }}>

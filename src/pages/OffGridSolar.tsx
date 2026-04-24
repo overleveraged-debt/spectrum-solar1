@@ -7,6 +7,7 @@ import {
   Activity, Clock, Sun, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const OffGridSolar: React.FC = () => {
   useScrollReveal();
@@ -29,12 +30,16 @@ const OffGridSolar: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
+      <SEO 
+        title="Lithium Off-Grid Solar Systems | Energy Independence | Spectrum Solar"
+        description="Achieve 100% energy independence with our Lithium Off-Grid solar systems. No grid connection needed. Perfect for remote homes and businesses nationwide."
+      />
 
       {/* ── HERO + STAT STRIP ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/offgrid_hero.png"
+            src="/images/offgrid_hero.webp"
             className="w-full h-full object-cover object-center"
             alt="Lithium Off-Grid Solar System"
           />
@@ -94,7 +99,7 @@ const OffGridSolar: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
               <img
-                src="/images/offgrid_intro.png"
+                src="/images/offgrid_intro.webp"
                 alt="Off-grid solar powered home"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -320,7 +325,7 @@ const OffGridSolar: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/offgrid_lifestyle.png"
+                  src="/images/offgrid_lifestyle.webp"
                   alt="Off-grid solar applications"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
