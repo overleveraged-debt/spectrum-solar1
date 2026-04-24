@@ -58,7 +58,7 @@ const Careers: React.FC = () => {
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/Careers.webp" className="w-full h-full object-cover object-center" alt="Careers at Spectrum Solar" />
+          <img src="/images/careers_hero.webp" className="w-full h-full object-cover object-center" alt="Careers at Spectrum Solar" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
         </div>
 
@@ -118,7 +118,7 @@ const Careers: React.FC = () => {
             </Link>
           </div>
           <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl border border-black/5" style={{ transitionDelay: '150ms' }}>
-            <img src="/images/Careers.webp" alt="Spectrum Solar Team" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            <img src="/images/careers_hero.webp" alt="Spectrum Solar Team" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
       </section>

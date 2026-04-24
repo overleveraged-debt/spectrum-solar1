@@ -61,7 +61,7 @@ const Franchise: React.FC = () => {
       {/* ── Hero + Stats (flush, like OnGrid) ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/franchise.webp" className="w-full h-full object-cover object-center" alt="Franchise Opportunity" />
+          <img src="/images/franchise_hero.webp" className="w-full h-full object-cover object-center" alt="Franchise Opportunity" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
         </div>
 

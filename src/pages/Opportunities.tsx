@@ -22,7 +22,7 @@ const opportunities = [
       'Priority product allocation',
     ],
     investment: '₹15L – ₹50L (varies by location & size)',
-    image: '/images/franchise.webp',
+    image: '/images/franchise_hero.webp',
   },
   {
     id: 'dealership',
@@ -41,7 +41,7 @@ const opportunities = [
       'Product demonstration support',
     ],
     investment: '₹5L – ₹15L (stock & showroom)',
-    image: '/images/dealership.webp',
+    image: '/images/dealership_hero.webp',
   },
   {
     id: 'freelance',
@@ -60,7 +60,7 @@ const opportunities = [
       'Monthly payout guaranteed',
     ],
     investment: 'No investment — revenue share model',
-    image: '/images/Freelance.webp',
+    image: '/images/freelance_hero.webp',
   },
   {
     id: 'jobs',
@@ -79,7 +79,7 @@ const opportunities = [
       'Field + office roles available',
     ],
     investment: 'Apply with your CV — we will reach out',
-    image: '/images/Careers.webp',
+    image: '/images/careers_hero.webp',
   },
 ];
 
