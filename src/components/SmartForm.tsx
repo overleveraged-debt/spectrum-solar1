@@ -220,7 +220,7 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
           {!isSubmitting && <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
         </button>
 
-        <p className="text-[9px] text-center text-zinc-400 font-bold uppercase tracking-widest px-10">
+        <p className="text-[9px] text-center text-zinc-400 font-medium uppercase tracking-widest px-10">
           By submitting, you agree to our <a href="/privacy-policy" className="text-zinc-600 underline">Privacy Policy</a> and <a href="/terms-conditions" className="text-zinc-600 underline">Terms of Service</a>.
         </p>
       </form>

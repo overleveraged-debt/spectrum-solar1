@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Global Network</span>
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Global Network</span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             START YOUR <br className="hidden md:block" />
             SOLAR JOURNEY
@@ -86,7 +86,7 @@ const Contact: React.FC = () => {
           {/* Form */}
           <div className="lg:col-span-7 reveal">
             <div className="mb-10">
-              <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Send us a message</span>
+              <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Send us a message</span>
               <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight leading-[0.9] text-black">
                 Let's talk <br />about your project.
               </h2>
@@ -161,7 +161,7 @@ const Contact: React.FC = () => {
       <section className="px-6 py-24 bg-zinc-50 border-t border-zinc-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 reveal">
-            <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Visit Our Facilities</span>
+            <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Visit Our Facilities</span>
             <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight text-black leading-none">
               Explore our <br className="md:hidden" /> Regional Hubs.
             </h2>

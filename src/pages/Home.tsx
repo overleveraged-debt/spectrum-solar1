@@ -40,10 +40,10 @@ const HomeTestimonialCarousel: React.FC = () => {
               {t.name}
               <div className="flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4 text-yellow-400" />
-                {t.isVerified && <span className="text-[8px] text-zinc-500 font-bold tracking-widest uppercase">Google Verified</span>}
+                {t.isVerified && <span className="text-[8px] text-zinc-500 font-medium tracking-widest uppercase">Google Verified</span>}
               </div>
             </div>
-            <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">{t.date}</div>
+            <div className="text-[10px] font-medium text-zinc-500 uppercase tracking-widest mt-0.5">{t.date}</div>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-6">
             <div className="reveal">
-              <span className="text-yellow-600 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Solar Solutions</span>
+              <span className="text-yellow-600 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Solar Solutions</span>
               <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] text-black uppercase leading-[0.9]">Solar <br />Systems.</h2>
             </div>
             <Link to="/solar" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:gap-3 transition-all reveal">
@@ -176,7 +176,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-6">
             <div className="reveal">
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Backup</span>
+              <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Power Backup</span>
               <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] uppercase leading-[0.9]">Backup <br />Systems.</h2>
             </div>
             <Link to="/power" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-400 hover:gap-3 transition-all reveal">
@@ -185,7 +185,7 @@ const Home: React.FC = () => {
           </div>
           <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 380px)' }}>
             <img
-              src="/images/home_backup_banner.jpg"
+              src="/images/home_backup_banner.jpeg"
               alt="Modern backup power systems"
               className="w-full h-full object-cover object-[center_30%]"
             />
@@ -231,7 +231,7 @@ const Home: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="max-w-2xl reveal">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Why Spectrum</span>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-6 block">Why Spectrum</span>
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none text-white mb-8">India's Most Trusted <br />Solar Partner.</h2>
             <p className="text-white/70 text-lg font-light leading-relaxed mb-10">25 years. 6,145+ Solar Installations. Government-awarded excellence. Engineered for India's diverse climate.</p>
             <div className="grid grid-cols-3 gap-6">
@@ -250,7 +250,7 @@ const Home: React.FC = () => {
       <section className="bg-white pt-20 md:pt-28 pb-12 overflow-hidden text-black" data-nav-light>
         <div className="max-w-7xl mx-auto px-6">
           <div className="reveal mb-8">
-            <span className="text-yellow-600 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">The Solar Advantage</span>
+            <span className="text-yellow-600 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">The Solar Advantage</span>
             <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] text-black uppercase leading-[0.9]">Why <br />Go Solar?</h2>
           </div>
           <div className="reveal rounded-[2rem] overflow-hidden" style={{ height: 'clamp(480px, 80vw, 520px)' }}>
@@ -290,7 +290,7 @@ const Home: React.FC = () => {
       <section id="about" className="py-20 md:py-32 bg-zinc-950 text-white border-t border-zinc-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="reveal mb-12">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Heritage</span>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Heritage</span>
             <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-[-0.02em] text-white uppercase leading-[0.9]">
               Spectrum Powers <br />India.
             </h2>
@@ -310,7 +310,7 @@ const Home: React.FC = () => {
                 Specializing in power electronics and solar system integration, we prioritize a customer-centric approach that drives our high referral rates.
               </p>
               <div className="p-6 bg-yellow-400/10 border border-yellow-400/20 rounded-2xl inline-block">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-400 mb-2">Accreditation</p>
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-yellow-400 mb-2">Accreditation</p>
                 <p className="text-sm font-black uppercase tracking-tight text-white">Best Solar Energy Industry Award</p>
                 <p className="text-[10px] text-zinc-400 mt-1">National Solar Excellence Award Recipient</p>
               </div>
@@ -331,7 +331,7 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/40" />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 reveal">
-          <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Since 2000</span>
+          <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-6 block">Since 2000</span>
           <h2 className="text-[2.5rem] sm:text-5xl md:text-7xl font-thin tracking-tight mb-4 text-white uppercase leading-none">25 Years of <br className="hidden md:block" />Reliability.</h2>
           <p className="text-white/60 text-base md:text-lg font-light mb-10 max-w-md mx-auto">4.9 Overall Rating from 10,000+ Verified Reviews. India's most trusted solar and power solutions provider.</p>
           <Link to="/contact" className="inline-block w-full sm:w-auto bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:scale-105 hover:bg-yellow-300 transition-all shadow-2xl">Connect with Experts</Link>

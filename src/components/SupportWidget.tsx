@@ -35,7 +35,7 @@ const SupportWidget: React.FC = () => {
         {/* Header */}
         <div className="p-6 sm:p-8 pb-4 border-b border-white/5">
           <h3 className="text-white text-xl sm:text-2xl font-black uppercase italic tracking-tighter mb-1 sm:mb-2">Support Hub</h3>
-          <p className="text-zinc-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest uppercase">How can we help you today?</p>
+          <p className="text-zinc-500 text-[10px] sm:text-xs font-medium uppercase tracking-widest uppercase">How can we help you today?</p>
         </div>
 
         <div className="p-6 sm:p-8 flex-1 overflow-y-auto no-scrollbar space-y-6 sm:space-y-8">
@@ -60,7 +60,7 @@ const SupportWidget: React.FC = () => {
                   <h4 className="text-white text-[10px] sm:text-[11px] font-black uppercase tracking-tighter mb-1.5 sm:mb-2 flex items-center gap-2">
                     <HelpCircle className="w-3 h-3 text-yellow-400" /> {faq.q}
                   </h4>
-                  <p className="text-zinc-500 text-[9px] sm:text-[10px] font-bold leading-relaxed">{faq.a}</p>
+                  <p className="text-zinc-500 text-[9px] sm:text-[10px] font-medium leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -75,7 +75,7 @@ const SupportWidget: React.FC = () => {
             </div>
             <div>
               <span className="text-white text-[10px] font-black uppercase tracking-tighter block leading-none">WhatsApp</span>
-              <span className="text-zinc-600 text-[9px] font-bold block">Instant help</span>
+              <span className="text-zinc-600 text-[9px] font-medium block">Instant help</span>
             </div>
           </div>
           <a href="https://wa.me/919745660055" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-white transition-colors">

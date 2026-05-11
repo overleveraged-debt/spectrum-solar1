@@ -59,7 +59,7 @@ const Blog: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             Insights & Updates
           </span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
@@ -76,7 +76,7 @@ const Blog: React.FC = () => {
       <section className="px-6 pt-24 pb-8">
         <div className="max-w-7xl mx-auto reveal flex items-center justify-between">
           <div>
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-3 block">Latest from the Field</span>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-3 block">Latest from the Field</span>
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-[-0.04em] leading-[0.9]">Our Blog.</h2>
           </div>
           <div className="hidden md:flex items-center gap-2 text-zinc-600 text-[10px] font-black uppercase tracking-widest">
@@ -115,7 +115,7 @@ const Blog: React.FC = () => {
 
             {/* Content */}
             <div className="p-10 md:p-14 flex flex-col justify-center">
-              <div className="flex items-center gap-4 text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-6">
+              <div className="flex items-center gap-4 text-zinc-500 text-[10px] font-medium uppercase tracking-widest mb-6">
                 <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3 text-yellow-400" /> {featured.date}</span>
                 <span className="flex items-center gap-1.5"><User className="w-3 h-3 text-yellow-400" /> {featured.author}</span>
                 <span>{featured.readTime}</span>
@@ -161,13 +161,13 @@ const Blog: React.FC = () => {
                   </span>
                 </div>
                 <div className="absolute bottom-5 right-5">
-                  <span className="text-zinc-400 text-[9px] font-bold uppercase tracking-widest">{post.readTime}</span>
+                  <span className="text-zinc-400 text-[9px] font-medium uppercase tracking-widest">{post.readTime}</span>
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-8">
-                <div className="flex items-center gap-4 text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-4">
+                <div className="flex items-center gap-4 text-zinc-500 text-[10px] font-medium uppercase tracking-widest mb-4">
                   <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3 text-yellow-400" /> {post.date}</span>
                   <span className="flex items-center gap-1.5"><User className="w-3 h-3 text-yellow-400" /> {post.author}</span>
                 </div>

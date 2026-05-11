@@ -253,7 +253,7 @@ const SolarWaterHeaters: React.FC = () => {
               { feature: "Works in Outage", traditional: "No", solar: "Yes (stored heat)" },
             ].map((row, i) => (
               <div key={i} className="grid grid-cols-3 border-b border-white/5 last:border-0">
-                <div className="py-4 px-4 md:px-8 text-xs md:text-sm font-semibold text-zinc-300">{row.feature}</div>
+                <div className="py-4 px-4 md:px-8 text-xs md:text-sm font-medium text-zinc-300">{row.feature}</div>
                 <div className="py-4 px-4 md:px-8 text-center border-x border-white/5">
                   <span className="flex items-center justify-center gap-1 md:gap-2 text-xs md:text-sm text-zinc-500">
                     <X className="w-3 h-3 text-red-500/70 flex-shrink-0" />
@@ -261,7 +261,7 @@ const SolarWaterHeaters: React.FC = () => {
                   </span>
                 </div>
                 <div className="py-4 px-4 md:px-8 text-center bg-yellow-400/5">
-                  <span className="flex items-center justify-center gap-1 md:gap-2 text-xs md:text-sm text-white font-semibold">
+                  <span className="flex items-center justify-center gap-1 md:gap-2 text-xs md:text-sm text-white font-medium">
                     <CheckCircle2 className="w-3 h-3 text-yellow-400 flex-shrink-0" />
                     {row.solar}
                   </span>
@@ -282,7 +282,7 @@ const SolarWaterHeaters: React.FC = () => {
                   <div className="text-yellow-400 text-2xl font-black tracking-tight mb-1">{t.type}</div>
                   <div className="text-white font-black text-sm uppercase tracking-tight mb-2">{t.full}</div>
                   <p className="text-zinc-500 text-sm mb-4">{t.desc}</p>
-                  <div className="text-yellow-400/70 text-xs font-bold uppercase tracking-widest">{t.capacities}</div>
+                  <div className="text-yellow-400/70 text-xs font-medium uppercase tracking-widest">{t.capacities}</div>
                 </div>
               ))}
             </div>
@@ -313,7 +313,7 @@ const SolarWaterHeaters: React.FC = () => {
                   "Pressurized Systems", "Non-Pressurized Systems", "Anti-Corrosion Coating",
                   "Backup Heating Element", "Low Maintenance Design", "10-Year Warranty",
                 ].map((tag, i) => (
-                  <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
+                  <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
                     <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0" />
                     {tag}
                   </span>
@@ -448,7 +448,7 @@ const SolarWaterHeaters: React.FC = () => {
                   className="w-full text-left px-6 md:px-8 py-5 md:py-6 flex items-center justify-between gap-4"
                   onClick={() => setActiveFaq(activeFaq === i ? null : i)}
                 >
-                  <span className="font-bold text-base md:text-lg">{faq.q}</span>
+                  <span className="font-medium text-base md:text-lg">{faq.q}</span>
                   <ChevronDown className={`w-5 h-5 text-yellow-400 flex-shrink-0 transition-transform duration-300 ${activeFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${activeFaq === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>

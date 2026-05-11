@@ -68,7 +68,7 @@ const Support: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             We're Here For You
           </span>
           <h1 className="text-[2rem] sm:text-5xl md:text-6xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
@@ -148,7 +148,7 @@ const Support: React.FC = () => {
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-14 reveal">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">
               Quick Answers
             </span>
             <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-4">
@@ -200,7 +200,7 @@ const Support: React.FC = () => {
       <section id="ticket" className="py-16 px-6 border-t border-white/5">
         <div className="max-w-3xl mx-auto reveal">
           <div className="text-center mb-12">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">
               Raise a Ticket
             </span>
             <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-4">

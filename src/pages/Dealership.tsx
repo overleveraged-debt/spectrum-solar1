@@ -113,7 +113,7 @@ const Dealership: React.FC = () => {
       <section className="px-6 py-20 md:py-28" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Why Partner With Us</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Why Partner With Us</span>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               Why Become a<br />Spectrum Dealer?
             </h2>
@@ -152,7 +152,7 @@ const Dealership: React.FC = () => {
       <section className="px-6 py-20 md:py-28 bg-zinc-50 border-t border-zinc-100" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">The Details</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">The Details</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               Your Role as a Dealer
             </h2>
@@ -160,7 +160,7 @@ const Dealership: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="reveal premium-cream-card p-8 md:p-10 rounded-[2rem]">
               <Briefcase className="w-10 h-10 text-yellow-500 mb-6" />
-              <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-widest mb-3 block">What You Sell</span>
+              <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-widest mb-3 block">What You Sell</span>
               <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-6 text-black">Product Range</h3>
               <ul className="space-y-3">
                 {products.map((product) => (
@@ -173,7 +173,7 @@ const Dealership: React.FC = () => {
             </div>
             <div className="reveal premium-cream-card p-8 md:p-10 rounded-[2rem]" style={{ transitionDelay: '100ms' }}>
               <Store className="w-10 h-10 text-yellow-500 mb-6" />
-              <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-widest mb-3 block">Your Role</span>
+              <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-widest mb-3 block">Your Role</span>
               <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-6 text-black">Dealer Responsibilities</h3>
               <ul className="space-y-3">
                 {responsibilities.map((r) => (
@@ -192,7 +192,7 @@ const Dealership: React.FC = () => {
       <section className="px-6 py-20 md:py-28 border-t border-zinc-100" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Dealer Perks</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Dealer Perks</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               What You Receive
             </h2>

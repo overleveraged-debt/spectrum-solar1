@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import {
-  Sun, Zap, ArrowRight, ShieldCheck, CheckCircle2,
+  Sun, ArrowRight, ShieldCheck, CheckCircle2,
   Home, Building2, GraduationCap, Hospital, Factory,
   PhoneCall, Settings, FileText, Wrench, Play, ChevronDown,
   Activity, Battery, TrendingUp, Leaf, X
@@ -143,68 +143,6 @@ const OnGridSolar: React.FC = () => {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS — FLOW STEPPER ──────────────────────────────────── */}
-      <section className="py-32 px-6 bg-zinc-900/40 border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20 reveal">
-            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How It Works</h2>
-          </div>
-
-          {/* Desktop flow */}
-          <div className="hidden md:grid grid-cols-4 gap-0 relative reveal">
-            <div className="absolute top-12 left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-yellow-400/20 via-yellow-400 to-yellow-400/20" />
-            {[
-              { step: '01', icon: Sun, title: 'Generate', desc: 'Solar panels convert sunlight into DC electricity.' },
-              { step: '02', icon: Zap, title: 'Convert', desc: 'Inverter converts DC to AC for home use.' },
-              { step: '03', icon: Activity, title: 'Consume', desc: 'Power is used in your home or business first.' },
-              { step: '04', icon: TrendingUp, title: 'Export', desc: 'Excess power exported to KSEB grid for credits.' },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center px-6 group">
-                <div className="w-24 h-24 rounded-full bg-zinc-950 border-2 border-yellow-400 flex items-center justify-center mb-6 relative z-10 group-hover:bg-yellow-400 group-hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-300">
-                  <item.icon className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
-                </div>
-                <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
-                <h3 className="text-xl font-thin uppercase tracking-tight mb-2">{item.title}</h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile flow */}
-          <div className="md:hidden space-y-0">
-            {[
-              { step: '01', icon: Sun, title: 'Generate', desc: 'Solar panels convert sunlight into DC electricity.' },
-              { step: '02', icon: Zap, title: 'Convert', desc: 'Inverter converts DC to AC for home use.' },
-              { step: '03', icon: Activity, title: 'Consume', desc: 'Power is used in your home or business first.' },
-              { step: '04', icon: TrendingUp, title: 'Export', desc: 'Excess power exported to KSEB grid for credits.' },
-            ].map((item, i) => (
-              <div key={i} className="flex gap-6 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-zinc-900 border-2 border-yellow-400 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-5 h-5 text-yellow-400" />
-                  </div>
-                  {i < 3 && <div className="w-[2px] flex-1 bg-yellow-400/30 my-2" />}
-                </div>
-                <div className="pb-10">
-                  <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
-                  <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Wide image below stepper */}
-          <div className="reveal rounded-[2rem] overflow-hidden border border-white/10 mt-16 shadow-2xl aspect-video xl:aspect-[21/9]">
-            <img
-              src="/images/ongrid_working.webp"
-              alt="On-Grid Solar Energy Flow"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
 
       {/* ── BENTO BENEFITS GRID ──────────────────────────────────────────── */}
       <section className="py-32 px-6">
@@ -272,7 +210,7 @@ const OnGridSolar: React.FC = () => {
               { feature: "Energy Independence", traditional: "100% grid dependent", solar: "Day-time independent" },
             ].map((row, i) => (
               <div key={i} className="grid grid-cols-3 border-b border-white/5 last:border-0 hover:bg-white/2 transition-colors">
-                <div className="py-5 px-8 text-sm font-semibold text-zinc-300">{row.feature}</div>
+                <div className="py-5 px-8 text-sm font-medium text-zinc-300">{row.feature}</div>
                 <div className="py-5 px-8 text-center border-x border-white/5">
                   <span className="flex items-center justify-center gap-2 text-sm text-zinc-500">
                     <X className="w-3.5 h-3.5 text-red-500/70 flex-shrink-0" />
@@ -280,7 +218,7 @@ const OnGridSolar: React.FC = () => {
                   </span>
                 </div>
                 <div className="py-5 px-8 text-center bg-yellow-400/5">
-                  <span className="flex items-center justify-center gap-2 text-sm text-white font-semibold">
+                  <span className="flex items-center justify-center gap-2 text-sm text-white font-medium">
                     <CheckCircle2 className="w-3.5 h-3.5 text-yellow-400 flex-shrink-0" />
                     {row.solar}
                   </span>
@@ -330,7 +268,7 @@ const OnGridSolar: React.FC = () => {
                   "Govt Subsidy Ready",
                   "KSEB Approved",
                 ].map((tag, i) => (
-                  <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
+                  <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
                     <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_6px_rgba(250,204,21,0.8)]" />
                     {tag}
                   </span>
@@ -350,7 +288,7 @@ const OnGridSolar: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-10">Perfect For</h2>
               <div className="rounded-[2.5rem] overflow-hidden aspect-[4/3] border border-white/5 shadow-2xl">
                 <img
-                  src="/images/ongrid_applications_demo.png"
+                  src="/images/ongrid_applications_demo.webp"
                   alt="Solar panel installations"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
@@ -433,7 +371,7 @@ const OnGridSolar: React.FC = () => {
                   className="w-full text-left px-8 py-6 flex items-center justify-between gap-4"
                   onClick={() => setActiveFaq(activeFaq === i ? null : i)}
                 >
-                  <span className="font-bold text-lg">{faq.q}</span>
+                  <span className="font-medium text-lg">{faq.q}</span>
                   <ChevronDown className={`w-5 h-5 text-yellow-400 flex-shrink-0 transition-transform duration-300 ${activeFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${activeFaq === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>

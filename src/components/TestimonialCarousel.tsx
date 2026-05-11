@@ -49,7 +49,7 @@ const TestimonialCarousel: React.FC = () => {
                 {testimonials[activeIndex].name}
                 {testimonials[activeIndex].isVerified && <CheckCircle2 className="w-3.5 h-3.5 text-yellow-500" />}
               </p>
-              <p className="text-[9px] text-zinc-500 uppercase tracking-widest font-bold mt-0.5">
+              <p className="text-[9px] text-zinc-500 uppercase tracking-widest font-medium mt-0.5">
                 {testimonials[activeIndex].product}
               </p>
             </div>

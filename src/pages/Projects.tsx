@@ -78,7 +78,7 @@ const Projects: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Our Portfolio</span>
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Our Portfolio</span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             4000+ SUCCESSFUL <br className="hidden sm:block" />
             INSTALLATIONS
@@ -94,7 +94,7 @@ const Projects: React.FC = () => {
         <div className="max-w-7xl mx-auto reveal">
           <div className="flex items-end justify-between">
             <div>
-              <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Featured Work</span>
+              <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Featured Work</span>
               <h2 className="text-4xl md:text-7xl font-thin uppercase tracking-[-0.04em] leading-[0.9]">
                 Landmark <br />Projects.
               </h2>
@@ -139,7 +139,7 @@ const Projects: React.FC = () => {
 
                 {/* Card Body */}
                 <div className="p-6 border-t border-zinc-100">
-                  <div className="flex items-center gap-2 text-zinc-400 mb-2 text-[10px] font-bold uppercase tracking-widest">
+                  <div className="flex items-center gap-2 text-zinc-400 mb-2 text-[10px] font-medium uppercase tracking-widest">
                     {project.icon}
                     <MapPin className="w-3 h-3" />
                     <span>{project.location}</span>
@@ -163,7 +163,7 @@ const Projects: React.FC = () => {
       <section className="px-6 py-24 bg-black text-white mx-6 rounded-[3rem] mb-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 reveal">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">By The Numbers</span>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">By The Numbers</span>
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none">
               Our Impact.
             </h2>
@@ -179,7 +179,7 @@ const Projects: React.FC = () => {
                   {stat.value}
                 </div>
                 <div className="text-zinc-300 font-black uppercase tracking-widest text-sm mb-1">{stat.label}</div>
-                <div className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">{stat.sub}</div>
+                <div className="text-zinc-600 text-[10px] font-medium uppercase tracking-widest">{stat.sub}</div>
               </div>
             ))}
           </div>
@@ -190,7 +190,7 @@ const Projects: React.FC = () => {
       <section className="py-24 px-6 bg-zinc-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 reveal">
-            <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">State-wide Footprint</span>
+            <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">State-wide Footprint</span>
             <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight text-black">
               Engineering <br className="md:hidden" /> Excellence Everywhere.
             </h2>

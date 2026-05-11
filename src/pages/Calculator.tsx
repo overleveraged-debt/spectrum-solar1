@@ -51,7 +51,7 @@ const SolarCalculatorBody: React.FC = () => {
 
             {/* LEFT: Inputs */}
             <div className="reveal">
-              <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Details</span>
+              <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Details</span>
               <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-8 md:mb-12">
                 Tell us <br />about your home.
               </h2>
@@ -74,7 +74,7 @@ const SolarCalculatorBody: React.FC = () => {
                       className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-yellow-500"
                       style={{ background: `linear-gradient(to right, #eab308 0%, #eab308 ${((monthlyBill - 500) / 49500) * 100}%, #e4e4e7 ${((monthlyBill - 500) / 49500) * 100}%, #e4e4e7 100%)` }}
                     />
-                    <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-3">
+                    <div className="flex justify-between text-[10px] font-medium text-zinc-400 uppercase tracking-widest mt-3">
                       <span>₹500</span>
                       <span>₹50,000+</span>
                     </div>
@@ -98,12 +98,12 @@ const SolarCalculatorBody: React.FC = () => {
                       className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-yellow-500"
                       style={{ background: `linear-gradient(to right, #eab308 0%, #eab308 ${((roofSpace - 100) / 4900) * 100}%, #e4e4e7 ${((roofSpace - 100) / 4900) * 100}%, #e4e4e7 100%)` }}
                     />
-                    <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-3">
+                    <div className="flex justify-between text-[10px] font-medium text-zinc-400 uppercase tracking-widest mt-3">
                       <span>100 Sq.Ft</span>
                       <span>5,000+ Sq.Ft</span>
                     </div>
                   </div>
-                  <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
+                  <p className="text-[10px] text-zinc-500 font-medium uppercase tracking-wider">
                     ~{Math.floor(roofSpace / 100)} kW can fit on your roof
                   </p>
                 </div>
@@ -111,7 +111,7 @@ const SolarCalculatorBody: React.FC = () => {
                 {/* Disclaimer */}
                 <div className="flex gap-4 text-zinc-500 bg-zinc-50 border border-zinc-200 rounded-2xl p-5">
                   <Info className="w-5 h-5 shrink-0 text-yellow-500 mt-0.5" />
-                  <p className="text-[10px] font-bold leading-relaxed uppercase tracking-wider">
+                  <p className="text-[10px] font-medium leading-relaxed uppercase tracking-wider">
                     Estimates based on Kerala's average solar irradiance (4.5 kWh/m²/day) and current KSEB net-metering slab rates. Your recommended size is the lower of what your bill needs vs. what your roof supports.
                   </p>
                 </div>
@@ -149,7 +149,7 @@ const SolarCalculatorBody: React.FC = () => {
                   <TrendingUp className="text-yellow-500 w-6 h-6 mb-4" />
                   <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">Annual Savings</span>
                   <div className="text-2xl font-black text-black tracking-tighter">₹{annualSavings.toLocaleString()}</div>
-                  <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">Per Year</p>
+                  <p className="text-[9px] font-medium text-zinc-400 uppercase mt-2">Per Year</p>
                 </div>
 
                 {/* Payback Period */}
@@ -160,7 +160,7 @@ const SolarCalculatorBody: React.FC = () => {
                   <div className="mt-3 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
                     <div className="h-full bg-yellow-400 rounded-full transition-all duration-700" style={{ width: `${paybackPct}%` }} />
                   </div>
-                  <p className="text-[9px] font-bold text-zinc-400 uppercase mt-1.5">Out of 10-year benchmark</p>
+                  <p className="text-[9px] font-medium text-zinc-400 uppercase mt-1.5">Out of 10-year benchmark</p>
                 </div>
 
                 {/* CO2 Offset */}
@@ -171,7 +171,7 @@ const SolarCalculatorBody: React.FC = () => {
                   <div className="mt-3 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
                     <div className="h-full bg-green-400 rounded-full transition-all duration-700" style={{ width: `${co2Pct}%` }} />
                   </div>
-                  <p className="text-[9px] font-bold text-zinc-400 uppercase mt-1.5">Tons of CO₂ saved yearly</p>
+                  <p className="text-[9px] font-medium text-zinc-400 uppercase mt-1.5">Tons of CO₂ saved yearly</p>
                 </div>
 
                 {/* 25-Year Savings */}
@@ -179,7 +179,7 @@ const SolarCalculatorBody: React.FC = () => {
                   <Zap className="text-yellow-500 w-6 h-6 mb-4" />
                   <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">25-Year Value</span>
                   <div className="text-2xl font-black text-black tracking-tighter">₹{(annualSavings * 25).toLocaleString()}</div>
-                  <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">Total lifetime savings</p>
+                  <p className="text-[9px] font-medium text-zinc-400 uppercase mt-2">Total lifetime savings</p>
                 </div>
               </div>
 
@@ -190,7 +190,7 @@ const SolarCalculatorBody: React.FC = () => {
               >
                 <div>
                   <span className="text-white font-black uppercase italic tracking-tighter block text-lg">Book Site Audit</span>
-                  <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Free Engineer Visit</span>
+                  <span className="text-[10px] font-medium text-zinc-500 uppercase tracking-widest">Free Engineer Visit</span>
                 </div>
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-all">
                   <ArrowRight className="w-5 h-5 text-black" />
@@ -240,7 +240,7 @@ const PowerCalculator: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="reveal">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Load Details</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Load Details</span>
             <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight leading-none mb-8 md:mb-12">
               Size your <br />backup system.
             </h2>
@@ -255,8 +255,8 @@ const PowerCalculator: React.FC = () => {
                   className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-yellow-500"
                   style={{ background: `linear-gradient(to right, #eab308 0%, #eab308 ${((loadWatts - 100) / 9900) * 100}%, #e4e4e7 ${((loadWatts - 100) / 9900) * 100}%, #e4e4e7 100%)` }}
                 />
-                <div className="flex justify-between text-[10px] font-bold text-zinc-400 uppercase tracking-widest"><span>100W</span><span>10,000W</span></div>
-                <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Add up watts of all devices you need during backup</p>
+                <div className="flex justify-between text-[10px] font-medium text-zinc-400 uppercase tracking-widest"><span>100W</span><span>10,000W</span></div>
+                <p className="text-[10px] text-zinc-500 font-medium uppercase tracking-wider">Add up watts of all devices you need during backup</p>
               </div>
               <div className="space-y-4">
                 <label className="text-xs font-black uppercase tracking-widest text-zinc-500 block">Hours of Backup Needed</label>
@@ -283,7 +283,7 @@ const PowerCalculator: React.FC = () => {
               </div>
               <div className="flex gap-4 text-zinc-500 bg-zinc-50 border border-zinc-200 rounded-2xl p-5">
                 <Info className="w-5 h-5 shrink-0 text-yellow-500 mt-0.5" />
-                <p className="text-[10px] font-bold leading-relaxed uppercase tracking-wider">
+                <p className="text-[10px] font-medium leading-relaxed uppercase tracking-wider">
                   Based on 12V battery bank with {batteryType === 'lithium' ? '95% DoD and 95% efficiency' : '50% DoD and 80% efficiency'}. Add 20% buffer for real-world safety.
                 </p>
               </div>
@@ -310,31 +310,31 @@ const PowerCalculator: React.FC = () => {
                 <BatteryCharging className="text-yellow-500 w-6 h-6 mb-4" />
                 <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">Battery Cost</span>
                 <div className="text-2xl font-black text-black tracking-tighter">₹{batteryCost.toLocaleString()}</div>
-                <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">Approx. installed</p>
+                <p className="text-[9px] font-medium text-zinc-400 uppercase mt-2">Approx. installed</p>
               </div>
               <div className="premium-cream-card p-6 rounded-[1.5rem] shadow-sm">
                 <Zap className="text-yellow-500 w-6 h-6 mb-4" />
                 <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">UPS / Inverter</span>
                 <div className="text-2xl font-black text-black tracking-tighter">₹{inverterCost.toLocaleString()}</div>
-                <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">Equipment cost</p>
+                <p className="text-[9px] font-medium text-zinc-400 uppercase mt-2">Equipment cost</p>
               </div>
               <div className="premium-cream-card p-6 rounded-[1.5rem] shadow-sm">
                 <IndianRupee className="text-yellow-500 w-6 h-6 mb-4" />
                 <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">Total Estimate</span>
                 <div className="text-2xl font-black text-black tracking-tighter">₹{totalCost.toLocaleString()}</div>
-                <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">Battery + UPS</p>
+                <p className="text-[9px] font-medium text-zinc-400 uppercase mt-2">Battery + UPS</p>
               </div>
               <div className="premium-cream-card p-6 rounded-[1.5rem] shadow-sm">
                 <Clock className="text-yellow-500 w-6 h-6 mb-4" />
                 <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block mb-1">Backup Duration</span>
                 <div className="text-2xl font-black text-black tracking-tighter">{backupHours} <span className="text-base text-zinc-400">Hours</span></div>
-                <p className="text-[9px] font-bold text-zinc-400 uppercase mt-2">At {loadWatts}W load</p>
+                <p className="text-[9px] font-medium text-zinc-400 uppercase mt-2">At {loadWatts}W load</p>
               </div>
             </div>
             <Link to="/contact" className="mt-6 flex items-center justify-between bg-black text-white rounded-[1.5rem] p-6 group hover:bg-zinc-900 transition-all shadow-xl">
               <div>
                 <span className="text-white font-black uppercase italic tracking-tighter block text-lg">Get Exact Quote</span>
-                <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Free assessment visit</span>
+                <span className="text-[10px] font-medium text-zinc-500 uppercase tracking-widest">Free assessment visit</span>
               </div>
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-all">
                 <ArrowRight className="w-5 h-5 text-black" />
@@ -369,7 +369,7 @@ const Calculator: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Yield & Backup Analytics</span>
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Yield & Backup Analytics</span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             Energy <br className="hidden md:block" />Calculator
           </h1>

@@ -104,7 +104,7 @@ const Opportunities: React.FC = () => {
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/30 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             Grow with us
           </span>
           <h1 className="text-[2rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
@@ -137,7 +137,7 @@ const Opportunities: React.FC = () => {
       <section className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 reveal">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">What We Offer</span>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">What We Offer</span>
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none mb-4">
               Choose Your Path
             </h2>
@@ -213,7 +213,7 @@ const Opportunities: React.FC = () => {
       {/* CTA section instead of form */}
       <section className="py-24 px-6 border-t border-white/5">
         <div className="max-w-4xl mx-auto text-center reveal">
-          <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-6 block">Ready to Begin?</span>
+          <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-6 block">Ready to Begin?</span>
           <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none mb-8">
             Let's Build the Future<br />of Energy Together.
           </h2>

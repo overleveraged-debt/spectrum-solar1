@@ -183,7 +183,7 @@ const Header: React.FC = () => {
                             <div className="min-w-0">
                               <p className={`text-[10px] font-medium uppercase tracking-widest leading-tight truncate ${isLightMode ? 'text-zinc-700' : ''}`}>{child.label}</p>
                               {child.sub && (
-                                <p className={`text-[8px] font-bold uppercase tracking-widest truncate mt-0.5 opacity-50 ${isLightMode ? 'text-zinc-500' : ''}`}>{child.sub}</p>
+                                <p className={`text-[8px] font-medium uppercase tracking-widest truncate mt-0.5 opacity-50 ${isLightMode ? 'text-zinc-500' : ''}`}>{child.sub}</p>
                               )}
                             </div>
                             <ChevronRight className="w-3 h-3 ml-auto flex-shrink-0 opacity-0 group-hover/item:opacity-100 transition-opacity" style={{ color: child.color ?? '#facc15' }} />
@@ -301,7 +301,7 @@ const Header: React.FC = () => {
                         <p className="text-sm font-black uppercase tracking-tight text-yellow-400 truncate">
                           View All {group.label}
                         </p>
-                        <p className="text-[9px] font-bold uppercase tracking-widest mt-0.5 text-yellow-400/60">
+                        <p className="text-[9px] font-medium uppercase tracking-widest mt-0.5 text-yellow-400/60">
                           See full product range
                         </p>
                       </div>
@@ -330,7 +330,7 @@ const Header: React.FC = () => {
                             {child.label}
                           </p>
                           {child.sub && (
-                            <p className="text-[9px] font-bold uppercase tracking-widest mt-0.5 truncate" style={{ color: child.color ?? '#facc15', opacity: 0.8 }}>
+                            <p className="text-[9px] font-medium uppercase tracking-widest mt-0.5 truncate" style={{ color: child.color ?? '#facc15', opacity: 0.8 }}>
                               {child.sub}
                             </p>
                           )}
@@ -381,8 +381,8 @@ const Header: React.FC = () => {
 
         {/* Footer */}
         <div className="px-6 py-5 border-t border-white/5 flex-shrink-0 bg-zinc-900/40">
-          <p className="text-[9px] font-bold text-zinc-600 uppercase tracking-[0.3em] mb-1">Engineering HQ</p>
-          <p className="text-white font-bold text-sm">Kochi, Kerala, India</p>
+          <p className="text-[9px] font-medium text-zinc-600 uppercase tracking-[0.3em] mb-1">Engineering HQ</p>
+          <p className="text-white font-medium text-sm">Kochi, Kerala, India</p>
           <p className="text-yellow-400 text-sm font-black mt-0.5">+91 97456 60055</p>
         </div>
       </div>

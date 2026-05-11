@@ -88,7 +88,7 @@ const MapSection: React.FC<{ height?: string; theme?: 'light' | 'dark' }> = ({ h
              <div className="w-3 h-3 bg-yellow-400 rounded-full shadow-[0_0_10px_#facc15]"></div>
              <span className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-black'}`}>Landmark Projects</span>
           </div>
-          <p className="text-zinc-500 text-[9px] font-bold uppercase tracking-widest leading-none">Mapping 40,000+ Success Stories</p>
+          <p className="text-zinc-500 text-[9px] font-medium uppercase tracking-widest leading-none">Mapping 40,000+ Success Stories</p>
         </div>
       </div>
 

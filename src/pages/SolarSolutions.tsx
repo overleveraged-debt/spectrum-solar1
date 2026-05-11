@@ -172,7 +172,7 @@ const SolarSolutions: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
             25 Years of Solar Excellence
           </span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
@@ -190,7 +190,7 @@ const SolarSolutions: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-end justify-between mb-20 reveal">
             <div>
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">
+              <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">
                 Solar Portfolio
               </span>
               <h2 className="text-4xl md:text-7xl font-thin uppercase text-white tracking-tight leading-[0.9]">
@@ -259,7 +259,7 @@ const SolarSolutions: React.FC = () => {
                           </span>
                         )}
                       </div>
-                      <p className="text-zinc-500 text-[11px] font-bold uppercase tracking-widest mt-1 hidden md:block">
+                      <p className="text-zinc-500 text-[11px] font-medium uppercase tracking-widest mt-1 hidden md:block">
                         {product.tagline}
                       </p>
                     </div>
@@ -292,7 +292,7 @@ const SolarSolutions: React.FC = () => {
                             {product.features.map((feature, i) => (
                               <li key={i} className="flex items-center gap-3">
                                 <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: product.accentColor }} />
-                                <span className="text-zinc-300 text-sm font-semibold">{feature}</span>
+                                <span className="text-zinc-300 text-sm font-medium">{feature}</span>
                               </li>
                             ))}
                           </ul>
@@ -361,7 +361,7 @@ const SolarSolutions: React.FC = () => {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin uppercase italic tracking-tight leading-none mb-4">
               Ready to Go Solar?
             </h2>
-            <p className="font-bold text-zinc-500 max-w-md mx-auto md:mx-0 text-sm md:text-base">
+            <p className="font-medium text-zinc-500 max-w-md mx-auto md:mx-0 text-sm md:text-base">
               Our certified solar engineers provide a free site audit to design the perfect system for your needs.
             </p>
           </div>

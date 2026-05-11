@@ -105,7 +105,7 @@ const Franchise: React.FC = () => {
       <section className="px-6 py-20 md:py-28" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Why Choose Us</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Why Choose Us</span>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               Why Start a<br />Spectrum Franchise?
             </h2>
@@ -145,7 +145,7 @@ const Franchise: React.FC = () => {
       <section className="px-6 py-20 md:py-28 border-t border-zinc-100" data-nav-light>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="reveal">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Product Portfolio</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Product Portfolio</span>
             <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight leading-[0.9] mb-6 text-black">
               What You Can Sell<br />as a Partner
             </h2>
@@ -173,7 +173,7 @@ const Franchise: React.FC = () => {
       <section className="px-6 py-20 md:py-28 bg-zinc-50 border-t border-zinc-100" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">What You Get</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">What You Get</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               Franchise Benefits
             </h2>

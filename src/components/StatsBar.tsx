@@ -47,7 +47,7 @@ const StatItem = ({ value, label, icon: Icon }: { value: string, label: string, 
       <p className="text-4xl font-black tracking-tighter text-white">
         {isNaNValue ? value : `${count}${value.includes('+') ? '+' : ''}`}
       </p>
-      <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-500 mt-2">{label}</p>
+      <p className="text-[9px] font-medium uppercase tracking-[0.3em] text-zinc-500 mt-2">{label}</p>
     </div>
   );
 };

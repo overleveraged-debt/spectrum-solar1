@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
 
       {/* Hero Content */}
       <div 
-        className="relative z-10 text-center px-6 max-w-5xl mt-12"
+        className="relative z-10 text-center px-6 max-w-5xl mt-12 hidden md:block"
         style={{ transform: `translateY(${-scrollY * 0.1}px)`, opacity: 1 - scrollY * 0.002 }}
       >
         <h1 className="text-[2.2rem] sm:text-6xl md:text-8xl lg:text-[5rem] font-thin mb-8 md:mb-12 tracking-[0.05em] leading-[1] md:leading-[0.92] text-white reveal uppercase" style={{ transitionDelay: '150ms' }}>
@@ -73,8 +73,8 @@ const Hero: React.FC<HeroProps> = ({ onLoaded }) => {
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-bounce opacity-40">
-        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white">Scroll</span>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 animate-bounce opacity-40">
+        <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-white">Scroll</span>
         <ChevronDown className="w-4 h-4 text-white" />
       </div>
     </section>

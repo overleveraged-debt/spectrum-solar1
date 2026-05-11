@@ -114,7 +114,7 @@ const Freelance: React.FC = () => {
       <section className="px-6 py-20 md:py-28" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Simple Process</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Simple Process</span>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               How the Freelance<br />Model Works
             </h2>
@@ -144,7 +144,7 @@ const Freelance: React.FC = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="reveal premium-cream-card p-8 md:p-10 rounded-[2rem]">
             <Zap className="w-10 h-10 text-yellow-500 mb-6" />
-            <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-widest mb-3 block">Refer These</span>
+            <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-widest mb-3 block">Refer These</span>
             <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-6 text-black">What You Can Refer</h3>
             <ul className="space-y-3">
               {referItems.map((item) => (
@@ -157,7 +157,7 @@ const Freelance: React.FC = () => {
           </div>
           <div className="reveal premium-cream-card p-8 md:p-10 rounded-[2rem]" style={{ transitionDelay: '100ms' }}>
             <Users className="w-10 h-10 text-yellow-500 mb-6" />
-            <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-widest mb-3 block">Open to Everyone</span>
+            <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-widest mb-3 block">Open to Everyone</span>
             <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-6 text-black">Who Can Join?</h3>
             <div className="space-y-3">
               {whoCanJoin.map(({ label, icon: Icon }) => (
@@ -177,7 +177,7 @@ const Freelance: React.FC = () => {
       <section className="px-6 py-20 md:py-28 border-t border-zinc-100" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Partner Perks</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Partner Perks</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               Benefits of Joining
             </h2>

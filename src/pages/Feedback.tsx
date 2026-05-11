@@ -28,10 +28,10 @@ const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial: t }) => 
           {t.name}
           <div className="flex items-center gap-1">
             <CheckCircle2 className="w-4 h-4 text-yellow-400" />
-            {t.isVerified && <span className="text-[8px] text-zinc-500 font-bold tracking-widest uppercase">Google Verified</span>}
+            {t.isVerified && <span className="text-[8px] text-zinc-500 font-medium tracking-widest uppercase">Google Verified</span>}
           </div>
         </div>
-        <div className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
+        <div className="text-[10px] font-medium text-zinc-500 uppercase tracking-widest mt-0.5">
           {t.date}
         </div>
       </div>
@@ -72,7 +72,7 @@ const Feedback: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Social Proof</span>
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Social Proof</span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             Trusted By <br className="hidden md:block" /> Thousands
           </h1>
@@ -211,7 +211,7 @@ const Feedback: React.FC = () => {
       {/* Leave a Review CTA */}
       <section className="px-6 pb-20 border-t border-white/5 pt-16">
         <div className="max-w-4xl mx-auto reveal text-center">
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Experience</span>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Experience</span>
             <h3 className="text-3xl md:text-5xl font-thin italic uppercase tracking-tight mb-8 text-white leading-tight">
               Share your story on Google.
             </h3>

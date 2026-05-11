@@ -100,7 +100,7 @@ const Careers: React.FC = () => {
       <section className="px-6 py-20 md:py-28" data-nav-light>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="reveal">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Who We Are</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Who We Are</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-6 text-black">
               Careers That<br />Matter
             </h2>
@@ -127,7 +127,7 @@ const Careers: React.FC = () => {
       <section className="px-6 py-20 md:py-28 bg-zinc-50 border-t border-zinc-100" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">The Benefits</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">The Benefits</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               Why Work With Us
             </h2>
@@ -162,7 +162,7 @@ const Careers: React.FC = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="reveal">
             <Users className="w-12 h-12 text-yellow-500 mb-6" />
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Culture</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Culture</span>
             <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight leading-[0.9] mb-6 text-black">
               Work Culture
             </h2>
@@ -209,7 +209,7 @@ const Careers: React.FC = () => {
       <section className="px-6 py-20 md:py-28 bg-zinc-50 border-t border-zinc-100" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Now Hiring</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Now Hiring</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-none text-black">
               Open Positions
             </h2>
@@ -255,7 +255,7 @@ const Careers: React.FC = () => {
       <section className="px-6 py-20 md:py-28 border-t border-zinc-100" data-nav-light>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 md:mb-16 reveal">
-            <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Questions</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Questions</span>
             <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight mb-4 text-black">Frequently Asked</h2>
             <p className="text-zinc-500 font-light text-base">Everything you need to know about working at Spectrum Solar.</p>
           </div>

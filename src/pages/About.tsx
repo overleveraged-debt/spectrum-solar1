@@ -39,7 +39,7 @@ const About: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Our Story</span>
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Our Story</span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             25 YEARS OF <br className="hidden md:block" />
             ENERGY EXCELLENCE
@@ -62,7 +62,7 @@ const About: React.FC = () => {
               <div className="text-yellow-500 mb-3 flex justify-center md:justify-start">{stat.icon}</div>
               <div className="text-3xl md:text-5xl font-black text-white mb-1 tracking-tighter">{stat.value}</div>
               <div className="text-zinc-300 font-black uppercase text-xs tracking-wider mb-1">{stat.label}</div>
-              <div className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">{stat.sub}</div>
+              <div className="text-zinc-600 text-[10px] font-medium uppercase tracking-widest">{stat.sub}</div>
             </div>
           ))}
         </div>
@@ -75,7 +75,7 @@ const About: React.FC = () => {
             <div className="mb-6">
               <Globe className="w-12 h-12 text-yellow-400" />
             </div>
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Heritage</span>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Our Heritage</span>
             <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight italic uppercase text-white leading-tight">
               Built from the ground up in India.
             </h2>
@@ -123,7 +123,7 @@ const About: React.FC = () => {
             <div className="mb-6">
               <Award className="w-12 h-12 text-yellow-400" />
             </div>
-            <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Quality First</span>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Quality First</span>
             <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight italic uppercase text-white leading-tight">
               Only the world's best brands.
             </h2>
@@ -131,7 +131,7 @@ const About: React.FC = () => {
               We use only top-tier international brands for our solar panels and backup systems, ensuring every installation meets the highest safety and performance standards. Kerala Government's Best Solar Energy Industry Award is a testament to our commitment.
             </p>
             <div className="p-6 bg-yellow-400/10 border border-yellow-400/20 rounded-2xl">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-400 mb-1">Accreditation</p>
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-yellow-400 mb-1">Accreditation</p>
               <p className="text-white font-black uppercase tracking-tight">Best Solar Energy Industry Award</p>
               <p className="text-zinc-400 text-[10px] mt-1">Kerala Government State Award Recipient</p>
             </div>
@@ -142,7 +142,7 @@ const About: React.FC = () => {
       {/* Brand Logos Strip */}
       <section className="py-20 border-t border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-12 reveal">
-          <span className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-3 block text-center">Brands We Install</span>
+          <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-3 block text-center">Brands We Install</span>
           <h2 className="text-3xl md:text-4xl font-thin uppercase tracking-tight text-center text-white">
             Trusted Partners.
           </h2>
@@ -172,7 +172,7 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6 reveal">
             <div>
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Regional Presence</span>
+              <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Regional Presence</span>
               <h2 className="text-4xl md:text-7xl font-thin uppercase tracking-[-0.04em] leading-[0.9] text-white">
                 Powering Every <br />District.
               </h2>
@@ -194,7 +194,7 @@ const About: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-thin tracking-tight leading-none italic uppercase mb-4">
               18+ Centers <br />Across India.
             </h2>
-            <p className="text-black/70 text-base max-w-md font-bold">
+            <p className="text-black/70 text-base max-w-md font-medium">
               From Kannur to Thiruvananthapuram — our network ensures you're never far from expert power support.
             </p>
           </div>

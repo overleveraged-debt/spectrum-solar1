@@ -62,7 +62,7 @@ const Gallery: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Our Installations</span>
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-6 block">Our Installations</span>
           <h1 className="text-[2rem] sm:text-5xl md:text-6xl font-thin tracking-tight mb-4 leading-[0.9] uppercase text-white">Gallery</h1>
           <p className="text-white/60 text-base max-w-xl mx-auto font-light">Installations across India — from rooftops to industrial plants.</p>
         </div>
@@ -141,7 +141,7 @@ const Gallery: React.FC = () => {
                 <h2 className="text-3xl md:text-4xl font-thin uppercase tracking-tight leading-none text-white mb-2">
                   {safeItem.title}
                 </h2>
-                <p className="text-zinc-500 text-sm">{safeItem.location} · <span className="text-yellow-400 font-bold">{safeItem.capacity}</span></p>
+                <p className="text-zinc-500 text-sm">{safeItem.location} · <span className="text-yellow-400 font-medium">{safeItem.capacity}</span></p>
               </div>
 
               {/* Thumbnail strip — scrollable */}
@@ -223,7 +223,7 @@ const Gallery: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 reveal">
             <div className="text-center md:text-left">
-              <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Geographic Spread</span>
+              <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Geographic Spread</span>
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-[-0.04em] leading-[0.9] text-white">
                 Mapping Our <br />Impact.
               </h2>
@@ -241,7 +241,7 @@ const Gallery: React.FC = () => {
 
       {/* CTA */}
       <section className="py-20 px-6 border-t border-white/5 text-center reveal">
-        <span className="text-yellow-400 font-bold text-[10px] uppercase tracking-[0.5em] mb-4 block">Want a project like this?</span>
+        <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Want a project like this?</span>
         <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight leading-none mb-6 text-white">Let's Build Yours.</h2>
         <Link to="/contact" className="inline-flex items-center gap-2 bg-yellow-400 text-black px-10 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">
           Get a Free Quote

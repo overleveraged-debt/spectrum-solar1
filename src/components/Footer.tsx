@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
                 { label: 'Solar Calculator', path: '/calculator' }
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-semibold transition-colors flex items-center gap-2 group">
+                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
                     <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                     {link.label}
                   </Link>
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
                 { label: 'Tubular Batteries', path: '/power/tubular-batteries' }
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-semibold transition-colors flex items-center gap-2 group">
+                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
                     <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                     {link.label}
                   </Link>
@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
                 { label: 'Our Projects', path: '/projects' }
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-semibold transition-colors flex items-center gap-2 group">
+                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
                     <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                     {link.label}
                   </Link>
@@ -128,8 +128,8 @@ const Footer: React.FC = () => {
               <li className="flex gap-3">
                 <MapPin className="w-4 h-4 text-yellow-400 shrink-0" />
                 <div className="space-y-1">
-                  <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Corporate HQ</p>
-                  <p className="text-zinc-500 text-xs leading-relaxed">Kannur, Kerala, India</p>
+                  <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Nationwide Service</p>
+                  <p className="text-zinc-500 text-xs leading-relaxed">Serving All of India</p>
                 </div>
               </li>
               <li className="flex gap-3">
