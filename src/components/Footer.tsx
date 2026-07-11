@@ -11,6 +11,7 @@ import {
   Award,
   ShieldCheck
 } from 'lucide-react';
+import { CONTACT_INFO } from '../data/config';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -30,7 +31,7 @@ const Footer: React.FC = () => {
               />
             </Link>
             <p className="text-zinc-500 text-sm leading-relaxed max-w-sm">
-              Spectrum Solar is a pioneer in solar energy integration and power electronics since 2000. With over 40,000+ satisfied customers nationwide, we are committed to India's green energy transition.
+              Spectrum Solar is a pioneer in solar energy integration and power electronics since 2002. With over 40,000+ satisfied customers nationwide, we are committed to India's green energy transition.
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
@@ -128,15 +129,15 @@ const Footer: React.FC = () => {
               <li className="flex gap-3">
                 <MapPin className="w-4 h-4 text-yellow-400 shrink-0" />
                 <div className="space-y-1">
-                  <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Nationwide Service</p>
-                  <p className="text-zinc-500 text-xs leading-relaxed">Serving All of India</p>
+                  <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Headquarters</p>
+                  <p className="text-zinc-500 text-xs leading-relaxed">Kochi</p>
                 </div>
               </li>
               <li className="flex gap-3">
                 <Phone className="w-4 h-4 text-yellow-400 shrink-0" />
                 <div className="space-y-1">
                   <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Sales Support</p>
-                  <p className="text-zinc-500 text-xs leading-relaxed">+91 9400 323 111</p>
+                  <p className="text-zinc-500 text-xs leading-relaxed">{CONTACT_INFO.phoneText}</p>
                 </div>
               </li>
               <li className="flex gap-3">

@@ -1,3 +1,4 @@
+import { usePageContent } from '../hooks/usePageContent';
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import {
@@ -14,8 +15,26 @@ import SEO from '../components/SEO';
 const TubularBatteries: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const { pageData } = usePageContent('tubular-batteries');
 
-  const faqs = [
+  const heroSubtitle = pageData.heroSubtitle || "Lead-Acid Storage";
+  const heroTitle = pageData.heroTitle || "Tall Tubular Batteries";
+  const heroImage = pageData.heroImage || "/images/pwr_tubular_battery.webp";
+  const heroDesc = pageData.heroDesc || "Proven lead-acid storage battery for long backup runs. Extreme temperature resilience.";
+
+  const stat1Value = pageData.stat1Value || "25+";
+  const stat1Label = pageData.stat1Label || "Years Brand Legacy";
+  const stat2Value = pageData.stat2Value || "40K+";
+  const stat2Label = pageData.stat2Label || "Happy Customers";
+  const stat3Value = pageData.stat3Value || "18+";
+  const stat3Label = pageData.stat3Label || "Regional Centers";
+  const stat4Value = pageData.stat4Value || "60+";
+  const stat4Label = pageData.stat4Label || "Service Engineers";
+
+  const description = pageData.description || "Proven lead-acid storage battery for long backup runs. Extreme temperature resilience.";
+  
+
+  const faqs: { q: string; a: string }[] = pageData.faqs || [
     {
       q: "How long do tubular batteries last?",
       a: "Tubular batteries typically last 4–8 years depending on usage, maintenance, and operating conditions. With proper care and regular maintenance, they can reach or exceed the upper end of their rated lifespan."
@@ -39,21 +58,17 @@ const TubularBatteries: React.FC = () => {
 
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/tubular_battery_hero.webp" className="w-full h-full object-cover object-center" alt="Tubular Batteries" />
+          <img src={heroImage} className="w-full h-full object-cover object-center" alt="TubularBatteries" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85" />
         </div>
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-32 md:pt-36 pb-8">
           <div className="max-w-7xl mx-auto text-center w-full">
             <div className="inline-flex items-center gap-2 bg-yellow-400/15 border border-yellow-400/40 rounded-full px-5 py-2 mb-8">
               <Battery className="w-3.5 h-3.5 text-yellow-400" />
-              <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Deep Cycle Energy Storage</span>
+              <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">{heroSubtitle}</span>
             </div>
-            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-              Tubular<br /><span className="text-yellow-400">Batteries</span>
-            </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
-              Proven, Reliable Power Storage for Long Backup Needs. India's trusted deep-cycle battery technology — built for long-duration performance.
-            </p>
+            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">{heroTitle}</h1>
+            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">{heroDesc}</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)]">
                 <ArrowRight className="w-5 h-5" />Get Free Quote
@@ -68,11 +83,11 @@ const TubularBatteries: React.FC = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4">
               {[
-                { value: "4–8 Yrs", label: "Battery Lifespan" },
-                { value: "Deep", label: "Cycle Performance" },
-                { value: "1200+", label: "Charge Cycles" },
-                { value: "Trusted", label: "Proven Technology" },
-              ].map((stat, i) => (
+                { value: stat1Value, label: stat1Label },
+                { value: stat2Value, label: stat2Label },
+                { value: stat3Value, label: stat3Label },
+                { value: stat4Value, label: stat4Label },
+              ].map((stat: { value: string; label: string }, i: number) => (
                 <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
                   <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
                   <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
@@ -95,9 +110,7 @@ const TubularBatteries: React.FC = () => {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
                 Built for Long<br /><span className="text-yellow-400">Power Cuts.</span>
               </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
-                Tubular batteries are lead-acid batteries engineered with a unique tubular plate design that allows for deep discharge performance. They deliver superior backup hours for homes and businesses in regions with extended power outages.
-              </p>
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">{description}</p>
               <p className="text-zinc-500 leading-relaxed font-light mb-10">
                 Spectrum Powers stocks premium tubular batteries from trusted brands, with expert sizing and installation for maximum performance and longevity.
               </p>
@@ -235,7 +248,7 @@ const TubularBatteries: React.FC = () => {
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
-                <img src="/images/tubular_lifestyle.webp" alt="Tubular battery in home installation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src="/images/tubular_lifestyle.webp" alt="Tubular battery in home installation" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">
@@ -270,7 +283,7 @@ const TubularBatteries: React.FC = () => {
             <p className="text-zinc-400 font-light text-base md:text-lg">Everything you need to know about Tubular Batteries.</p>
           </div>
           <div className="space-y-3">
-            {faqs.map((faq, i) => (
+            {faqs.map((faq: { q: string; a: string }, i: number) => (
               <div key={i} className={`bg-zinc-900 rounded-2xl overflow-hidden border transition-all duration-300 ${activeFaq === i ? 'border-yellow-400/40' : 'border-white/5'}`}>
                 <button className="w-full text-left px-6 md:px-8 py-5 md:py-6 flex items-center justify-between gap-4" onClick={() => setActiveFaq(activeFaq === i ? null : i)}>
                   <span className="font-medium text-base md:text-lg">{faq.q}</span>

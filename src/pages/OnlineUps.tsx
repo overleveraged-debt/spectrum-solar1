@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { usePageContent } from '../hooks/usePageContent';
 import {
-  Server, Zap, Battery, ArrowRight, ShieldCheck, CheckCircle2,
+  Server, Zap, ArrowRight, ShieldCheck, CheckCircle2,
   Hospital, Building2, Monitor, Factory, Cpu,
   PhoneCall, Settings, FileText, Wrench, Play, ChevronDown,
   Activity, Clock, Layers, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import * as LucideIcons from 'lucide-react';
+
+const IconMap: Record<string, any> = LucideIcons;
 
 const OnlineUps: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const { pageData } = usePageContent('online-ups');
 
   const faqs = [
     {
@@ -118,56 +123,68 @@ const OnlineUps: React.FC = () => {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-24 md:py-32 px-6 bg-zinc-900/40 border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 md:mb-20 reveal">
-            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How Online UPS Works</h2>
-          </div>
-          <div className="hidden md:grid grid-cols-5 gap-0 relative reveal">
-            <div className="absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-yellow-400/20 via-yellow-400 to-yellow-400/20" />
-            {[
-              { step: '01', icon: Zap, title: 'AC In', desc: 'AC power from grid enters the system.' },
-              { step: '02', icon: Activity, title: 'Rectify', desc: 'AC converted to regulated DC power.' },
-              { step: '03', icon: Battery, title: 'Store', desc: 'DC stored and regulated in battery.' },
-              { step: '04', icon: Server, title: 'Invert', desc: 'DC re-converted to clean AC continuously.' },
-              { step: '05', icon: ShieldCheck, title: 'Protect', desc: 'Equipment receives continuous clean power.' },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center px-4 group">
-                <div className="w-24 h-24 rounded-full bg-zinc-950 border-2 border-yellow-400 flex items-center justify-center mb-6 relative z-10 group-hover:bg-yellow-400 group-hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-300">
-                  <item.icon className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
-                </div>
-                <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
-                <h3 className="text-lg font-thin uppercase tracking-tight mb-2">{item.title}</h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="md:hidden space-y-0">
-            {[
-              { step: '01', icon: Zap, title: 'AC In', desc: 'AC power from grid enters the system.' },
-              { step: '02', icon: Activity, title: 'Rectify', desc: 'AC converted to regulated DC power.' },
-              { step: '03', icon: Battery, title: 'Store', desc: 'DC stored and regulated in battery.' },
-              { step: '04', icon: Server, title: 'Invert', desc: 'DC re-converted to clean AC continuously.' },
-              { step: '05', icon: ShieldCheck, title: 'Protect', desc: 'Equipment receives continuous clean power.' },
-            ].map((item, i) => (
-              <div key={i} className="flex gap-5 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-zinc-900 border-2 border-yellow-400 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-5 h-5 text-yellow-400" />
+      {pageData.showHowItWorks !== false && (
+        <section className="py-24 md:py-32 px-6 bg-zinc-900/40 border-y border-white/5">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 md:mb-20 reveal">
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How Online UPS Works</h2>
+            </div>
+            
+            {/* Desktop flow */}
+            <div className="hidden md:grid grid-cols-5 gap-0 relative reveal">
+              <div className="absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-yellow-400/20 via-yellow-400 to-yellow-400/20" />
+              {(pageData.howItWorksSteps || [
+                { step: '01', icon: 'Activity', title: 'AC to DC', desc: 'Incoming utility AC power is rectified to DC power.' },
+                { step: '02', icon: 'Battery', title: 'Charge', desc: 'DC power keeps the battery bank fully charged.' },
+                { step: '03', icon: 'Zap', title: 'DC to AC', desc: 'Inverter converts DC back to clean, stable AC.' },
+                { step: '04', icon: 'ShieldCheck', title: 'Regulate', desc: 'Zero transfer time (0ms) double-conversion filters spikes.' },
+                { step: '05', icon: 'CheckCircle2', title: 'Protect', desc: 'Connected critical loads receive perfect 230V sine wave.' },
+              ]).map((item: any, i: number) => {
+                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                return (
+                  <div key={i} className="flex flex-col items-center text-center px-4 group">
+                    <div className="w-24 h-24 rounded-full bg-zinc-950 border-2 border-yellow-400 flex items-center justify-center mb-6 relative z-10 group-hover:bg-yellow-400 group-hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-300">
+                      <IconComponent className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
+                    </div>
+                    <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
+                    <h3 className="text-lg font-thin uppercase tracking-tight mb-2">{item.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
-                  {i < 4 && <div className="w-[2px] flex-1 bg-yellow-400/30 my-2" />}
-                </div>
-                <div className="pb-8 pt-1">
-                  <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
-                  <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+                );
+              })}
+            </div>
+
+            {/* Mobile flow */}
+            <div className="md:hidden space-y-0">
+              {(pageData.howItWorksSteps || [
+                { step: '01', icon: 'Activity', title: 'AC to DC', desc: 'Incoming utility AC power is rectified to DC power.' },
+                { step: '02', icon: 'Battery', title: 'Charge', desc: 'DC power keeps the battery bank fully charged.' },
+                { step: '03', icon: 'Zap', title: 'DC to AC', desc: 'Inverter converts DC back to clean, stable AC.' },
+                { step: '04', icon: 'ShieldCheck', title: 'Regulate', desc: 'Zero transfer time (0ms) double-conversion filters spikes.' },
+                { step: '05', icon: 'CheckCircle2', title: 'Protect', desc: 'Connected critical loads receive perfect 230V sine wave.' },
+              ]).map((item: any, i: number, arr: any[]) => {
+                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                return (
+                  <div key={i} className="flex gap-5 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-zinc-900 border-2 border-yellow-400 flex items-center justify-center flex-shrink-0">
+                        <IconComponent className="w-5 h-5 text-yellow-400" />
+                      </div>
+                      {i < arr.length - 1 && <div className="w-[2px] flex-1 bg-yellow-400/30 my-2" />}
+                    </div>
+                    <div className="pb-8 pt-1">
+                      <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
+                      <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
+                      <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* BENEFITS */}
       <section className="py-24 md:py-32 px-6">

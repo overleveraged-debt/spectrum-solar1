@@ -332,7 +332,7 @@ const Services: React.FC = () => {
       <section className="px-6 pb-10">
         <div className="max-w-7xl mx-auto border border-yellow-400/20 bg-zinc-900 text-white rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 reveal shadow-2xl">
           <div className="text-center md:text-left">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin uppercase italic tracking-tight leading-none mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin uppercase tracking-tight leading-none mb-4">
               Ready to Optimize?
             </h2>
             <p className="font-medium text-zinc-500 max-w-md mx-auto md:mx-0 text-sm md:text-base">

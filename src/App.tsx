@@ -34,6 +34,10 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsConditions = lazy(() => import('./pages/TermsConditions'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
+// Admin pages
+const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
+
 // Simple loading fallback
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-zinc-950">
@@ -47,6 +51,10 @@ function App() {
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes>
+          {/* Admin routes (without RootLayout header/footer) */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />

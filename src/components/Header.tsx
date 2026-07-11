@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Menu, X, ChevronDown, ChevronRight, Sun, Zap, Leaf, Thermometer, Battery, Server, BatteryCharging, Layers, Cpu, TrendingUp, Users, Briefcase, Image, BookOpen, FolderOpen } from 'lucide-react';
 import { useNavbarScroll } from '../hooks/useNavbarScroll';
 import { Link, useLocation } from 'react-router-dom';
+import { CONTACT_INFO } from '../data/config';
 
 // ─── Nav structure with correct hash deep-links ───────────────────────────────
 
@@ -383,7 +384,7 @@ const Header: React.FC = () => {
         <div className="px-6 py-5 border-t border-white/5 flex-shrink-0 bg-zinc-900/40">
           <p className="text-[9px] font-medium text-zinc-600 uppercase tracking-[0.3em] mb-1">Engineering HQ</p>
           <p className="text-white font-medium text-sm">Kochi, Kerala, India</p>
-          <p className="text-yellow-400 text-sm font-black mt-0.5">+91 97456 60055</p>
+          <p className="text-yellow-400 text-sm font-black mt-0.5">{CONTACT_INFO.phoneText}</p>
         </div>
       </div>
     </>

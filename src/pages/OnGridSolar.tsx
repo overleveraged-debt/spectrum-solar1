@@ -1,3 +1,4 @@
+import { usePageContent } from '../hooks/usePageContent';
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import {
@@ -12,8 +13,26 @@ import SEO from '../components/SEO';
 const OnGridSolar: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const { pageData } = usePageContent('on-grid');
 
-  const faqs = [
+  const heroSubtitle = pageData.heroSubtitle || "Grid-Connected · Net Metering";
+  const heroTitle = pageData.heroTitle || "On-Grid Solar System";
+  const heroImage = pageData.heroImage || "/images/ongrid_hero_wide.webp";
+  const heroDesc = pageData.heroDesc || "Significantly lower your monthly electricity bills. Feed excess power back to the grid and maximize your solar returns.";
+
+  const stat1Value = pageData.stat1Value || "90%";
+  const stat1Label = pageData.stat1Label || "Bill Reduction";
+  const stat2Value = pageData.stat2Value || "25 Yrs";
+  const stat2Label = pageData.stat2Label || "Panel Warranty";
+  const stat3Value = pageData.stat3Value || "3–4 Yrs";
+  const stat3Label = pageData.stat3Label || "ROI Period";
+  const stat4Value = pageData.stat4Value || "6,145+";
+  const stat4Label = pageData.stat4Label || "Successful Installations";
+
+  const description = pageData.description || "Significantly lower your monthly electricity bills. Feed excess power back to the grid and maximize your solar returns.";
+  
+
+  const faqs: { q: string; a: string }[] = pageData.faqs || [
     {
       q: "What is net metering?",
       a: "Net metering is a billing mechanism that credits solar energy system owners for the electricity they add to the grid. It allows you to export excess electricity generated during the day and get bill credits, effectively reducing your overall energy costs."
@@ -39,11 +58,7 @@ const OnGridSolar: React.FC = () => {
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         {/* Background */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/ongrid_hero_wide.webp"
-            className="w-full h-full object-cover object-center"
-            alt="On-Grid Solar System"
-          />
+          <img src={heroImage} className="w-full h-full object-cover object-center" alt="OnGridSolar" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-zinc-950" />
         </div>
 
@@ -53,16 +68,11 @@ const OnGridSolar: React.FC = () => {
             {/* Pill badge */}
             <div className="inline-flex items-center gap-2 bg-yellow-400/15 border border-yellow-400/40 rounded-full px-5 py-2 mb-8">
               <Sun className="w-3.5 h-3.5 text-yellow-400" />
-              <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Grid-Connected · Net Metering</span>
+              <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">{heroSubtitle}</span>
             </div>
 
-            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-              On-Grid<br />
-              <span className="text-yellow-400">Solar System</span>
-            </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
-              Reduce electricity bills to near zero. Feed excess power to the grid. Start earning from the sun.
-            </p>
+            <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">{heroTitle}</h1>
+            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">{heroDesc}</p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)]">
@@ -82,11 +92,11 @@ const OnGridSolar: React.FC = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4">
               {[
-                { value: "90%", label: "Bill Reduction" },
-                { value: "25 Yrs", label: "Panel Warranty" },
-                { value: "3–4 Yrs", label: "ROI Period" },
-                { value: "6,145+", label: "Successful Installations" },
-              ].map((stat, i) => (
+                { value: stat1Value, label: stat1Label },
+                { value: stat2Value, label: stat2Label },
+                { value: stat3Value, label: stat3Label },
+                { value: stat4Value, label: stat4Label },
+              ].map((stat: { value: string; label: string }, i: number) => (
                 <div key={i} className={`py-6 md:py-8 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
                   <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
                   <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
@@ -109,9 +119,7 @@ const OnGridSolar: React.FC = () => {
                 Grid-tied.<br />
                 <span className="text-yellow-400">Always Saving.</span>
               </h2>
-              <p className="text-zinc-400 text-lg leading-relaxed font-light mb-6">
-                An On-Grid Solar System connects directly to the electricity grid. You use solar power during the day and automatically export excess energy back to KSEB — earning credits through net metering.
-              </p>
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">{description}</p>
               <p className="text-zinc-500 leading-relaxed font-light mb-10">
                 This makes it the most cost-effective and fastest-ROI solar solution available — with zero battery costs and minimal maintenance.
               </p>
@@ -362,7 +370,7 @@ const OnGridSolar: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            {faqs.map((faq, i) => (
+            {faqs.map((faq: { q: string; a: string }, i: number) => (
               <div
                 key={i}
                 className={`bg-zinc-900 rounded-2xl overflow-hidden border transition-all duration-300 ${activeFaq === i ? 'border-yellow-400/40' : 'border-white/5'}`}

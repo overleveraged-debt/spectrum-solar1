@@ -54,25 +54,25 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
         {/* Row 1: Name & Phone */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-              <User className="w-3 h-3" /> Full Name
+            <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+              <User className="w-3 h-3 text-zinc-400" /> Full Name
             </label>
             <input
               required
               type="text"
               placeholder="John Doe"
-              className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm"
+              className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
             />
           </div>
           <div className="space-y-2">
-            <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-              <Phone className="w-3 h-3" /> Phone Number
+            <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+              <Phone className="w-3 h-3 text-zinc-400" /> Phone Number
             </label>
             <input
               required
               type="tel"
               placeholder="+91 98765 43210"
-              className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm"
+              className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
             />
           </div>
         </div>
@@ -80,24 +80,24 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
         {/* Row 2: Email & Inquiry Type */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-              <Mail className="w-3 h-3" /> Email Address
+            <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+              <Mail className="w-3 h-3 text-zinc-400" /> Email Address
             </label>
             <input
               required
               type="email"
               placeholder="john@example.com"
-              className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black placeholder:text-zinc-300 focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm"
+              className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
             />
           </div>
           <div className="space-y-2">
-            <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-              <MessageSquare className="w-3 h-3" /> Inquiry For
+            <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+              <MessageSquare className="w-3 h-3 text-zinc-400" /> Inquiry For
             </label>
             <select 
               value={type}
               onChange={(e) => setType(e.target.value as InquiryType)}
-              className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-400 focus:bg-white transition-all appearance-none cursor-pointer text-sm"
+              className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all appearance-none cursor-pointer text-sm shadow-sm"
             >
               <option value="general">General Inquiry</option>
               <option value="solar">Solar Installation</option>
@@ -114,10 +114,10 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
         {(type === 'solar' || type === 'backup') && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-top-2 duration-500">
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-                <Building2 className="w-3 h-3" /> Property Type
+              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+                <Building2 className="w-3 h-3 text-zinc-400" /> Property Type
               </label>
-              <select className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm">
+              <select className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm">
                 <option>Residential</option>
                 <option>Commercial</option>
                 <option>Industrial</option>
@@ -125,10 +125,10 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
               </select>
             </div>
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-                <Zap className="w-3 h-3" /> Avg. Monthly Bill
+              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+                <Zap className="w-3 h-3 text-zinc-400" /> Avg. Monthly Bill
               </label>
-              <select className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm">
+              <select className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm">
                 <option>Below ₹2,000</option>
                 <option>₹2,000 - ₹5,000</option>
                 <option>₹5,000 - ₹10,000</option>
@@ -142,21 +142,21 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
         {(type === 'franchise' || type === 'dealership') && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-top-2 duration-500">
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-                <MapPin className="w-3 h-3" /> Target City/Location
+              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+                <MapPin className="w-3 h-3 text-zinc-400" /> Target City/Location
               </label>
               <input
                 required
                 type="text"
                 placeholder="City Name"
-                className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm"
+                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
               />
             </div>
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-                <Wallet className="w-3 h-3" /> Investment Capacity
+              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+                <Wallet className="w-3 h-3 text-zinc-400" /> Investment Capacity
               </label>
-              <select className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm">
+              <select className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm">
                 <option>₹5L - ₹10L</option>
                 <option>₹10L - ₹25L</option>
                 <option>Above ₹25L</option>
@@ -169,25 +169,25 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
         {type === 'careers' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-top-2 duration-500">
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-                <Briefcase className="w-3 h-3" /> Position Interested
+              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+                <Briefcase className="w-3 h-3 text-zinc-400" /> Position Interested
               </label>
               <input
                 required
                 type="text"
                 placeholder="e.g. Site Engineer"
-                className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm"
+                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
               />
             </div>
             <div className="space-y-2">
-              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-                <Linkedin className="w-3 h-3" /> LinkedIn Profile Link
+              <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+                <Linkedin className="w-3 h-3 text-zinc-400" /> LinkedIn Profile Link
               </label>
               <input
                 required
                 type="url"
                 placeholder="https://linkedin.com/in/..."
-                className="w-full bg-white border border-zinc-100/50 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-400 focus:bg-white transition-all text-sm"
+                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
               />
             </div>
           </div>
@@ -195,8 +195,8 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
 
         {/* Message Area */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">
-            <MessageSquare className="w-3 h-3" /> Additional Details
+          <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-5">
+            <MessageSquare className="w-3 h-3 text-zinc-400" /> Additional Details
           </label>
           <textarea
             rows={4}
@@ -205,7 +205,7 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
               type === 'solar' ? "Please describe your site (roof type, orientation, etc.)..." :
               "Any specific questions or requirements?"
             }
-            className="w-full bg-white border border-zinc-100/50 rounded-[1.5rem] px-7 py-5 text-black placeholder:text-zinc-300 focus:outline-none focus:border-yellow-400 focus:bg-white transition-all resize-none text-sm"
+            className="w-full bg-white border border-zinc-200 rounded-[1.5rem] px-7 py-5 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all resize-none text-sm shadow-sm"
           />
         </div>
 
@@ -216,12 +216,12 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
             ${isSubmitting ? 'bg-zinc-200 text-zinc-400 cursor-not-allowed' : 'bg-black text-white hover:bg-yellow-400 hover:text-black active:scale-[0.98]'}
           `}
         >
-          {isSubmitting ? 'Sending Inqury...' : 'Submit Request'}
+          {isSubmitting ? 'Sending Inquiry...' : 'Submit Request'}
           {!isSubmitting && <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
         </button>
 
-        <p className="text-[9px] text-center text-zinc-400 font-medium uppercase tracking-widest px-10">
-          By submitting, you agree to our <a href="/privacy-policy" className="text-zinc-600 underline">Privacy Policy</a> and <a href="/terms-conditions" className="text-zinc-600 underline">Terms of Service</a>.
+        <p className="text-[9px] text-center text-zinc-500 font-medium uppercase tracking-widest px-10">
+          By submitting, you agree to our <a href="/privacy-policy" className="text-zinc-600 underline hover:text-yellow-600 transition-colors">Privacy Policy</a> and <a href="/terms-conditions" className="text-zinc-600 underline hover:text-yellow-600 transition-colors">Terms of Service</a>.
         </p>
       </form>
     </div>

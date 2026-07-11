@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { usePageContent } from '../hooks/usePageContent';
 import {
   Zap, Battery, Home, ArrowRight, ShieldCheck, CheckCircle2,
   Monitor, Tv, Users, Building2,
@@ -8,11 +9,14 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import * as LucideIcons from 'lucide-react';
 
+const IconMap: Record<string, any> = LucideIcons;
 
 const HomeUps: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const { pageData } = usePageContent('home-ups');
 
   const faqs = [
     {
@@ -138,58 +142,68 @@ const HomeUps: React.FC = () => {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="py-24 md:py-32 px-6 bg-zinc-900/40 border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 md:mb-20 reveal">
-            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How Home UPS Works</h2>
-          </div>
+      {pageData.showHowItWorks !== false && (
+        <section className="py-24 md:py-32 px-6 bg-zinc-900/40 border-y border-white/5">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 md:mb-20 reveal">
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Mechanism</span>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">How Home UPS Works</h2>
+            </div>
 
-          <div className="hidden md:grid grid-cols-5 gap-0 relative reveal">
-            <div className="absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-yellow-400/20 via-yellow-400 to-yellow-400/20" />
-            {[
-              { step: '01', icon: Zap, title: 'Charge', desc: 'Electricity charges the UPS battery.' },
-              { step: '02', icon: Battery, title: 'Store', desc: 'UPS stores energy efficiently in battery.' },
-              { step: '03', icon: Activity, title: 'Detect', desc: 'Power cut detected instantly.' },
-              { step: '04', icon: Clock, title: 'Switch', desc: 'UPS instantly supplies backup power.' },
-              { step: '05', icon: Home, title: 'Run', desc: 'Appliances continue running smoothly.' },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center px-4 group">
-                <div className="w-24 h-24 rounded-full bg-zinc-950 border-2 border-yellow-400 flex items-center justify-center mb-6 relative z-10 group-hover:bg-yellow-400 group-hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-300">
-                  <item.icon className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
-                </div>
-                <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
-                <h3 className="text-lg font-thin uppercase tracking-tight mb-2">{item.title}</h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="md:hidden space-y-0">
-            {[
-              { step: '01', icon: Zap, title: 'Charge', desc: 'Electricity charges the UPS battery.' },
-              { step: '02', icon: Battery, title: 'Store', desc: 'UPS stores energy efficiently in battery.' },
-              { step: '03', icon: Activity, title: 'Detect', desc: 'Power cut detected instantly.' },
-              { step: '04', icon: Clock, title: 'Switch', desc: 'UPS instantly supplies backup power.' },
-              { step: '05', icon: Home, title: 'Run', desc: 'Appliances continue running smoothly.' },
-            ].map((item, i) => (
-              <div key={i} className="flex gap-5 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-zinc-900 border-2 border-yellow-400 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-5 h-5 text-yellow-400" />
+            {/* Desktop flow */}
+            <div className="hidden md:grid grid-cols-5 gap-0 relative reveal">
+              <div className="absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-yellow-400/20 via-yellow-400 to-yellow-400/20" />
+              {(pageData.howItWorksSteps || [
+                { step: '01', icon: 'Zap', title: 'Charge', desc: 'Electricity charges the UPS battery.' },
+                { step: '02', icon: 'Battery', title: 'Store', desc: 'UPS stores energy efficiently in battery.' },
+                { step: '03', icon: 'Activity', title: 'Detect', desc: 'Power cut detected instantly.' },
+                { step: '04', icon: 'Clock', title: 'Switch', desc: 'UPS instantly supplies backup power.' },
+                { step: '05', icon: 'Home', title: 'Run', desc: 'Appliances continue running smoothly.' },
+              ]).map((item: any, i: number) => {
+                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                return (
+                  <div key={i} className="flex flex-col items-center text-center px-4 group">
+                    <div className="w-24 h-24 rounded-full bg-zinc-950 border-2 border-yellow-400 flex items-center justify-center mb-6 relative z-10 group-hover:bg-yellow-400 group-hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-300">
+                      <IconComponent className="w-8 h-8 text-yellow-400 group-hover:text-black transition-colors" />
+                    </div>
+                    <div className="text-yellow-400/50 text-[10px] font-black tracking-widest mb-1">{item.step}</div>
+                    <h3 className="text-lg font-thin uppercase tracking-tight mb-2">{item.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
                   </div>
-                  {i < 4 && <div className="w-[2px] flex-1 bg-yellow-400/30 my-2" />}
-                </div>
-                <div className="pb-8 pt-1">
-                  <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
-                  <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+                );
+              })}
+            </div>
+
+            {/* Mobile flow */}
+            <div className="md:hidden space-y-0">
+              {(pageData.howItWorksSteps || [
+                { step: '01', icon: 'Zap', title: 'Charge', desc: 'Electricity charges the UPS battery.' },
+                { step: '02', icon: 'Battery', title: 'Store', desc: 'UPS stores energy efficiently in battery.' },
+                { step: '03', icon: 'Activity', title: 'Detect', desc: 'Power cut detected instantly.' },
+                { step: '04', icon: 'Clock', title: 'Switch', desc: 'UPS instantly supplies backup power.' },
+                { step: '05', icon: 'Home', title: 'Run', desc: 'Appliances continue running smoothly.' },
+              ]).map((item: any, i: number, arr: any[]) => {
+                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                return (
+                  <div key={i} className="flex gap-5 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-zinc-900 border-2 border-yellow-400 flex items-center justify-center flex-shrink-0">
+                        <IconComponent className="w-5 h-5 text-yellow-400" />
+                      </div>
+                      {i < arr.length - 1 && <div className="w-[2px] flex-1 bg-yellow-400/30 my-2" />}
+                    </div>
+                    <div className="pb-8 pt-1">
+                      <div className="text-yellow-400/50 text-[9px] font-black tracking-widest mb-0.5">{item.step}</div>
+                      <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{item.title}</h3>
+                      <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── BENTO BENEFITS ── */}
       <section className="py-24 md:py-32 px-6">
@@ -324,7 +338,7 @@ const HomeUps: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/home_ups_support.webp"
+                src="/images/home_ups_tech.webp"
                 alt="Home UPS system detail"
                 className="w-full h-full object-cover"
               />
@@ -342,7 +356,7 @@ const HomeUps: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/home_ups_support.webp"
+                  src="/images/home_ups_application.webp"
                   alt="Home UPS usage scenarios"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

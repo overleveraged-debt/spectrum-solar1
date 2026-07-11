@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, HelpCircle, ExternalLink, ArrowRight, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { CONTACT_INFO } from '../data/config';
 
 const SupportWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,7 +79,7 @@ const SupportWidget: React.FC = () => {
               <span className="text-zinc-600 text-[9px] font-medium block">Instant help</span>
             </div>
           </div>
-          <a href="https://wa.me/919745660055" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-white transition-colors">
+          <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-white transition-colors">
             <ExternalLink className="w-5 h-5" />
           </a>
         </div>

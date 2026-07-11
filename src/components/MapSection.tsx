@@ -1,7 +1,10 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { sanityReadClient } from '../lib/sanityClient';
+import { defaultPagesData } from '../data/pageDefaults';
+import { KERALA_GEOJSON } from '../data/keralaGeojson';
 
 // Fix for default marker icons in Leaflet + React
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -30,22 +33,54 @@ interface Pin {
   lng: number;
   title: string;
   desc: string;
+  gmapsLink?: string;
 }
 
-const pins: Pin[] = [
-  { id: 1, lat: 11.8745, lng: 75.3704, title: 'Kannur Hub', desc: 'DSC Centre (100KW) & 1,200+ Installations' },
-  { id: 2, lat: 9.9312, lng: 76.2673, title: 'Kochi HQ', desc: 'Central Operations & 2,500+ Residential Projects' },
-  { id: 3, lat: 10.5276, lng: 76.2144, title: 'Thrissur Regional', desc: 'Commercial Complex (25KW) & Service Center' },
-  { id: 4, lat: 8.5241, lng: 76.9366, title: 'Trivandrum South', desc: 'Large-Scale Solar Farm (500KW)' },
-  { id: 5, lat: 11.2588, lng: 75.7804, title: 'Calicut Center', desc: 'Healthcare Specialist Hub (Koyili Hospital)' },
-  { id: 6, lat: 9.1894, lng: 76.7188, title: 'Pathanamthitta', desc: 'Ranni Taluk Hospital (50KW)' },
-  { id: 7, lat: 10.7867, lng: 76.6547, title: 'Palakkad Center', desc: 'Renewable Power Hub' },
-  { id: 8, lat: 8.8932, lng: 76.6141, title: 'Kollam Hub', desc: 'Industrial Solar Plant (150KW)' },
-];
+const DEFAULT_PINS: Pin[] = defaultPagesData['map-locations'].pins;
 
 const MapSection: React.FC<{ height?: string; theme?: 'light' | 'dark' }> = ({ height = '500px', theme = 'dark' }) => {
   const isDark = theme === 'dark';
+  const [pins, setPins] = useState<Pin[]>(DEFAULT_PINS);
+
+  useEffect(() => {
+    let isMounted = true;
+    sanityReadClient.fetch('*[_type == "pageContent" && pageId == "map-locations"][0]')
+      .then(res => {
+        if (isMounted && res && res.content) {
+          try {
+            const parsed = JSON.parse(res.content);
+            if (Array.isArray(parsed.pins)) {
+              setPins(parsed.pins);
+            }
+          } catch (e) {
+            console.error("Failed to parse map locations from Sanity", e);
+          }
+        }
+      })
+      .catch(err => console.error("Error fetching map locations:", err));
+    return () => {
+      isMounted = false;
+    };
+  }, []);
   
+  const keralaMaskGeojson = {
+    type: 'Feature',
+    properties: {},
+    geometry: {
+      type: 'Polygon',
+      coordinates: [
+        [
+          [-180, -90],
+          [-180, 90],
+          [180, 90],
+          [180, -90],
+          [-180, -90]
+        ],
+        ...KERALA_GEOJSON.geometry.coordinates.map((poly: any) => poly[0])
+      ]
+    }
+  };
+
   return (
     <div 
       className={`relative rounded-[2.5rem] p-2 md:p-4 transition-all duration-500 hover:scale-[1.01] ${
@@ -56,8 +91,11 @@ const MapSection: React.FC<{ height?: string; theme?: 'light' | 'dark' }> = ({ h
     >
       <div className="relative w-full rounded-[2rem] overflow-hidden" style={{ height }}>
         <MapContainer 
-          center={[10.5, 76.5]} 
-          zoom={7} 
+          center={[10.5, 76.4]} 
+          zoom={8} 
+          maxBounds={[[8.0, 74.5], [13.0, 77.8]]}
+          minZoom={7.5}
+          maxBoundsViscosity={1.0}
           style={{ height: '100%', width: '100%', background: isDark ? '#09090b' : '#f8fafc' }}
           scrollWheelZoom={false}
         >
@@ -68,12 +106,40 @@ const MapSection: React.FC<{ height?: string; theme?: 'light' | 'dark' }> = ({ h
               : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             }
           />
+          <GeoJSON
+            data={keralaMaskGeojson as any}
+            style={{
+              fillColor: '#000000',
+              fillOpacity: isDark ? 0.5 : 0.25,
+              weight: 0,
+              color: 'transparent'
+            }}
+          />
+          <GeoJSON
+            data={KERALA_GEOJSON as any}
+            style={{
+              color: '#facc15',
+              weight: 1.5,
+              fillColor: 'transparent',
+              fillOpacity: 0
+            }}
+          />
           {pins.map((pin) => (
             <Marker key={pin.id} position={[pin.lat, pin.lng]} icon={yellowIcon}>
               <Popup className="premium-popup">
-                <div className="p-1">
-                  <h4 className="font-black text-xs uppercase tracking-tighter text-black mb-1">{pin.title}</h4>
-                  <p className="text-[10px] text-zinc-600 leading-tight">{pin.desc}</p>
+                <div className="p-2 min-w-[160px] text-left">
+                  <h4 className="font-black text-xs uppercase tracking-tight text-zinc-950 mb-1">{pin.title}</h4>
+                  <p className="text-[10px] text-zinc-600 leading-tight mb-2.5">{pin.desc}</p>
+                  {pin.gmapsLink ? (
+                    <a
+                      href={pin.gmapsLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:text-yellow-500 transition-colors"
+                    >
+                      Get Directions ↗
+                    </a>
+                  ) : null}
                 </div>
               </Popup>
             </Marker>

@@ -52,16 +52,35 @@ const StatItem = ({ value, label, icon: Icon }: { value: string, label: string, 
   );
 };
 
-const StatsBar: React.FC = () => {
+interface StatsBarProps {
+  stat1Value?: string;
+  stat1Label?: string;
+  stat2Value?: string;
+  stat2Label?: string;
+  stat3Value?: string;
+  stat3Label?: string;
+  stat4Value?: string;
+  stat4Label?: string;
+}
+
+const StatsBar: React.FC<StatsBarProps> = ({
+  stat1Value = "25+",
+  stat1Label = "Years Industry Lead",
+  stat2Value = "20",
+  stat2Label = "Regional Outlets",
+  stat3Value = "12",
+  stat3Label = "Franchise Units",
+  stat4Value = "ERP",
+  stat4Label = "Enabled since 2005",
+}) => {
   return (
     <div className="py-20 bg-zinc-950 border-b border-zinc-900 overflow-hidden relative">
-      
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 items-center">
-          <StatItem value="25+" label="Years Industry Lead" icon={Award} />
-          <StatItem value="20" label="Regional Outlets" icon={Store} />
-          <StatItem value="12" label="Franchise Units" icon={Users} />
-          <StatItem value="ERP" label="Enabled since 2005" icon={ShieldCheck} />
+          <StatItem value={stat1Value} label={stat1Label} icon={Award} />
+          <StatItem value={stat2Value} label={stat2Label} icon={Store} />
+          <StatItem value={stat3Value} label={stat3Label} icon={Users} />
+          <StatItem value={stat4Value} label={stat4Label} icon={ShieldCheck} />
         </div>
       </div>
     </div>

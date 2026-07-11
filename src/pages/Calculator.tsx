@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Link, useLocation } from 'react-router-dom';
+import { sanityReadClient } from '../lib/sanityClient';
 import { Zap, TrendingUp, Leaf, Info, ArrowRight, Sun, IndianRupee, Battery, Clock, BatteryCharging } from 'lucide-react';
 
-const SolarCalculatorBody: React.FC = () => {
+interface SolarCalculatorProps {
+  costPerKW: number;
+  blendedTariff: number;
+}
+
+const SolarCalculatorBody: React.FC<SolarCalculatorProps> = ({ costPerKW, blendedTariff }) => {
   useScrollReveal();
 
   const [monthlyBill, setMonthlyBill] = useState<number>(3000);
@@ -16,8 +22,8 @@ const SolarCalculatorBody: React.FC = () => {
   const [systemCost, setSystemCost] = useState<number>(0);
 
   useEffect(() => {
-    // Kerala KSEB avg blended tariff ≈ ₹7.5/unit
-    const monthlyUnits = monthlyBill / 7.5;
+    // Kerala KSEB avg blended tariff
+    const monthlyUnits = monthlyBill / blendedTariff;
     // 1kW produces ~120 units/month in Kerala (avg 4 units/day, 30 days)
     const billBasedKW = monthlyUnits / 120;
     // Roof constraint: 1kW needs ~100 sq.ft (10 sq.m) of shadow-free roof
@@ -26,18 +32,17 @@ const SolarCalculatorBody: React.FC = () => {
     const rawKW = Math.min(billBasedKW, roofBasedKW);
     const roundedKW = Math.max(1, Math.round(rawKW * 10) / 10);
 
-    const costPerKW = 65000; // ~₹65,000/kW installed (panels + inverter + structure + installation)
     const totalCost = roundedKW * costPerKW;
     // Annual savings = bill we offset (the recommended kW may not cover full bill if roof is small)
     const monthlyUnitsSaved = roundedKW * 120;
-    const annualSaving = Math.min(monthlyBill, monthlyUnitsSaved * 7.5) * 12;
+    const annualSaving = Math.min(monthlyBill, monthlyUnitsSaved * blendedTariff) * 12;
 
     setRecommendedKW(roundedKW);
     setAnnualSavings(annualSaving);
     setSystemCost(totalCost);
     setPaybackYears(Math.round((totalCost / annualSaving) * 10) / 10);
     setCo2Offset(Math.round(roundedKW * 1.5 * 10) / 10);
-  }, [monthlyBill, roofSpace]);
+  }, [monthlyBill, roofSpace, costPerKW, blendedTariff]);
 
   const paybackPct = Math.min(100, (paybackYears / 10) * 100);
   const co2Pct = Math.min(100, (co2Offset / 10) * 100);
@@ -352,6 +357,28 @@ const PowerCalculator: React.FC = () => {
 const Calculator: React.FC = () => {
   const { hash } = useLocation();
   const [activeTab, setActiveTab] = useState<'solar' | 'power'>('solar');
+  const [calcParams, setCalcParams] = useState({ costPerKW: 65000, blendedTariff: 7.5 });
+
+  useEffect(() => {
+    let isMounted = true;
+    sanityReadClient.fetch('*[_type == "pageContent" && pageId == "calculators"][0]')
+      .then(res => {
+        if (isMounted && res && res.content) {
+          try {
+            const parsed = JSON.parse(res.content);
+            const cost = Number(parsed.costPerKW) || 65000;
+            const tariff = Number(parsed.blendedTariff) || 7.5;
+            setCalcParams({ costPerKW: cost, blendedTariff: tariff });
+          } catch (e) {
+            console.error("Failed to parse calculators settings", e);
+          }
+        }
+      })
+      .catch(err => console.error("Error fetching calculators settings:", err));
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   useEffect(() => {
     const currentHash = hash.replace('#', '');
@@ -392,7 +419,11 @@ const Calculator: React.FC = () => {
         </div>
       </div>
 
-      {activeTab === 'solar' ? <SolarCalculatorBody /> : <PowerCalculator />}
+      {activeTab === 'solar' ? (
+        <SolarCalculatorBody costPerKW={calcParams.costPerKW} blendedTariff={calcParams.blendedTariff} />
+      ) : (
+        <PowerCalculator />
+      )}
     </div>
   );
 };
