@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FileText, FileCode, LogOut, ChevronRight, ChevronLeft, Menu } from 'lucide-react';
+import { LayoutDashboard, FileText, FileCode, LogOut, ChevronRight, ChevronLeft, Menu, Users, Inbox } from 'lucide-react';
 import PageEditor from './PageEditor';
 import BlogManager from './BlogManager';
+import LeadsViewer from './LeadsViewer';
+import ApplicationsViewer from './ApplicationsViewer';
 
 type Tab = 
   | 'home' | 'about' | 'power-backup' | 'solar-solutions' 
   | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs' 
-  | 'map-locations' | 'privacy-policy' | 'terms-conditions';
+  | 'map-locations' | 'privacy-policy' | 'terms-conditions'
+  | 'leads' | 'applications';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
@@ -40,6 +43,8 @@ export default function AdminDashboard() {
     { id: 'privacy-policy', label: 'Privacy Policy', icon: FileText, category: 'Page Editors' },
     { id: 'terms-conditions', label: 'Terms & Conditions', icon: FileText, category: 'Page Editors' },
     { id: 'blogs', label: 'Blog Posts', icon: FileCode, category: 'Content Manager' },
+    { id: 'leads', label: 'Leads & Enquiries', icon: Inbox, category: 'Business Inbox' },
+    { id: 'applications', label: 'Job Applications', icon: Users, category: 'Business Inbox' },
   ];
 
   return (
@@ -56,7 +61,7 @@ export default function AdminDashboard() {
           {/* Navigation Items */}
           <nav className="p-4 space-y-6">
             {/* Category Groups */}
-            {['Page Editors', 'Content Manager'].map((category) => (
+            {['Page Editors', 'Content Manager', 'Business Inbox'].map((category) => (
               <div key={category} className="space-y-2">
                 <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest px-3">
                   {category}
@@ -130,6 +135,10 @@ export default function AdminDashboard() {
         <div className="p-10 max-w-6xl mx-auto">
           {activeTab === 'blogs' ? (
             <BlogManager />
+          ) : activeTab === 'leads' ? (
+            <LeadsViewer />
+          ) : activeTab === 'applications' ? (
+            <ApplicationsViewer />
           ) : (
             <PageEditor pageId={activeTab} />
           )}

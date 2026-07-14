@@ -17,6 +17,46 @@ const Inverters: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('inverters');
+  const benefitList = pageData.benefits || [
+    {
+        "icon": "Zap",
+        "title": "High Surge Capability",
+        "desc": "Starts heavy inductive loads like motors, pumps, and laser printers easily."
+    },
+    {
+        "icon": "Sun",
+        "title": "Dual Charging Modes",
+        "desc": "Supports both quick charging and normal charging to adapt to grid schedules."
+    },
+    {
+        "icon": "ShieldCheck",
+        "title": "Comprehensive Protection",
+        "desc": "Integrated safeguards against overload, short circuits, and reverse polarity."
+    },
+    {
+        "icon": "Clock",
+        "title": "DSP Microcontroller",
+        "desc": "Digital Signal Processing technology ensures fast, precise conversion and regulation."
+    },
+    {
+        "icon": "Layers",
+        "title": "Wide Voltage Window",
+        "desc": "Charges batteries even at low input voltage down to 90V, ideal for rural grids."
+    },
+    {
+        "icon": "Leaf",
+        "title": "Silent Smart Cooling",
+        "desc": "Temperature-controlled cooling fan runs only when needed, minimizing noise."
+    }
+];
+  const highlightBenefit = benefitList[0] || {
+    "icon": "Zap",
+    "title": "High Surge Capability",
+    "desc": "Starts heavy inductive loads like motors, pumps, and laser printers easily."
+};
+  const otherBenefits = benefitList.slice(1);
+  const HighlightIcon = IconMap[highlightBenefit.icon] || LucideIcons.Zap;
+
 
   const faqs = [
     {
@@ -199,31 +239,30 @@ const Inverters: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Highlighted card */}
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
-              <Zap className="w-12 h-12 text-black" />
+              <HighlightIcon className="w-12 h-12 text-black" />
               <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Pure Output</div>
-                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">Stable. Clean.<br />Pure Sine Wave.</h3>
-                <p className="text-black/60 text-sm mt-3 font-medium">Output quality identical to grid electricity — safe for all your sensitive appliances and electronics.</p>
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
-            {[
-              { icon: ShieldCheck, title: "Appliance Protection", desc: "Prevents damage from voltage fluctuations and power surges." },
-              { icon: BatteryCharging, title: "Smart Battery Charging", desc: "Intelligent multi-stage charging extends battery life significantly." },
-              { icon: Layers, title: "Multiple Battery Support", desc: "Compatible with tubular, lithium, and SMF battery types." },
-              { icon: Clock, title: "Long-Lasting", desc: "Built with premium components for years of reliable performance." },
-              { icon: Activity, title: "Efficient Conversion", desc: "High efficiency rating minimizes energy loss during conversion." },
-            ].map((benefit, i) => (
-              <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
-                  <benefit.icon className="w-5 h-5 text-yellow-400" />
+
+            {otherBenefits.map((benefit: any, i: number) => {
+              const IconComponent = IconMap[benefit.icon] || LucideIcons.Zap;
+              return (
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                    <IconComponent className="w-5 h-5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

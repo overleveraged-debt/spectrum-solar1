@@ -18,6 +18,46 @@ const LithiumUps: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('lithium-ups');
+  const benefitList = pageData.benefits || [
+    {
+        "icon": "Zap",
+        "title": "True Zero Switchover",
+        "desc": "Transition to backup power happens in under 10 milliseconds — zero reboot risk."
+    },
+    {
+        "icon": "Sun",
+        "title": "Space-Saving Design",
+        "desc": "Wall-mountable, compact chassis replaces heavy, messy external lead-acid batteries."
+    },
+    {
+        "icon": "ShieldCheck",
+        "title": "LFP Cell Safety",
+        "desc": "Advanced Lithium Iron Phosphate chemistry prevents thermal runaway risks."
+    },
+    {
+        "icon": "Clock",
+        "title": "10-Year Service Life",
+        "desc": "Over 4,000 charge cycles offer a decade of maintenance-free operation."
+    },
+    {
+        "icon": "Layers",
+        "title": "Intelligent Charging",
+        "desc": "Smart BMS adjusts charging current based on battery temperature and voltage."
+    },
+    {
+        "icon": "Leaf",
+        "title": "Eco-Friendly Tech",
+        "desc": "Zero lead, zero acid, and zero toxic fumes make it perfectly safe for indoor use."
+    }
+];
+  const highlightBenefit = benefitList[0] || {
+    "icon": "Zap",
+    "title": "True Zero Switchover",
+    "desc": "Transition to backup power happens in under 10 milliseconds — zero reboot risk."
+};
+  const otherBenefits = benefitList.slice(1);
+  const HighlightIcon = IconMap[highlightBenefit.icon] || LucideIcons.Zap;
+
 
   const faqs = [
     {
@@ -223,33 +263,30 @@ const LithiumUps: React.FC = () => {
 
           {/* Mobile: simple grid; Desktop: bento */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Large hero card — full width on mobile, spans lg col */}
+            {/* Highlighted card */}
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
-              <Zap className="w-12 h-12 text-black" />
+              <HighlightIcon className="w-12 h-12 text-black" />
               <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Instant Response</div>
-                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">Zero Delay<br />Backup</h3>
-                <p className="text-black/60 text-sm mt-3 font-medium">Switches to battery power in under 10 milliseconds — imperceptible to any device.</p>
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
 
-            {[
-              { icon: Clock, title: "5–10+ Year Life", desc: "4,000+ charge cycles — no replacement for a decade." },
-              { icon: Layers, title: "Compact Unit", desc: "Inverter + battery in one sleek, wall-mountable form factor." },
-              { icon: Settings, title: "Zero Maintenance", desc: "No water topping, no terminal cleaning. Ever." },
-              { icon: ShieldCheck, title: "Smart BMS", desc: "Built-in Battery Management System protects against overcharge, overdischarge & heat." },
-              { icon: Activity, title: "Pure Sine Wave", desc: "Clean power output — safe for all sensitive electronics." },
-            ].map((benefit, i) => (
-              <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
-                  <benefit.icon className="w-5 h-5 text-yellow-400" />
+            {otherBenefits.map((benefit: any, i: number) => {
+              const IconComponent = IconMap[benefit.icon] || LucideIcons.Zap;
+              return (
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                    <IconComponent className="w-5 h-5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

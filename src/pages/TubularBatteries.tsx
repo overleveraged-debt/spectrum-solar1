@@ -12,10 +12,52 @@ import SEO from '../components/SEO';
 
 
 
+import * as LucideIcons from 'lucide-react';
+const IconMap: Record<string, any> = LucideIcons;
 const TubularBatteries: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('tubular-batteries');
+  const benefitList = pageData.benefits || [
+    {
+        "icon": "Zap",
+        "title": "Deep Discharge Recovery",
+        "desc": "Specially designed to recover quickly from frequent and prolonged power outages."
+    },
+    {
+        "icon": "Sun",
+        "title": "Tall Tubular Technology",
+        "desc": "Tall containers hold more acid volume, reducing topping-up frequency and heat build-up."
+    },
+    {
+        "icon": "ShieldCheck",
+        "title": "Thick Grid Construction",
+        "desc": "Extra-thick cast grids resist corrosion, ensuring a long operational life of 5+ years."
+    },
+    {
+        "icon": "Clock",
+        "title": "Low Antimony Alloy",
+        "desc": "Minimizes water loss and battery gassing, reducing maintenance overhead."
+    },
+    {
+        "icon": "Layers",
+        "title": "Visual Float Indicators",
+        "desc": "User-friendly floats show electrolyte levels clearly, indicating when water is needed."
+    },
+    {
+        "icon": "Leaf",
+        "title": "99% Recyclable Value",
+        "desc": "Lead-acid chemistry is almost entirely recyclable, offering high trade-in value."
+    }
+];
+  const highlightBenefit = benefitList[0] || {
+    "icon": "Zap",
+    "title": "Deep Discharge Recovery",
+    "desc": "Specially designed to recover quickly from frequent and prolonged power outages."
+};
+  const otherBenefits = benefitList.slice(1);
+  const HighlightIcon = IconMap[highlightBenefit.icon] || LucideIcons.Zap;
+
 
   const heroSubtitle = pageData.heroSubtitle || "Lead-Acid Storage";
   const heroTitle = pageData.heroTitle || "Tall Tubular Batteries";
@@ -142,31 +184,30 @@ const TubularBatteries: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Highlighted card */}
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
-              <Battery className="w-12 h-12 text-black" />
+              <HighlightIcon className="w-12 h-12 text-black" />
               <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Deep Discharge</div>
-                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">More Backup<br />Per Charge.</h3>
-                <p className="text-black/60 text-sm mt-3 font-medium">Designed for deep discharge cycles — ideal for regions with 6–12+ hour power cuts daily.</p>
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
-            {[
-              { icon: Zap, title: "Long Backup Hours", desc: "Engineered to deliver power over extended discharge periods." },
-              { icon: Clock, title: "Proven Reliability", desc: "Battle-tested technology trusted across millions of Indian homes." },
-              { icon: ShieldCheck, title: "Heat Resistant", desc: "Performs well even in high ambient temperature conditions." },
-              { icon: Activity, title: "Wide Compatibility", desc: "Works with all major inverter and UPS brands available in market." },
-              { icon: Layers, title: "Cost-Effective", desc: "Best value solution for long backup without the lithium price premium." },
-            ].map((benefit, i) => (
-              <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
-                  <benefit.icon className="w-5 h-5 text-yellow-400" />
+
+            {otherBenefits.map((benefit: any, i: number) => {
+              const IconComponent = IconMap[benefit.icon] || LucideIcons.Zap;
+              return (
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                    <IconComponent className="w-5 h-5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

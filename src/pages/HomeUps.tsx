@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { usePageContent } from '../hooks/usePageContent';
 import {
-  Zap, Battery, Home, ArrowRight, ShieldCheck, CheckCircle2,
-  Monitor, Tv, Users, Building2,
-  PhoneCall, Settings, FileText, Wrench, Play, ChevronDown,
-  Activity, Clock, Layers, X
+  Zap, Home, ArrowRight, CheckCircle2, ChevronDown, X,
+  Clock, Battery, Settings, PhoneCall
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -18,7 +16,7 @@ const HomeUps: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('home-ups');
 
-  const faqs = [
+  const faqs = pageData.faqs || [
     {
       q: "How long does backup last?",
       a: "Backup duration depends on battery capacity and load usage. We custom-size your system based on the appliances you need to run and for how long."
@@ -31,6 +29,27 @@ const HomeUps: React.FC = () => {
       q: "Can it run all appliances?",
       a: "Essential appliances can be supported based on system capacity. We design systems to run lights, fans, TV, Wi-Fi, and more. Heavy loads like ACs require larger capacity systems."
     }
+  ];
+
+  const benefitList = pageData.benefits || [
+    { icon: 'Zap', title: "No Interruption in Daily Life", desc: "Switches to battery power in milliseconds — your family doesn't even notice the power cut." },
+    { icon: 'Home', title: "Supports Home Appliances", desc: "Lights, fans, TV, Wi-Fi and more — all kept running during outages." },
+    { icon: 'ShieldCheck', title: "Safe & Stable Voltage", desc: "Pure sine wave output protects all sensitive electronics in your home." },
+    { icon: 'Layers', title: "Customizable Capacity", desc: "Sized perfectly for your home's load — from basic to advanced setups." },
+    { icon: 'Clock', title: "Affordable Solution", desc: "Best value power backup for residential use with long-lasting performance." },
+    { icon: 'Activity', title: "Smart Charging", desc: "Intelligent battery charging system extends battery lifespan significantly." },
+  ];
+
+  const highlightBenefit = benefitList[0] || { icon: 'Zap', title: "No Interruption in Daily Life", desc: "Switches to battery power in milliseconds — your family doesn't even notice the power cut." };
+  const otherBenefits = benefitList.slice(1);
+  const HighlightIcon = IconMap[highlightBenefit.icon] || Zap;
+
+  const perfectList = pageData.perfectFor || [
+    { icon: 'Home', label: "Independent Houses", sub: "Full-home backup solutions" },
+    { icon: 'Building2', label: "Apartments", sub: "Compact, wall-friendly units" },
+    { icon: 'Users', label: "Families with Daily Power Needs", sub: "Non-stop routine for the family" },
+    { icon: 'Monitor', label: "Work-From-Home Setups", sub: "No dropped calls or lost work" },
+    { icon: 'Tv', label: "Entertainment & Home Appliances", sub: "Keep TV, music and AC running" },
   ];
 
   return (
@@ -68,33 +87,32 @@ const HomeUps: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)]">
-                <ArrowRight className="w-5 h-5" />
-                Get Free Quote
+                Get Callback
+                <ArrowRight className="w-4 h-4" />
               </Link>
-              <a href="tel:+919745660055" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-9 py-4 rounded-full font-black uppercase tracking-widest hover:bg-white/20 transition-all flex items-center gap-2">
-                <PhoneCall className="w-5 h-5" />
-                Call Now
-              </a>
             </div>
           </div>
         </div>
 
+        {/* ── STATS STRIP ── */}
         {pageData.showStats !== false && (
-          <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-            <div className="max-w-7xl mx-auto px-6">
-              <div className="grid grid-cols-2 md:grid-cols-4">
-                {[
-                  { value: pageData.stat1Value || "Instant", label: pageData.stat1Label || "Backup Switching" },
-                  { value: pageData.stat2Value || "Silent", label: pageData.stat2Label || "Operation" },
-                  { value: pageData.stat3Value || "Safe", label: pageData.stat3Label || "Stable Voltage" },
-                  { value: pageData.stat4Value || "Custom", label: pageData.stat4Label || "Load Sizing" },
-                ].map((stat, i) => (
-                  <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                    <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
-                    <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
+          <div className="w-full bg-yellow-400 py-6 px-6 relative z-10 border-t border-yellow-500">
+            <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center text-center">
+              {[
+                { val: pageData.stat1Value || "Pure Sine", label: pageData.stat1Label || "Wave Output" },
+                { val: pageData.stat2Value || "95%+", label: pageData.stat2Label || "System Efficiency" },
+                { val: pageData.stat3Value || "Low", label: pageData.stat3Label || "Maintenance" },
+                { val: pageData.stat4Value || "Smart", label: pageData.stat4Label || "Appliance Protect" }
+              ].map((stat, i) => (
+                <div key={i} className="space-y-1">
+                  <div className="text-black font-black text-2xl md:text-4xl tracking-tight uppercase leading-none">
+                    {stat.val}
                   </div>
-                ))}
-              </div>
+                  <div className="text-black/70 text-[9px] md:text-[10px] font-black uppercase tracking-widest">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -113,25 +131,26 @@ const HomeUps: React.FC = () => {
             </div>
 
             <div className="reveal" style={{ transitionDelay: '150ms' }}>
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Comfort & Continuity for Your Home</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
-                Power That Keeps<br />
-                <span className="text-yellow-400">Your Home Running.</span>
-              </h2>
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">
+                {pageData.overviewSubtitle || "Comfort & Continuity for Your Home"}
+              </span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
+                  dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "Power That Keeps<br />Your Home Running." }}
+              />
               <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
-                A Home UPS System provides uninterrupted power supply during outages by storing energy in batteries and supplying it instantly when needed. It ensures your daily routine is not disturbed.
+                {pageData.overviewDesc1 || "A Home UPS System provides uninterrupted power supply during outages by storing energy in batteries and supplying it instantly when needed. It ensures your daily routine is not disturbed."}
               </p>
               <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                Spectrum Powers offers customized UPS solutions based on your home's power requirements — ensuring optimal performance and efficiency for every family.
+                {pageData.overviewDesc2 || "Spectrum Powers offers customized UPS solutions based on your home's power requirements — ensuring optimal performance and efficiency for every family."}
               </p>
 
               <div className="grid grid-cols-2 gap-4">
-                {[
+                {(pageData.overviewCards || [
                   { label: "Switching Time", value: "Instant" },
                   { label: "Output Type", value: "Pure Sine Wave" },
                   { label: "Noise Level", value: "Silent" },
                   { label: "Customization", value: "Load-Based" },
-                ].map((s, i) => (
+                ]).map((s: any, i: number) => (
                   <div key={i} className="bg-zinc-900 border border-white/5 rounded-2xl p-4 hover:border-yellow-400/20 transition-colors">
                     <div className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">{s.label}</div>
                     <div className="text-white font-black text-xl tracking-tight">{s.value}</div>
@@ -217,31 +236,28 @@ const HomeUps: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
-              <Zap className="w-12 h-12 text-black" />
+              <HighlightIcon className="w-12 h-12 text-black" />
               <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Instant Response</div>
-                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">No Interruption<br />in Daily Life</h3>
-                <p className="text-black/60 text-sm mt-3 font-medium">Switches to battery power in milliseconds — your family doesn't even notice the power cut.</p>
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
 
-            {[
-              { icon: Home, title: "Supports Home Appliances", desc: "Lights, fans, TV, Wi-Fi and more — all kept running during outages." },
-              { icon: ShieldCheck, title: "Safe & Stable Voltage", desc: "Pure sine wave output protects all sensitive electronics in your home." },
-              { icon: Layers, title: "Customizable Capacity", desc: "Sized perfectly for your home's load — from basic to advanced setups." },
-              { icon: Clock, title: "Affordable Solution", desc: "Best value power backup for residential use with long-lasting performance." },
-              { icon: Activity, title: "Smart Charging", desc: "Intelligent battery charging system extends battery lifespan significantly." },
-            ].map((benefit, i) => (
-              <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
-                  <benefit.icon className="w-5 h-5 text-yellow-400" />
+            {otherBenefits.map((benefit: any, i: number) => {
+              const IconComponent = IconMap[benefit.icon] || Zap;
+              return (
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                    <IconComponent className="w-5 h-5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -256,11 +272,11 @@ const HomeUps: React.FC = () => {
 
           {/* Capacity Guide */}
           <div className="reveal grid md:grid-cols-3 gap-4 mb-12">
-            {[
+            {(pageData.comparisonTiers || [
               { tier: "Basic", icon: "💡", items: "Lights & Fans", capacity: "600VA–850VA", desc: "Keeps 4–6 lights and 2–3 fans running" },
               { tier: "Medium", icon: "📺", items: "Lights + TV + Wi-Fi", capacity: "1kVA–2kVA", desc: "For typical family needs during cuts" },
               { tier: "Advanced", icon: "❄️", items: "Includes AC + more", capacity: "3kVA–5kVA+", desc: "Complete home backup including heavy loads" },
-            ].map((t, i) => (
+            ]).map((t: any, i: number) => (
               <div key={i} className={`rounded-2xl p-6 border ${i === 1 ? 'bg-yellow-400 border-yellow-400' : 'bg-zinc-950 border-white/5'}`}>
                 <div className="text-3xl mb-3">{t.icon}</div>
                 <div className={`text-[10px] font-black uppercase tracking-widest mb-1 ${i === 1 ? 'text-black/50' : 'text-yellow-400'}`}>{t.tier}</div>
@@ -280,13 +296,13 @@ const HomeUps: React.FC = () => {
                 <span className="text-yellow-400 text-[9px] md:text-[10px] font-black uppercase tracking-widest">Home UPS ✦</span>
               </div>
             </div>
-            {[
+            {(pageData.comparisonRows || [
               { feature: "During Power Cuts", traditional: "Complete darkness", ups: "All essentials run" },
               { feature: "Switching Time", traditional: "Manual generators", ups: "Instant automatic" },
               { feature: "Noise Level", traditional: "Generator noise", ups: "Silent operation" },
               { feature: "Fuel Cost", traditional: "Generator fuel daily", ups: "Zero fuel needed" },
               { feature: "Safety", traditional: "Risk of damage", ups: "Protected output" },
-            ].map((row, i) => (
+            ]).map((row: any, i: number) => (
               <div key={i} className="grid grid-cols-3 border-b border-white/5 last:border-0">
                 <div className="py-4 px-4 md:px-8 text-xs md:text-sm font-medium text-zinc-300">{row.feature}</div>
                 <div className="py-4 px-4 md:px-8 text-center border-x border-white/5">
@@ -319,30 +335,27 @@ const HomeUps: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="reveal">
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering</span>
-              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8">Advanced<br />Features</h2>
-              <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">
-                Spectrum Powers Home UPS systems are engineered with cutting-edge technology for maximum reliability and appliance safety.
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Tech Specs</span>
+              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8">Features & Specs</h2>
+              <p className="text-zinc-400 leading-relaxed font-light mb-8">
+                Our home UPS systems are engineered to provide maximum backup efficiency and long service life. Explore details.
               </p>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  "Pure Sine Wave Output", "Smart Battery Charging", "Overload Protection",
-                  "Short Circuit Protection", "Automatic Switching", "Energy-Efficient",
-                  "LED Status Indicators", "Low Battery Alarm", "Compact Design",
-                ].map((tag, i) => (
-                  <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
-                    <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0" />
-                    {tag}
-                  </span>
+              
+              <div className="space-y-4">
+                {(pageData.specs || [{ label: 'Capacity', value: '600VA - 5kVA' }]).map((spec: any, i: number) => (
+                  <div key={i} className="flex justify-between border-b border-zinc-800 pb-3 text-sm">
+                    <span className="text-zinc-400">{spec.label}</span>
+                    <span className="text-white font-semibold">{spec.value}</span>
+                  </div>
                 ))}
               </div>
             </div>
 
-            <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
+            <div className="reveal aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl">
               <img
                 src="/images/home_ups_tech.webp"
-                alt="Home UPS system detail"
-                className="w-full h-full object-cover"
+                alt="Technical specs"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
@@ -366,23 +379,20 @@ const HomeUps: React.FC = () => {
             </div>
 
             <div className="lg:col-span-2 space-y-3">
-              {[
-                { icon: Home, label: "Independent Houses", sub: "Full-home backup solutions" },
-                { icon: Building2, label: "Apartments", sub: "Compact, wall-friendly units" },
-                { icon: Users, label: "Families with Daily Power Needs", sub: "Non-stop routine for the family" },
-                { icon: Monitor, label: "Work-From-Home Setups", sub: "No dropped calls or lost work" },
-                { icon: Tv, label: "Entertainment & Home Appliances", sub: "Keep TV, music and AC running" },
-              ].map((item, i) => (
-                <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-4 md:p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/20 transition-colors">
-                    <item.icon className="w-5 h-5 text-yellow-400" />
+              {perfectList.map((item: any, i: number) => {
+                const IconComponent = IconMap[item.icon] || Zap;
+                return (
+                  <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-4 md:p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                    <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/20 transition-colors">
+                      <IconComponent className="w-5 h-5 text-yellow-400" />
+                    </div>
+                    <div>
+                      <div className="font-black text-sm uppercase tracking-tight">{item.label}</div>
+                      <div className="text-zinc-500 text-xs mt-0.5">{item.sub}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-black text-sm uppercase tracking-tight">{item.label}</div>
-                    <div className="text-zinc-500 text-xs mt-0.5">{item.sub}</div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -426,24 +436,27 @@ const HomeUps: React.FC = () => {
           <div className="relative">
             <div className="absolute left-7 top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
             <div className="space-y-5">
-              {[
-                { title: "Requirement Analysis", desc: "Engineer assesses your home's load profile and power cut frequency.", icon: Settings },
-                { title: "Load Calculation", desc: "We calculate exactly which appliances to support and for how long.", icon: FileText },
-                { title: "System Selection", desc: "Right UPS capacity and battery selected for your specific needs.", icon: Activity },
-                { title: "Installation & Setup", desc: "Clean installation with proper wiring, earthing and safety testing.", icon: Wrench },
-                { title: "Testing & Support", desc: "Full commissioning, hand-over demo and ongoing support program.", icon: Play },
-              ].map((step, i) => (
-                <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
-                    <step.icon className="w-5 h-5 text-yellow-400" />
+              {(pageData.installationSteps || [
+                { title: "Requirement Analysis", desc: "Engineer assesses your home's load profile and power cut frequency.", icon: "Settings" },
+                { title: "Load Calculation", desc: "We calculate exactly which appliances to support and for how long.", icon: "FileText" },
+                { title: "System Selection", desc: "Right UPS capacity and battery selected for your specific needs.", icon: "Activity" },
+                { title: "Installation & Setup", desc: "Clean installation with proper wiring, earthing and safety testing.", icon: "Wrench" },
+                { title: "Testing & Support", desc: "Full commissioning, hand-over demo and ongoing support program.", icon: "Play" },
+              ]).map((step: any, i: number) => {
+                const StepIcon = IconMap[step.icon] || Settings;
+                return (
+                  <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
+                    <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
+                      <StepIcon className="w-5 h-5 text-yellow-400" />
+                    </div>
+                    <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
+                      <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
+                      <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
+                      <p className="text-zinc-500 text-sm">{step.desc}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
-                    <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
-                    <p className="text-zinc-500 text-sm">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -459,7 +472,7 @@ const HomeUps: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            {faqs.map((faq, i) => (
+            {faqs.map((faq: any, i: number) => (
               <div key={i} className={`bg-zinc-900 rounded-2xl overflow-hidden border transition-all duration-300 ${activeFaq === i ? 'border-yellow-400/40' : 'border-white/5'}`}>
                 <button
                   className="w-full text-left px-6 md:px-8 py-5 md:py-6 flex items-center justify-between gap-4"

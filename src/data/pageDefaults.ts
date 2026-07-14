@@ -175,6 +175,38 @@ export const defaultPagesData: Record<string, any> = {
   },
   // Default product details data
   'on-grid': {
+    benefits: [
+          {
+                "icon": "Zap",
+                "title": "90% Bill Reduction",
+                "desc": "Drastically reduce or completely eliminate your monthly grid electricity bills."
+          },
+          {
+                "icon": "Sun",
+                "title": "Highest Solar Yield",
+                "desc": "Direct conversion to AC power without battery storage losses ensures maximum efficiency."
+          },
+          {
+                "icon": "ShieldCheck",
+                "title": "25-Year Performance",
+                "desc": "Tier-1 solar panels backed by a 25-year linear performance warranty."
+          },
+          {
+                "icon": "Clock",
+                "title": "Fastest ROI Payback",
+                "desc": "Recover your initial system investment in just 3 to 4 years through energy savings."
+          },
+          {
+                "icon": "Layers",
+                "title": "Low Maintenance",
+                "desc": "No batteries means zero battery replacement costs and minimal system maintenance."
+          },
+          {
+                "icon": "Leaf",
+                "title": "Clean & Green Energy",
+                "desc": "Reduce carbon emissions and contribute to a cleaner environment daily."
+          }
+    ],
     showHero: true,
     heroSubtitle: 'Grid-Tied Solutions',
     heroTitle: 'On-Grid Solar System',
@@ -213,6 +245,38 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'off-grid': {
+    benefits: [
+          {
+                "icon": "Zap",
+                "title": "100% Grid Independence",
+                "desc": "No electricity bills, no grid failures, no dependence on power utilities."
+          },
+          {
+                "icon": "Sun",
+                "title": "Ideal for Remote Sites",
+                "desc": "Power remote homes, farmhouses, agricultural pumps, and eco-resorts anywhere."
+          },
+          {
+                "icon": "ShieldCheck",
+                "title": "Industrial Reliability",
+                "desc": "LFP lithium batteries and heavy-duty hybrid inverters for stable performance."
+          },
+          {
+                "icon": "Clock",
+                "title": "Seamless Smart BMS",
+                "desc": "Integrated Battery Management System monitors cell voltage and temperature."
+          },
+          {
+                "icon": "Layers",
+                "title": "Expandable Power Pack",
+                "desc": "Easily scale your battery storage capacity as your loads increase."
+          },
+          {
+                "icon": "Leaf",
+                "title": "Zero Carbon Footprint",
+                "desc": "Generate and store your own clean solar energy with zero emissions."
+          }
+    ],
     showHero: true,
     showHowItWorks: true,
     heroSubtitle: 'Complete Independence',
@@ -258,6 +322,38 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'lithium-ups': {
+    benefits: [
+          {
+                "icon": "Zap",
+                "title": "True Zero Switchover",
+                "desc": "Transition to backup power happens in under 10 milliseconds — zero reboot risk."
+          },
+          {
+                "icon": "Sun",
+                "title": "Space-Saving Design",
+                "desc": "Wall-mountable, compact chassis replaces heavy, messy external lead-acid batteries."
+          },
+          {
+                "icon": "ShieldCheck",
+                "title": "LFP Cell Safety",
+                "desc": "Advanced Lithium Iron Phosphate chemistry prevents thermal runaway risks."
+          },
+          {
+                "icon": "Clock",
+                "title": "10-Year Service Life",
+                "desc": "Over 4,000 charge cycles offer a decade of maintenance-free operation."
+          },
+          {
+                "icon": "Layers",
+                "title": "Intelligent Charging",
+                "desc": "Smart BMS adjusts charging current based on battery temperature and voltage."
+          },
+          {
+                "icon": "Leaf",
+                "title": "Eco-Friendly Tech",
+                "desc": "Zero lead, zero acid, and zero toxic fumes make it perfectly safe for indoor use."
+          }
+    ],
     showHero: true,
     showHowItWorks: true,
     heroSubtitle: 'Zero-Switch Technology',
@@ -280,6 +376,38 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'home-ups': {
+    benefits: [
+          {
+                "icon": "Zap",
+                "title": "No Interruption in Daily Life",
+                "desc": "Switches to battery power in milliseconds — your family doesn't even notice the power cut."
+          },
+          {
+                "icon": "Home",
+                "title": "Supports Home Appliances",
+                "desc": "Lights, fans, TV, Wi-Fi and more — all kept running during outages."
+          },
+          {
+                "icon": "ShieldCheck",
+                "title": "Safe & Stable Voltage",
+                "desc": "Pure sine wave output protects all sensitive electronics in your home."
+          },
+          {
+                "icon": "Layers",
+                "title": "Customizable Capacity",
+                "desc": "Sized perfectly for your home's load — from basic to advanced setups."
+          },
+          {
+                "icon": "Clock",
+                "title": "Affordable Solution",
+                "desc": "Best value power backup for residential use with long-lasting performance."
+          },
+          {
+                "icon": "Activity",
+                "title": "Smart Charging",
+                "desc": "Intelligent battery charging system extends battery lifespan significantly."
+          }
+    ],
     showHero: true,
     showHowItWorks: true,
     heroSubtitle: 'Residential Backup',
@@ -303,6 +431,38 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'inverters': {
+    benefits: [
+          {
+                "icon": "Zap",
+                "title": "High Surge Capability",
+                "desc": "Starts heavy inductive loads like motors, pumps, and laser printers easily."
+          },
+          {
+                "icon": "Sun",
+                "title": "Dual Charging Modes",
+                "desc": "Supports both quick charging and normal charging to adapt to grid schedules."
+          },
+          {
+                "icon": "ShieldCheck",
+                "title": "Comprehensive Protection",
+                "desc": "Integrated safeguards against overload, short circuits, and reverse polarity."
+          },
+          {
+                "icon": "Clock",
+                "title": "DSP Microcontroller",
+                "desc": "Digital Signal Processing technology ensures fast, precise conversion and regulation."
+          },
+          {
+                "icon": "Layers",
+                "title": "Wide Voltage Window",
+                "desc": "Charges batteries even at low input voltage down to 90V, ideal for rural grids."
+          },
+          {
+                "icon": "Leaf",
+                "title": "Silent Smart Cooling",
+                "desc": "Temperature-controlled cooling fan runs only when needed, minimizing noise."
+          }
+    ],
     showHero: true,
     showHowItWorks: true,
     heroSubtitle: 'Power Conversion',
@@ -326,6 +486,38 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'online-ups': {
+    benefits: [
+          {
+                "icon": "Server",
+                "title": "Zero Transfer. Zero Downtime.",
+                "desc": "Equipment receives continuous clean power 24/7 — no switching, no gaps, no disruption ever."
+          },
+          {
+                "icon": "Zap",
+                "title": "Zero Transfer Time",
+                "desc": "Double conversion ensures no power gap whatsoever during outages."
+          },
+          {
+                "icon": "ShieldCheck",
+                "title": "Complete Protection",
+                "desc": "Protects against surges, sags, harmonics, voltage fluctuations and spikes."
+          },
+          {
+                "icon": "Layers",
+                "title": "Clean Power Output",
+                "desc": "Pure sine wave output — zero distortion for the most sensitive equipment."
+          },
+          {
+                "icon": "Activity",
+                "title": "Voltage Regulation",
+                "desc": "Continuous voltage regulation independent of input quality."
+          },
+          {
+                "icon": "Clock",
+                "title": "High Reliability",
+                "desc": "Industrial-grade components for maximum uptime in critical environments."
+          }
+    ],
     showHero: true,
     showHowItWorks: true,
     heroSubtitle: 'Critical Load Protection',

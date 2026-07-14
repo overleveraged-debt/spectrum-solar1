@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { usePageContent } from '../hooks/usePageContent';
 import {
-  Server, Zap, ArrowRight, ShieldCheck, CheckCircle2,
+  Server, Zap, ArrowRight, CheckCircle2,
   Hospital, Building2, Monitor, Factory, Cpu,
   PhoneCall, Settings, FileText, Wrench, Play, ChevronDown,
-  Activity, Clock, Layers, X
+  X, Activity
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -18,7 +18,7 @@ const OnlineUps: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('online-ups');
 
-  const faqs = [
+  const faqs = pageData.faqs || [
     {
       q: "What is zero transfer time?",
       a: "Power is supplied continuously without any switching delay during outages. Unlike offline UPS which has 2–25ms transfer time, Online UPS provides uninterrupted power 24/7 via double conversion."
@@ -32,6 +32,19 @@ const OnlineUps: React.FC = () => {
       a: "Yes. Online UPS provides continuous double-conversion power — completely isolating equipment from all grid power quality issues including surges, sags, harmonics and brownouts."
     }
   ];
+
+  const benefitList = pageData.benefits || [
+    { icon: 'Server', title: 'Zero Transfer. Zero Downtime.', desc: 'Equipment receives continuous clean power 24/7 — no switching, no gaps, no disruption ever.' },
+    { icon: 'Zap', title: "Zero Transfer Time", desc: "Double conversion ensures no power gap whatsoever during outages." },
+    { icon: 'ShieldCheck', title: "Complete Protection", desc: "Protects against surges, sags, harmonics, voltage fluctuations and spikes." },
+    { icon: 'Layers', title: "Clean Power Output", desc: "Pure sine wave output — zero distortion for the most sensitive equipment." },
+    { icon: 'Activity', title: "Voltage Regulation", desc: "Continuous voltage regulation independent of input quality." },
+    { icon: 'Clock', title: "High Reliability", desc: "Industrial-grade components for maximum uptime in critical environments." }
+  ];
+
+  const highlightBenefit = benefitList[0] || { icon: 'Server', title: 'Zero Transfer. Zero Downtime.', desc: 'Equipment receives continuous clean power 24/7 — no switching, no gaps, no disruption ever.' };
+  const otherBenefits = benefitList.slice(1);
+  const HighlightIcon = IconMap[highlightBenefit.icon] || Server;
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
@@ -197,30 +210,27 @@ const OnlineUps: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
-              <Server className="w-12 h-12 text-black" />
+              <HighlightIcon className="w-12 h-12 text-black" />
               <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Zero Interruption</div>
-                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">Zero Transfer.<br />Zero Downtime.</h3>
-                <p className="text-black/60 text-sm mt-3 font-medium">Equipment receives continuous clean power 24/7 — no switching, no gaps, no disruption ever.</p>
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
-            {[
-              { icon: Zap, title: "Zero Transfer Time", desc: "Double conversion ensures no power gap whatsoever during outages." },
-              { icon: ShieldCheck, title: "Complete Protection", desc: "Protects against surges, sags, harmonics, voltage fluctuations and spikes." },
-              { icon: Layers, title: "Clean Power Output", desc: "Pure sine wave output — zero distortion for the most sensitive equipment." },
-              { icon: Activity, title: "Voltage Regulation", desc: "Continuous voltage regulation independent of input quality." },
-              { icon: Clock, title: "High Reliability", desc: "Industrial-grade components for maximum uptime in critical environments." },
-            ].map((benefit, i) => (
-              <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
-                  <benefit.icon className="w-5 h-5 text-yellow-400" />
+            {otherBenefits.map((benefit: any, i: number) => {
+              const IconComponent = IconMap[benefit.icon] || Zap;
+              return (
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                    <IconComponent className="w-5 h-5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -372,7 +382,7 @@ const OnlineUps: React.FC = () => {
             <p className="text-zinc-400 font-light text-base md:text-lg">Everything you need to know about Online UPS Systems.</p>
           </div>
           <div className="space-y-3">
-            {faqs.map((faq, i) => (
+            {faqs.map((faq: any, i: number) => (
               <div key={i} className={`bg-zinc-900 rounded-2xl overflow-hidden border transition-all duration-300 ${activeFaq === i ? 'border-yellow-400/40' : 'border-white/5'}`}>
                 <button className="w-full text-left px-6 md:px-8 py-5 md:py-6 flex items-center justify-between gap-4" onClick={() => setActiveFaq(activeFaq === i ? null : i)}>
                   <span className="font-medium text-base md:text-lg">{faq.q}</span>

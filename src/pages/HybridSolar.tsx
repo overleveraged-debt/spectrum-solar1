@@ -17,6 +17,46 @@ const HybridSolar: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('hybrid');
+  const benefitList = pageData.benefits || [
+    {
+        "icon": "Battery",
+        "title": "Seamless Backup transition",
+        "desc": "Switches to battery power in milliseconds during blackouts — zero lag."
+    },
+    {
+        "icon": "Sun",
+        "title": "Day-Time Grid Feed",
+        "desc": "Export excess generation to the grid under net metering rules while keeping batteries full."
+    },
+    {
+        "icon": "ShieldCheck",
+        "title": "Dual-Source Security",
+        "desc": "Combine solar power, battery storage, and grid connection for total security."
+    },
+    {
+        "icon": "Clock",
+        "title": "Smart Energy Management",
+        "desc": "BMS automatically controls charging and discharging to optimize cell life."
+    },
+    {
+        "icon": "Layers",
+        "title": "Scalable Design",
+        "desc": "Add more panels or battery capacity later as your energy requirements grow."
+    },
+    {
+        "icon": "Leaf",
+        "title": "Carbon Footprint Reduction",
+        "desc": "Maximize your green energy self-consumption day and night."
+    }
+];
+  const highlightBenefit = benefitList[0] || {
+    "icon": "Battery",
+    "title": "Seamless Backup transition",
+    "desc": "Switches to battery power in milliseconds during blackouts — zero lag."
+};
+  const otherBenefits = benefitList.slice(1);
+  const HighlightIcon = IconMap[highlightBenefit.icon] || LucideIcons.Battery;
+
 
   const hybridSchema = {
     "@context": "https://schema.org",
@@ -228,32 +268,30 @@ const HybridSolar: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Highlighted card */}
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
-              <Battery className="w-12 h-12 text-black" />
+              <HighlightIcon className="w-12 h-12 text-black" />
               <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">24/7 Power</div>
-                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">Never Worry<br />About Cuts</h3>
-                <p className="text-black/60 text-sm mt-3 font-medium">Battery kicks in under 10ms — your lights, AC, and devices don't even flicker.</p>
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
 
-            {[
-              { icon: Zap, title: "Instant Backup", desc: "Detects grid failure and switches to battery in milliseconds — zero downtime." },
-              { icon: Clock, title: "Reduced Bills", desc: "Solar powers your home during peak hours, slashing electricity costs dramatically." },
-              { icon: Layers, title: "Smart Monitoring", desc: "Mobile app dashboard to track solar generation, battery status and grid usage." },
-              { icon: ShieldCheck, title: "Surge Protection", desc: "Full AC/DC surge and overload protection keeps your appliances safe." },
-              { icon: Activity, title: "Dual Mode", desc: "Operates in solar-only, battery-backup or grid-support mode — intelligently." },
-            ].map((benefit, i) => (
-              <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
-                  <benefit.icon className="w-5 h-5 text-yellow-400" />
+            {otherBenefits.map((benefit: any, i: number) => {
+              const IconComponent = IconMap[benefit.icon] || LucideIcons.Battery;
+              return (
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                    <IconComponent className="w-5 h-5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

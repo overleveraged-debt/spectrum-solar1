@@ -17,6 +17,46 @@ const SolarWaterHeaters: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('water-heaters');
+  const benefitList = pageData.benefits || [
+    {
+        "icon": "Zap",
+        "title": "80% Water Heating Savings",
+        "desc": "Slash your water heating electricity bills by harnessing free solar thermal energy."
+    },
+    {
+        "icon": "Sun",
+        "title": "Evacuated Tube Tech",
+        "desc": "High-absorption vacuum tubes perform efficiently even in cloudy weather."
+    },
+    {
+        "icon": "ShieldCheck",
+        "title": "High-Density Insulation",
+        "desc": "Polyurethane insulation keeps water hot for up to 48 hours."
+    },
+    {
+        "icon": "Clock",
+        "title": "Long Service Lifespan",
+        "desc": "Rust-proof outer shell and food-grade stainless steel inner tank."
+    },
+    {
+        "icon": "Layers",
+        "title": "Auxiliary Electric Heater",
+        "desc": "Built-in backup heating element ensures hot water during prolonged monsoon rains."
+    },
+    {
+        "icon": "Leaf",
+        "title": "Eco-Friendly Solution",
+        "desc": "Displace high-wattage electric geysers to lower your household carbon footprint."
+    }
+];
+  const highlightBenefit = benefitList[0] || {
+    "icon": "Zap",
+    "title": "80% Water Heating Savings",
+    "desc": "Slash your water heating electricity bills by harnessing free solar thermal energy."
+};
+  const otherBenefits = benefitList.slice(1);
+  const HighlightIcon = IconMap[highlightBenefit.icon] || LucideIcons.Zap;
+
 
   const faqs = [
     {
@@ -214,32 +254,30 @@ const SolarWaterHeaters: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Highlighted card */}
             <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
-              <Droplets className="w-12 h-12 text-black" />
+              <HighlightIcon className="w-12 h-12 text-black" />
               <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Zero Running Cost</div>
-                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">Hot Water<br />from the Sun</h3>
-                <p className="text-black/60 text-sm mt-3 font-medium">After installation, your hot water is powered by sunlight — completely free, forever.</p>
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
 
-            {[
-              { icon: Thermometer, title: "Significant Savings", desc: "Reduce water heating electricity costs by 80–90% from day one." },
-              { icon: Sun, title: "Works Year-Round", desc: "Designed to work even in monsoon and overcast conditions efficiently." },
-              { icon: Clock, title: "10–15 Year Lifespan", desc: "Durable systems built for longevity with minimal maintenance needs." },
-              { icon: ShieldCheck, title: "Eco-Friendly", desc: "Zero carbon emissions from water heating — clean, green energy use." },
-              { icon: Activity, title: "Quick Payback", desc: "Investment typically recovered within 2–3 years through energy savings." },
-            ].map((benefit, i) => (
-              <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
-                  <benefit.icon className="w-5 h-5 text-yellow-400" />
+            {otherBenefits.map((benefit: any, i: number) => {
+              const IconComponent = IconMap[benefit.icon] || LucideIcons.Zap;
+              return (
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                    <IconComponent className="w-5 h-5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

@@ -5,10 +5,13 @@ import {
   Sun, ArrowRight, ShieldCheck, CheckCircle2,
   Home, Building2, GraduationCap, Hospital, Factory,
   PhoneCall, Settings, FileText, Wrench, Play, ChevronDown,
-  Activity, Battery, TrendingUp, Leaf, X
+  Battery, TrendingUp, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import * as LucideIcons from 'lucide-react';
+
+const IconMap: Record<string, any> = LucideIcons;
 
 const OnGridSolar: React.FC = () => {
   useScrollReveal();
@@ -31,6 +34,18 @@ const OnGridSolar: React.FC = () => {
 
   const description = pageData.description || "Significantly lower your monthly electricity bills. Feed excess power back to the grid and maximize your solar returns.";
   
+  const benefitList = pageData.benefits || [
+    { icon: 'TrendingUp', title: 'Save Up to 90% on Bills', desc: 'Break even in 3–4 years. Then enjoy 20+ years of near-free electricity.' },
+    { icon: 'Battery', title: "No Battery Cost", desc: "On-grid systems require no battery storage — lower upfront costs and simpler maintenance." },
+    { icon: 'Activity', title: "Real-Time Monitoring", desc: "Track your generation, consumption and exports from any device, 24/7." },
+    { icon: 'Leaf', title: "Eco Certified", desc: "Government subsidy eligible. Reduce your carbon footprint while saving money." },
+    { icon: 'ShieldCheck', title: "25-Year Warranty", desc: "Industry-leading panel warranty backed by the world's top manufacturers." },
+    { icon: 'Sun', title: "Net Metering", desc: "Export excess power → earn credits → reduce your KSEB bill to near zero." }
+  ];
+
+  const highlightBenefit = benefitList[0] || { icon: 'TrendingUp', title: 'Save Up to 90% on Bills', desc: 'Break even in 3–4 years. Then enjoy 20+ years of near-free electricity.' };
+  const otherBenefits = benefitList.slice(1);
+  const HighlightIcon = IconMap[highlightBenefit.icon] || TrendingUp;
 
   const faqs: { q: string; a: string }[] = pageData.faqs || [
     {
@@ -165,31 +180,28 @@ const OnGridSolar: React.FC = () => {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
             {/* Large hero card */}
             <div className="col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[280px] lg:min-h-0 group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
-              <TrendingUp className="w-12 h-12 text-black" />
+              <HighlightIcon className="w-12 h-12 text-black" />
               <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Maximum ROI</div>
-                <h3 className="text-black text-3xl font-thin uppercase tracking-tight leading-tight">Save Up to<br />90% on Bills</h3>
-                <p className="text-black/60 text-sm mt-3 font-medium">Break even in 3–4 years. Then enjoy 20+ years of near-free electricity.</p>
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
+                <h3 className="text-black text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
 
-            {[
-              { icon: Battery, title: "No Battery Cost", desc: "On-grid systems require no battery storage — lower upfront costs and simpler maintenance." },
-              { icon: Activity, title: "Real-Time Monitoring", desc: "Track your generation, consumption and exports from any device, 24/7." },
-              { icon: Leaf, title: "Eco Certified", desc: "Government subsidy eligible. Reduce your carbon footprint while saving money." },
-              { icon: ShieldCheck, title: "25-Year Warranty", desc: "Industry-leading panel warranty backed by the world's top manufacturers." },
-              { icon: Sun, title: "Net Metering", desc: "Export excess power → earn credits → reduce your KSEB bill to near zero." },
-            ].map((benefit, i) => (
-              <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
-                  <benefit.icon className="w-5 h-5 text-yellow-400" />
+            {otherBenefits.map((benefit: any, i: number) => {
+              const IconComponent = IconMap[benefit.icon] || Battery;
+              return (
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
+                    <IconComponent className="w-5 h-5 text-yellow-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
+                    <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium uppercase tracking-tight text-base mb-1">{benefit.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
