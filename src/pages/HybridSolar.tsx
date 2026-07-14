@@ -91,23 +91,25 @@ const HybridSolar: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4">
-              {[
-                { value: "24/7", label: "Power Availability" },
-                { value: "8–12 Yrs", label: "Battery Lifespan" },
-                { value: "<10ms", label: "Switchover Time" },
-                { value: "90%", label: "Bill Reduction" },
-              ].map((stat, i) => (
-                <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
-                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
-                </div>
-              ))}
+        {pageData.showStats !== false && (
+          <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {[
+                  { value: pageData.stat1Value || "24/7", label: pageData.stat1Label || "Power Availability" },
+                  { value: pageData.stat2Value || "8–12 Yrs", label: pageData.stat2Label || "Battery Lifespan" },
+                  { value: pageData.stat3Value || "<10ms", label: pageData.stat3Label || "Switchover Time" },
+                  { value: pageData.stat4Value || "90%", label: pageData.stat4Label || "Bill Reduction" },
+                ].map((stat, i) => (
+                  <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
+                    <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
+                    <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* ── INTRO — SPLIT LAYOUT ── */}

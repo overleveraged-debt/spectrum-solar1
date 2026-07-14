@@ -84,23 +84,25 @@ const LithiumUps: React.FC = () => {
         </div>
 
         {/* ── STAT STRIP — anchored to hero bottom ── */}
-        <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4">
-              {[
-                { value: "4000+", label: "Charge Cycles" },
-                { value: "<10ms", label: "Switch Time" },
-                { value: "10 Yrs", label: "Battery Life" },
-                { value: "Zero", label: "Maintenance" },
-              ].map((stat, i) => (
-                <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
-                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
-                </div>
-              ))}
+        {pageData.showStats !== false && (
+          <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {[
+                  { value: pageData.stat1Value || "4000+", label: pageData.stat1Label || "Charge Cycles" },
+                  { value: pageData.stat2Value || "<10ms", label: pageData.stat2Label || "Switch Time" },
+                  { value: pageData.stat3Value || "10 Yrs", label: pageData.stat3Label || "Battery Life" },
+                  { value: pageData.stat4Value || "Zero", label: pageData.stat4Label || "Maintenance" },
+                ].map((stat, i) => (
+                  <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
+                    <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
+                    <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* ── INTRO — SPLIT LAYOUT ─────────────────────────────────────────── */}

@@ -79,23 +79,25 @@ const SolarWaterHeaters: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4">
-              {[
-                { value: "Zero", label: "Electricity Cost" },
-                { value: "10–15 Yrs", label: "System Lifespan" },
-                { value: "80%+", label: "Bill Savings" },
-                { value: "100L–300L+", label: "Capacity Range" },
-              ].map((stat, i) => (
-                <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
-                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
-                </div>
-              ))}
+        {pageData.showStats !== false && (
+          <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {[
+                  { value: pageData.stat1Value || "Zero", label: pageData.stat1Label || "Electricity Cost" },
+                  { value: pageData.stat2Value || "10–15 Yrs", label: pageData.stat2Label || "System Lifespan" },
+                  { value: pageData.stat3Value || "80%+", label: pageData.stat3Label || "Bill Savings" },
+                  { value: pageData.stat4Value || "100L–300L+", label: pageData.stat4Label || "Capacity Range" },
+                ].map((stat, i) => (
+                  <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
+                    <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
+                    <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* ── INTRO ── */}

@@ -79,23 +79,25 @@ const HomeUps: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4">
-              {[
-                { value: "Instant", label: "Backup Switching" },
-                { value: "Silent", label: "Operation" },
-                { value: "Safe", label: "Stable Voltage" },
-                { value: "Custom", label: "Load Sizing" },
-              ].map((stat, i) => (
-                <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
-                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
-                </div>
-              ))}
+        {pageData.showStats !== false && (
+          <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {[
+                  { value: pageData.stat1Value || "Instant", label: pageData.stat1Label || "Backup Switching" },
+                  { value: pageData.stat2Value || "Silent", label: pageData.stat2Label || "Operation" },
+                  { value: pageData.stat3Value || "Safe", label: pageData.stat3Label || "Stable Voltage" },
+                  { value: pageData.stat4Value || "Custom", label: pageData.stat4Label || "Load Sizing" },
+                ].map((stat, i) => (
+                  <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
+                    <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
+                    <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* ── INTRO ── */}

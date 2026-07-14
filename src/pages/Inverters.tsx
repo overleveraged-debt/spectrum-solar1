@@ -70,23 +70,25 @@ const Inverters: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4">
-              {[
-                { value: "Pure", label: "Sine Wave Output" },
-                { value: "100%", label: "Appliance Safe" },
-                { value: "Silent", label: "Operation" },
-                { value: "Smart", label: "Battery Charging" },
-              ].map((stat, i) => (
-                <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
-                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
-                </div>
-              ))}
+        {pageData.showStats !== false && (
+          <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid grid-cols-2 md:grid-cols-4">
+                {[
+                  { value: pageData.stat1Value || "Pure", label: pageData.stat1Label || "Sine Wave Output" },
+                  { value: pageData.stat2Value || "100%", label: pageData.stat2Label || "Appliance Safe" },
+                  { value: pageData.stat3Value || "Silent", label: pageData.stat3Label || "Operation" },
+                  { value: pageData.stat4Value || "Smart", label: pageData.stat4Label || "Battery Charging" },
+                ].map((stat, i) => (
+                  <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
+                    <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
+                    <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* ── INTRO ── */}
