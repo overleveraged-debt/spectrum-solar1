@@ -270,7 +270,7 @@ const LithiumBatteries: React.FC = () => {
               <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8">Advanced<br />Technology</h2>
               <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">Premium lithium LFP cells with integrated BMS for safe, efficient, long-lasting energy storage.</p>
               <div className="flex flex-wrap gap-3">
-                {["Lithium LFP Chemistry","Smart BMS Inbuilt","4000+ Charge Cycles","Maintenance-Free","Fast Charging","Wide Temperature Range","Modular Design","Remote Monitoring","10-Year Warranty"].map((tag, i) => (
+                {(pageData.advancedFeatures || ["Lithium LFP Chemistry","Smart BMS Inbuilt","4000+ Charge Cycles","Maintenance-Free","Fast Charging","Wide Temperature Range","Modular Design","Remote Monitoring","10-Year Warranty"]).map((tag: string, i: number) => (
                   <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
                     <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0" />{tag}
                   </span>

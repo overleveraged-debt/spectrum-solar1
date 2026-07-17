@@ -44,6 +44,18 @@ const HomeUps: React.FC = () => {
   const otherBenefits = benefitList.slice(1);
   const HighlightIcon = IconMap[highlightBenefit.icon] || Zap;
 
+  const advancedFeaturesList = pageData.advancedFeatures || [
+    "Pure Sine Wave Inverter",
+    "Microcontroller Based Design",
+    "Multi-Stage Smart Charging",
+    "Wide Input Voltage Window",
+    "Overload & Short Circuit Protection",
+    "Easy Battery Select Option",
+    "LED Status Indications",
+    "Thermal Management System",
+    "Silent Ventilation Fan"
+  ];
+
   const perfectList = pageData.perfectFor || [
     { icon: 'Home', label: "Independent Houses", sub: "Full-home backup solutions" },
     { icon: 'Building2', label: "Apartments", sub: "Compact, wall-friendly units" },
@@ -335,23 +347,22 @@ const HomeUps: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="reveal">
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Tech Specs</span>
-              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8">Features & Specs</h2>
-              <p className="text-zinc-400 leading-relaxed font-light mb-8">
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering</span>
+              <h2 className="text-4xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8">Advanced<br />Technology</h2>
+              <p className="text-zinc-400 leading-relaxed mb-8 md:mb-10">
                 Our home UPS systems are engineered to provide maximum backup efficiency and long service life. Explore details.
               </p>
-              
-              <div className="space-y-4">
-                {(pageData.specs || [{ label: 'Capacity', value: '600VA - 5kVA' }]).map((spec: any, i: number) => (
-                  <div key={i} className="flex justify-between border-b border-zinc-800 pb-3 text-sm">
-                    <span className="text-zinc-400">{spec.label}</span>
-                    <span className="text-white font-semibold">{spec.value}</span>
-                  </div>
+              <div className="flex flex-wrap gap-3">
+                {advancedFeaturesList.map((tag: string, i: number) => (
+                  <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
+                    <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0" />
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>
 
-            <div className="reveal aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
                 src="/images/home_ups_tech.webp"
                 alt="Technical specs"

@@ -355,11 +355,11 @@ const LithiumUps: React.FC = () => {
                 Every Spectrum Powers Lithium UPS system is engineered with cutting-edge components and intelligent management software for maximum reliability.
               </p>
               <div className="flex flex-wrap gap-3">
-                {[
+                {(pageData.advancedFeatures || [
                   "Inbuilt Lithium Battery", "Smart BMS", "Pure Sine Wave Output",
                   "Rapid Charging", "Overload Protection", "Short Circuit Protection",
                   "Silent Operation", "Wall Mountable", "LED Diagnostics",
-                ].map((tag, i) => (
+                ]).map((tag: string, i: number) => (
                   <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
                     <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0" />
                     {tag}

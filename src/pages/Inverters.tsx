@@ -344,7 +344,7 @@ const Inverters: React.FC = () => {
                 Designed for efficiency and safety — our inverters protect your appliances while delivering consistent power performance.
               </p>
               <div className="flex flex-wrap gap-3">
-                {["Pure Sine Wave Output","Smart Battery Charging","Overload Protection","Short Circuit Protection","Digital Display & Indicators","Silent Operation","Auto Voltage Regulation","Multi-Battery Compatible","Energy-Efficient Design"].map((tag, i) => (
+                {(pageData.advancedFeatures || ["Pure Sine Wave Output","Smart Battery Charging","Overload Protection","Short Circuit Protection","Digital Display & Indicators","Silent Operation","Auto Voltage Regulation","Multi-Battery Compatible","Energy-Efficient Design"]).map((tag: string, i: number) => (
                   <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
                     <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0" />{tag}
                   </span>

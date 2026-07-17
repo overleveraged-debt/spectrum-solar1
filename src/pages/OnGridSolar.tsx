@@ -278,7 +278,7 @@ const OnGridSolar: React.FC = () => {
                 Every Spectrum Powers on-grid system is built with certified, premium components for decades of reliable power generation.
               </p>
               <div className="flex flex-wrap gap-3">
-                {[
+                {(pageData.advancedFeatures || [
                   "Mono PERC Solar Panels",
                   "String / Micro Inverters",
                   "Net Metering Compatible",
@@ -289,7 +289,7 @@ const OnGridSolar: React.FC = () => {
                   "App-Based Dashboard",
                   "Govt Subsidy Ready",
                   "KSEB Approved",
-                ].map((tag, i) => (
+                ]).map((tag: string, i: number) => (
                   <span key={i} className="flex items-center gap-2 bg-zinc-900 border border-white/10 text-zinc-300 text-xs font-medium uppercase tracking-wider px-4 py-2.5 rounded-full hover:border-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-default">
                     <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_6px_rgba(250,204,21,0.8)]" />
                     {tag}

@@ -293,12 +293,7 @@ const pageSectionGroups: Record<string, Array<{
       description: 'Configure key bento advantages grid items.',
       fields: ['benefits']
     },
-    {
-      id: 'comparison',
-      title: 'Choose Right System (Comparison Table)',
-      description: 'Configure pricing sizing guidelines and comparison grids.',
-      fields: ['comparisonTiers', 'comparisonRows']
-    },
+
     {
       id: 'advanced-features',
       title: 'Advanced Features Tag Checkpoints',

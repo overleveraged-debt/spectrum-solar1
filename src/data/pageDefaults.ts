@@ -175,6 +175,18 @@ export const defaultPagesData: Record<string, any> = {
   },
   // Default product details data
   'on-grid': {
+    advancedFeatures: [
+          "Mono PERC Solar Panels",
+          "String / Micro Inverters",
+          "Net Metering Compatible",
+          "Lightning Protection",
+          "Surge Protection",
+          "AC/DC Wiring with Grounding",
+          "Remote Monitoring",
+          "App-Based Dashboard",
+          "Govt Subsidy Ready",
+          "KSEB Approved"
+    ],
     benefits: [
           {
                 "icon": "Zap",
@@ -245,6 +257,17 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'off-grid': {
+    advancedFeatures: [
+          "Off-Grid Solar Inverter",
+          "Lithium LFP Battery Bank",
+          "High-Efficiency Solar Panels",
+          "MPPT Charge Controller",
+          "Integrated Smart BMS",
+          "AC/DC Distribution Board",
+          "Dual Charging Option",
+          "Heavy-Duty Surge Protection",
+          "Pure Sine Wave Output"
+    ],
     benefits: [
           {
                 "icon": "Zap",
@@ -322,6 +345,17 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'lithium-ups': {
+    advancedFeatures: [
+          "Integrated LifePO4 Cells",
+          "Smart Inbuilt BMS",
+          "Pure Sine Wave Inverter",
+          "Rapid Smart Charger",
+          "Overload & Short Circuit Cut",
+          "Wall-Mount Compact Chassis",
+          "Zero Active Maintenance",
+          "LED Status Interface",
+          "Eco-Friendly Safe Design"
+    ],
     benefits: [
           {
                 "icon": "Zap",
@@ -376,6 +410,17 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'home-ups': {
+    advancedFeatures: [
+          "Pure Sine Wave Inverter",
+          "Microcontroller Based Design",
+          "Multi-Stage Smart Charging",
+          "Wide Input Voltage Window",
+          "Overload & Short Circuit Protection",
+          "Easy Battery Select Option",
+          "LED Status Indications",
+          "Thermal Management System",
+          "Silent Ventilation Fan"
+    ],
     benefits: [
           {
                 "icon": "Zap",
@@ -431,6 +476,17 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'inverters': {
+    advancedFeatures: [
+          "DSP Microcontroller Inverter",
+          "High Surge Capacity Design",
+          "Dual Mode Charging Support",
+          "Automatic Voltage Regulation",
+          "Complete Short Circuit Protection",
+          "LED Display Interface",
+          "Wide Input Charging Range",
+          "Silent Temperature Fan",
+          "Compatible with Multi-Batteries"
+    ],
     benefits: [
           {
                 "icon": "Zap",
@@ -486,6 +542,17 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'online-ups': {
+    advancedFeatures: [
+          "True Double Conversion Tech",
+          "Zero Switch Transfer (0ms)",
+          "Pure Sine Wave Output",
+          "Active Input Power Correction",
+          "Galvanic Isolation Options",
+          "LCD System Interface",
+          "Network Management Ready",
+          "Industrial Overload Capacity",
+          "Modular Backup Options"
+    ],
     benefits: [
           {
                 "icon": "Server",
@@ -541,6 +608,17 @@ export const defaultPagesData: Record<string, any> = {
     ]
   },
   'lithium-batteries': {
+    advancedFeatures: [
+          "Advanced LifePO4 Chemistry",
+          "Smart Integrated BMS",
+          "4000+ Lifetime Charge Cycles",
+          "95% Depth of Discharge",
+          "Built-In Short Circuit Safety",
+          "Compact Lightweight Build",
+          "Zero Maintenance Overhead",
+          "Active Cell Balancing Tech",
+          "Non-Toxic Eco-Friendly"
+    ],
     showHero: true,
     heroSubtitle: 'Energy Storage',
     heroTitle: 'LFP Lithium Batteries',
@@ -556,6 +634,17 @@ export const defaultPagesData: Record<string, any> = {
     faqs: [{ q: 'Are lithium batteries safe?', a: 'Yes, LFP chemistry is highly stable and does not thermal runaway like other lithium cells.' }]
   },
   'tubular-batteries': {
+    advancedFeatures: [
+          "Tall Tubular Container",
+          "Thick Cast Positive Plate Grid",
+          "Low Antimony Grid Alloy",
+          "High Acid Reserve Design",
+          "Easy Visual Level Indicators",
+          "Deep Discharge Recovery Tech",
+          "Robust Leak-Proof Vent Plugs",
+          "Excellent Heat Dissipation",
+          "99% Lead Recyclability"
+    ],
     showHero: true,
     heroSubtitle: 'Lead-Acid Storage',
     heroTitle: 'Tall Tubular Batteries',
