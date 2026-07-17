@@ -27,3 +27,7 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Custom Agent Paths
+scratch/
+.agents/

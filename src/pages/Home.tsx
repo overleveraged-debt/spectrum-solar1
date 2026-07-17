@@ -219,6 +219,7 @@ const HomeTestimonialCarousel: React.FC<CarouselProps> = ({ testimonials }) => {
 
 const Home: React.FC = () => {
   const [pageData, setPageData] = useState(DEFAULT_HOME_DATA);
+  const [testimonialsList, setTestimonialsList] = useState<any[]>([]);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
@@ -235,6 +236,22 @@ const Home: React.FC = () => {
         }
       })
       .catch(err => console.error("Error fetching homepage content:", err));
+
+    sanityReadClient.fetch('*[_type == "pageContent" && pageId == "testimonials"][0]')
+      .then(res => {
+        if (isMounted && res && res.content) {
+          try {
+            const parsed = JSON.parse(res.content);
+            if (parsed.testimonials) {
+              setTestimonialsList(parsed.testimonials);
+            }
+          } catch (e) {
+            console.error("Failed to parse testimonials data from Sanity", e);
+          }
+        }
+      })
+      .catch(err => console.error("Error fetching testimonials content:", err));
+
     return () => {
       isMounted = false;
     };
@@ -566,7 +583,7 @@ const Home: React.FC = () => {
 
               <div className="reveal" style={{ transitionDelay: '150ms' }}>
                 {pageData.showTestimonials !== false && (
-                  <HomeTestimonialCarousel testimonials={pageData.testimonials} />
+                  <HomeTestimonialCarousel testimonials={testimonialsList} />
                 )}
               </div>
             </div>

@@ -260,12 +260,11 @@ export default function BlogManager() {
               <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">
                 Brief Excerpt
               </label>
-              <input
-                type="text"
+              <textarea
                 required
                 value={editingBlog.excerpt}
                 onChange={(e) => setEditingBlog({ ...editingBlog, excerpt: e.target.value })}
-                className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none"
+                className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-2 px-4 text-sm focus:border-yellow-400/50 outline-none transition-all duration-300 h-9 focus:h-24 resize-none py-2.5 overflow-y-auto"
                 placeholder="A one-sentence summary shown on the blog listing page."
               />
             </div>
@@ -279,8 +278,7 @@ export default function BlogManager() {
                 required
                 value={editingBlog.body}
                 onChange={(e) => setEditingBlog({ ...editingBlog, body: e.target.value })}
-                rows={12}
-                className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-4 px-4 text-sm focus:border-yellow-400/50 outline-none font-mono"
+                className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none font-mono transition-all duration-300 h-28 focus:h-80 resize-none py-2.5 overflow-y-auto"
                 placeholder="Write your blog post content here..."
               />
             </div>

@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FileText, FileCode, LogOut, ChevronRight, ChevronLeft, Menu, Users, Inbox } from 'lucide-react';
+import { LayoutDashboard, FileText, FileCode, LogOut, ChevronRight, ChevronLeft, Menu, Users, Inbox, MessageSquare } from 'lucide-react';
 import PageEditor from './PageEditor';
 import BlogManager from './BlogManager';
 import LeadsViewer from './LeadsViewer';
 import ApplicationsViewer from './ApplicationsViewer';
 
 type Tab = 
-  | 'home' | 'about' | 'power-backup' | 'solar-solutions' 
-  | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs' 
+  | 'home' | 'about' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs' 
   | 'map-locations' | 'privacy-policy' | 'terms-conditions'
-  | 'leads' | 'applications';
+  | 'leads' | 'applications' | 'testimonials';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
@@ -33,16 +32,15 @@ export default function AdminDashboard() {
   const menuItems = [
     { id: 'home', label: 'Home Page', icon: FileText, category: 'Page Editors' },
     { id: 'about', label: 'About Page', icon: FileText, category: 'Page Editors' },
-    { id: 'solar-solutions', label: 'Solar Solutions', icon: FileText, category: 'Page Editors' },
-    { id: 'power-backup', label: 'Power Backup', icon: FileText, category: 'Page Editors' },
     { id: 'product-details', label: 'Product Details', icon: FileText, category: 'Page Editors' },
     { id: 'map-locations', label: 'Map Locations', icon: FileText, category: 'Page Editors' },
     { id: 'careers', label: 'Careers Page', icon: FileText, category: 'Page Editors' },
     { id: 'support', label: 'Support & FAQ', icon: FileText, category: 'Page Editors' },
-    { id: 'contact', label: 'Contact Page', icon: FileText, category: 'Page Editors' },
+    { id: 'contact', label: 'Enquiry Page', icon: FileText, category: 'Page Editors' },
     { id: 'privacy-policy', label: 'Privacy Policy', icon: FileText, category: 'Page Editors' },
     { id: 'terms-conditions', label: 'Terms & Conditions', icon: FileText, category: 'Page Editors' },
     { id: 'blogs', label: 'Blog Posts', icon: FileCode, category: 'Content Manager' },
+    { id: 'testimonials', label: 'Client Testimonials', icon: MessageSquare, category: 'Content Manager' },
     { id: 'leads', label: 'Leads & Enquiries', icon: Inbox, category: 'Business Inbox' },
     { id: 'applications', label: 'Job Applications', icon: Users, category: 'Business Inbox' },
   ];
@@ -120,7 +118,9 @@ export default function AdminDashboard() {
               {isSidebarCollapsed ? <Menu className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
             </button>
             <LayoutDashboard className="w-5 h-5 text-yellow-400" />
-            <h2 className="text-lg font-semibold capitalize">{activeTab.replace('-', ' ')} Editor</h2>
+            <h2 className="text-lg font-semibold capitalize">
+              {activeTab === 'contact' ? 'Enquiry Page' : activeTab.replace('-', ' ')} Editor
+            </h2>
           </div>
           <a
             href="/"

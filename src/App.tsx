@@ -32,6 +32,7 @@ const Support = lazy(() => import('./pages/Support'));
 const Careers = lazy(() => import('./pages/Careers'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsConditions = lazy(() => import('./pages/TermsConditions'));
+const BlogDetails = lazy(() => import('./pages/BlogDetails'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Admin pages
@@ -76,6 +77,7 @@ function App() {
             <Route path="projects" element={<Projects />} />
             <Route path="contact" element={<Contact />} />
             <Route path="blog" element={<Blog />} />
+            <Route path="blog/:slug" element={<BlogDetails />} />
             <Route path="calculator" element={<Calculator />} />
             <Route path="feedback" element={<Feedback />} />
             <Route path="opportunities" element={<Opportunities />} />

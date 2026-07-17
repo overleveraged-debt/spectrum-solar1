@@ -19,6 +19,8 @@ const DefaultIcon = L.icon({
 // Setup marker options icon
 L.Marker.prototype.options.icon = DefaultIcon;
 
+const EXPANDING_TEXTAREA_CLASS = "w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/50 transition-all duration-300 h-9 focus:h-28 resize-none py-2.5 overflow-y-auto";
+
 // Custom Yellow Icon for Spectrum Pins
 const yellowIcon = new L.DivIcon({
   className: 'custom-div-icon',
@@ -101,12 +103,7 @@ const pageSectionGroups: Record<string, Array<{
       description: 'Configure heritage block text, awards, certificates details, and visibility.',
       fields: ['showHeritage', 'heritageSubtitle', 'heritageTitle', 'heritageImage', 'heritageDesc', 'heritageAccreditationTitle', 'heritageAccreditationDesc']
     },
-    {
-      id: 'testimonials',
-      title: 'Client Testimonials',
-      description: 'Add, update, or delete customer reviews slider items.',
-      fields: ['showTestimonials', 'testimonials']
-    },
+
     {
       id: 'contact',
       title: 'Contact Call-to-Action',
@@ -158,34 +155,7 @@ const pageSectionGroups: Record<string, Array<{
       fields: ['showCTA', 'ctaTitle', 'ctaDesc']
     }
   ],
-  'power-backup': [
-    {
-      id: 'hero',
-      title: 'Hero Section',
-      description: 'Title, subtitle, banner photo and description settings.',
-      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
-    },
-    {
-      id: 'catalog',
-      title: 'Product Catalog',
-      description: 'Edit, reorder, or update the list of backup products, features, and specifications.',
-      fields: ['showProducts', 'products']
-    }
-  ],
-  'solar-solutions': [
-    {
-      id: 'hero',
-      title: 'Hero Section',
-      description: 'Title, subtitle, banner photo and description settings.',
-      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
-    },
-    {
-      id: 'catalog',
-      title: 'Product Catalog',
-      description: 'Edit, reorder, or update the list of solar products, features, and specifications.',
-      fields: ['showProducts', 'products']
-    }
-  ],
+
   calculators: [
     {
       id: 'params',
@@ -198,8 +168,14 @@ const pageSectionGroups: Record<string, Array<{
     {
       id: 'hero',
       title: 'Hero Section',
-      description: 'Configure title, subtitle and banner image.',
-      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage']
+      description: 'Configure title, subtitle, subtext and banner image.',
+      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
+    },
+    {
+      id: 'stats',
+      title: 'Careers Statistics',
+      description: 'Configure value/label pairs displayed in the stats bar.',
+      fields: ['showStats', 'stats']
     },
     {
       id: 'why',
@@ -211,16 +187,22 @@ const pageSectionGroups: Record<string, Array<{
       id: 'positions',
       title: 'Open Job Positions',
       description: 'Manage open listings.',
-      fields: ['openPositions']
+      fields: ['positionsTitle', 'openPositions']
     },
     {
       id: 'faqs',
       title: 'Careers FAQs',
       description: 'Manage job FAQs.',
-      fields: ['faqs']
+      fields: ['faqsTitle', 'faqs']
     }
   ],
   support: [
+    {
+      id: 'hero',
+      title: 'Hero Section',
+      description: 'Configure title, subtitle and background banner image.',
+      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage']
+    },
     {
       id: 'contactInfo',
       title: 'Contacts Information',
@@ -231,7 +213,7 @@ const pageSectionGroups: Record<string, Array<{
       id: 'faqs',
       title: 'General Support FAQs',
       description: 'Manage help topics.',
-      fields: ['faqs']
+      fields: ['faqsTitle', 'faqs']
     }
   ],
   contact: [
@@ -317,12 +299,6 @@ const pageSectionGroups: Record<string, Array<{
       title: 'Frequently Asked Questions (FAQ)',
       description: 'Configure product-specific accordion questions.',
       fields: ['faqs']
-    },
-    {
-      id: 'specs',
-      title: 'Technical Specifications Table',
-      description: 'Configure technical properties.',
-      fields: ['specs']
     }
   ],
   'privacy-policy': [
@@ -339,6 +315,14 @@ const pageSectionGroups: Record<string, Array<{
       title: 'Terms & Conditions Document Content',
       description: 'Configure content headings and description text.',
       fields: ['title', 'lastUpdated', 'sections']
+    }
+  ],
+  testimonials: [
+    {
+      id: 'testimonials-list',
+      title: 'Manage Client Testimonials',
+      description: 'Add, edit, or delete customer reviews displayed across the website.',
+      fields: ['testimonials']
     }
   ]
 };
@@ -384,7 +368,12 @@ const fieldMeta: Record<string, { label: string; desc?: string; placeholder?: st
   stat3Sub: { label: 'Stat 3 Tagline', placeholder: 'e.g. Installed & Running' },
   stat4Value: { label: 'Stat 4 Value', placeholder: 'e.g. 60+' },
   stat4Label: { label: 'Stat 4 Label', placeholder: 'e.g. Service Engineers' },
-  stat4Sub: { label: 'Stat 4 Tagline', placeholder: 'e.g. Certified Experts' }
+  stat4Sub: { label: 'Stat 4 Tagline', placeholder: 'e.g. Certified Experts' },
+  positionsTitle: { label: 'Job Positions Header Title', desc: 'Title displayed above job positions.', placeholder: 'Open Positions.' },
+  faqsTitle: { label: 'Careers FAQ Header Title', desc: 'Title displayed above Careers FAQs.', placeholder: 'Frequently Asked Questions.' },
+  stats: { label: 'Careers Statistics Grid', desc: 'Key-value pairs for the yellow statistics strip.' },
+  ticketTitle: { label: 'Ticket Form Headline', desc: 'Title displayed above support intake form.', placeholder: 'Submit a Support Ticket' },
+  ticketDesc: { label: 'Ticket Form Subtext', desc: 'Short paragraph explaining form purpose.', placeholder: 'Register a service enquiry...' }
 };
 
 const productOptions = [
@@ -651,53 +640,152 @@ export default function PageEditor({ pageId }: PageEditorProps) {
     const list = data.whyItems || [];
     return (
       <div className="space-y-4">
-        <label className="text-sm font-bold text-white block">Why Choose Us Grid Items</label>
-        {list.map((item: any, idx: number) => (
-          <div key={idx} className="p-4 bg-zinc-950 border border-zinc-900 rounded-3xl space-y-3 relative">
-            <button
-              type="button"
-              onClick={() => {
-                const newList = [...list];
-                newList.splice(idx, 1);
-                handleFieldChange('whyItems', newList);
-              }}
-              className="absolute top-4 right-4 text-rose-400 text-xs font-semibold"
-            >
-              Remove
-            </button>
-            <input
-              type="text"
-              value={item.title || ''}
-              onChange={(e) => {
-                const newList = [...list];
-                newList[idx] = { ...newList[idx], title: e.target.value };
-                handleFieldChange('whyItems', newList);
-              }}
-              className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
-              placeholder="Title"
-            />
-            <textarea
-              value={item.desc || ''}
-              onChange={(e) => {
-                const newList = [...list];
-                newList[idx] = { ...newList[idx], desc: e.target.value };
-                handleFieldChange('whyItems', newList);
-              }}
-              className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
-              placeholder="Description text"
-              rows={2}
-            />
+        {/* Table Header Row */}
+        {list.length > 0 && (
+          <div className="hidden md:flex items-center gap-4 px-5 text-[10px] font-black uppercase tracking-wider text-zinc-500">
+            <div className="flex-1">Benefit Card Title</div>
+            <div className="flex-[3]">Benefit Description</div>
+            <div className="w-16 text-right">Action</div>
           </div>
-        ))}
+        )}
+
+        <div className="space-y-2">
+          {list.map((item: any, idx: number) => (
+            <div key={idx} className="p-4 bg-zinc-950 border border-zinc-900 rounded-2xl flex flex-col md:flex-row items-stretch md:items-center gap-4 relative animate-fade-in">
+              <div className="flex-1 space-y-1 md:space-y-0">
+                <label className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider block md:hidden">Benefit Card Title</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Growth Opportunities"
+                  value={item.title || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[idx] = { ...newList[idx], title: e.target.value };
+                    handleFieldChange('whyItems', newList);
+                  }}
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/50 transition-all"
+                />
+              </div>
+
+              <div className="flex-[3] space-y-1 md:space-y-0">
+                <label className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider block md:hidden">Benefit Description</label>
+                <textarea
+                  placeholder="Benefit description..."
+                  value={item.desc || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[idx] = { ...newList[idx], desc: e.target.value };
+                    handleFieldChange('whyItems', newList);
+                  }}
+                  className={EXPANDING_TEXTAREA_CLASS}
+                />
+              </div>
+
+              <div className="w-16 flex items-center justify-end mt-2 md:mt-0">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newList = [...list];
+                    newList.splice(idx, 1);
+                    handleFieldChange('whyItems', newList);
+                  }}
+                  className="text-rose-400 hover:text-rose-300 text-xs font-semibold"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <button
           type="button"
           onClick={() => {
             const newList = [...list, { title: 'New Benefit', desc: 'Benefit description' }];
             handleFieldChange('whyItems', newList);
           }}
-          className="w-full bg-zinc-950 hover:bg-zinc-900 border border-zinc-900 text-yellow-400 text-xs py-2 rounded-xl transition-colors"
+          className="w-full bg-zinc-950 hover:bg-zinc-900 border border-zinc-900 text-yellow-400 text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
         >
-          + Add Benefit Item
+          <Plus className="w-4 h-4" /> Add Benefit Item
+        </button>
+      </div>
+    );
+  };
+
+  const renderStatsListEditor = () => {
+    const list = data.stats || [];
+    return (
+      <div className="space-y-4">
+        <label className="text-sm font-bold text-white block">Careers Statistics List</label>
+        
+        {/* Table Header Row */}
+        {list.length > 0 && (
+          <div className="hidden md:flex items-center gap-4 px-5 text-[10px] font-black uppercase tracking-wider text-zinc-500">
+            <div className="flex-1">Statistic Value (e.g. 25 Yrs)</div>
+            <div className="flex-1">Statistic Label (e.g. Brand Legacy)</div>
+            <div className="w-16 text-right">Action</div>
+          </div>
+        )}
+
+        <div className="space-y-2">
+          {list.map((item: any, idx: number) => (
+            <div key={idx} className="p-4 bg-zinc-950 border border-zinc-900 rounded-2xl flex flex-col md:flex-row items-stretch md:items-center gap-4 relative animate-fade-in">
+              <div className="flex-1 space-y-1 md:space-y-0">
+                <label className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider block md:hidden">Stat Value</label>
+                <input
+                  type="text"
+                  placeholder="e.g. 25 Yrs"
+                  value={item.value || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[idx] = { ...newList[idx], value: e.target.value };
+                    handleFieldChange('stats', newList);
+                  }}
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/50 transition-all"
+                />
+              </div>
+
+              <div className="flex-1 space-y-1 md:space-y-0">
+                <label className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider block md:hidden">Stat Label</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Brand Legacy"
+                  value={item.label || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[idx] = { ...newList[idx], label: e.target.value };
+                    handleFieldChange('stats', newList);
+                  }}
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/50 transition-all"
+                />
+              </div>
+
+              <div className="w-16 flex items-center justify-end mt-2 md:mt-0">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newList = [...list];
+                    newList.splice(idx, 1);
+                    handleFieldChange('stats', newList);
+                  }}
+                  className="text-rose-400 hover:text-rose-300 text-xs font-semibold"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => {
+            const newList = [...list, { value: '', label: '' }];
+            handleFieldChange('stats', newList);
+          }}
+          className="w-full bg-zinc-950 hover:bg-zinc-900 border border-zinc-900 text-yellow-400 text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
+        >
+          <Plus className="w-4 h-4" /> Add Statistic Item
         </button>
       </div>
     );
@@ -764,9 +852,8 @@ export default function PageEditor({ pageId }: PageEditorProps) {
                 newList[idx] = { ...newList[idx], desc: e.target.value };
                 handleFieldChange('openPositions', newList);
               }}
-              className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
+              className={EXPANDING_TEXTAREA_CLASS}
               placeholder="Job Description paragraph"
-              rows={2}
             />
           </div>
         ))}
@@ -790,43 +877,45 @@ export default function PageEditor({ pageId }: PageEditorProps) {
     return (
       <div className="space-y-4">
         <label className="text-sm font-bold text-white block">Regional Offices Locations</label>
-        {list.map((item: any, idx: number) => (
-          <div key={idx} className="p-4 bg-zinc-950 border border-zinc-900 rounded-3xl space-y-3 relative">
-            <button
-              type="button"
-              onClick={() => {
-                const newList = [...list];
-                newList.splice(idx, 1);
-                handleFieldChange('offices', newList);
-              }}
-              className="absolute top-4 right-4 text-rose-400 text-xs font-semibold"
-            >
-              Remove
-            </button>
-            <input
-              type="text"
-              value={item.city || ''}
-              onChange={(e) => {
-                const newList = [...list];
-                newList[idx] = { ...newList[idx], city: e.target.value };
-                handleFieldChange('offices', newList);
-              }}
-              className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
-              placeholder="City Name"
-            />
-            <input
-              type="text"
-              value={item.address || ''}
-              onChange={(e) => {
-                const newList = [...list];
-                newList[idx] = { ...newList[idx], address: e.target.value };
-                handleFieldChange('offices', newList);
-              }}
-              className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
-              placeholder="Full Address"
-            />
-          </div>
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {list.map((item: any, idx: number) => (
+            <div key={idx} className="p-4 bg-zinc-950 border border-zinc-905 rounded-3xl space-y-3 relative">
+              <button
+                type="button"
+                onClick={() => {
+                  const newList = [...list];
+                  newList.splice(idx, 1);
+                  handleFieldChange('offices', newList);
+                }}
+                className="absolute top-4 right-4 text-rose-400 text-xs font-semibold hover:text-rose-300 transition-colors"
+              >
+                Remove
+              </button>
+              <input
+                type="text"
+                value={item.city || ''}
+                onChange={(e) => {
+                  const newList = [...list];
+                  newList[idx] = { ...newList[idx], city: e.target.value };
+                  handleFieldChange('offices', newList);
+                }}
+                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/30"
+                placeholder="City Name"
+              />
+              <input
+                type="text"
+                value={item.address || ''}
+                onChange={(e) => {
+                  const newList = [...list];
+                  newList[idx] = { ...newList[idx], address: e.target.value };
+                  handleFieldChange('offices', newList);
+                }}
+                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/30"
+                placeholder="Full Address"
+              />
+            </div>
+          ))}
+        </div>
         <button
           type="button"
           onClick={() => {
@@ -901,9 +990,8 @@ export default function PageEditor({ pageId }: PageEditorProps) {
                           newList[idx] = { ...newList[idx], a: e.target.value };
                           handleFieldChange('faqs', newList);
                         }}
-                        className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
+                        className={EXPANDING_TEXTAREA_CLASS}
                         placeholder="Answer text"
-                        rows={3}
                       />
                     </div>
                   </div>
@@ -1170,63 +1258,46 @@ export default function PageEditor({ pageId }: PageEditorProps) {
       <div className="space-y-4 md:col-span-2">
         <label className="text-sm font-bold text-white block">Perfect For Application Scenarios ({list.length})</label>
         {list.map((item: any, idx: number) => (
-          <div key={idx} className="p-5 bg-zinc-950 border border-zinc-900 rounded-3xl space-y-3 relative">
-            <button
-              type="button"
-              onClick={() => {
-                const newList = [...list];
-                newList.splice(idx, 1);
-                handleFieldChange('perfectFor', newList);
-              }}
-              className="absolute top-4 right-4 text-rose-400 text-xs font-semibold hover:underline"
-            >
-              Remove
-            </button>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Application Label</label>
-                <input
-                  type="text"
-                  value={item.label || ''}
-                  onChange={(e) => {
-                    const newList = [...list];
-                    newList[idx] = { ...newList[idx], label: e.target.value };
-                    handleFieldChange('perfectFor', newList);
-                  }}
-                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
-                  placeholder="e.g. Home UPS Systems"
-                />
-              </div>
-              <div>
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Application Icon</label>
-                <select
-                  value={item.icon || 'Home'}
-                  onChange={(e) => {
-                    const newList = [...list];
-                    newList[idx] = { ...newList[idx], icon: e.target.value };
-                    handleFieldChange('perfectFor', newList);
-                  }}
-                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none cursor-pointer"
-                >
-                  {iconOptions.map(icon => (
-                    <option key={icon} value={icon}>{icon}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
+          <div key={idx} className="grid grid-cols-[1fr_2fr_auto] items-center gap-3 bg-zinc-950/40 border border-zinc-900/60 p-3 rounded-2xl">
             <div>
-              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Sub-description / Context</label>
+              {idx === 0 && <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Application Label</label>}
               <input
                 type="text"
+                value={item.label || ''}
+                onChange={(e) => {
+                  const newList = [...list];
+                  newList[idx] = { ...newList[idx], label: e.target.value };
+                  handleFieldChange('perfectFor', newList);
+                }}
+                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
+                placeholder="e.g. Home UPS Systems"
+              />
+            </div>
+            <div>
+              {idx === 0 && <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Sub-description / Context</label>}
+              <textarea
                 value={item.sub || ''}
                 onChange={(e) => {
                   const newList = [...list];
                   newList[idx] = { ...newList[idx], sub: e.target.value };
                   handleFieldChange('perfectFor', newList);
                 }}
-                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
+                className={EXPANDING_TEXTAREA_CLASS}
                 placeholder="e.g. Sized perfectly for residential use"
               />
+            </div>
+            <div className={idx === 0 ? "pt-5" : ""}>
+              <button
+                type="button"
+                onClick={() => {
+                  const newList = [...list];
+                  newList.splice(idx, 1);
+                  handleFieldChange('perfectFor', newList);
+                }}
+                className="text-rose-400 text-xs font-semibold hover:underline px-2 py-2"
+              >
+                Remove
+              </button>
             </div>
           </div>
         ))}
@@ -1432,59 +1503,29 @@ export default function PageEditor({ pageId }: PageEditorProps) {
   // Installation timeline process editor
   const renderInstallationTimelineEditor = () => {
     const list = data.installationSteps || [];
-    const iconOptions = ['Settings', 'FileText', 'Activity', 'Wrench', 'Play', 'Clock', 'ShieldCheck', 'Zap', 'Home'];
 
     return (
       <div className="space-y-4 md:col-span-2">
         <label className="text-sm font-bold text-white block">Installation Process Timeline ({list.length} steps)</label>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-3">
           {list.map((step: any, idx: number) => (
-            <div key={idx} className="p-5 bg-zinc-950 border border-zinc-900 rounded-3xl space-y-3 relative">
-              <button
-                type="button"
-                onClick={() => {
-                  const newList = [...list];
-                  newList.splice(idx, 1);
-                  handleFieldChange('installationSteps', newList);
-                }}
-                className="absolute top-4 right-4 text-rose-450 hover:text-rose-400 text-xs font-semibold"
-              >
-                Remove
-              </button>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="text-[10px] font-black uppercase text-zinc-500 mb-1 block">Step Title</label>
-                  <input
-                    type="text"
-                    value={step.title || ''}
-                    onChange={(e) => {
-                      const newList = [...list];
-                      newList[idx] = { ...newList[idx], title: e.target.value };
-                      handleFieldChange('installationSteps', newList);
-                    }}
-                    className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
-                    placeholder="e.g. Requirements"
-                  />
-                </div>
-                <div>
-                  <label className="text-[10px] font-black uppercase text-zinc-500 mb-1 block">Lucide Icon</label>
-                  <select
-                    value={step.icon || 'Settings'}
-                    onChange={(e) => {
-                      const newList = [...list];
-                      newList[idx] = { ...newList[idx], icon: e.target.value };
-                      handleFieldChange('installationSteps', newList);
-                    }}
-                    className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none cursor-pointer"
-                  >
-                    {iconOptions.map(icon => (
-                      <option key={icon} value={icon}>{icon}</option>
-                    ))}
-                  </select>
-                </div>
+            <div key={idx} className="grid grid-cols-[1fr_2fr_auto] items-center gap-3 bg-zinc-950/40 border border-zinc-900/60 p-3 rounded-2xl">
+              <div>
+                {idx === 0 && <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Step Title</label>}
+                <input
+                  type="text"
+                  value={step.title || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[idx] = { ...newList[idx], title: e.target.value };
+                    handleFieldChange('installationSteps', newList);
+                  }}
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
+                  placeholder="e.g. Phase Title"
+                />
               </div>
               <div>
-                <label className="text-[10px] font-black uppercase text-zinc-500 mb-1 block">Description</label>
+                {idx === 0 && <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Description</label>}
                 <textarea
                   value={step.desc || ''}
                   onChange={(e) => {
@@ -1492,10 +1533,22 @@ export default function PageEditor({ pageId }: PageEditorProps) {
                     newList[idx] = { ...newList[idx], desc: e.target.value };
                     handleFieldChange('installationSteps', newList);
                   }}
-                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
+                  className={EXPANDING_TEXTAREA_CLASS}
                   placeholder="Phase details..."
-                  rows={2}
                 />
+              </div>
+              <div className={idx === 0 ? "pt-5" : ""}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newList = [...list];
+                    newList.splice(idx, 1);
+                    handleFieldChange('installationSteps', newList);
+                  }}
+                  className="text-rose-450 hover:text-rose-400 text-xs font-semibold px-2 py-2"
+                >
+                  Remove
+                </button>
               </div>
             </div>
           ))}
@@ -1503,7 +1556,7 @@ export default function PageEditor({ pageId }: PageEditorProps) {
         <button
           type="button"
           onClick={() => {
-            const newList = [...list, { title: "New Phase", desc: "Phase description details.", icon: "Settings" }];
+            const newList = [...list, { title: "New Phase", desc: "Phase description details." }];
             handleFieldChange('installationSteps', newList);
           }}
           className="w-full bg-zinc-950 hover:bg-zinc-900 border border-zinc-900 text-yellow-400 text-xs py-2.5 rounded-xl transition-colors font-semibold"
@@ -1628,49 +1681,50 @@ export default function PageEditor({ pageId }: PageEditorProps) {
             <span>Add New Section</span>
           </button>
         </div>
-        {list.map((item: any, idx: number) => (
-          <div key={idx} className="p-5 bg-zinc-950 border border-zinc-900 rounded-3xl space-y-4 relative">
-            <button
-              type="button"
-              onClick={() => {
-                const newList = [...list];
-                newList.splice(idx, 1);
-                handleFieldChange('sections', newList);
-              }}
-              className="absolute top-5 right-5 text-rose-400 text-xs font-semibold hover:text-rose-300 transition-colors"
-            >
-              Remove
-            </button>
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 font-semibold block">Section Header Title</label>
-              <input
-                type="text"
-                value={item.title || ''}
-                onChange={(e) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {list.map((item: any, idx: number) => (
+            <div key={idx} className="p-5 bg-zinc-950 border border-zinc-900 rounded-3xl space-y-4 relative">
+              <button
+                type="button"
+                onClick={() => {
                   const newList = [...list];
-                  newList[idx] = { ...newList[idx], title: e.target.value };
+                  newList.splice(idx, 1);
                   handleFieldChange('sections', newList);
                 }}
-                className="w-full bg-zinc-900 border border-zinc-850 text-white font-bold rounded-xl py-2.5 px-3 text-xs outline-none focus:border-yellow-400/30"
-                placeholder="e.g. 1. Introduction"
-              />
+                className="absolute top-5 right-5 text-rose-400 text-xs font-semibold hover:text-rose-300 transition-colors"
+              >
+                Remove
+              </button>
+              <div className="space-y-2">
+                <label className="text-xs text-zinc-400 font-semibold block">Section Header Title</label>
+                <input
+                  type="text"
+                  value={item.title || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[idx] = { ...newList[idx], title: e.target.value };
+                    handleFieldChange('sections', newList);
+                  }}
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white font-bold rounded-xl py-2.5 px-3 text-xs outline-none focus:border-yellow-400/30"
+                  placeholder="e.g. 1. Introduction"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs text-zinc-400 font-semibold block">Section Body Paragraph</label>
+                <textarea
+                  value={item.text || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[idx] = { ...newList[idx], text: e.target.value };
+                    handleFieldChange('sections', newList);
+                  }}
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/30 transition-all duration-300 h-9 focus:h-28 resize-none py-2.5 overflow-y-auto"
+                  placeholder="Write the policy details here..."
+                />
+              </div>
             </div>
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 font-semibold block">Section Body Paragraph</label>
-              <textarea
-                value={item.text || ''}
-                onChange={(e) => {
-                  const newList = [...list];
-                  newList[idx] = { ...newList[idx], text: e.target.value };
-                  handleFieldChange('sections', newList);
-                }}
-                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-3 px-4 text-xs outline-none focus:border-yellow-400/30 transition-colors"
-                placeholder="Write the policy details here..."
-                rows={5}
-              />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   };
@@ -1743,62 +1797,80 @@ export default function PageEditor({ pageId }: PageEditorProps) {
     return (
       <div className="space-y-4">
         <label className="text-sm font-bold text-white block">Client Reviews List</label>
-        {list.map((t: any, idx: number) => (
-          <div key={idx} className="p-5 bg-zinc-950 border border-zinc-900 rounded-3xl space-y-4 relative">
-            <button
-              type="button"
-              onClick={() => {
-                const newList = [...list];
-                newList.splice(idx, 1);
-                handleFieldChange('testimonials', newList);
-              }}
-              className="absolute top-5 right-5 text-rose-400 hover:text-rose-300 text-xs font-semibold"
-            >
-              Remove
-            </button>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-xs text-zinc-400 font-semibold block">Client Name</label>
+        
+        {/* Table Header Row */}
+        {list.length > 0 && (
+          <div className="hidden md:flex items-center gap-4 px-5 text-[10px] font-black uppercase tracking-wider text-zinc-500">
+            <div className="flex-1">Client Name</div>
+            <div className="flex-1">Product Purchased</div>
+            <div className="flex-[3]">Review Paragraph</div>
+            <div className="w-16 text-right">Action</div>
+          </div>
+        )}
+
+        <div className="space-y-2">
+          {list.map((t: any, idx: number) => (
+            <div key={idx} className="p-4 bg-zinc-950 border border-zinc-900 rounded-2xl flex flex-col md:flex-row items-stretch md:items-center gap-4 relative animate-fade-in">
+              <div className="flex-1 space-y-1 md:space-y-0">
+                <label className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider block md:hidden">Client Name</label>
                 <input
                   type="text"
+                  placeholder="e.g. Abdul Rahman"
                   value={t.name || ''}
                   onChange={(e) => {
                     const newList = [...list];
                     newList[idx] = { ...newList[idx], name: e.target.value };
                     handleFieldChange('testimonials', newList);
                   }}
-                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/50 transition-all"
                 />
               </div>
-              <div className="space-y-2">
-                <label className="text-xs text-zinc-400 font-semibold block">Product / Project Purchased</label>
+
+              <div className="flex-1 space-y-1 md:space-y-0">
+                <label className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider block md:hidden">Product Purchased</label>
                 <input
                   type="text"
+                  placeholder="e.g. 5KW Hybrid Solar"
                   value={t.product || ''}
                   onChange={(e) => {
                     const newList = [...list];
                     newList[idx] = { ...newList[idx], product: e.target.value };
                     handleFieldChange('testimonials', newList);
                   }}
-                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none focus:border-yellow-400/50 transition-all"
                 />
               </div>
+              <div className="flex-[3] space-y-1 md:space-y-0">
+                <label className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider block md:hidden">Review Paragraph</label>
+                <textarea
+                  placeholder="e.g. Extremely professional team..."
+                  value={t.text || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[idx] = { ...newList[idx], text: e.target.value };
+                    handleFieldChange('testimonials', newList);
+                  }}
+                  className={EXPANDING_TEXTAREA_CLASS}
+                />
+              </div>
+
+              <div className="w-16 flex items-center justify-end mt-2 md:mt-0">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newList = [...list];
+                    newList.splice(idx, 1);
+                    handleFieldChange('testimonials', newList);
+                  }}
+                  className="text-rose-400 hover:text-rose-300 text-xs font-semibold"
+                >
+                  Remove
+                </button>
+              </div>
             </div>
-            <div className="space-y-2">
-              <label className="text-xs text-zinc-400 font-semibold block">Review Paragraph</label>
-              <textarea
-                value={t.text || ''}
-                onChange={(e) => {
-                  const newList = [...list];
-                  newList[idx] = { ...newList[idx], text: e.target.value };
-                  handleFieldChange('testimonials', newList);
-                }}
-                rows={3}
-                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2.5 px-3 text-xs outline-none"
-              />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
         <button
           type="button"
           onClick={() => {
@@ -2143,8 +2215,8 @@ export default function PageEditor({ pageId }: PageEditorProps) {
       placeholder: ''
     };
 
-    const isTextArea = key.toLowerCase().includes('subtitle') || key.toLowerCase().includes('text') || key.toLowerCase().includes('desc');
-    const isFullWidth = isTextArea || isImage || isVideo || key.toLowerCase().includes('desc') || key.toLowerCase().includes('text') || key.toLowerCase().includes('subtitle');
+    const isTextArea = (key.toLowerCase().includes('text') || key.toLowerCase().includes('desc')) && !key.toLowerCase().includes('title') && !key.toLowerCase().includes('subtitle');
+    const isFullWidth = isTextArea || isImage || isVideo;
     const colSpanClass = isFullWidth ? 'md:col-span-2' : 'col-span-1';
 
     if (isBoolean) {
@@ -2394,10 +2466,10 @@ export default function PageEditor({ pageId }: PageEditorProps) {
                           .filter((fieldKey) => fieldKey !== toggleFieldKey)
                           .map((fieldKey) => {
                             if (fieldKey === 'sections') {
-                              return <div key={fieldKey} className="space-y-2">{renderSectionsEditor()}</div>;
+                              return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderSectionsEditor()}</div>;
                             }
                             if (fieldKey === 'testimonials') {
-                              return <div key={fieldKey} className="space-y-2">{renderTestimonialsEditor()}</div>;
+                              return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderTestimonialsEditor()}</div>;
                             }
                           if (fieldKey === 'pins') {
                             return <div key={fieldKey} className="space-y-2">{renderPinsEditor()}</div>;
@@ -2405,17 +2477,20 @@ export default function PageEditor({ pageId }: PageEditorProps) {
                           if (fieldKey === 'products') {
                             return <div key={fieldKey} className="space-y-2">{renderProductsEditor()}</div>;
                           }
+                          if (fieldKey === 'stats') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderStatsListEditor()}</div>;
+                          }
                           if (fieldKey === 'whyItems') {
-                            return <div key={fieldKey} className="space-y-2">{renderWhyItemsEditor()}</div>;
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderWhyItemsEditor()}</div>;
                           }
                           if (fieldKey === 'openPositions') {
-                            return <div key={fieldKey} className="space-y-2">{renderPositionsEditor()}</div>;
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderPositionsEditor()}</div>;
                           }
                           if (fieldKey === 'offices') {
-                            return <div key={fieldKey} className="space-y-2">{renderOfficesEditor()}</div>;
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderOfficesEditor()}</div>;
                           }
                           if (fieldKey === 'faqs') {
-                            return <div key={fieldKey} className="space-y-2">{renderFaqsEditor()}</div>;
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderFaqsEditor()}</div>;
                           }
                           if (fieldKey === 'benefits') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderBenefitsListEditor()}</div>;

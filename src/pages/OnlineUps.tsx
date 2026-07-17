@@ -17,6 +17,29 @@ const OnlineUps: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('online-ups');
+  const perfectList = pageData.perfectFor || [
+    {
+        "label": "Data Centers & Servers",
+        "sub": "Zero reboot risk for critical IT lines"
+    },
+    {
+        "label": "Medical & Diagnostic Equipment",
+        "sub": "Protect MRI, CT scans and ICU devices"
+    },
+    {
+        "label": "Industrial Process Lines",
+        "sub": "Prevent costly downtime in factories"
+    },
+    {
+        "label": "Banks & ATM Networks",
+        "sub": "Continuous transaction processing backup"
+    },
+    {
+        "label": "Network Control Rooms",
+        "sub": "Telecommunication and fiber hubs safety"
+    }
+];
+
 
   const faqs = pageData.faqs || [
     {
@@ -318,17 +341,9 @@ const OnlineUps: React.FC = () => {
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">
-              {[
-                { icon: Hospital, label: "Hospitals & Medical Equipment", sub: "Life-critical equipment always powered" },
-                { icon: Monitor, label: "Data Centers & Servers", sub: "Zero data loss, zero downtime" },
-                { icon: Building2, label: "Offices & IT Infrastructure", sub: "Enterprise continuity guaranteed" },
-                { icon: Factory, label: "Industrial Equipment", sub: "Manufacturing without interruption" },
-                { icon: Cpu, label: "Workstations & Critical Systems", sub: "Sensitive equipment fully protected" },
-              ].map((item, i) => (
+              {perfectList.map((item: any, i: number) => (
                 <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-4 md:p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/20 transition-colors">
-                    <item.icon className="w-5 h-5 text-yellow-400" />
-                  </div>
+                  <div className="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0 ml-2" />
                   <div>
                     <div className="font-black text-sm uppercase tracking-tight">{item.label}</div>
                     <div className="text-zinc-500 text-xs mt-0.5">{item.sub}</div>
@@ -340,34 +355,52 @@ const OnlineUps: React.FC = () => {
         </div>
       </section>
 
-      {/* INSTALLATION */}
+      {/* ── INSTALLATION TIMELINE ── */}
       <section className="py-24 md:py-32 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
-            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Installation</h2>
+            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Step-by-Step</span>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Installation Process</h2>
           </div>
+
           <div className="relative">
             <div className="absolute left-7 top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
             <div className="space-y-5">
-              {[
-                { title: "Requirement Analysis", desc: "Critical load assessment and power quality audit.", icon: Settings },
-                { title: "Load Calculation", desc: "Total connected load sizing and runtime requirements.", icon: FileText },
-                { title: "System Selection", desc: "Right Online UPS capacity and battery backup time selected.", icon: Activity },
-                { title: "Installation & Setup", desc: "Professional rack installation or floor mounting with commissioning.", icon: Wrench },
-                { title: "Testing & Commissioning", desc: "Full load testing, failover validation and monitoring setup.", icon: Play },
-              ].map((step, i) => (
-                <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
-                    <step.icon className="w-5 h-5 text-yellow-400" />
+              {(pageData.installationSteps || [
+          {
+                    "title": "Critical Load Review",
+                    "desc": "Reviewing IT, medical or industrial loads for absolute zero tolerance."
+          },
+          {
+                    "title": "Modular Architecture",
+                    "desc": "Designing redundant (N+1) battery arrays and cabinet layouts."
+          },
+          {
+                    "title": "Delivery & Placement",
+                    "desc": "Precise alignment of heavy batteries and control panels in server rooms."
+          },
+          {
+                    "title": "Dual Feed Connections",
+                    "desc": "Wiring bypass lines, mains feeds, and output distribution hubs."
+          },
+          {
+                    "title": "Commissioning & Test",
+                    "desc": "Load-bank trials, double conversion checks, and SNMP card setups."
+          }
+]).map((step: any, i: number) => {
+                return (
+                  <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
+                    <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
+                      <span className="text-yellow-400 font-black text-sm">{i + 1}</span>
+                    </div>
+                    <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
+                      <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
+                      <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
+                      <p className="text-zinc-500 text-sm">{step.desc}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
-                    <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
-                    <p className="text-zinc-500 text-sm">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

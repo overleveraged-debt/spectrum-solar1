@@ -18,6 +18,8 @@ const TubularBatteries: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('tubular-batteries');
+  const perfectList = pageData.perfectFor || undefined;
+
   const benefitList = pageData.benefits || [
     {
         "icon": "Zap",
@@ -295,17 +297,9 @@ const TubularBatteries: React.FC = () => {
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">
-              {[
-                { icon: Home, label: "Homes with Frequent Cuts", sub: "Long backup for daily family use" },
-                { icon: Building2, label: "Offices & Commercial", sub: "Reliable backup at lower cost" },
-                { icon: Sun, label: "Solar Off-Grid Systems", sub: "Deep-cycle performance for solar" },
-                { icon: Server, label: "Telecom & Industrial", sub: "Robust capacity for demanding use" },
-                { icon: Zap, label: "Pair with Any Inverter", sub: "Universal compatibility across brands" },
-              ].map((item, i) => (
+              {perfectList.map((item: any, i: number) => (
                 <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-4 md:p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/20 transition-colors">
-                    <item.icon className="w-5 h-5 text-yellow-400" />
-                  </div>
+                  <div className="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0 ml-2" />
                   <div>
                     <div className="font-black text-sm uppercase tracking-tight">{item.label}</div>
                     <div className="text-zinc-500 text-xs mt-0.5">{item.sub}</div>

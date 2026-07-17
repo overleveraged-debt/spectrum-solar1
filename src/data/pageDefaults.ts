@@ -141,25 +141,67 @@ export const defaultPagesData: Record<string, any> = {
     heroTitle: 'JOIN THE ENERGY REVOLUTION',
     heroSubtitle: 'Careers',
     heroImage: '/images/about-hero.webp',
+    heroDesc: "Empower your career with India's most trusted solar solutions brand. We are looking for innovators, builders, and green champions.",
+    showStats: true,
+    stats: [
+      { value: "25 Yrs", label: "Brand Legacy" },
+      { value: "40K+", label: "Happy Customers" },
+      { value: "18+", label: "Regional Centers" },
+      { value: "60+", label: "Service Engineers" }
+    ],
     whyTitle: 'Why Join Spectrum?',
     whyItems: [
-      { title: 'Growth Opportunities', desc: 'Clear career progression paths and internal promotions.' },
-      { title: 'Learning Environment', desc: 'Regular training sessions, industry workshops, and access to the latest solar tech.' }
+      { title: 'Growth Opportunities', desc: 'Clear career progression paths and internal promotions. We invest in your professional development from day one.' },
+      { title: 'Learning Environment', desc: 'Regular training sessions, industry workshops, and access to the latest solar technology keep you ahead of the curve.' },
+      { title: 'Industry Exposure', desc: "Work on some of India's most exciting solar and energy storage projects — from residential rooftops to large commercial installations." },
+      { title: 'Meaningful Work', desc: "Every project you work on contributes to a greener India. Build a career that you're proud of — one that makes a real difference." }
     ],
+    positionsTitle: 'Open Positions.',
     openPositions: [
-      { title: 'Sales Executive', type: 'Full Time', location: 'Pan India', desc: 'Drive customer acquisition for solar and power backup solutions across India.' },
-      { title: 'Site Engineer', type: 'Full Time', location: 'Pan India', desc: 'Design, install, and commission solar energy systems.' }
+      { title: 'Sales Executive', type: 'Full Time', location: 'Pan India', desc: 'Drive customer acquisition for solar and power backup solutions across India. Strong communication skills required.' },
+      { title: 'Site Engineer', type: 'Full Time', location: 'Pan India', desc: 'Design, install, and commission solar energy systems at residential and commercial sites. Electrical engineering background preferred.' },
+      { title: 'Operations Executive', type: 'Full Time', location: 'Remote / HQ', desc: 'Manage day-to-day operations, coordinate with field teams, and handle project tracking and documentation.' },
+      { title: 'Customer Support', type: 'Full Time', location: 'Remote / HQ', desc: 'Handle customer queries, coordinate service visits, and ensure post-installation satisfaction for our growing client base.' }
     ],
+    faqsTitle: 'Frequently Asked Questions.',
     faqs: [
-      { q: 'What roles are available?', a: 'We have openings in Sales, Engineering, Operations, and Customer Support.' }
+      { q: 'What roles are available?', a: 'We have openings in Sales, Engineering, Operations, and Customer Support. Check our open positions below or reach out through the HR enquiry form.' },
+      { q: 'How do I apply?', a: 'Submit your details through our enquiry form and mention the role you are interested in. Our HR team will get back to you within 2–3 business days.' },
+      { q: 'Do you hire freshers?', a: 'Absolutely. We welcome freshers across all departments and provide full onboarding and on-the-job training to help you grow quickly.' }
     ]
   },
   support: {
-    phone: '+91 9447 123 456',
-    email: 'support@spectrumsolar.com',
-    hours: '9:00 AM - 6:00 PM (Mon-Sat)',
+    showHero: true,
+    heroTitle: "How can we help you?",
+    heroSubtitle: "Help Center",
+    heroImage: "/images/calculator-hero.jpg",
+    phone: "+91 9447 123 456",
+    email: "support@spectrumsolar.com",
+    hours: "9:00 AM - 6:00 PM (Mon-Sat)",
+    faqsTitle: "Frequently Asked Questions.",
+    ticketTitle: "Submit a Support Ticket",
+    ticketDesc: "Register a service enquiry or warranty claim directly with our technical support team.",
     faqs: [
-      { q: 'What is Net Metering?', a: 'Net Metering is a KSEB policy that allows your solar system to feed unused electricity back to the grid.' }
+      {
+        q: "What is Net Metering and how does it benefit me?",
+        a: "Net Metering is a KSEB policy that allows your solar system to feed unused electricity back to the grid. Your meter runs backwards, earning you credits that offset your bill — often bringing it to zero or near zero."
+      },
+      {
+        q: "How long does a solar installation take?",
+        a: "A standard residential system (3–10kW) typically takes 1–3 working days for installation. Larger commercial or industrial projects may take 1–2 weeks depending on scope and approvals."
+      },
+      {
+        q: "Do you provide after-sales service?",
+        a: "Yes. We have 60+ dedicated service engineers across India, available 24/7 for support. All installations include a 1-year comprehensive AMC, with extended plans available."
+      },
+      {
+        q: "How long is the warranty on solar panels?",
+        a: "We provide up to 25 years linear performance warranty on solar panels. Our inverters carry 5-year warranty, and lithium batteries are covered for 5–10 years depending on the model."
+      },
+      {
+        q: "What government subsidies are available for solar?",
+        a: "The Central Government provides a 30% subsidy on residential on-grid systems up to 3kW (20% for 3–10kW). Additional benefits are available under the KSEB net-metering scheme. Our team handles all paperwork."
+      }
     ]
   },
   contact: {
@@ -170,7 +212,9 @@ export const defaultPagesData: Record<string, any> = {
     heroDesc: 'Connect with our senior engineering team for project audits and technical consultations.',
     offices: [
       { city: 'Kannur (HQ)', address: 'Spectrum Tower, Near KSEB, Kannur 670001' },
-      { city: 'Kochi', address: 'Solar Hub, Edappally, Kochi 682024' }
+      { city: 'Kochi', address: 'Solar Hub, Edappally, Kochi 682024' },
+      { city: 'Calicut', address: 'Power Plaza, Mavoor Road, Calicut 673001' },
+      { city: 'Trivandrum', address: 'Energy Centre, Vazhuthacaud, Trivandrum 695010' }
     ]
   },
   // Default product details data
@@ -698,5 +742,43 @@ export const defaultPagesData: Record<string, any> = {
       { title: '7. Governing Law', text: 'These terms and conditions are governed by and construed in accordance with the laws of India. Any disputes relating to these terms and conditions will be subject to the exclusive jurisdiction of the courts of Kerala, India.' },
       { title: '8. Contact Information', text: 'If you have any questions about these Terms & Conditions, please contact us at:\n\nSpectrum Solar (HQ)\nSpectrum Tower, Near KSEB, Kannur 670001\nEmail: legal@spectrumsolar.in' }
     ]
-  }
+  },
+  'blogs': [
+    {
+      title: "Why Lithium is the Future of Power Backup",
+      excerpt: "Exploring the technical advantages of Lithium Iron Phosphate (LiFePO4) over traditional lead-acid batteries in residential and commercial backup applications.",
+      publishedAt: "2024-03-15T00:00:00.000Z",
+      author: "Tech Team",
+      category: "Innovation",
+      readTime: "5 min read",
+      coverImage: "/images/Banner01.jpg",
+      body: `Traditional lead-acid batteries have dominated the backup market for decades, but modern installations are rapidly switching to Lithium Iron Phosphate (LFP).
+
+LFP batteries offer a significant improvement in cycle life, discharging up to 80-90% of their total capacity without damage. They charge faster, operate safely at high ambient temperatures, and have a footprint that is 70% smaller than a comparable lead-acid bank. With warranties spanning 5-10 years, lithium solutions represent the single most cost-effective and future-proof backup strategy.`
+    },
+    {
+      title: "KSEB Subsidy Guide 2024",
+      excerpt: "Everything you need to know about the latest government subsidies for residential solar installations in Kerala — eligibility, amount, and application process.",
+      publishedAt: "2024-03-10T00:00:00.000Z",
+      author: "Policy Brief",
+      category: "Savings",
+      readTime: "7 min read",
+      coverImage: "/images/Banner02.jpg",
+      body: `Under the central government solar rooftop subsidy portal, homeowners in Kerala can claim a direct financial subsidy on residential solar systems.
+
+For systems up to 3kW, KSEB facilitates a 30% direct subsidy. For larger systems (3kW up to 10kW), the subsidy is capped at a lower percentage but still provides significant savings. To apply, citizens must register via the National Portal, select a certified local installer like Spectrum Solar, submit their load requirements, and obtain net metering approval. Our engineers handle the complete paperwork from filing to connection.`
+    },
+    {
+      title: "Maximizing ROI on On-Grid Solar Systems",
+      excerpt: "Professional tips on panel orientation and periodic maintenance to ensure peak performance and the fastest possible payback on your investment.",
+      publishedAt: "2024-03-05T00:00:00.000Z",
+      author: "Engineer Corner",
+      category: "Technical",
+      readTime: "4 min read",
+      coverImage: "/images/banner03.jpg",
+      body: `An on-grid solar system is only as profitable as its peak performance. To ensure the fastest return on investment (often under 3-4 years), correct installation guidelines are vital.
+
+Panels must be oriented true south at a tilt angle of approximately 10-15 degrees depending on the latitude of the property in Kerala. Dust and bird droppings can decrease panel output by up to 20%; we recommend periodic cleaning with soft water every two weeks. Active monitoring via the inverter's mobile application will help identify any underperforming strings immediately.`
+    }
+  ]
 };

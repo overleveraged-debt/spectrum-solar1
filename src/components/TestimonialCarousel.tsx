@@ -1,26 +1,34 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Quote, CheckCircle2 } from 'lucide-react';
 import { allTestimonials } from '../data/testimonials';
-
-const testimonials = allTestimonials.slice(0, 4); // Use first 4 for carousel
+import { usePageContent } from '../hooks/usePageContent';
 
 const TestimonialCarousel: React.FC = () => {
+  const { pageData } = usePageContent('testimonials');
+  const list = pageData.testimonials || allTestimonials;
+  const testimonials = list.slice(0, 5); // Use first 5 for carousel
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const nextSlide = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  }, []);
+    setActiveIndex((prev) => (prev + 1) % (testimonials.length || 1));
+  }, [testimonials.length]);
 
   const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setActiveIndex((prev) => (prev - 1 + testimonials.length) % (testimonials.length || 1));
   };
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || testimonials.length <= 1) return;
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, [isPaused, nextSlide]);
+  }, [isPaused, nextSlide, testimonials.length]);
+
+  if (!testimonials || testimonials.length === 0) return null;
+
+  const current = testimonials[activeIndex] || testimonials[0];
+  const initials = current.initials || current.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2);
 
   return (
     <div 
@@ -35,22 +43,22 @@ const TestimonialCarousel: React.FC = () => {
         
         <div className="relative z-10 flex-1 flex flex-col justify-center">
           <p className="text-zinc-300 text-lg md:text-xl font-light italic leading-relaxed mb-8 transition-all duration-500 transform animate-fade-in">
-            "{testimonials[activeIndex].text}"
+            "{current.text}"
           </p>
         </div>
 
         <div className="relative z-10 flex items-center justify-between pt-8 border-t border-zinc-900">
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[10px] text-white font-black">
-              {testimonials[activeIndex].initials}
+              {initials}
             </div>
             <div>
               <p className="text-[10px] font-black uppercase tracking-widest text-white flex items-center gap-2">
-                {testimonials[activeIndex].name}
-                {testimonials[activeIndex].isVerified && <CheckCircle2 className="w-3.5 h-3.5 text-yellow-500" />}
+                {current.name}
+                {current.isVerified !== false && <CheckCircle2 className="w-3.5 h-3.5 text-yellow-500" />}
               </p>
               <p className="text-[9px] text-zinc-500 uppercase tracking-widest font-medium mt-0.5">
-                {testimonials[activeIndex].product}
+                {current.product}
               </p>
             </div>
           </div>
@@ -58,7 +66,7 @@ const TestimonialCarousel: React.FC = () => {
 
         {/* Navigation Dots */}
         <div className="absolute bottom-6 right-8 flex gap-1.5 align-center">
-          {testimonials.map((_, i) => (
+          {testimonials.map((_: any, i: number) => (
             <button
               key={i}
               onClick={() => setActiveIndex(i)}

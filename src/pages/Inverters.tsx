@@ -17,6 +17,25 @@ const Inverters: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('inverters');
+  const perfectList = pageData.perfectFor || [
+    {
+        "label": "Independent Houses",
+        "sub": "Basic home backup protection"
+    },
+    {
+        "label": "Offices & Workspaces",
+        "sub": "Keep essential computers running"
+    },
+    {
+        "label": "Residential Apartments",
+        "sub": "Compact backup systems for everyday use"
+    },
+    {
+        "label": "Retail Shops & Boutiques",
+        "sub": "Billing terminals and display lighting"
+    }
+];
+
   const benefitList = pageData.benefits || [
     {
         "icon": "Zap",
@@ -370,17 +389,9 @@ const Inverters: React.FC = () => {
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">
-              {[
-                { icon: Home, label: "Homes & Apartments", sub: "Reliable backup for the family" },
-                { icon: Building2, label: "Offices & Commercial Spaces", sub: "Keep operations running" },
-                { icon: ShoppingBag, label: "Shops & Retail Outlets", sub: "Never miss a business moment" },
-                { icon: Monitor, label: "Work-From-Home Setups", sub: "Uninterrupted productivity" },
-                { icon: Cpu, label: "IT & Digital Workspaces", sub: "Safe power for computers" },
-              ].map((item, i) => (
+              {perfectList.map((item: any, i: number) => (
                 <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-4 md:p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                  <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/20 transition-colors">
-                    <item.icon className="w-5 h-5 text-yellow-400" />
-                  </div>
+                  <div className="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0 ml-2" />
                   <div>
                     <div className="font-black text-sm uppercase tracking-tight">{item.label}</div>
                     <div className="text-zinc-500 text-xs mt-0.5">{item.sub}</div>
@@ -396,30 +407,48 @@ const Inverters: React.FC = () => {
       <section className="py-24 md:py-32 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
-            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Installation</h2>
+            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Step-by-Step</span>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Installation Process</h2>
           </div>
+
           <div className="relative">
             <div className="absolute left-7 top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
             <div className="space-y-5">
-              {[
-                { title: "Requirement Analysis", desc: "Assess your load and backup requirements.", icon: Settings },
-                { title: "Product Selection", desc: "Right inverter type and capacity recommended.", icon: FileText },
-                { title: "Installation & Wiring", desc: "Professional installation with clean cable management.", icon: Wrench },
-                { title: "Testing & Setup", desc: "Full system test, battery check and output verification.", icon: Activity },
-                { title: "Support & Maintenance", desc: "Ongoing technical support and health check programs.", icon: Play },
-              ].map((step, i) => (
-                <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
-                    <step.icon className="w-5 h-5 text-yellow-400" />
+              {(pageData.installationSteps || [
+          {
+                    "title": "Load Analysis",
+                    "desc": "Assessing home/office load capacity to select correct inverter VA rating."
+          },
+          {
+                    "title": "Battery Allocation",
+                    "desc": "Sizing external battery bank based on required backup time."
+          },
+          {
+                    "title": "Inverter Hookup",
+                    "desc": "Clean wall/trolley setup and primary electrical connection."
+          },
+          {
+                    "title": "Multi-Stage Charge Setup",
+                    "desc": "Configuring battery charging profiles to optimize lifetime."
+          },
+          {
+                    "title": "Safety Run Test",
+                    "desc": "Testing short-circuit cuts, load transitions, and overload trips."
+          }
+]).map((step: any, i: number) => {
+                return (
+                  <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
+                    <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
+                      <span className="text-yellow-400 font-black text-sm">{i + 1}</span>
+                    </div>
+                    <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
+                      <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
+                      <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
+                      <p className="text-zinc-500 text-sm">{step.desc}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
-                    <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
-                    <p className="text-zinc-500 text-sm">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

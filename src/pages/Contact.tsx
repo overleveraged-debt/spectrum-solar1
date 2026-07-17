@@ -58,7 +58,8 @@ const Contact: React.FC = () => {
     franchise: { title: "Franchise Application", desc: "Start your journey as a Spectrum Solar franchise partner. Apply today for exclusive territory rights." },
     dealership: { title: "Become a Dealer", desc: "Register to become an authorized dealer of Spectrum Solar products nationwide." },
     freelance: { title: "Freelance Partner Program", desc: "Join our referral network and earn commissions on solar projects across India." },
-    careers: { title: "Join Our Team", desc: "Apply for exciting career opportunities in solar engineering, sales, and service." }
+    careers: { title: "Join Our Team", desc: "Apply for exciting career opportunities in solar engineering, sales, and service." },
+    support: { title: "Support Hub", desc: "Submit a support ticket or service enquiry to our technical team." }
   };
 
   const currentSeo = seoData[initialType] || seoData.general;

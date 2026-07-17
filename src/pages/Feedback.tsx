@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Star, Quote, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { usePageContent } from '../hooks/usePageContent';
 
 import { allTestimonials } from '../data/testimonials';
 
 const filterOptions = ['All', 'Solar', 'Backup', 'Battery', 'Other'];
 const CARDS_PER_PAGE = 6;
 
-const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial: t }) => (
+const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial: t }) => {
+  const initials = t.initials || t.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2);
+  return (
   <div className="group relative p-7 bg-zinc-900/50 border border-white/5 rounded-[2rem] hover:border-yellow-400/20 hover:bg-zinc-900 transition-all duration-500 shadow-lg overflow-hidden h-full">
     <Quote className="absolute -top-2 -right-2 w-20 h-20 text-white/[0.03] group-hover:text-yellow-400/[0.06] transition-colors duration-500" />
     <div className="flex gap-1 mb-4">
       {[1, 2, 3, 4, 5].map((s) => (
-        <Star key={s} className={`w-4 h-4 ${s <= t.rating ? 'fill-yellow-400 text-yellow-400' : 'text-zinc-700'}`} />
+        <Star key={s} className={`w-4 h-4 ${s <= (t.rating || 5) ? 'fill-yellow-400 text-yellow-400' : 'text-zinc-700'}`} />
       ))}
     </div>
     <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full mb-4 inline-block">
@@ -21,34 +24,38 @@ const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial: t }) => 
     <p className="text-zinc-300 leading-relaxed mb-5 italic text-sm font-light">"{t.text}"</p>
     <div className="flex items-center gap-3 pt-4 border-t border-white/5">
       <div className="w-10 h-10 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
-        <span className="text-yellow-400 font-black text-xs">{t.initials}</span>
+        <span className="text-yellow-400 font-black text-xs">{initials}</span>
       </div>
       <div>
         <div className="font-black uppercase text-sm tracking-tight flex items-center gap-2 text-white">
           {t.name}
           <div className="flex items-center gap-1">
             <CheckCircle2 className="w-4 h-4 text-yellow-400" />
-            {t.isVerified && <span className="text-[8px] text-zinc-500 font-medium tracking-widest uppercase">Google Verified</span>}
+            {t.isVerified !== false && <span className="text-[8px] text-zinc-500 font-medium tracking-widest uppercase">Google Verified</span>}
           </div>
         </div>
         <div className="text-[10px] font-medium text-zinc-500 uppercase tracking-widest mt-0.5">
-          {t.date}
+          {t.date || 'Recently'}
         </div>
       </div>
     </div>
   </div>
 );
+};
 
 const Feedback: React.FC = () => {
   useScrollReveal();
+
+  const { pageData } = usePageContent('testimonials');
+  const testimonials = pageData.testimonials || allTestimonials;
 
   const [activeFilter, setActiveFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(0);
   const [mobileIndex, setMobileIndex] = useState(0);
 
   const filtered = activeFilter === 'All'
-    ? allTestimonials
-    : allTestimonials.filter((t) => t.category === activeFilter);
+    ? testimonials
+    : testimonials.filter((t: any) => t.category === activeFilter);
 
   const totalPages = Math.ceil(filtered.length / CARDS_PER_PAGE);
   const currentCards = filtered.slice(currentPage * CARDS_PER_PAGE, (currentPage + 1) * CARDS_PER_PAGE);
@@ -141,7 +148,7 @@ const Feedback: React.FC = () => {
 
           {/* Desktop Grid */}
           <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-            {currentCards.map((t, i) => (
+            {currentCards.map((t: any, i: number) => (
               <TestimonialCard key={i} testimonial={t} />
             ))}
           </div>
@@ -153,7 +160,7 @@ const Feedback: React.FC = () => {
                 className="flex transition-transform duration-500 ease-out"
                 style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
               >
-                {filtered.map((t, i) => (
+                {filtered.map((t: any, i: number) => (
                   <div key={i} className="w-full flex-shrink-0 px-1">
                     <TestimonialCard testimonial={t} />
                   </div>
@@ -181,7 +188,7 @@ const Feedback: React.FC = () => {
 
             {/* Mobile Dots */}
             <div className="flex justify-center gap-1.5 mt-6">
-              {filtered.map((_, i) => (
+              {filtered.map((_: any, i: number) => (
                 <button
                   key={i}
                   onClick={() => setMobileIndex(i)}

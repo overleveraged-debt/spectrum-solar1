@@ -390,20 +390,15 @@ const HomeUps: React.FC = () => {
             </div>
 
             <div className="lg:col-span-2 space-y-3">
-              {perfectList.map((item: any, i: number) => {
-                const IconComponent = IconMap[item.icon] || Zap;
-                return (
-                  <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-4 md:p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                    <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/20 transition-colors">
-                      <IconComponent className="w-5 h-5 text-yellow-400" />
-                    </div>
-                    <div>
-                      <div className="font-black text-sm uppercase tracking-tight">{item.label}</div>
-                      <div className="text-zinc-500 text-xs mt-0.5">{item.sub}</div>
-                    </div>
+              {perfectList.map((item: any, i: number) => (
+                <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-4 md:p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0 ml-2" />
+                  <div>
+                    <div className="font-black text-sm uppercase tracking-tight">{item.label}</div>
+                    <div className="text-zinc-500 text-xs mt-0.5">{item.sub}</div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -437,28 +432,42 @@ const HomeUps: React.FC = () => {
       </section>
 
       {/* ── INSTALLATION TIMELINE ── */}
-      <section className="py-24 md:py-32 px-6 bg-zinc-900/40 border-y border-white/5">
+      <section className="py-24 md:py-32 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 md:mb-20 reveal">
-            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Installation</h2>
+            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Step-by-Step</span>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Installation Process</h2>
           </div>
 
           <div className="relative">
             <div className="absolute left-7 top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
             <div className="space-y-5">
               {(pageData.installationSteps || [
-                { title: "Requirement Analysis", desc: "Engineer assesses your home's load profile and power cut frequency.", icon: "Settings" },
-                { title: "Load Calculation", desc: "We calculate exactly which appliances to support and for how long.", icon: "FileText" },
-                { title: "System Selection", desc: "Right UPS capacity and battery selected for your specific needs.", icon: "Activity" },
-                { title: "Installation & Setup", desc: "Clean installation with proper wiring, earthing and safety testing.", icon: "Wrench" },
-                { title: "Testing & Support", desc: "Full commissioning, hand-over demo and ongoing support program.", icon: "Play" },
-              ]).map((step: any, i: number) => {
-                const StepIcon = IconMap[step.icon] || Settings;
+          {
+                    "title": "Requirement Analysis",
+                    "desc": "Engineer assesses your home's load profile and power cut frequency."
+          },
+          {
+                    "title": "Load Calculation",
+                    "desc": "We calculate exactly which appliances to support and for how long."
+          },
+          {
+                    "title": "System Selection",
+                    "desc": "Right UPS capacity and battery selected for your specific needs."
+          },
+          {
+                    "title": "Installation & Setup",
+                    "desc": "Clean installation with proper wiring, earthing and safety testing."
+          },
+          {
+                    "title": "Testing & Support",
+                    "desc": "Full commissioning, hand-over demo and ongoing support program."
+          }
+]).map((step: any, i: number) => {
                 return (
                   <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
                     <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
-                      <StepIcon className="w-5 h-5 text-yellow-400" />
+                      <span className="text-yellow-400 font-black text-sm">{i + 1}</span>
                     </div>
                     <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
                       <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>

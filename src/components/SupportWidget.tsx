@@ -1,16 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, HelpCircle, ExternalLink, ArrowRight, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CONTACT_INFO } from '../data/config';
+import { sanityReadClient } from '../lib/sanityClient';
+
+const DEFAULT_FAQS = [
+  { q: "What is Net Metering?", a: "Net Metering allows you to send excess solar energy back to the grid and receive credits on your KSEB bill." },
+  { q: "Do you provide after-sales service?", a: "Yes, we have 60+ dedicated service engineers across Kerala for 24/7 support." },
+  { q: "How long is the warranty?", a: "We provide up to 25 years warranty on solar panels and 3-10 years on backup systems." }
+];
 
 const SupportWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [faqs, setFaqs] = useState(DEFAULT_FAQS);
 
-  const faqs = [
-    { q: "What is Net Metering?", a: "Net Metering allows you to send excess solar energy back to the grid and receive credits on your KSEB bill." },
-    { q: "Do you provide after-sales service?", a: "Yes, we have 60+ dedicated service engineers across Kerala for 24/7 support." },
-    { q: "How long is the warranty?", a: "We provide up to 25 years warranty on solar panels and 3-10 years on backup systems." }
-  ];
+  useEffect(() => {
+    let isMounted = true;
+    sanityReadClient.fetch('*[_type == "pageContent" && pageId == "support"][0]')
+      .then(res => {
+        if (isMounted && res && res.content) {
+          try {
+            const parsed = JSON.parse(res.content);
+            if (parsed.faqs && parsed.faqs.length > 0) {
+              setFaqs(parsed.faqs.slice(0, 3));
+            }
+          } catch (e) {
+            console.error("Failed to parse support FAQs in widget", e);
+          }
+        }
+      })
+      .catch(err => console.error("Error fetching support FAQs for widget:", err));
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div className="fixed bottom-8 right-8 z-[100] font-['Plus_Jakarta_Sans']">
@@ -36,19 +59,26 @@ const SupportWidget: React.FC = () => {
         {/* Header */}
         <div className="p-6 sm:p-8 pb-4 border-b border-white/5">
           <h3 className="text-white text-xl sm:text-2xl font-black uppercase italic tracking-tighter mb-1 sm:mb-2">Support Hub</h3>
-          <p className="text-zinc-500 text-[10px] sm:text-xs font-medium uppercase tracking-widest uppercase">How can we help you today?</p>
+          <p className="text-zinc-500 text-[10px] sm:text-xs font-medium uppercase tracking-widest">How can we help you today?</p>
         </div>
 
         <div className="p-6 sm:p-8 flex-1 overflow-y-auto no-scrollbar space-y-6 sm:space-y-8">
           {/* Main Action - Enquiry */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h4 className="text-white text-[10px] font-black uppercase tracking-widest mb-2 px-1 opacity-50">Quick Actions</h4>
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}
-              className="w-full bg-yellow-400 text-black font-black uppercase tracking-widest py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-yellow-300 transition-all shadow-xl group"
+              className="w-full bg-yellow-400 text-black font-black uppercase tracking-widest py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-yellow-300 transition-all shadow-xl group text-sm"
             >
               Book Consultation <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              to="/support"
+              onClick={() => setIsOpen(false)}
+              className="w-full bg-zinc-800 hover:bg-zinc-750 text-white font-black uppercase tracking-widest py-4 rounded-2xl flex items-center justify-center gap-3 transition-all border border-white/5 group text-xs animate-fade-in"
+            >
+              Submit Support Ticket <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 

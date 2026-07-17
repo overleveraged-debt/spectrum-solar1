@@ -107,6 +107,7 @@ export default function LeadsViewer() {
             <option value="franchise">Franchise</option>
             <option value="dealership">Dealership</option>
             <option value="freelance">Freelance Partner</option>
+            <option value="support">Support Ticket</option>
           </select>
 
           <button

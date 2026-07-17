@@ -33,9 +33,19 @@ const DEFAULT_CAREERS_DATA = {
   heroTitle: 'JOIN THE ENERGY REVOLUTION',
   heroSubtitle: 'Careers',
   heroImage: '/images/about-hero.webp',
+  heroDesc: "Empower your career with India's most trusted solar solutions brand. We are looking for innovators, builders, and green champions.",
+  showStats: true,
+  stats: [
+    { value: "25 Yrs", label: "Brand Legacy" },
+    { value: "40K+", label: "Happy Customers" },
+    { value: "18+", label: "Regional Centers" },
+    { value: "60+", label: "Service Engineers" }
+  ],
   whyTitle: 'Why Join Spectrum?',
   whyItems: DEFAULT_WHY_ITEMS,
+  positionsTitle: 'Open Positions.',
   openPositions: DEFAULT_POSITIONS,
+  faqsTitle: 'Frequently Asked Questions.',
   faqs: DEFAULT_FAQS
 };
 
@@ -98,9 +108,9 @@ const Careers: React.FC = () => {
         schema={faqSchema}
       />
 
-      {/* Hero + Stats */}
+      {/* Hero Section */}
       {pageData.showHero !== false && (
-        <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
+        <section className="relative min-h-[calc(100vh-80px)] flex flex-col overflow-hidden mt-[-80px]">
           <div className="absolute inset-0 z-0">
             <img
               src={pageData.heroImage}
@@ -124,7 +134,7 @@ const Careers: React.FC = () => {
                 )}
               </h1>
               <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
-                Empower your career with India's most trusted solar solutions brand. We are looking for innovators, builders, and green champions.
+                {pageData.heroDesc || "Empower your career with India's most trusted solar solutions brand. We are looking for innovators, builders, and green champions."}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#positions" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-xl">
@@ -134,22 +144,20 @@ const Careers: React.FC = () => {
               </div>
             </div>
           </div>
+        </section>
+      )}
 
-          <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-            <div className="max-w-7xl mx-auto px-6">
-              <div className="grid grid-cols-2 md:grid-cols-4">
-                {[
-                  { value: "25 Yrs", label: "Brand Legacy" },
-                  { value: "40K+", label: "Happy Customers" },
-                  { value: "18+", label: "Regional Centers" },
-                  { value: "60+", label: "Service Engineers" },
-                ].map((stat, i) => (
-                  <div key={i} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                    <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
-                    <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+      {/* Dynamic Statistics Bar */}
+      {pageData.showStats !== false && pageData.stats && pageData.stats.length > 0 && (
+        <section className="relative z-10 w-full bg-yellow-400 py-6 border-b border-black/5">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 md:gap-y-0">
+              {pageData.stats.map((stat: any, i: number) => (
+                <div key={i} className={`px-4 text-center ${i < pageData.stats.length - 1 ? 'border-r border-black/10' : ''}`}>
+                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
+                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -189,7 +197,7 @@ const Careers: React.FC = () => {
           <div className="text-center mb-16 md:mb-24 reveal">
             <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Opportunities</span>
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight text-black">
-              Open Positions.
+              {pageData.positionsTitle || "Open Positions."}
             </h2>
           </div>
 
@@ -240,7 +248,7 @@ const Careers: React.FC = () => {
           <div className="text-center mb-16 md:mb-24 reveal">
             <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Hiring Process</span>
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight text-black">
-              Frequently Asked Questions.
+              {pageData.faqsTitle || "Frequently Asked Questions."}
             </h2>
           </div>
 

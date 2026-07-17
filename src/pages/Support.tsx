@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { PhoneCall, ChevronDown, Send, ExternalLink, Clock, Headphones } from 'lucide-react';
 import { sanityReadClient } from '../lib/sanityClient';
+import SmartForm from '../components/SmartForm';
 
 const DEFAULT_FAQS = [
   {
@@ -27,16 +28,22 @@ const DEFAULT_FAQS = [
 ];
 
 const DEFAULT_SUPPORT_DATA = {
+  showHero: true,
+  heroTitle: "How can we help you?",
+  heroSubtitle: "Help Center",
+  heroImage: "/images/calculator-hero.jpg",
   phone: '+91 9447 123 456',
   email: 'support@spectrumsolar.com',
   hours: '9:00 AM - 6:00 PM (Mon-Sat)',
+  faqsTitle: 'Frequently Asked Questions.',
+  ticketTitle: 'Submit a Support Ticket',
+  ticketDesc: 'Register a service enquiry or warranty claim directly with our technical support team.',
   faqs: DEFAULT_FAQS
 };
 
 const Support: React.FC = () => {
   useScrollReveal();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [form, setForm] = useState({ name: '', email: '', phone: '', type: '', description: '' });
   const [pageData, setPageData] = useState(DEFAULT_SUPPORT_DATA);
 
   useEffect(() => {
@@ -58,32 +65,40 @@ const Support: React.FC = () => {
     };
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
   const activeFaqs = pageData.faqs || [];
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
       {/* Hero */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/calculator-hero.jpg"
-            className="w-full h-full object-cover scale-[1.05]"
-            alt="Customer Support Hub"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Help Center</span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-            How can we <br />help you?
-          </h1>
-        </div>
-      </section>
+      {pageData.showHero !== false && (
+        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
+          <div className="absolute inset-0 z-0">
+            <img
+              src={pageData.heroImage || "/images/calculator-hero.jpg"}
+              className="w-full h-full object-cover scale-[1.05]"
+              alt="Customer Support Hub"
+            />
+            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+              {pageData.heroSubtitle || "Help Center"}
+            </span>
+            <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
+              {pageData.heroTitle ? (
+                pageData.heroTitle.includes('help you') ? (
+                  <>How can we <br />help you?</>
+                ) : (
+                  pageData.heroTitle
+                )
+              ) : (
+                <>How can we <br />help you?</>
+              )}
+            </h1>
+          </div>
+        </section>
+      )}
 
       {/* Support Info Cards */}
       <section className="px-6 py-12">
@@ -135,7 +150,9 @@ const Support: React.FC = () => {
           {/* FAQ list */}
           <div className="reveal">
             <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Knowledge Base</span>
-            <h2 className="text-4xl md:text-5xl font-thin mb-12 tracking-tight uppercase text-white">General FAQs.</h2>
+            <h2 className="text-4xl md:text-5xl font-thin mb-12 tracking-tight uppercase text-white">
+              {pageData.faqsTitle || "General FAQs."}
+            </h2>
             <div className="space-y-4">
               {activeFaqs.map((faq, idx) => (
                 <div key={idx} className="border border-zinc-800 rounded-2xl bg-zinc-900/50 overflow-hidden transition-all duration-350">
@@ -158,82 +175,16 @@ const Support: React.FC = () => {
 
           {/* Form */}
           <div className="reveal p-8 md:p-12 bg-zinc-900 border border-zinc-800 rounded-[2.5rem]" style={{ transitionDelay: '150ms' }}>
-            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Enquiry Form</span>
-            <h2 className="text-3xl md:text-4xl font-thin tracking-tight uppercase text-white mb-8">Submit a Ticket.</h2>
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 block">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400 outline-none transition-colors"
-                  placeholder="Your full name"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 block">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400 outline-none transition-colors"
-                    placeholder="name@example.com"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 block">Phone</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400 outline-none transition-colors"
-                    placeholder="10-digit mobile number"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 block">Support Type</label>
-                <select
-                  name="type"
-                  value={form.type}
-                  onChange={handleChange}
-                  className="w-full bg-zinc-950 border border-zinc-800 text-zinc-400 rounded-xl py-3.5 px-4 text-sm focus:border-yellow-400 outline-none transition-colors cursor-pointer"
-                >
-                  <option value="">Select Support Category</option>
-                  <option value="technical">Technical Issue</option>
-                  <option value="warranty">Warranty Claim</option>
-                  <option value="amc">AMC / General Service</option>
-                  <option value="other">Other Inquiry</option>
-                </select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 block">Description</label>
-                <textarea
-                  name="description"
-                  value={form.description}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400 outline-none transition-colors"
-                  placeholder="Describe your issue or service request..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-yellow-400 text-black py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:scale-102 transition-transform flex items-center justify-center gap-2 shadow-xl shadow-yellow-400/10"
-              >
-                Submit Ticket
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Support Intake</span>
+            <h2 className="text-3xl md:text-4xl font-thin tracking-tight uppercase text-white mb-2">
+              {pageData.ticketTitle || "Submit a Ticket."}
+            </h2>
+            {pageData.ticketDesc && (
+              <p className="text-zinc-400 text-xs leading-relaxed mb-8">{pageData.ticketDesc}</p>
+            )}
+            <div className="text-black bg-zinc-900 rounded-3xl p-1">
+              <SmartForm initialType="support" />
+            </div>
           </div>
         </div>
       </section>

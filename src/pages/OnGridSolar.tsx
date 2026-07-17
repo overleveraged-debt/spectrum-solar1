@@ -17,6 +17,29 @@ const OnGridSolar: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('on-grid');
+  const perfectList = pageData.perfectFor || [
+    {
+        "label": "Independent Houses & Villas",
+        "sub": "Reduce monthly residential bills to near zero"
+    },
+    {
+        "label": "Commercial & Office Buildings",
+        "sub": "Offset high daytime commercial grid rates"
+    },
+    {
+        "label": "Educational Institutions",
+        "sub": "Schools, colleges and universities solar ROI"
+    },
+    {
+        "label": "Hospitals & Diagnostic Centers",
+        "sub": "Reliable power generation during daytime peaks"
+    },
+    {
+        "label": "Manufacturing & Industrial Units",
+        "sub": "Lower operations costs on large roof spaces"
+    }
+];
+
 
   const heroSubtitle = pageData.heroSubtitle || "Grid-Connected · Net Metering";
   const heroTitle = pageData.heroTitle || "On-Grid Solar System";
@@ -317,18 +340,10 @@ const OnGridSolar: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-2 space-y-4">
-              {[
-                { icon: Home, label: "Homes & Apartments", sub: "Zero electricity bills for your family" },
-                { icon: Building2, label: "Offices & Shops", sub: "Slash your operating costs dramatically" },
-                { icon: GraduationCap, label: "Schools & Colleges", sub: "Power institutions with clean energy" },
-                { icon: Hospital, label: "Hospitals & Hotels", sub: "Reliable power for critical operations" },
-                { icon: Factory, label: "Industrial Buildings", sub: "Large-scale savings at 500kW+" },
-              ].map((item, i) => (
-                <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
-                  <div className="w-12 h-12 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/20 transition-colors">
-                    <item.icon className="w-5 h-5 text-yellow-400" />
-                  </div>
+            <div className="lg:col-span-2 space-y-3">
+              {perfectList.map((item: any, i: number) => (
+                <div key={i} className="reveal flex items-center gap-4 bg-zinc-950 border border-white/5 rounded-2xl p-4 md:p-5 hover:border-yellow-400/30 hover:bg-zinc-900/60 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,0.8)] flex-shrink-0 ml-2" />
                   <div>
                     <div className="font-black text-sm uppercase tracking-tight">{item.label}</div>
                     <div className="text-zinc-500 text-xs mt-0.5">{item.sub}</div>
@@ -340,35 +355,52 @@ const OnGridSolar: React.FC = () => {
         </div>
       </section>
 
-      {/* ── INSTALLATION TIMELINE ────────────────────────────────────────── */}
-      <section className="py-32 px-6">
+      {/* ── INSTALLATION TIMELINE ── */}
+      <section className="py-24 md:py-32 px-6">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-20 reveal">
-            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Process</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Our Installation Process</h2>
+          <div className="text-center mb-16 md:mb-20 reveal">
+            <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Step-by-Step</span>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Installation Process</h2>
           </div>
 
           <div className="relative">
-            <div className="absolute left-[27px] top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
-            <div className="space-y-6">
-              {[
-                { title: "Site Inspection", desc: "Our certified engineer visits your property and assesses your roof, shadow-free area, and existing load requirements.", icon: Settings },
-                { title: "System Design", desc: "Custom system design based on your monthly bill, roof area and energy goals — optimal panel and inverter sizing.", icon: FileText },
-                { title: "Approval & Documentation", desc: "We handle all KSEB net-metering applications, structural approvals and government subsidy paperwork.", icon: ShieldCheck },
-                { title: "Installation", desc: "Professional panel mounting, cable management and inverter installation by our certified engineers.", icon: Wrench },
-                { title: "Testing & Activation", desc: "Full system commissioning, performance testing and a personal demonstration of your monitoring app.", icon: Play },
-              ].map((step, i) => (
-                <div key={i} className="reveal flex gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-10 group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
-                    <step.icon className="w-5 h-5 text-yellow-400" />
+            <div className="absolute left-7 top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
+            <div className="space-y-5">
+              {(pageData.installationSteps || [
+          {
+                    "title": "Site Survey & Feasibility",
+                    "desc": "Our engineers inspect your roof space, orientation, and shadow profiles."
+          },
+          {
+                    "title": "System Design & Engineering",
+                    "desc": "Custom electrical layouts and structural mounting designs prepared."
+          },
+          {
+                    "title": "Utility Approvals & Permits",
+                    "desc": "We handle net metering applications and local government approvals."
+          },
+          {
+                    "title": "Installation & Setup",
+                    "desc": "Clean panel mounting, inverter setup, and complete safety wiring."
+          },
+          {
+                    "title": "Net Meter & Commissioning",
+                    "desc": "Grid synchronization, test run, and hand-over of active solar dashboard."
+          }
+]).map((step: any, i: number) => {
+                return (
+                  <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
+                    <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
+                      <span className="text-yellow-400 font-black text-sm">{i + 1}</span>
+                    </div>
+                    <div className="flex-1 bg-zinc-950 border border-white/5 rounded-2xl p-5 md:p-6 group-hover:border-yellow-400/20 transition-all">
+                      <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
+                      <h3 className="text-base md:text-lg font-medium uppercase tracking-tight mb-1">{step.title}</h3>
+                      <p className="text-zinc-500 text-sm">{step.desc}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 bg-zinc-900 border border-white/5 rounded-2xl p-6 group-hover:border-yellow-400/20 transition-all">
-                    <div className="text-yellow-400/50 text-[9px] font-black uppercase tracking-widest mb-1">Phase {i + 1}</div>
-                    <h3 className="text-lg font-thin uppercase tracking-tight mb-1">{step.title}</h3>
-                    <p className="text-zinc-500 text-sm">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

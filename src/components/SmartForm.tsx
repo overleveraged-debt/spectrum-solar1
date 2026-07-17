@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Send, User, Phone, Mail, MessageSquare, Building2, MapPin, Linkedin, Wallet, Zap, Briefcase } from 'lucide-react';
 
-export type InquiryType = 'solar' | 'backup' | 'franchise' | 'dealership' | 'freelance' | 'careers' | 'general';
+export type InquiryType = 'solar' | 'backup' | 'franchise' | 'dealership' | 'freelance' | 'careers' | 'general' | 'support';
 
 interface SmartFormProps {
   initialType?: InquiryType;
@@ -244,6 +244,7 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
               <option value="dealership">Dealership Inquiry</option>
               <option value="freelance">Freelance Partner</option>
               <option value="careers">Job Application</option>
+              <option value="support">Support Enquiry</option>
             </select>
           </div>
         </div>

@@ -110,7 +110,8 @@ const Footer: React.FC = () => {
                 { label: 'Dealer Network', path: '/opportunities/dealership' },
                 { label: 'Freelance Partner', path: '/opportunities/freelance' },
                 { label: 'Careers', path: '/careers' },
-                { label: 'Our Projects', path: '/projects' }
+                { label: 'Our Projects', path: '/projects' },
+                { label: 'Help & Support', path: '/support' }
               ].map((link) => (
                 <li key={link.path}>
                   <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
