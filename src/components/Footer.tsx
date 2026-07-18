@@ -12,9 +12,28 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data/config';
+import { usePageContent } from '../hooks/usePageContent';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  
+  // Fetch footer configurations
+  const { pageData: footerData } = usePageContent('footer');
+  // Fetch support configurations to get the unified phone/email contact details
+  const { pageData: supportData } = usePageContent('support');
+
+  // Unified contact details
+  const phoneVal = supportData.phone || CONTACT_INFO.phoneText;
+  const emailVal = supportData.email || CONTACT_INFO.email;
+
+  // Footer text and links
+  const brandPitch = footerData.brandPitch || "Spectrum Solar is a pioneer in solar energy integration and power electronics since 2002. With over 40,000+ satisfied customers nationwide, we are committed to India's green energy transition.";
+  const instagram = footerData.instagram || "#";
+  const facebook = footerData.facebook || "#";
+  const linkedin = footerData.linkedin || "#";
+  const twitter = footerData.twitter || "#";
+  const isoCert = footerData.isoCert || "ISO 9001:2015";
+  const mnreApproved = footerData.mnreApproved || "MNRE Approved";
 
   return (
     <footer className="bg-zinc-950 pt-24 pb-12 border-t border-white/5">
@@ -31,31 +50,43 @@ const Footer: React.FC = () => {
               />
             </Link>
             <p className="text-zinc-500 text-sm leading-relaxed max-w-sm">
-              Spectrum Solar is a pioneer in solar energy integration and power electronics since 2002. With over 40,000+ satisfied customers nationwide, we are committed to India's green energy transition.
+              {brandPitch}
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
-                <Twitter className="w-4 h-4" />
-              </a>
+              {instagram !== "" && (
+                <a href={instagram} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
+                  <Instagram className="w-4 h-4" />
+                </a>
+              )}
+              {facebook !== "" && (
+                <a href={facebook} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
+                  <Facebook className="w-4 h-4" />
+                </a>
+              )}
+              {linkedin !== "" && (
+                <a href={linkedin} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              )}
+              {twitter !== "" && (
+                <a href={twitter} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
+                  <Twitter className="w-4 h-4" />
+                </a>
+              )}
             </div>
             <div className="flex items-center gap-6 pt-4">
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-600">
-                <Award className="w-4 h-4 text-yellow-400" />
-                <span>ISO 9001:2015</span>
-              </div>
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-600">
-                <ShieldCheck className="w-4 h-4 text-yellow-400" />
-                <span>MNRE Approved</span>
-              </div>
+              {isoCert && (
+                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-600">
+                  <Award className="w-4 h-4 text-yellow-400" />
+                  <span>{isoCert}</span>
+                </div>
+              )}
+              {mnreApproved && (
+                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-600">
+                  <ShieldCheck className="w-4 h-4 text-yellow-400" />
+                  <span>{mnreApproved}</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -138,14 +169,18 @@ const Footer: React.FC = () => {
                 <Phone className="w-4 h-4 text-yellow-400 shrink-0" />
                 <div className="space-y-1">
                   <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Sales Support</p>
-                  <p className="text-zinc-500 text-xs leading-relaxed">{CONTACT_INFO.phoneText}</p>
+                  <a href={`tel:${phoneVal.replace(/\s+/g, '')}`} className="text-zinc-500 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                    {phoneVal}
+                  </a>
                 </div>
               </li>
               <li className="flex gap-3">
                 <Mail className="w-4 h-4 text-yellow-400 shrink-0" />
                 <div className="space-y-1">
                   <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Email Us</p>
-                  <p className="text-zinc-500 text-xs leading-relaxed">info@spectrumsolar.in</p>
+                  <a href={`mailto:${emailVal}`} className="text-zinc-500 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                    {emailVal}
+                  </a>
                 </div>
               </li>
             </ul>
@@ -159,9 +194,11 @@ const Footer: React.FC = () => {
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-700">
               &copy; {currentYear} Spectrum Solar. All Rights Reserved.
             </p>
-            <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] text-zinc-800">
-              Awarded Best Solar Energy Industry
-            </p>
+            {isoCert && (
+              <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] text-zinc-800">
+                Awarded Best Solar Energy Industry
+              </p>
+            )}
           </div>
           
           <div className="flex items-center gap-8">
@@ -179,4 +216,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-

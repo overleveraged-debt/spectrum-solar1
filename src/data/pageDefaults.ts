@@ -782,5 +782,14 @@ Panels must be oriented true south at a tilt angle of approximately 10-15 degree
   ],
   'testimonials': {
     testimonials: allTestimonials
+  },
+  'footer': {
+    brandPitch: "Spectrum Solar is a pioneer in solar energy integration and power electronics since 2002. With over 40,000+ satisfied customers nationwide, we are committed to India's green energy transition.",
+    instagram: "#",
+    facebook: "#",
+    linkedin: "#",
+    twitter: "#",
+    isoCert: "ISO 9001:2015",
+    mnreApproved: "MNRE Approved"
   }
 };

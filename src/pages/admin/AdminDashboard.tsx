@@ -9,7 +9,7 @@ import ApplicationsViewer from './ApplicationsViewer';
 type Tab = 
   | 'home' | 'about' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs' 
   | 'map-locations' | 'privacy-policy' | 'terms-conditions'
-  | 'leads' | 'applications' | 'testimonials';
+  | 'leads' | 'applications' | 'testimonials' | 'footer';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
@@ -51,6 +51,7 @@ export default function AdminDashboard() {
     { id: 'contact', label: 'Enquiry Page', icon: FileText, category: 'Page Editors' },
     { id: 'privacy-policy', label: 'Privacy Policy', icon: FileText, category: 'Page Editors' },
     { id: 'terms-conditions', label: 'Terms & Conditions', icon: FileText, category: 'Page Editors' },
+    { id: 'footer', label: 'Footer Settings', icon: FileText, category: 'Page Editors' },
     { id: 'blogs', label: 'Blog Posts', icon: FileCode, category: 'Content Manager' },
     { id: 'testimonials', label: 'Client Testimonials', icon: MessageSquare, category: 'Content Manager' },
     { id: 'leads', label: 'Leads & Enquiries', icon: Inbox, category: 'Business Inbox' },

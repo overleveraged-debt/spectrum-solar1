@@ -325,11 +325,26 @@ const pageSectionGroups: Record<string, Array<{
       description: 'Add, edit, or delete customer reviews displayed across the website.',
       fields: ['testimonials']
     }
+  ],
+  footer: [
+    {
+      id: 'general',
+      title: 'Footer Layout Content',
+      description: 'Configure brand pitch, social links, and MNRE/ISO accreditations.',
+      fields: ['brandPitch', 'instagram', 'facebook', 'linkedin', 'twitter', 'isoCert', 'mnreApproved']
+    }
   ]
 };
 
 // Rich labels, descriptions and placeholders for inputs
 const fieldMeta: Record<string, { label: string; desc?: string; placeholder?: string }> = {
+  brandPitch: { label: 'Footer Brand Pitch Description', desc: 'Short introductory tagline displayed right below the logo in the footer.', placeholder: 'Spectrum Solar is a pioneer...' },
+  instagram: { label: 'Instagram Profile Link', desc: 'Social media link for Instagram icon.', placeholder: '#' },
+  facebook: { label: 'Facebook Page Link', desc: 'Social media link for Facebook icon.', placeholder: '#' },
+  linkedin: { label: 'LinkedIn Profile Link', desc: 'Social media link for LinkedIn icon.', placeholder: '#' },
+  twitter: { label: 'Twitter / X Profile Link', desc: 'Social media link for Twitter icon.', placeholder: '#' },
+  isoCert: { label: 'ISO Certification Label', desc: 'Accreditation tag in footer.', placeholder: 'ISO 9001:2015' },
+  mnreApproved: { label: 'MNRE Approval Label', desc: 'Government approval tag in footer.', placeholder: 'MNRE Approved' },
   showHowItWorks: { label: 'Enable How It Works Section', desc: 'Toggle the visibility of the visual step-by-step mechanism on this product page.' },
   title: { label: 'Document/Page Title', desc: 'Header title of this document.', placeholder: 'e.g. Privacy Policy' },
   lastUpdated: { label: 'Last Updated Date Status', desc: 'Indicate revision date at the top.', placeholder: 'e.g. Last Updated: April 2026' },
