@@ -31,6 +31,7 @@ const yellowIcon = new L.DivIcon({
 
 interface PageEditorProps {
   pageId: string;
+  onDirtyChange?: (isDirty: boolean) => void;
 }
 
 // Section groups mapping to make form structured and clean
@@ -389,9 +390,10 @@ const productOptions = [
   { id: 'tubular-battery', name: 'Tall Tubular Batteries' }
 ];
 
-export default function PageEditor({ pageId }: PageEditorProps) {
+export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
   const [selectedProduct, setSelectedProduct] = useState('on-grid');
   const [data, setData] = useState<any>(null);
+  const [originalData, setOriginalData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState<string | null>(null);
@@ -408,6 +410,26 @@ export default function PageEditor({ pageId }: PageEditorProps) {
   // Determine active document ID
   const activeFetchId = pageId === 'product-details' ? selectedProduct : pageId;
 
+  const isDirty = data && originalData ? JSON.stringify(data) !== JSON.stringify(originalData) : false;
+
+  useEffect(() => {
+    if (onDirtyChange) {
+      onDirtyChange(isDirty);
+    }
+  }, [isDirty, onDirtyChange]);
+
+  // Prevent browser reload/close when dirty
+  useEffect(() => {
+    if (!isDirty) return;
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = 'You have unsaved changes in your page editor. Are you sure you want to leave?';
+      return e.returnValue;
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [isDirty]);
+
   // Fetch page content
   useEffect(() => {
     let isMounted = true;
@@ -422,15 +444,21 @@ export default function PageEditor({ pageId }: PageEditorProps) {
           if (result && result.content) {
             const parsed = JSON.parse(result.content);
             const defaults = defaultPagesData[activeFetchId] || {};
-            setData({ ...defaults, ...parsed });
+            const combined = { ...defaults, ...parsed };
+            setData(combined);
+            setOriginalData(combined);
           } else {
-            setData(defaultPagesData[activeFetchId] || {});
+            const defaults = defaultPagesData[activeFetchId] || {};
+            setData(defaults);
+            setOriginalData(defaults);
           }
         }
       } catch (err) {
         console.error('Failed to fetch from Sanity', err);
         if (isMounted) {
-          setData(defaultPagesData[activeFetchId] || {});
+          const defaults = defaultPagesData[activeFetchId] || {};
+          setData(defaults);
+          setOriginalData(defaults);
           setStatus({
             type: 'error',
             message: 'Could not connect to Sanity CMS. Using offline fallback.'
@@ -459,6 +487,7 @@ export default function PageEditor({ pageId }: PageEditorProps) {
         pageName: `${activeFetchId.charAt(0).toUpperCase() + activeFetchId.slice(1)} Config`,
         content: JSON.stringify(data),
       });
+      setOriginalData(data);
       setStatus({ type: 'success', message: 'Page settings saved successfully!' });
     } catch (err: any) {
       console.error(err);
@@ -2535,11 +2564,23 @@ export default function PageEditor({ pageId }: PageEditorProps) {
       )}
 
       {/* Action Footer */}
-      <div className="pt-6 border-t border-zinc-900 flex justify-end">
+      <div className="pt-6 border-t border-zinc-900 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          {isDirty && (
+            <span className="flex items-center gap-2 text-yellow-400 text-xs font-bold uppercase tracking-wider animate-pulse">
+              <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+              Unsaved Changes
+            </span>
+          )}
+        </div>
         <button
           onClick={handleSave}
           disabled={saving}
-          className="bg-yellow-400 hover:bg-yellow-500 disabled:opacity-50 text-zinc-950 font-semibold py-3.5 px-6 rounded-2xl transition-all duration-200 flex items-center gap-2 shadow-lg shadow-yellow-400/5"
+          className={`font-semibold py-3.5 px-6 rounded-2xl transition-all duration-300 flex items-center gap-2 ${
+            isDirty
+              ? 'bg-yellow-400 hover:bg-yellow-500 text-zinc-950 shadow-lg shadow-yellow-400/20 scale-[1.02]'
+              : 'bg-zinc-800 hover:bg-zinc-750 text-zinc-500 cursor-not-allowed opacity-60'
+          }`}
         >
           {saving ? (
             <>

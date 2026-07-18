@@ -14,6 +14,8 @@ type Tab =
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('home');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isEditorDirty, setIsEditorDirty] = useState(false);
+  const [pendingTabSwitch, setPendingTabSwitch] = useState<Tab | null>(null);
   const navigate = useNavigate();
 
   // Authentication check
@@ -25,8 +27,18 @@ export default function AdminDashboard() {
   }, [navigate]);
 
   const handleLogout = () => {
+    // Clear dirty flag when logging out to bypass alert warning
+    setIsEditorDirty(false);
     localStorage.removeItem('spectrum_admin_authenticated');
     navigate('/admin/login');
+  };
+
+  const handleTabClick = (tabId: Tab) => {
+    if (isEditorDirty) {
+      setPendingTabSwitch(tabId);
+    } else {
+      setActiveTab(tabId);
+    }
   };
 
   const menuItems = [
@@ -73,7 +85,7 @@ export default function AdminDashboard() {
                       return (
                         <button
                           key={item.id}
-                          onClick={() => setActiveTab(item.id as Tab)}
+                          onClick={() => handleTabClick(item.id as Tab)}
                           className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-200 text-sm ${
                             isActive
                               ? 'bg-yellow-400 text-zinc-950 font-semibold'
@@ -140,10 +152,46 @@ export default function AdminDashboard() {
           ) : activeTab === 'applications' ? (
             <ApplicationsViewer />
           ) : (
-            <PageEditor pageId={activeTab} />
+            <PageEditor pageId={activeTab} onDirtyChange={setIsEditorDirty} />
           )}
         </div>
       </main>
+
+      {/* Tab Switch Intercept Modal */}
+      {pendingTabSwitch && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-zinc-900 border border-zinc-850 rounded-[2rem] max-w-sm w-full p-8 space-y-6 shadow-2xl animate-fade-in">
+            <div className="space-y-2">
+              <h3 className="text-lg font-bold text-white uppercase tracking-wider">Unsaved Changes</h3>
+              <p className="text-xs text-zinc-400 leading-relaxed font-light">
+                You have unsaved changes in your editor. If you switch pages now, your modifications will be discarded.
+              </p>
+            </div>
+            <div className="flex gap-3 justify-end">
+              <button
+                type="button"
+                onClick={() => {
+                  setPendingTabSwitch(null);
+                }}
+                className="bg-zinc-855 border border-zinc-800 hover:bg-zinc-800 text-white font-semibold text-xs py-3 px-5 rounded-xl transition-all"
+              >
+                Stay & Save
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsEditorDirty(false);
+                  setActiveTab(pendingTabSwitch);
+                  setPendingTabSwitch(null);
+                }}
+                className="bg-rose-500 hover:bg-rose-600 text-white font-semibold text-xs py-3 px-5 rounded-xl transition-all"
+              >
+                Discard & Switch
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

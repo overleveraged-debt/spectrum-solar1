@@ -1,3 +1,5 @@
+import { allTestimonials } from './testimonials';
+
 export const defaultPagesData: Record<string, any> = {
   home: {
     showHero: true,
@@ -62,10 +64,7 @@ export const defaultPagesData: Record<string, any> = {
     heritageAccreditationTitle: 'Best Solar Energy Industry Award',
     heritageAccreditationDesc: 'National Solar Excellence Award Recipient',
     showTestimonials: true,
-    testimonials: [
-      { name: 'Abdul Rahman', product: '5KW Hybrid Solar', text: 'Spectrum Powers installed a 5KW Hybrid system at my home. The service team was extremely professional.', initials: 'AR', date: '2 months ago', isVerified: true },
-      { name: 'Dr. Somashekharan', product: '50KW Commercial', text: 'Their 50KW installation has been performing flawlessly for over 3 years.', initials: 'DS', date: '1 year ago', isVerified: true }
-    ],
+    testimonials: allTestimonials,
     showContactCTA: true,
     contactSubtitle: 'Since 2002',
     contactTitle: '25 Years of Reliability.',
@@ -780,5 +779,8 @@ For systems up to 3kW, KSEB facilitates a 30% direct subsidy. For larger systems
 
 Panels must be oriented true south at a tilt angle of approximately 10-15 degrees depending on the latitude of the property in Kerala. Dust and bird droppings can decrease panel output by up to 20%; we recommend periodic cleaning with soft water every two weeks. Active monitoring via the inverter's mobile application will help identify any underperforming strings immediately.`
     }
-  ]
+  ],
+  'testimonials': {
+    testimonials: allTestimonials
+  }
 };
