@@ -9,9 +9,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import * as LucideIcons from 'lucide-react';
-
-const IconMap: Record<string, any> = LucideIcons;
+import { IconMap } from '../utils/iconMap';
 
 const OnGridSolar: React.FC = () => {
   useScrollReveal();

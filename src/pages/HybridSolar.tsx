@@ -9,9 +9,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import * as LucideIcons from 'lucide-react';
-
-const IconMap: Record<string, any> = LucideIcons;
+import { IconMap } from '../utils/iconMap';
 
 const HybridSolar: React.FC = () => {
   useScrollReveal();
@@ -78,7 +76,7 @@ const HybridSolar: React.FC = () => {
     "desc": "Switches to battery power in milliseconds during blackouts — zero lag."
 };
   const otherBenefits = benefitList.slice(1);
-  const HighlightIcon = IconMap[highlightBenefit.icon] || LucideIcons.Battery;
+  const HighlightIcon = IconMap[highlightBenefit.icon] || Battery;
 
 
   const hybridSchema = {
@@ -237,7 +235,7 @@ const HybridSolar: React.FC = () => {
                 { step: '04', icon: 'Battery', title: 'Store', desc: 'Excess energy stored in lithium batteries.' },
                 { step: '05', icon: 'Activity', title: 'Backup', desc: 'Battery powers your home during outages instantly.' },
               ]).map((item: any, i: number) => {
-                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                const IconComponent = IconMap[item.icon] || Zap;
                 return (
                   <div key={i} className="flex flex-col items-center text-center px-4 group">
                     <div className="w-24 h-24 rounded-full bg-zinc-950 border-2 border-yellow-400 flex items-center justify-center mb-6 relative z-10 group-hover:bg-yellow-400 group-hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-300">
@@ -260,7 +258,7 @@ const HybridSolar: React.FC = () => {
                 { step: '04', icon: 'Battery', title: 'Store', desc: 'Excess energy stored in lithium batteries.' },
                 { step: '05', icon: 'Activity', title: 'Backup', desc: 'Battery powers your home during outages instantly.' },
               ]).map((item: any, i: number) => {
-                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                const IconComponent = IconMap[item.icon] || Zap;
                 return (
                   <div key={i} className="flex gap-5 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
                     <div className="flex flex-col items-center">
@@ -302,7 +300,7 @@ const HybridSolar: React.FC = () => {
             </div>
 
             {otherBenefits.map((benefit: any, i: number) => {
-              const IconComponent = IconMap[benefit.icon] || LucideIcons.Battery;
+              const IconComponent = IconMap[benefit.icon] || Battery;
               return (
                 <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
                   <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">

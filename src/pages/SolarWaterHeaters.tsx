@@ -9,9 +9,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import * as LucideIcons from 'lucide-react';
-
-const IconMap: Record<string, any> = LucideIcons;
+import { IconMap } from '../utils/iconMap';
 
 const SolarWaterHeaters: React.FC = () => {
   useScrollReveal();
@@ -78,7 +76,7 @@ const SolarWaterHeaters: React.FC = () => {
     "desc": "Slash your water heating electricity bills by harnessing free solar thermal energy."
 };
   const otherBenefits = benefitList.slice(1);
-  const HighlightIcon = IconMap[highlightBenefit.icon] || LucideIcons.Zap;
+  const HighlightIcon = IconMap[highlightBenefit.icon] || Sun;
 
 
   const faqs = [
@@ -224,7 +222,7 @@ const SolarWaterHeaters: React.FC = () => {
                 { step: '03', icon: 'Droplets', title: 'Store', desc: 'Hot water stored in insulated tank.' },
                 { step: '04', icon: 'Activity', title: 'Use', desc: 'Ready for use anytime you need it.' },
               ]).map((item: any, i: number) => {
-                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                const IconComponent = IconMap[item.icon] || Sun;
                 return (
                   <div key={i} className="flex flex-col items-center text-center px-6 group">
                     <div className="w-24 h-24 rounded-full bg-zinc-950 border-2 border-yellow-400 flex items-center justify-center mb-6 relative z-10 group-hover:bg-yellow-400 group-hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-300">
@@ -246,7 +244,7 @@ const SolarWaterHeaters: React.FC = () => {
                 { step: '03', icon: 'Droplets', title: 'Store', desc: 'Hot water stored in insulated tank.' },
                 { step: '04', icon: 'Activity', title: 'Use', desc: 'Ready for use anytime you need it.' },
               ]).map((item: any, i: number, arr: any[]) => {
-                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                const IconComponent = IconMap[item.icon] || Sun;
                 return (
                   <div key={i} className="flex gap-5 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
                     <div className="flex flex-col items-center">
@@ -288,7 +286,7 @@ const SolarWaterHeaters: React.FC = () => {
             </div>
 
             {otherBenefits.map((benefit: any, i: number) => {
-              const IconComponent = IconMap[benefit.icon] || LucideIcons.Zap;
+              const IconComponent = IconMap[benefit.icon] || Sun;
               return (
                 <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
                   <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">

@@ -9,9 +9,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import * as LucideIcons from 'lucide-react';
-
-const IconMap: Record<string, any> = LucideIcons;
+import { IconMap } from '../utils/iconMap';
 
 const OnlineUps: React.FC = () => {
   useScrollReveal();
@@ -179,7 +177,7 @@ const OnlineUps: React.FC = () => {
                 { step: '04', icon: 'ShieldCheck', title: 'Regulate', desc: 'Zero transfer time (0ms) double-conversion filters spikes.' },
                 { step: '05', icon: 'CheckCircle2', title: 'Protect', desc: 'Connected critical loads receive perfect 230V sine wave.' },
               ]).map((item: any, i: number) => {
-                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                const IconComponent = IconMap[item.icon] || Zap;
                 return (
                   <div key={i} className="flex flex-col items-center text-center px-4 group">
                     <div className="w-24 h-24 rounded-full bg-zinc-950 border-2 border-yellow-400 flex items-center justify-center mb-6 relative z-10 group-hover:bg-yellow-400 group-hover:shadow-[0_0_30px_rgba(250,204,21,0.4)] transition-all duration-300">
@@ -202,7 +200,7 @@ const OnlineUps: React.FC = () => {
                 { step: '04', icon: 'ShieldCheck', title: 'Regulate', desc: 'Zero transfer time (0ms) double-conversion filters spikes.' },
                 { step: '05', icon: 'CheckCircle2', title: 'Protect', desc: 'Connected critical loads receive perfect 230V sine wave.' },
               ]).map((item: any, i: number, arr: any[]) => {
-                const IconComponent = IconMap[item.icon] || LucideIcons.Zap;
+                const IconComponent = IconMap[item.icon] || Zap;
                 return (
                   <div key={i} className="flex gap-5 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
                     <div className="flex flex-col items-center">

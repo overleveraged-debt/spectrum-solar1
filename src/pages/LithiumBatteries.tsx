@@ -12,8 +12,7 @@ import SEO from '../components/SEO';
 
 
 
-import * as LucideIcons from 'lucide-react';
-const IconMap: Record<string, any> = LucideIcons;
+import { IconMap } from '../utils/iconMap';
 const LithiumBatteries: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -58,7 +57,7 @@ const LithiumBatteries: React.FC = () => {
     "desc": "Fully charges in under 2 hours, compared to 8–10 hours for traditional lead-acid batteries."
 };
   const otherBenefits = benefitList.slice(1);
-  const HighlightIcon = IconMap[highlightBenefit.icon] || LucideIcons.Zap;
+  const HighlightIcon = IconMap[highlightBenefit.icon] || Zap;
 
 
   const heroSubtitle = pageData.heroSubtitle || "Energy Storage";
@@ -197,7 +196,7 @@ const LithiumBatteries: React.FC = () => {
             </div>
 
             {otherBenefits.map((benefit: any, i: number) => {
-              const IconComponent = IconMap[benefit.icon] || LucideIcons.Zap;
+              const IconComponent = IconMap[benefit.icon] || Zap;
               return (
                 <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
                   <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
