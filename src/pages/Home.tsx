@@ -15,7 +15,7 @@ const DEFAULT_HOME_DATA = {
   showHero: true,
   heroTitle: 'Precision Since 2002.',
   heroVideoPoster: '/images/Banner01.jpg',
-  heroVideoUrl: '/videos/hero-bg.mp4',
+  heroVideoUrl: 'https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/hero-bg.mp4',
 
   // Stats Bar
   showStatsBar: true,
@@ -32,7 +32,7 @@ const DEFAULT_HOME_DATA = {
   showSolarSection: true,
   solarSectionSubtitle: 'Solar Solutions',
   solarSectionTitle: 'Solar Systems.',
-  solarSectionImage: '/images/home_solar_banner.jpg',
+  solarSectionImage: '/images/home_solar_banner.webp',
   
   // 4 Solar Boxes
   solarBox1Title: 'On-Grid Solar',
@@ -52,7 +52,7 @@ const DEFAULT_HOME_DATA = {
   showBackupSection: true,
   backupSectionSubtitle: 'Power Backup',
   backupSectionTitle: 'Backup Systems.',
-  backupSectionImage: '/images/home_backup_banner.jpeg',
+  backupSectionImage: '/images/home_backup_banner.webp',
   // 6 Backup Boxes
   backupBox1Title: 'Lithium UPS',
   backupBox1Sub: 'Pure Sine Wave',
@@ -72,19 +72,19 @@ const DEFAULT_HOME_DATA = {
   whySpectrumSubtitle: 'Why Spectrum',
   whySpectrumTitle: "India's Most Trusted Solar Partner.",
   whySpectrumDesc: '25 years. 6,145+ Solar Installations. Government-awarded excellence. Engineered for India\'s diverse climate.',
-  whySpectrumBgImage: '/images/nature-kerala.jpg',
+  whySpectrumBgImage: '/images/nature-kerala.webp',
   
   // Why Go Solar Section
   showWhyGoSolar: true,
   whyGoSolarSubtitle: 'The Solar Advantage',
   whyGoSolarTitle: 'Why Go Solar?',
-  whyGoSolarImage: '/images/home_why_solar.jpg',
+  whyGoSolarImage: '/images/home_why_solar.webp',
   
   // Our Heritage Section
   showHeritage: true,
   heritageSubtitle: 'Our Heritage',
   heritageTitle: 'Spectrum Powers India.',
-  heritageImage: '/images/home_heritage_banner.jpg',
+  heritageImage: '/images/home_heritage_banner.webp',
   heritageDesc: 'Specializing in power electronics and solar system integration, we prioritize a customer-centric approach that drives our high referral rates.',
   heritageAccreditationTitle: 'Best Solar Energy Industry Award',
   heritageAccreditationDesc: 'National Solar Excellence Award Recipient',

@@ -43,7 +43,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Warranty', value: '25-Year Panel' },
       { label: 'ROI Period', value: '3 – 5 Years' },
     ],
-    image: '/images/sol_on_grid.jpg',
+    image: '/images/sol_on_grid.webp',
   },
   {
     id: 'hybrid',
@@ -66,7 +66,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Battery', value: 'Lithium / VRLA' },
       { label: 'Switch Time', value: '< 10ms' },
     ],
-    image: '/images/sol_hybrid.jpg',
+    image: '/images/sol_hybrid.webp',
   },
   {
     id: 'off-grid',
@@ -90,7 +90,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Battery Tech', value: 'LFP Lithium' },
       { label: 'Cycles', value: '4000+ Charge Cycles' },
     ],
-    image: '/images/sol_off_grid.jpg',
+    image: '/images/sol_off_grid.webp',
   },
   {
     id: 'water-heaters',
@@ -113,7 +113,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Inner Tank', value: 'Glass Lined / SUS316' },
       { label: 'Heating Back', value: 'Auxiliary Element' },
     ],
-    image: '/images/sol_water_heater.jpg',
+    image: '/images/sol_water_heater.webp',
   },
 ];
 
@@ -121,7 +121,7 @@ const DEFAULT_SOLAR_DATA = {
   showHero: true,
   heroTitle: 'Solar Solutions',
   heroSubtitle: 'Solar Solutions Specialists',
-  heroImage: '/images/home_solar_banner.jpg',
+  heroImage: '/images/home_solar_banner.webp',
   heroDesc: 'On-grid, hybrid, and off-grid solar systems built for maximum ROI.',
   showProducts: true,
   products: DEFAULT_PRODUCTS
