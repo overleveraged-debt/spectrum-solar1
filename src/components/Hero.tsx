@@ -13,12 +13,21 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) => {
   const [showOverlay, setShowOverlay] = useState(true);
   const [scrollY, setScrollY] = useState(0);
+  const [lazyVideoUrl, setLazyVideoUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Wait for cinematic welcomes-you sequence to end before loading the heavy CDN video
+    const timer = setTimeout(() => {
+      setLazyVideoUrl(videoUrl || "https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/hero-bg.mp4");
+    }, 3800);
+    return () => clearTimeout(timer);
+  }, [videoUrl]);
 
   const formatHeroTitle = (text: string) => {
     if (!text) return null;
@@ -35,13 +44,11 @@ const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) =
     );
   };
 
-  const finalVideoUrl = videoUrl || "/videos/hero-bg.mp4";
-
   return (
     <section className="relative h-[60vh] md:h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
         <video 
-          key={finalVideoUrl}
+          key={lazyVideoUrl || 'placeholder'}
           autoPlay 
           muted 
           loop 
@@ -52,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) =
           poster={videoPoster || "/images/Banner01.jpg"}
           style={{ transform: `scale(${1 + scrollY * 0.0005}) translateY(${scrollY * 0.2}px)` }}
         >
-          <source src={finalVideoUrl} type="video/mp4" />
+          {lazyVideoUrl && <source src={lazyVideoUrl} type="video/mp4" />}
         </video>
         {showOverlay && (
           <div className="absolute inset-0 z-[1] pointer-events-none opacity-[0.04] mix-blend-overlay" 
