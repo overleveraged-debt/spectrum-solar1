@@ -42,7 +42,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Switch Time', value: '< 10ms' },
       { label: 'Warranty', value: '3 Years' },
     ],
-    image: '/images/pwr_lithium_ups.jpg',
+    image: '/images/lithium_hero.webp',
   },
   {
     id: 'home-ups',
@@ -65,7 +65,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Efficiency', value: '95%+' },
       { label: 'Battery', value: 'Tubular / Li-Ion' },
     ],
-    image: '/images/pwr_home_ups.jpg',
+    image: '/images/home_ups_hero.webp',
   },
   {
     id: 'inverters',
@@ -88,7 +88,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Input Voltage', value: '90V – 290V AC' },
       { label: 'Protection', value: 'OVP / UVP / OLP' },
     ],
-    image: '/images/pwr_inverter.jpg',
+    image: '/images/inverter_hero.webp',
   },
   {
     id: 'online-ups',
@@ -111,7 +111,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Input PF', value: '0.99' },
       { label: 'Efficiency', value: 'Up to 96%' },
     ],
-    image: '/images/pwr_online_ups.jpg',
+    image: '/images/online_ups_hero.webp',
   },
   {
     id: 'lithium-batteries',
@@ -134,7 +134,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Warranty', value: '5 – 10 Years' },
       { label: 'DoD', value: '95% Depth of Discharge' },
     ],
-    image: '/images/pwr_lithium_battery.jpg',
+    image: '/images/lithium_battery_hero.webp',
   },
   {
     id: 'tubular-batteries',
@@ -157,7 +157,7 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Warranty', value: '3 – 5 Years' },
       { label: 'Life', value: '4 – 6 Years' },
     ],
-    image: '/images/pwr_tubular_battery.jpg',
+    image: '/images/tubular_battery_hero.webp',
   },
 ];
 
