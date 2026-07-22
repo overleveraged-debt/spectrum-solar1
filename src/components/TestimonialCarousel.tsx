@@ -42,7 +42,7 @@ const TestimonialCarousel: React.FC = () => {
         </div>
         
         <div className="relative z-10 flex-1 flex flex-col justify-center">
-          <p className="text-zinc-300 text-lg md:text-xl font-light italic leading-relaxed mb-8 transition-all duration-500 transform animate-fade-in">
+          <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed mb-8 transition-all duration-500 transform animate-fade-in">
             "{current.text}"
           </p>
         </div>

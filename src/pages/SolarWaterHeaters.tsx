@@ -123,7 +123,7 @@ const SolarWaterHeaters: React.FC = () => {
               Solar Water<br />
               <span className="text-yellow-400">Heaters</span>
             </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
+            <p className="text-zinc-300 text-lg sm:text-xl md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
               Zero-Cost Hot Water All Year with Solar Energy. Enjoy continuous hot water while saving significantly on electricity bills.
             </p>
 

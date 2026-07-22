@@ -109,6 +109,13 @@ export const defaultPagesData: Record<string, any> = {
     presenceSubtitle: 'Regional Presence',
     presenceTitle: 'Powering Every District.',
     presenceDesc: 'Explore our extensive network...',
+    showCeoMessage: true,
+    ceoSubtitle: 'Message From Leadership',
+    ceoTitle: "Leading India's Energy Transition.",
+    ceoName: 'Spectrum Leadership',
+    ceoRole: 'Founder & Managing Director',
+    ceoImage: '/images/ceo_placeholder.webp',
+    ceoMessage: 'For over two decades, our mission at Spectrum Powers has been simple yet ambitious: to democratize clean, reliable, and affordable solar energy across India.',
     showCTA: true,
     ctaTitle: '18+ Centers Across India.',
     ctaDesc: "From Kannur to Thiruvananthapuram — our network ensures you're never far from expert power support."

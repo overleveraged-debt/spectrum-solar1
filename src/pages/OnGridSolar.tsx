@@ -106,7 +106,7 @@ const OnGridSolar: React.FC = () => {
             </div>
 
             <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">{heroTitle}</h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">{heroDesc}</p>
+            <p className="text-zinc-300 text-lg sm:text-xl md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">{heroDesc}</p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)]">

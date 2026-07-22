@@ -123,7 +123,7 @@ const OffGridSolar: React.FC = () => {
               Lithium Off-Grid<br />
               <span className="text-yellow-400">Solar System</span>
             </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
+            <p className="text-zinc-300 text-lg sm:text-xl md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
               Achieve Complete Energy Independence. Break free from power cuts — generate, store, and use your own solar energy, anytime, anywhere.
             </p>
 

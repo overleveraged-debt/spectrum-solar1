@@ -15,7 +15,7 @@ const QuickActionWidget: React.FC = () => {
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/[^\d]/g, '')}?text=${encodeURIComponent("Hi Spectrum Solar, I would like to inquire about your solar & power backup solutions.")}`;
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex items-center gap-3 pointer-events-auto">
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 pointer-events-auto">
       {/* WhatsApp Button (Clean Icon Only with Pulsing Glow Aura behind) */}
       <a
         href={whatsappLink}

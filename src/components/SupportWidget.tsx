@@ -36,7 +36,7 @@ const SupportWidget: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-8 right-8 z-[100] font-['Plus_Jakarta_Sans']">
+    <div className="fixed bottom-6 left-6 z-[100] font-['Plus_Jakarta_Sans']">
       {/* Floating Action Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -56,7 +56,7 @@ const SupportWidget: React.FC = () => {
       </button>
 
       {/* Popup Modal */}
-      <div className={`absolute bottom-[4.5rem] right-0 w-[400px] max-w-[calc(100vw-4rem)] max-h-[calc(100svh-10rem)] sm:max-h-[calc(100vh-8rem)] flex flex-col bg-zinc-900 border border-white/10 rounded-[2.5rem] shadow-2xl transition-all duration-500 origin-bottom-right overflow-hidden ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-10 pointer-events-none'}`}>
+      <div className={`absolute bottom-[4.5rem] left-0 w-[400px] max-w-[calc(100vw-4rem)] max-h-[calc(100svh-10rem)] sm:max-h-[calc(100vh-8rem)] flex flex-col bg-zinc-900 border border-white/10 rounded-[2.5rem] shadow-2xl transition-all duration-500 origin-bottom-left overflow-hidden ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-10 pointer-events-none'}`}>
 
         {/* Header */}
         <div className="p-6 sm:p-8 pb-4 border-b border-white/5">

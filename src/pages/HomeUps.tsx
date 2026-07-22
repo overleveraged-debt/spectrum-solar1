@@ -91,7 +91,7 @@ const HomeUps: React.FC = () => {
               Home UPS<br />
               <span className="text-yellow-400">System</span>
             </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
+            <p className="text-zinc-300 text-lg sm:text-xl md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
               Reliable Power Backup for Everyday Comfort. Keep your lights, fans, and essential appliances running without interruption during power cuts.
             </p>
 

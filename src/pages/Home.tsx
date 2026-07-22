@@ -320,8 +320,8 @@ const Home: React.FC = () => {
                 <Link to="/solar" className="w-full flex items-center justify-center gap-3 bg-yellow-400 text-black px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300 shadow-lg shadow-yellow-400/20">
                   Solar Solutions <Sun className="w-4 h-4" />
                 </Link>
-                <Link to="/power" className="w-full flex items-center justify-center gap-3 bg-zinc-950 text-white border border-white/10 px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300">
-                  Power Backup Solutions <BatteryCharging className="w-4 h-4 text-yellow-400" />
+                <Link to="/power" className="w-full flex items-center justify-center gap-3 bg-yellow-400 text-black px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300 shadow-lg shadow-yellow-400/20">
+                  Power Backup Solutions <BatteryCharging className="w-4 h-4 text-black" />
                 </Link>
               </div>
             </div>

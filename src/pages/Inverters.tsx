@@ -113,7 +113,7 @@ const Inverters: React.FC = () => {
             <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
               Inverters<br /><span className="text-yellow-400">by Spectrum</span>
             </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
+            <p className="text-zinc-300 text-lg sm:text-xl md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
               Efficient & Reliable Power Conversion for Your Needs. Advanced inverter solutions designed for homes, offices, and commercial spaces.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

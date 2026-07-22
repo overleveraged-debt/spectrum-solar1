@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
               onClick={() => toggleSection('solar')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
             >
-              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white md:mb-8">Solar Solutions</h5>
+              <h5 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Solar Solutions</h5>
               <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'solar' ? 'rotate-180 text-yellow-400' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'solar' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
                   { label: 'Solar Calculator', path: '/calculator' }
                 ].map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
+                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group">
                       <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                       {link.label}
                     </Link>
@@ -131,7 +131,7 @@ const Footer: React.FC = () => {
               onClick={() => toggleSection('power')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
             >
-              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white md:mb-8">Power Backup</h5>
+              <h5 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Power Backup</h5>
               <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'power' ? 'rotate-180 text-yellow-400' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'power' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
                   { label: 'Tubular Batteries', path: '/power/tubular-batteries' }
                 ].map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
+                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group">
                       <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                       {link.label}
                     </Link>
@@ -160,7 +160,7 @@ const Footer: React.FC = () => {
               onClick={() => toggleSection('partner')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
             >
-              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white md:mb-8">Partner With Us</h5>
+              <h5 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Partner With Us</h5>
               <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'partner' ? 'rotate-180 text-yellow-400' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'partner' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
@@ -174,7 +174,7 @@ const Footer: React.FC = () => {
                   { label: 'Help & Support', path: '/support' }
                 ].map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
+                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group">
                       <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                       {link.label}
                     </Link>
@@ -190,7 +190,7 @@ const Footer: React.FC = () => {
               onClick={() => toggleSection('contact')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
             >
-              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white md:mb-8">Get In Touch</h5>
+              <h5 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Get In Touch</h5>
               <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'contact' ? 'rotate-180 text-yellow-400' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'contact' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>

@@ -144,6 +144,12 @@ const pageSectionGroups: Record<string, Array<{
       fields: ['showQuality', 'qualitySubtitle', 'qualityTitle', 'qualityDesc', 'qualityAwardTitle', 'qualityAwardDesc', 'qualityImage']
     },
     {
+      id: 'ceoMessage',
+      title: 'CEO & Leadership Message',
+      description: 'Configure CEO photo, name, title, and quote message.',
+      fields: ['showCeoMessage', 'ceoSubtitle', 'ceoTitle', 'ceoName', 'ceoRole', 'ceoImage', 'ceoMessage']
+    },
+    {
       id: 'presence',
       title: 'Regional Presence Map',
       description: 'Configure text content next to the interactive presence map.',

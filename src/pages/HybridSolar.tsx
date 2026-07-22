@@ -135,7 +135,7 @@ const HybridSolar: React.FC = () => {
               Hybrid Solar<br />
               <span className="text-yellow-400">System</span>
             </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
+            <p className="text-zinc-300 text-lg sm:text-xl md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
               Solar Power + Battery Backup for 24/7 Electricity. Experience uninterrupted power with the best of both worlds — solar savings and grid reliability.
             </p>
 
