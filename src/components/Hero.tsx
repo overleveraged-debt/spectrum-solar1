@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, BatteryCharging, Settings2, ChevronDown } from 'lucide-react';
-
+import { Sun, BatteryCharging, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface HeroProps {
@@ -11,7 +10,6 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) => {
-  const [showOverlay, setShowOverlay] = useState(true);
   const [scrollY, setScrollY] = useState(0);
 
   const resolvedSrc = videoUrl || "https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/hero-bg.mp4";
@@ -48,31 +46,18 @@ const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) =
           playsInline 
           preload="auto"
           onCanPlayThrough={() => onLoaded?.()}
-          className={`w-full h-full object-cover transition-all duration-1000 ${showOverlay ? 'filter saturate-[0.6] brightness-[0.35]' : 'saturate-100 brightness-100'}`}
+          className="w-full h-full object-cover transition-all duration-1000 filter saturate-100 brightness-100 md:saturate-[0.6] md:brightness-[0.35]"
           poster={videoPoster || "/images/Banner01.jpg"}
           style={{ transform: `scale(${1 + scrollY * 0.0005}) translateY(${scrollY * 0.2}px)` }}
         />
-        {showOverlay && (
-          <div className="absolute inset-0 z-[1] pointer-events-none opacity-[0.04] mix-blend-overlay" 
-               style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3Cturbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
-          </div>
-        )}
-        {!showOverlay && (
-          <div className="absolute inset-0 bg-black/25 z-[1]"></div>
-        )}
+        {/* Desktop: Enhanced Contrast Overlay */}
+        <div 
+          className="hidden md:block absolute inset-0 z-[1] pointer-events-none opacity-[0.04] mix-blend-overlay" 
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3Cturbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+        />
+        {/* Mobile: Original Video view with subtle legibility tint */}
+        <div className="md:hidden absolute inset-0 bg-black/25 z-[1]" />
       </div>
-
-      <button 
-        onClick={() => setShowOverlay(!showOverlay)}
-        className="absolute bottom-10 right-10 z-50 p-4 bg-white/10 hover:bg-yellow-400 hover:text-black text-white rounded-full backdrop-blur-xl border border-white/20 transition-all group"
-        title="Toggle Video Overlay"
-      >
-        <Settings2 className={`w-5 h-5 ${!showOverlay ? 'animate-spin-slow' : ''}`} />
-        <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-black/80 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-          {showOverlay ? 'Original Video' : 'Enhanced Contrast'}
-        </span>
-      </button>
-
 
       {/* Hero Content */}
       <div 
