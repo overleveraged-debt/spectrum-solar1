@@ -45,13 +45,13 @@ const pageSectionGroups: Record<string, Array<{
     {
       id: 'hero',
       title: 'Hero Banner',
-      description: 'Configure the primary title, background video, poster fallback, and visibility.',
-      fields: ['showHero', 'heroTitle', 'heroVideoUrl', 'heroVideoPoster']
+      description: 'Configure the primary title, background video, and poster fallback.',
+      fields: ['heroTitle', 'heroVideoUrl', 'heroVideoPoster']
     },
     {
       id: 'stats',
       title: 'Statistics Bar (Black Strip)',
-      description: 'Configure the 4 key metrics and titles displayed right below the Hero video.',
+      description: 'Configure the 4 key metrics and titles displayed right below the Hero video. Use the toggle to show or hide the bar entirely.',
       fields: [
         'showStatsBar',
         'stat1Value', 'stat1Label',
@@ -65,7 +65,7 @@ const pageSectionGroups: Record<string, Array<{
       title: 'Solar Systems Section',
       description: 'Configure heading, banner picture, and the 4 interactive solar product cards.',
       fields: [
-        'showSolarSection', 'solarSectionSubtitle', 'solarSectionTitle', 'solarSectionImage',
+        'solarSectionSubtitle', 'solarSectionTitle', 'solarSectionImage',
         'solarBox1Title', 'solarBox1Sub', 'solarBox1Desc',
         'solarBox2Title', 'solarBox2Sub', 'solarBox2Desc',
         'solarBox3Title', 'solarBox3Sub', 'solarBox3Desc',
@@ -77,7 +77,7 @@ const pageSectionGroups: Record<string, Array<{
       title: 'Backup Systems Section',
       description: 'Configure headings, wide banner, and the 6 power backup product cards.',
       fields: [
-        'showBackupSection', 'backupSectionSubtitle', 'backupSectionTitle', 'backupSectionImage',
+        'backupSectionSubtitle', 'backupSectionTitle', 'backupSectionImage',
         'backupBox1Title', 'backupBox1Sub',
         'backupBox2Title', 'backupBox2Sub',
         'backupBox3Title', 'backupBox3Sub',
@@ -89,27 +89,26 @@ const pageSectionGroups: Record<string, Array<{
     {
       id: 'whySpectrum',
       title: 'Why Spectrum Section',
-      description: 'Configure background nature image, core taglines, description, and visibility.',
-      fields: ['showWhySpectrum', 'whySpectrumSubtitle', 'whySpectrumTitle', 'whySpectrumDesc', 'whySpectrumBgImage']
+      description: 'Configure background nature image, core taglines, and description.',
+      fields: ['whySpectrumSubtitle', 'whySpectrumTitle', 'whySpectrumDesc', 'whySpectrumBgImage']
     },
     {
       id: 'whyGoSolar',
       title: 'Why Go Solar Section',
-      description: 'Configure illustrations, titles, and visibility explaining solar advantages.',
-      fields: ['showWhyGoSolar', 'whyGoSolarSubtitle', 'whyGoSolarTitle', 'whyGoSolarImage']
+      description: 'Configure illustrations and titles explaining solar advantages.',
+      fields: ['whyGoSolarSubtitle', 'whyGoSolarTitle', 'whyGoSolarImage']
     },
     {
       id: 'heritage',
       title: 'Heritage & Accreditations',
-      description: 'Configure heritage block text, awards, certificates details, and visibility.',
-      fields: ['showHeritage', 'heritageSubtitle', 'heritageTitle', 'heritageImage', 'heritageDesc', 'heritageAccreditationTitle', 'heritageAccreditationDesc']
+      description: 'Configure heritage block text, awards, and certificates details.',
+      fields: ['heritageSubtitle', 'heritageTitle', 'heritageImage', 'heritageDesc', 'heritageAccreditationTitle', 'heritageAccreditationDesc']
     },
-
     {
       id: 'contact',
       title: 'Contact Call-to-Action',
-      description: 'Configure the bottom call-to-action details, descriptions, backdrop, and visibility.',
-      fields: ['showContactCTA', 'contactSubtitle', 'contactTitle', 'contactDesc', 'contactBgImage']
+      description: 'Configure the bottom call-to-action details, descriptions, and backdrop.',
+      fields: ['contactSubtitle', 'contactTitle', 'contactDesc', 'contactBgImage']
     }
   ],
   about: [
@@ -117,12 +116,12 @@ const pageSectionGroups: Record<string, Array<{
       id: 'hero',
       title: 'Hero Section',
       description: 'Configure title, subtitle, backdrop image and intro text paragraph.',
-      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
+      fields: ['heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
     },
     {
       id: 'stats',
       title: 'Statistics Grid',
-      description: 'Configure the 4 large counters displayed on the about page.',
+      description: 'Configure the 4 large counters displayed on the about page. Use the toggle to show or hide the grid entirely.',
       fields: [
         'showStats',
         'stat1Value', 'stat1Label', 'stat1Sub',
@@ -135,13 +134,13 @@ const pageSectionGroups: Record<string, Array<{
       id: 'heritage',
       title: 'Heritage Section',
       description: 'Configure founded date, headquarters, branch count and descriptive copy.',
-      fields: ['showHeritage', 'heritageSubtitle', 'heritageTitle', 'heritageDesc', 'heritageFounded', 'heritageHeadquarters', 'heritageCenters', 'heritageImage']
+      fields: ['heritageSubtitle', 'heritageTitle', 'heritageDesc', 'heritageFounded', 'heritageHeadquarters', 'heritageCenters', 'heritageImage']
     },
     {
       id: 'quality',
       title: 'Quality & Accreditations',
       description: 'Configure brand excellence text, state awards, and illustrational photo.',
-      fields: ['showQuality', 'qualitySubtitle', 'qualityTitle', 'qualityDesc', 'qualityAwardTitle', 'qualityAwardDesc', 'qualityImage']
+      fields: ['qualitySubtitle', 'qualityTitle', 'qualityDesc', 'qualityAwardTitle', 'qualityAwardDesc', 'qualityImage']
     },
     {
       id: 'ceoMessage',
@@ -153,13 +152,13 @@ const pageSectionGroups: Record<string, Array<{
       id: 'presence',
       title: 'Regional Presence Map',
       description: 'Configure text content next to the interactive presence map.',
-      fields: ['showPresence', 'presenceSubtitle', 'presenceTitle', 'presenceDesc']
+      fields: ['presenceSubtitle', 'presenceTitle', 'presenceDesc']
     },
     {
       id: 'cta',
       title: 'Bottom CTA Panel',
       description: 'Configure the call-to-action yellow box at the bottom of the page.',
-      fields: ['showCTA', 'ctaTitle', 'ctaDesc']
+      fields: ['ctaTitle', 'ctaDesc']
     }
   ],
 
