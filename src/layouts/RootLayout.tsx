@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SupportWidget from '../components/SupportWidget';
+import QuickActionWidget from '../components/QuickActionWidget';
 
 const RootLayout: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const RootLayout: React.FC = () => {
       </main>
       <Footer />
       <SupportWidget />
+      <QuickActionWidget />
     </div>
   );
 };

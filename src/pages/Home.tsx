@@ -175,7 +175,7 @@ const HomeTestimonialCarousel: React.FC<CarouselProps> = ({ testimonials }) => {
           {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
         </div>
         <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full mb-5 inline-block">{t.product}</span>
-        <p className="text-zinc-300 leading-relaxed mb-6 italic text-base font-light min-h-[80px]">"{t.text}"</p>
+        <p className="text-zinc-300 leading-relaxed mb-6 text-base font-light min-h-[80px]">"{t.text}"</p>
         <div className="flex items-center gap-3 pt-4 border-t border-white/5">
           <div className="w-10 h-10 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
             <span className="text-yellow-400 font-black text-xs">{initialsVal}</span>
@@ -305,7 +305,7 @@ const Home: React.FC = () => {
           {/* Mobile CTA: Below Hero video, before Stats */}
           <div className="md:hidden px-5 pb-8 pt-0 bg-zinc-950">
             <div className="bg-zinc-900/60 backdrop-blur-sm rounded-[2.5rem] p-6 border border-white/5 reveal shadow-2xl relative z-10 mt-4">
-              <h1 className="text-2xl font-thin mb-5 tracking-[0.05em] leading-[1.1] text-white uppercase italic text-center">
+              <h1 className="text-2xl font-thin mb-5 tracking-[0.05em] leading-[1.1] text-white uppercase text-center">
                 {pageData.heroTitle ? (
                   pageData.heroTitle.includes('Since 2002.') ? (
                     <>Precision <span className="text-yellow-400">Since 2002.</span></>

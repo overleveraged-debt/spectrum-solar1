@@ -194,7 +194,7 @@ const SolarCalculatorBody: React.FC<SolarCalculatorProps> = ({ costPerKW, blende
                 className="mt-6 flex items-center justify-between bg-black text-white rounded-[1.5rem] p-6 group hover:bg-zinc-900 transition-all shadow-xl"
               >
                 <div>
-                  <span className="text-white font-black uppercase italic tracking-tighter block text-lg">Book Site Audit</span>
+                  <span className="text-white font-black uppercase tracking-tighter block text-lg">Book Site Audit</span>
                   <span className="text-[10px] font-medium text-zinc-500 uppercase tracking-widest">Free Engineer Visit</span>
                 </div>
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-all">
@@ -209,7 +209,7 @@ const SolarCalculatorBody: React.FC<SolarCalculatorProps> = ({ costPerKW, blende
       {/* Quote Footer */}
       <section className="px-6 py-24 border-t border-zinc-100">
         <div className="max-w-4xl mx-auto text-center reveal">
-          <p className="text-3xl md:text-4xl font-black italic uppercase tracking-tighter mb-6 text-black">
+          <p className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-6 text-black">
             "Every unit you generate is money you keep."
           </p>
           <div className="w-20 h-1 bg-yellow-400 mx-auto mb-4"></div>
@@ -338,7 +338,7 @@ const PowerCalculator: React.FC = () => {
             </div>
             <Link to="/contact" className="mt-6 flex items-center justify-between bg-black text-white rounded-[1.5rem] p-6 group hover:bg-zinc-900 transition-all shadow-xl">
               <div>
-                <span className="text-white font-black uppercase italic tracking-tighter block text-lg">Get Exact Quote</span>
+                <span className="text-white font-black uppercase tracking-tighter block text-lg">Get Exact Quote</span>
                 <span className="text-[10px] font-medium text-zinc-500 uppercase tracking-widest">Free assessment visit</span>
               </div>
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition-all">

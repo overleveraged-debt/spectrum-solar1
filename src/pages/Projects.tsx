@@ -83,7 +83,7 @@ const Projects: React.FC = () => {
             4000+ SUCCESSFUL <br className="hidden sm:block" />
             INSTALLATIONS
           </h1>
-          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
             From residential rooftops to massive industrial grids, delivering energy excellence across the state.
           </p>
         </div>
@@ -145,7 +145,7 @@ const Projects: React.FC = () => {
                     <span>{project.location}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xl font-thin uppercase italic tracking-tight group-hover:text-yellow-500 transition-colors">
+                    <h3 className="text-xl font-thin uppercase tracking-tight group-hover:text-yellow-500 transition-colors">
                       {project.name}
                     </h3>
                     <div className="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center group-hover:bg-yellow-400 group-hover:border-yellow-400 transition-all">
@@ -205,7 +205,7 @@ const Projects: React.FC = () => {
       <section className="px-6 pb-10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
           <div>
-            <h3 className="text-3xl md:text-4xl font-thin uppercase italic tracking-tight mb-2">
+            <h3 className="text-3xl md:text-4xl font-thin uppercase tracking-tight mb-2">
               Want us to build yours?
             </h3>
             <p className="text-zinc-500 text-sm font-medium">

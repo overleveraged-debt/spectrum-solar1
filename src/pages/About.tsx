@@ -117,7 +117,7 @@ const About: React.FC = () => {
                 pageData.heroTitle
               )}
             </h1>
-            <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+            <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
               {pageData.heroDesc}
             </p>
           </div>
@@ -153,7 +153,7 @@ const About: React.FC = () => {
                 <Globe className="w-12 h-12 text-yellow-400" />
               </div>
               <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">{pageData.heritageSubtitle}</span>
-              <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight italic uppercase text-white leading-tight">
+              <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight uppercase text-white leading-tight">
                 {pageData.heritageTitle}
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed mb-8">
@@ -203,7 +203,7 @@ const About: React.FC = () => {
                 <Award className="w-12 h-12 text-yellow-400" />
               </div>
               <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">{pageData.qualitySubtitle}</span>
-              <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight italic uppercase text-white leading-tight">
+              <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight uppercase text-white leading-tight">
                 {pageData.qualityTitle}
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed mb-8">

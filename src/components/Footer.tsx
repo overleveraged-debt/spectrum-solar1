@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Instagram, 
@@ -9,13 +9,19 @@ import {
   Phone, 
   MapPin, 
   Award,
-  ShieldCheck
+  ShieldCheck,
+  ChevronDown
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data/config';
 import { usePageContent } from '../hooks/usePageContent';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
+  const toggleSection = (section: string) => {
+    setOpenSection(prev => prev === section ? null : section);
+  };
   
   // Fetch footer configurations
   const { pageData: footerData } = usePageContent('footer');
@@ -38,7 +44,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-zinc-950 pt-24 pb-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-16 pb-20">
           
           {/* Brand & Description */}
           <div className="lg:col-span-4 space-y-8">
@@ -91,99 +97,131 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Solutions Column */}
-          <div className="lg:col-span-2">
-            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-8">Solar Solutions</h5>
-            <ul className="space-y-4">
-              {[
-                { label: 'On-Grid Solar', path: '/solar/on-grid' },
-                { label: 'Hybrid Systems', path: '/solar/hybrid' },
-                { label: 'Off-Grid Solar', path: '/solar/off-grid' },
-                { label: 'Water Heaters', path: '/solar/water-heaters' },
-                { label: 'Solar Calculator', path: '/calculator' }
-              ].map((link) => (
-                <li key={link.path}>
-                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="lg:col-span-2 border-b md:border-b-0 border-white/5 pb-4 md:pb-0">
+            <button 
+              onClick={() => toggleSection('solar')}
+              className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+            >
+              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white md:mb-8">Solar Solutions</h5>
+              <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'solar' ? 'rotate-180 text-yellow-400' : ''}`} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'solar' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
+              <ul className="space-y-4">
+                {[
+                  { label: 'On-Grid Solar', path: '/solar/on-grid' },
+                  { label: 'Hybrid Systems', path: '/solar/hybrid' },
+                  { label: 'Off-Grid Solar', path: '/solar/off-grid' },
+                  { label: 'Water Heaters', path: '/solar/water-heaters' },
+                  { label: 'Solar Calculator', path: '/calculator' }
+                ].map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
+                      <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Backup Column */}
-          <div className="lg:col-span-2">
-            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-8">Power Backup</h5>
-            <ul className="space-y-4">
-              {[
-                { label: 'Lithium Inbuilt UPS', path: '/power/lithium-ups' },
-                { label: 'Online UPS', path: '/power/online-ups' },
-                { label: 'Home Inverters', path: '/power/inverters' },
-                { label: 'Lithium Batteries', path: '/power/lithium-batteries' },
-                { label: 'Tubular Batteries', path: '/power/tubular-batteries' }
-              ].map((link) => (
-                <li key={link.path}>
-                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="lg:col-span-2 border-b md:border-b-0 border-white/5 pb-4 md:pb-0">
+            <button 
+              onClick={() => toggleSection('power')}
+              className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+            >
+              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white md:mb-8">Power Backup</h5>
+              <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'power' ? 'rotate-180 text-yellow-400' : ''}`} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'power' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
+              <ul className="space-y-4">
+                {[
+                  { label: 'Lithium Inbuilt UPS', path: '/power/lithium-ups' },
+                  { label: 'Online UPS', path: '/power/online-ups' },
+                  { label: 'Home Inverters', path: '/power/inverters' },
+                  { label: 'Lithium Batteries', path: '/power/lithium-batteries' },
+                  { label: 'Tubular Batteries', path: '/power/tubular-batteries' }
+                ].map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
+                      <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Company Column */}
-          <div className="lg:col-span-2">
-            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-8">Partner With Us</h5>
-            <ul className="space-y-4">
-              {[
-                { label: 'Franchise Model', path: '/opportunities/franchise' },
-                { label: 'Dealer Network', path: '/opportunities/dealership' },
-                { label: 'Freelance Partner', path: '/opportunities/freelance' },
-                { label: 'Careers', path: '/careers' },
-                { label: 'Our Projects', path: '/projects' },
-                { label: 'Help & Support', path: '/support' }
-              ].map((link) => (
-                <li key={link.path}>
-                  <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="lg:col-span-2 border-b md:border-b-0 border-white/5 pb-4 md:pb-0">
+            <button 
+              onClick={() => toggleSection('partner')}
+              className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+            >
+              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white md:mb-8">Partner With Us</h5>
+              <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'partner' ? 'rotate-180 text-yellow-400' : ''}`} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'partner' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
+              <ul className="space-y-4">
+                {[
+                  { label: 'Franchise Model', path: '/opportunities/franchise' },
+                  { label: 'Dealer Network', path: '/opportunities/dealership' },
+                  { label: 'Freelance Partner', path: '/opportunities/freelance' },
+                  { label: 'Careers', path: '/careers' },
+                  { label: 'Our Projects', path: '/projects' },
+                  { label: 'Help & Support', path: '/support' }
+                ].map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-zinc-500 hover:text-yellow-400 text-xs font-medium transition-colors flex items-center gap-2 group">
+                      <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Contact Column */}
           <div className="lg:col-span-2">
-            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-8">Get In Touch</h5>
-            <ul className="space-y-6">
-              <li className="flex gap-3">
-                <MapPin className="w-4 h-4 text-yellow-400 shrink-0" />
-                <div className="space-y-1">
-                  <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Headquarters</p>
-                  <p className="text-zinc-500 text-xs leading-relaxed">Kochi</p>
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <Phone className="w-4 h-4 text-yellow-400 shrink-0" />
-                <div className="space-y-1">
-                  <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Sales Support</p>
-                  <a href={`tel:${phoneVal.replace(/\s+/g, '')}`} className="text-zinc-500 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
-                    {phoneVal}
-                  </a>
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <Mail className="w-4 h-4 text-yellow-400 shrink-0" />
-                <div className="space-y-1">
-                  <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Email Us</p>
-                  <a href={`mailto:${emailVal}`} className="text-zinc-500 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
-                    {emailVal}
-                  </a>
-                </div>
-              </li>
-            </ul>
+            <button 
+              onClick={() => toggleSection('contact')}
+              className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+            >
+              <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-white md:mb-8">Get In Touch</h5>
+              <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'contact' ? 'rotate-180 text-yellow-400' : ''}`} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'contact' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
+              <ul className="space-y-6">
+                <li className="flex gap-3">
+                  <MapPin className="w-4 h-4 text-yellow-400 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Headquarters</p>
+                    <p className="text-zinc-500 text-xs leading-relaxed">Kochi</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <Phone className="w-4 h-4 text-yellow-400 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Sales Support</p>
+                    <a href={`tel:${phoneVal.replace(/\s+/g, '')}`} className="text-zinc-500 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                      {phoneVal}
+                    </a>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <Mail className="w-4 h-4 text-yellow-400 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Email Us</p>
+                    <a href={`mailto:${emailVal}`} className="text-zinc-500 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                      {emailVal}
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
 
         </div>

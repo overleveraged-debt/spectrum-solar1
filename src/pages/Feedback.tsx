@@ -21,7 +21,7 @@ const TestimonialCard: React.FC<{ testimonial: any }> = ({ testimonial: t }) => 
     <span className="text-[9px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-full mb-4 inline-block">
       {t.product}
     </span>
-    <p className="text-zinc-300 leading-relaxed mb-5 italic text-sm font-light">"{t.text}"</p>
+    <p className="text-zinc-300 leading-relaxed mb-5 text-sm font-light">"{t.text}"</p>
     <div className="flex items-center gap-3 pt-4 border-t border-white/5">
       <div className="w-10 h-10 rounded-full bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
         <span className="text-yellow-400 font-black text-xs">{initials}</span>
@@ -83,7 +83,7 @@ const Feedback: React.FC = () => {
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
             Trusted By <br className="hidden md:block" /> Thousands
           </h1>
-          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter">
+          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase tracking-tighter">
             6,145+ Projects · 4.9 Rating · 10,000+ Reviews
           </p>
         </div>
@@ -219,7 +219,7 @@ const Feedback: React.FC = () => {
       <section className="px-6 pb-20 border-t border-white/5 pt-16">
         <div className="max-w-4xl mx-auto reveal text-center">
             <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Your Experience</span>
-            <h3 className="text-3xl md:text-5xl font-thin italic uppercase tracking-tight mb-8 text-white leading-tight">
+            <h3 className="text-3xl md:text-5xl font-thin uppercase tracking-tight mb-8 text-white leading-tight">
               Share your story on Google.
             </h3>
             <p className="text-zinc-500 text-lg mb-10 max-w-2xl mx-auto">

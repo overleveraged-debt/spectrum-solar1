@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Menu, X, ChevronDown, ChevronRight, Sun, Zap, Leaf, Thermometer, Battery, Server, BatteryCharging, Layers, Cpu, TrendingUp, Users, Briefcase, Image, BookOpen, FolderOpen } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Sun, Zap, Leaf, Thermometer, Battery, Server, BatteryCharging, Layers, Cpu, TrendingUp, Users, Briefcase, Image, BookOpen, FolderOpen, Phone, MessageCircle } from 'lucide-react';
 import { useNavbarScroll } from '../hooks/useNavbarScroll';
 import { Link, useLocation } from 'react-router-dom';
 import { CONTACT_INFO } from '../data/config';

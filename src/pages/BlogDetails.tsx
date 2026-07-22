@@ -161,11 +161,11 @@ const BlogDetails: React.FC = () => {
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-thin tracking-tight leading-[1.05] uppercase italic">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-thin tracking-tight leading-[1.05] uppercase">
             {post.title}
           </h1>
           
-          <p className="text-lg text-zinc-400 leading-relaxed font-light italic border-l-2 border-yellow-400 pl-4 py-1">
+          <p className="text-lg text-zinc-400 leading-relaxed font-light border-l-2 border-yellow-400 pl-4 py-1">
             {post.excerpt}
           </p>
         </div>

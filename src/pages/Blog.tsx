@@ -117,7 +117,7 @@ const Blog: React.FC = () => {
             ENERGY EXCELLENCE <br className="hidden md:block" />
             INSIGHTS
           </h1>
-          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
             Two decades of technical expertise, distilled into actionable energy insights.
           </p>
         </div>
@@ -175,7 +175,7 @@ const Blog: React.FC = () => {
                   <span className="flex items-center gap-1.5"><User className="w-3 h-3 text-yellow-400" /> {featured.author || 'Tech Team'}</span>
                   <span>{featured.readTime || '5 min read'}</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-thin uppercase italic tracking-tight mb-5 leading-none group-hover:text-yellow-400 transition-colors duration-300">
+                <h3 className="text-3xl md:text-4xl font-thin uppercase tracking-tight mb-5 leading-none group-hover:text-yellow-400 transition-colors duration-300">
                   {featured.title}
                 </h3>
                 <p className="text-zinc-400 leading-relaxed mb-8 font-light text-base">
@@ -229,7 +229,7 @@ const Blog: React.FC = () => {
                     <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3 text-yellow-400" /> {formatDate(post.publishedAt)}</span>
                     <span className="flex items-center gap-1.5"><User className="w-3 h-3 text-yellow-400" /> {post.author || 'Tech Team'}</span>
                   </div>
-                  <h3 className="text-2xl font-thin uppercase italic tracking-tight mb-3 leading-tight group-hover:text-yellow-400 transition-colors duration-300">
+                  <h3 className="text-2xl font-thin uppercase tracking-tight mb-3 leading-tight group-hover:text-yellow-400 transition-colors duration-300">
                     {post.title}
                   </h3>
                   <p className="text-zinc-500 text-sm leading-relaxed mb-6 line-clamp-2 font-light">

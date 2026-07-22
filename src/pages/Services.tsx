@@ -136,7 +136,7 @@ const Services: React.FC = () => {
             INTEGRATED ENERGY <br className="hidden md:block" />
             ECOSYSTEMS
           </h1>
-          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase italic tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
             Consolidating two decades of expertise into sustainable power solutions.
           </p>
         </div>
@@ -293,7 +293,7 @@ const Services: React.FC = () => {
         <div className="max-w-7xl mx-auto reveal">
           <div className="text-center mb-12 md:mb-16">
             <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">System Guide</span>
-            <h2 className="text-[2rem] sm:text-3xl md:text-4xl font-thin uppercase italic tracking-tight leading-none mb-4 text-white">
+            <h2 className="text-[2rem] sm:text-3xl md:text-4xl font-thin uppercase tracking-tight leading-none mb-4 text-white">
               Technical Selection Guide
             </h2>
             <p className="text-zinc-600 font-medium uppercase tracking-widest text-[10px]">Matching solutions to requirements</p>
@@ -316,7 +316,7 @@ const Services: React.FC = () => {
                   { type: 'Off-Grid Lithium', cap: '1kW – 25kW', app: 'Self-Sufficient Power', backup: 'Full Autonomy' },
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
-                    <td className="px-10 py-8 font-black text-white text-lg italic uppercase">{row.type}</td>
+                    <td className="px-10 py-8 font-black text-white text-lg uppercase">{row.type}</td>
                     <td className="px-10 py-8 font-medium text-zinc-400">{row.cap}</td>
                     <td className="px-10 py-8 text-zinc-500 uppercase text-[10px] font-black tracking-widest">{row.app}</td>
                     <td className="px-10 py-8 font-medium text-yellow-400 uppercase text-[10px]">{row.backup}</td>

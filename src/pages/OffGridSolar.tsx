@@ -429,7 +429,7 @@ const OffGridSolar: React.FC = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="max-w-4xl mx-auto text-center relative z-10 reveal">
           <div className="text-7xl md:text-8xl text-yellow-400/20 font-black leading-none mb-4">"</div>
-          <h2 className="text-2xl md:text-5xl font-thin italic uppercase tracking-tight mb-6 md:mb-8 leading-tight">
+          <h2 className="text-2xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8 leading-tight">
             No Grid. No Bills.<br />Just Pure Solar Power.
           </h2>
           <p className="text-zinc-400 text-base md:text-xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">
