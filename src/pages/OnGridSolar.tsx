@@ -2,9 +2,8 @@ import { usePageContent } from '../hooks/usePageContent';
 import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import {
-  Sun, ArrowRight, ShieldCheck, CheckCircle2,
-  Home, Building2, GraduationCap, Hospital, Factory,
-  PhoneCall, Settings, FileText, Wrench, Play, ChevronDown,
+  Sun, ArrowRight, CheckCircle2,
+  PhoneCall, ChevronDown,
   Battery, TrendingUp, X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -17,27 +16,26 @@ const OnGridSolar: React.FC = () => {
   const { pageData } = usePageContent('on-grid');
   const perfectList = pageData.perfectFor || [
     {
-        "label": "Independent Houses & Villas",
-        "sub": "Reduce monthly residential bills to near zero"
+      "label": "Independent Houses & Villas",
+      "sub": "Reduce monthly residential bills to near zero"
     },
     {
-        "label": "Commercial & Office Buildings",
-        "sub": "Offset high daytime commercial grid rates"
+      "label": "Commercial & Office Buildings",
+      "sub": "Offset high daytime commercial grid rates"
     },
     {
-        "label": "Educational Institutions",
-        "sub": "Schools, colleges and universities solar ROI"
+      "label": "Educational Institutions",
+      "sub": "Schools, colleges and universities solar ROI"
     },
     {
-        "label": "Hospitals & Diagnostic Centers",
-        "sub": "Reliable power generation during daytime peaks"
+      "label": "Hospitals & Diagnostic Centers",
+      "sub": "Reliable power generation during daytime peaks"
     },
     {
-        "label": "Manufacturing & Industrial Units",
-        "sub": "Lower operations costs on large roof spaces"
+      "label": "Manufacturing & Industrial Units",
+      "sub": "Lower operations costs on large roof spaces"
     }
-];
-
+  ];
 
   const heroSubtitle = pageData.heroSubtitle || "Grid-Connected · Net Metering";
   const heroTitle = pageData.heroTitle || "On-Grid Solar System";
@@ -189,22 +187,21 @@ const OnGridSolar: React.FC = () => {
         </div>
       </section>
 
-
       {/* ── BENTO BENEFITS GRID ──────────────────────────────────────────── */}
-      <section className="py-32 px-6">
+      <section className="py-24 md:py-32 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 reveal">
+          <div className="mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Advantages</span>
             <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Key Benefits</h2>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
-            {/* Large hero card */}
-            <div className="col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[280px] lg:min-h-0 group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Highlighted card */}
+            <div className="sm:col-span-2 lg:col-span-1 lg:row-span-2 reveal bg-yellow-400 rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px] lg:min-h-[400px] group hover:shadow-[0_0_50px_rgba(250,204,21,0.2)] transition-all">
               <HighlightIcon className="w-12 h-12 text-black" />
               <div>
                 <div className="text-black/50 text-[10px] font-black uppercase tracking-widest mb-2">Key Highlight</div>
-                <h3 className="text-black text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
+                <h3 className="text-black text-2xl md:text-3xl font-thin uppercase tracking-tight leading-tight">{highlightBenefit.title}</h3>
                 <p className="text-black/60 text-sm mt-3 font-medium">{highlightBenefit.desc}</p>
               </div>
             </div>
@@ -212,7 +209,7 @@ const OnGridSolar: React.FC = () => {
             {otherBenefits.map((benefit: any, i: number) => {
               const IconComponent = IconMap[benefit.icon] || Battery;
               return (
-                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
+                <div key={i} className="reveal bg-zinc-900 border border-white/5 rounded-[2rem] p-6 md:p-7 flex flex-col gap-4 hover:border-yellow-400/30 hover:bg-zinc-900/80 transition-all group" style={{ transitionDelay: `${i * 80}ms` }}>
                   <div className="w-11 h-11 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center group-hover:bg-yellow-400/20 transition-colors">
                     <IconComponent className="w-5 h-5 text-yellow-400" />
                   </div>
@@ -227,20 +224,20 @@ const OnGridSolar: React.FC = () => {
         </div>
       </section>
 
-      {/* ── FULL-WIDTH COMPARISON ────────────────────────────────────────── */}
-      <section className="py-32 px-6 bg-zinc-900/50 border-y border-white/5">
+      {/* ── COMPARISON TABLE ────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 px-6 bg-zinc-900/50 border-y border-white/5">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16 reveal">
+          <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">The Numbers</span>
-            <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight">Grid Solar vs Grid Power</h2>
+            <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight">Grid Solar vs Grid Power</h2>
           </div>
 
-          <div className="reveal bg-zinc-950 border border-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl">
+          <div className="reveal bg-zinc-950 border border-white/5 rounded-[2rem] overflow-hidden shadow-2xl">
             <div className="grid grid-cols-3 border-b border-white/5">
-              <div className="py-5 px-8 text-zinc-500 text-[10px] font-black uppercase tracking-widest">Category</div>
-              <div className="py-5 px-8 text-center text-zinc-500 text-[10px] font-black uppercase tracking-widest border-x border-white/5">Normal Grid Power</div>
-              <div className="py-5 px-8 text-center bg-yellow-400/5">
-                <span className="text-yellow-400 text-[10px] font-black uppercase tracking-widest">On-Grid Solar ✦</span>
+              <div className="py-4 px-3 md:px-8 text-zinc-500 text-[8px] md:text-[10px] font-black uppercase tracking-widest">Category</div>
+              <div className="py-4 px-3 md:px-8 text-center text-zinc-500 text-[8px] md:text-[10px] font-black uppercase tracking-widest border-x border-white/5">Normal Grid Power</div>
+              <div className="py-4 px-3 md:px-8 text-center bg-yellow-400/5">
+                <span className="text-yellow-400 text-[8px] md:text-[10px] font-black uppercase tracking-widest">On-Grid Solar ✦</span>
               </div>
             </div>
 
@@ -253,15 +250,15 @@ const OnGridSolar: React.FC = () => {
               { feature: "Energy Independence", traditional: "100% grid dependent", solar: "Day-time independent" },
             ].map((row, i) => (
               <div key={i} className="grid grid-cols-3 border-b border-white/5 last:border-0 hover:bg-white/2 transition-colors">
-                <div className="py-5 px-8 text-sm font-medium text-zinc-300">{row.feature}</div>
-                <div className="py-5 px-8 text-center border-x border-white/5">
-                  <span className="flex items-center justify-center gap-2 text-sm text-zinc-500">
+                <div className="py-4 px-3 md:px-8 text-xs md:text-sm font-medium text-zinc-300 flex items-center">{row.feature}</div>
+                <div className="py-4 px-3 md:px-8 text-center border-x border-white/5 flex items-center justify-center">
+                  <span className="flex items-center justify-center gap-1.5 md:gap-2 text-xs md:text-sm text-zinc-500">
                     <X className="w-3.5 h-3.5 text-red-500/70 flex-shrink-0" />
                     {row.traditional}
                   </span>
                 </div>
-                <div className="py-5 px-8 text-center bg-yellow-400/5">
-                  <span className="flex items-center justify-center gap-2 text-sm text-white font-medium">
+                <div className="py-4 px-3 md:px-8 text-center bg-yellow-400/5 flex items-center justify-center">
+                  <span className="flex items-center justify-center gap-1.5 md:gap-2 text-xs md:text-sm text-white font-medium">
                     <CheckCircle2 className="w-3.5 h-3.5 text-yellow-400 flex-shrink-0" />
                     {row.solar}
                   </span>
@@ -365,27 +362,27 @@ const OnGridSolar: React.FC = () => {
             <div className="absolute left-7 top-14 bottom-14 w-[2px] bg-gradient-to-b from-yellow-400/80 via-yellow-400/40 to-transparent hidden md:block -z-10" />
             <div className="space-y-5">
               {(pageData.installationSteps || [
-          {
-                    "title": "Site Survey & Feasibility",
-                    "desc": "Our engineers inspect your roof space, orientation, and shadow profiles."
-          },
-          {
-                    "title": "System Design & Engineering",
-                    "desc": "Custom electrical layouts and structural mounting designs prepared."
-          },
-          {
-                    "title": "Utility Approvals & Permits",
-                    "desc": "We handle net metering applications and local government approvals."
-          },
-          {
-                    "title": "Installation & Setup",
-                    "desc": "Clean panel mounting, inverter setup, and complete safety wiring."
-          },
-          {
-                    "title": "Net Meter & Commissioning",
-                    "desc": "Grid synchronization, test run, and hand-over of active solar dashboard."
-          }
-]).map((step: any, i: number) => {
+                {
+                  "title": "Site Survey & Feasibility",
+                  "desc": "Our engineers inspect your roof space, orientation, and shadow profiles."
+                },
+                {
+                  "title": "System Design & Engineering",
+                  "desc": "Custom electrical layouts and structural mounting designs prepared."
+                },
+                {
+                  "title": "Utility Approvals & Permits",
+                  "desc": "We handle net metering applications and local government approvals."
+                },
+                {
+                  "title": "Installation & Setup",
+                  "desc": "Clean panel mounting, inverter setup, and complete safety wiring."
+                },
+                {
+                  "title": "Net Meter & Commissioning",
+                  "desc": "Grid synchronization, test run, and hand-over of active solar dashboard."
+                }
+              ]).map((step: any, i: number) => {
                 return (
                   <div key={i} className="reveal flex gap-4 md:gap-6 group" style={{ transitionDelay: `${i * 100}ms` }}>
                     <div className="flex-shrink-0 w-14 h-14 rounded-full bg-zinc-950 border-2 border-yellow-400/50 flex items-center justify-center relative z-[1] group-hover:border-yellow-400 group-hover:bg-yellow-400/10 transition-all">
