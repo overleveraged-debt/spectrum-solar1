@@ -40,15 +40,17 @@ const SupportWidget: React.FC = () => {
       {/* Floating Action Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-16 h-16 rounded-full shadow-[0_20px_50px_rgba(250,204,21,0.3)] flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-90 ${isOpen ? 'bg-zinc-900 text-white rotate-90' : 'bg-yellow-400 text-black'}`}
+        className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-90 shadow-xl ${isOpen ? 'bg-zinc-900 text-white rotate-90' : 'bg-yellow-400 text-black'}`}
       >
+        {/* Soft Pulsing Sun Glow Aura behind button */}
+        <span className="absolute inset-0 rounded-full bg-yellow-400 blur-lg opacity-50 animate-pulse -z-10" />
         {isOpen ? (
-          <X className="w-8 h-8" />
+          <X className="w-8 h-8 relative z-10" />
         ) : (
           <img
             src="https://img.icons8.com/parakeet-line/48/sun.png"
             alt="Support"
-            className="w-10 h-10"
+            className="w-10 h-10 relative z-10"
           />
         )}
       </button>
@@ -58,7 +60,7 @@ const SupportWidget: React.FC = () => {
 
         {/* Header */}
         <div className="p-6 sm:p-8 pb-4 border-b border-white/5">
-          <h3 className="text-white text-xl sm:text-2xl font-black uppercase italic tracking-tighter mb-1 sm:mb-2">Support Hub</h3>
+          <h3 className="text-white text-xl sm:text-2xl font-black uppercase tracking-tighter mb-1 sm:mb-2">Support Hub</h3>
           <p className="text-zinc-500 text-[10px] sm:text-xs font-medium uppercase tracking-widest">How can we help you today?</p>
         </div>
 
