@@ -220,7 +220,15 @@ const HomeTestimonialCarousel: React.FC<CarouselProps> = ({ testimonials }) => {
 const Home: React.FC = () => {
   const [pageData, setPageData] = useState(DEFAULT_HOME_DATA);
   const [testimonialsList, setTestimonialsList] = useState<any[]>([]);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(true); // Start as true so the page renders freely; LoadingScreen handles its own cinematic timing
+
+  useEffect(() => {
+    // Safety timer: fade out the loading splash screen even if the CDN video fails or takes too long to load (e.g. offline/DNS issues)
+    const timer = setTimeout(() => {
+      setIsVideoLoaded(true);
+    }, 4500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -229,6 +237,9 @@ const Home: React.FC = () => {
         if (isMounted && res && res.content) {
           try {
             const parsed = JSON.parse(res.content);
+            if (parsed.heroVideoUrl && parsed.heroVideoUrl.startsWith('/videos/')) {
+              delete parsed.heroVideoUrl; // Fallback to CDN URL if Sanity has old broken relative path
+            }
             setPageData(prev => ({ ...prev, ...parsed }));
           } catch (e) {
             console.error("Failed to parse home page data from Sanity", e);
@@ -275,7 +286,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className={`flex flex-col bg-zinc-950 noise-bg overflow-x-hidden ${!isVideoLoaded ? 'h-screen overflow-hidden' : ''}`}>
+    <div className="flex flex-col bg-zinc-950 noise-bg overflow-x-hidden">
       <SEO 
         title="Spectrum Solar | India's Trusted Solar Energy & Power Backup Brand"
         description="Empowering India with sustainable energy. 25+ years of excellence in solar installations, power backups, and nationwide franchise opportunities."
