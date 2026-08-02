@@ -399,15 +399,15 @@ const fieldMeta: Record<string, { label: string; desc?: string; placeholder?: st
 
 const productOptions = [
   { id: 'on-grid', name: 'On-Grid Solar System' },
-  { id: 'hybrid-solar', name: 'Hybrid Solar System' },
+  { id: 'hybrid', name: 'Hybrid Solar System' },
   { id: 'off-grid', name: 'Lithium Off-Grid System' },
-  { id: 'water-heater', name: 'Solar Water Heaters' },
+  { id: 'water-heaters', name: 'Solar Water Heaters' },
   { id: 'lithium-ups', name: 'Lithium Inbuilt UPS' },
   { id: 'home-ups', name: 'Home UPS System' },
   { id: 'inverters', name: 'Home & Commercial Inverters' },
   { id: 'online-ups', name: 'True Online UPS' },
-  { id: 'lithium-battery', name: 'LFP Lithium Batteries' },
-  { id: 'tubular-battery', name: 'Tall Tubular Batteries' }
+  { id: 'lithium-batteries', name: 'LFP Lithium Batteries' },
+  { id: 'tubular-batteries', name: 'Tall Tubular Batteries' }
 ];
 
 export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
@@ -2584,14 +2584,17 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
       )}
 
       {/* Action Footer */}
-      <div className="pt-6 border-t border-zinc-900 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+      <div className="pt-6 border-t border-zinc-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex flex-col gap-1">
           {isDirty && (
             <span className="flex items-center gap-2 text-yellow-400 text-xs font-bold uppercase tracking-wider animate-pulse">
               <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
               Unsaved Changes
             </span>
           )}
+          <span className="text-[11px] text-zinc-500 font-medium">
+            💡 <strong className="text-zinc-400 font-semibold">Note:</strong> After saving, please allow up to 3–5 minutes for live website updates to propagate across all cached pages.
+          </span>
         </div>
         <button
           onClick={handleSave}

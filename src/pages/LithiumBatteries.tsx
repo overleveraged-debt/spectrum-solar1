@@ -13,11 +13,18 @@ import SEO from '../components/SEO';
 
 
 import { IconMap } from '../utils/iconMap';
+
 const LithiumBatteries: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('lithium-batteries');
-  const perfectList = pageData.perfectFor || undefined;
+  const perfectList = pageData.perfectFor || [
+    { label: "Solar Energy Storage", sub: "LFP energy storage for grid-tied and hybrid solar" },
+    { label: "Critical UPS Backup", sub: "Zero-switch backup for servers, IT, and medical equipment" },
+    { label: "Residential Energy Backup", sub: "Long-life battery backup for homes and apartments" },
+    { label: "Commercial & Industrial", sub: "Scalable battery banks for businesses and factories" },
+    { label: "Off-Grid Remote Sites", sub: "Reliable daily cycle storage for off-grid power" }
+  ];
 
   const benefitList = pageData.benefits || [
     {

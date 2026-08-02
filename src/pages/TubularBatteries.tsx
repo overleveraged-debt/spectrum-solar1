@@ -17,7 +17,13 @@ const TubularBatteries: React.FC = () => {
   useScrollReveal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const { pageData } = usePageContent('tubular-batteries');
-  const perfectList = pageData.perfectFor || undefined;
+  const perfectList = pageData.perfectFor || [
+    { label: "Home UPS & Inverter Backup", sub: "Reliable power backup for everyday household appliances" },
+    { label: "Frequent Power Outage Areas", sub: "Deep discharge recovery built for long outages" },
+    { label: "Budget-Conscious Buyers", sub: "Maximum backup duration at the lowest initial cost" },
+    { label: "Small Shops & Commercial Outlets", sub: "Heavy duty tall tubular performance for small businesses" },
+    { label: "Solar Inverter Integration", sub: "Compatible with solar charge controllers and hybrid inverters" }
+  ];
 
   const benefitList = pageData.benefits || [
     {
