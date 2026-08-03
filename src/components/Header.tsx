@@ -117,7 +117,7 @@ const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
-            <img src="/logo.png" alt="Spectrum Powers" className="h-7 md:h-9 w-auto transition-all duration-500 group-hover:scale-110" />
+            <img src="/logo.png" alt="Spectrum Powers" width="148" height="36" className="h-7 md:h-9 w-auto transition-all duration-500 group-hover:scale-110" />
           </Link>
 
           {/* Desktop Nav */}

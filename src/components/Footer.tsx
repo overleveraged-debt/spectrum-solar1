@@ -52,43 +52,45 @@ const Footer: React.FC = () => {
               <img 
                 src="/logo.png" 
                 alt="Spectrum Solar" 
+                width="164"
+                height="40"
                 className="h-10 w-auto" 
               />
             </Link>
-            <p className="text-zinc-500 text-sm leading-relaxed max-w-sm">
+            <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
               {brandPitch}
             </p>
             <div className="flex items-center gap-4">
               {instagram !== "" && (
-                <a href={instagram} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
+                <a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Spectrum Solar Instagram" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
                   <Instagram className="w-4 h-4" />
                 </a>
               )}
               {facebook !== "" && (
-                <a href={facebook} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
+                <a href={facebook} target="_blank" rel="noopener noreferrer" aria-label="Spectrum Solar Facebook" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
                   <Facebook className="w-4 h-4" />
                 </a>
               )}
               {linkedin !== "" && (
-                <a href={linkedin} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
+                <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="Spectrum Solar LinkedIn" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
                   <Linkedin className="w-4 h-4" />
                 </a>
               )}
               {twitter !== "" && (
-                <a href={twitter} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
+                <a href={twitter} target="_blank" rel="noopener noreferrer" aria-label="Spectrum Solar Twitter" className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-400 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all duration-300">
                   <Twitter className="w-4 h-4" />
                 </a>
               )}
             </div>
             <div className="flex items-center gap-6 pt-4">
               {isoCert && (
-                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-600">
+                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400">
                   <Award className="w-4 h-4 text-yellow-400" />
                   <span>{isoCert}</span>
                 </div>
               )}
               {mnreApproved && (
-                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-600">
+                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400">
                   <ShieldCheck className="w-4 h-4 text-yellow-400" />
                   <span>{mnreApproved}</span>
                 </div>
@@ -101,8 +103,9 @@ const Footer: React.FC = () => {
             <button 
               onClick={() => toggleSection('solar')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+              aria-label="Toggle Solar Solutions Navigation"
             >
-              <h5 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Solar Solutions</h5>
+              <h3 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Solar Solutions</h3>
               <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'solar' ? 'rotate-180 text-yellow-400' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'solar' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
@@ -130,8 +133,9 @@ const Footer: React.FC = () => {
             <button 
               onClick={() => toggleSection('power')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+              aria-label="Toggle Power Backup Navigation"
             >
-              <h5 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Power Backup</h5>
+              <h3 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Power Backup</h3>
               <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'power' ? 'rotate-180 text-yellow-400' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'power' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
@@ -159,8 +163,9 @@ const Footer: React.FC = () => {
             <button 
               onClick={() => toggleSection('partner')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+              aria-label="Toggle Partner With Us Navigation"
             >
-              <h5 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Partner With Us</h5>
+              <h3 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Partner With Us</h3>
               <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'partner' ? 'rotate-180 text-yellow-400' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'partner' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
@@ -189,8 +194,9 @@ const Footer: React.FC = () => {
             <button 
               onClick={() => toggleSection('contact')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+              aria-label="Toggle Get In Touch Navigation"
             >
-              <h5 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Get In Touch</h5>
+              <h3 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Get In Touch</h3>
               <ChevronDown className={`w-4 h-4 text-zinc-400 md:hidden transition-transform duration-300 ${openSection === 'contact' ? 'rotate-180 text-yellow-400' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'contact' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
@@ -198,15 +204,15 @@ const Footer: React.FC = () => {
                 <li className="flex gap-3">
                   <MapPin className="w-4 h-4 text-yellow-400 shrink-0" />
                   <div className="space-y-1">
-                    <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Headquarters</p>
-                    <p className="text-zinc-500 text-xs leading-relaxed">Kochi</p>
+                    <p className="text-[10px] font-black uppercase text-zinc-400 tracking-wider leading-none">Headquarters</p>
+                    <p className="text-zinc-400 text-xs leading-relaxed">Kochi</p>
                   </div>
                 </li>
                 <li className="flex gap-3">
                   <Phone className="w-4 h-4 text-yellow-400 shrink-0" />
                   <div className="space-y-1">
-                    <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Sales Support</p>
-                    <a href={`tel:${phoneVal.replace(/\s+/g, '')}`} className="text-zinc-500 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                    <p className="text-[10px] font-black uppercase text-zinc-400 tracking-wider leading-none">Sales Support</p>
+                    <a href={`tel:${phoneVal.replace(/\s+/g, '')}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
                       {phoneVal}
                     </a>
                   </div>
@@ -214,8 +220,8 @@ const Footer: React.FC = () => {
                 <li className="flex gap-3">
                   <Mail className="w-4 h-4 text-yellow-400 shrink-0" />
                   <div className="space-y-1">
-                    <p className="text-[10px] font-black uppercase text-zinc-600 tracking-wider leading-none">Email Us</p>
-                    <a href={`mailto:${emailVal}`} className="text-zinc-500 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                    <p className="text-[10px] font-black uppercase text-zinc-400 tracking-wider leading-none">Email Us</p>
+                    <a href={`mailto:${emailVal}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
                       {emailVal}
                     </a>
                   </div>
@@ -229,21 +235,21 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left">
-            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-700">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
               &copy; {currentYear} Spectrum Solar. All Rights Reserved.
             </p>
             {isoCert && (
-              <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] text-zinc-800">
+              <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
                 Awarded Best Solar Energy Industry
               </p>
             )}
           </div>
           
           <div className="flex items-center gap-8">
-            <Link to="/privacy-policy" className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-600 hover:text-yellow-400 transition-colors">
+            <Link to="/privacy-policy" className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:text-yellow-400 transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms-conditions" className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-600 hover:text-yellow-400 transition-colors">
+            <Link to="/terms-conditions" className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-400 hover:text-yellow-400 transition-colors">
               Terms & Conditions
             </Link>
           </div>

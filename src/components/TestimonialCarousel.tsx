@@ -70,6 +70,7 @@ const TestimonialCarousel: React.FC = () => {
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
+              aria-label={`Go to testimonial slide ${i + 1}`}
               className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === activeIndex ? 'bg-yellow-400 w-4' : 'bg-zinc-800'}`}
             />
           ))}
@@ -80,6 +81,7 @@ const TestimonialCarousel: React.FC = () => {
       <div className="absolute top-1/2 -left-4 sm:-left-6 -translate-y-1/2 z-10">
         <button 
           onClick={prevSlide}
+          aria-label="Previous testimonial"
           className="p-3 rounded-full bg-zinc-900 border border-zinc-800 text-white hover:text-yellow-400 hover:border-yellow-400 transition-all shadow-xl"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -88,6 +90,7 @@ const TestimonialCarousel: React.FC = () => {
       <div className="absolute top-1/2 -right-4 sm:-right-6 -translate-y-1/2 z-10">
         <button 
           onClick={nextSlide}
+          aria-label="Next testimonial"
           className="p-3 rounded-full bg-zinc-900 border border-zinc-800 text-white hover:text-yellow-400 hover:border-yellow-400 transition-all shadow-xl"
         >
           <ChevronRight className="w-4 h-4" />

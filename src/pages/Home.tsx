@@ -14,7 +14,7 @@ const DEFAULT_HOME_DATA = {
   // Hero Section
   showHero: true,
   heroTitle: 'Precision Since 2002.',
-  heroVideoPoster: '/images/Banner01.jpg',
+  heroVideoPoster: '/images/Banner01.webp',
   heroVideoUrl: 'https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/hero-bg.mp4',
 
   // Stats Bar
@@ -196,11 +196,11 @@ const HomeTestimonialCarousel: React.FC<CarouselProps> = ({ testimonials }) => {
       {items.length > 1 && (
         <div className="flex items-center gap-3 mt-4">
           {items.map((_, i) => (
-            <button key={i} onClick={() => setIdx(i)} className={`rounded-full transition-all duration-200 ${i === idx ? 'w-5 h-2 bg-yellow-400' : 'w-2 h-2 bg-zinc-700 hover:bg-zinc-500'}`} />
+            <button key={i} onClick={() => setIdx(i)} aria-label={`Go to slide ${i + 1}`} className={`rounded-full transition-all duration-200 ${i === idx ? 'w-5 h-2 bg-yellow-400' : 'w-2 h-2 bg-zinc-700 hover:bg-zinc-500'}`} />
           ))}
           <div className="ml-auto flex gap-2">
-            <button onClick={prev} className="w-9 h-9 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-600 transition-all"><ChevronLeft className="w-4 h-4" /></button>
-            <button onClick={next} className="w-9 h-9 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-600 transition-all"><ChevronRight className="w-4 h-4" /></button>
+            <button onClick={prev} aria-label="Previous slide" className="w-9 h-9 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-600 transition-all"><ChevronLeft className="w-4 h-4" /></button>
+            <button onClick={next} aria-label="Next slide" className="w-9 h-9 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-600 transition-all"><ChevronRight className="w-4 h-4" /></button>
           </div>
         </div>
       )}

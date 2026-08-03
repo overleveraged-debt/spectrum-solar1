@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, HelpCircle, ExternalLink, ArrowRight, MessageSquare } from 'lucide-react';
+import { X, HelpCircle, ExternalLink, ArrowRight, MessageSquare, Sun } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CONTACT_INFO } from '../data/config';
 import { sanityReadClient } from '../lib/sanityClient';
@@ -47,11 +47,7 @@ const SupportWidget: React.FC = () => {
         {isOpen ? (
           <X className="w-8 h-8 relative z-10" />
         ) : (
-          <img
-            src="https://img.icons8.com/parakeet-line/48/sun.png"
-            alt="Support"
-            className="w-10 h-10 relative z-10"
-          />
+          <Sun className="w-8 h-8 text-black relative z-10" />
         )}
       </button>
 
