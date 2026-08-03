@@ -52,6 +52,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isVisible: isParentVisibl
           <img 
             src="/logo.png" 
             alt="Spectrum Solar Logo" 
+            width="240"
+            height="58"
             className="w-44 sm:w-52 md:w-60 opacity-0 animate-cinematic-fade drop-shadow-[0_0_35px_rgba(250,204,21,0.35)]"
             style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
           />

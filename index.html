@@ -9,9 +9,14 @@
     <!-- Preconnect critical origins for faster FCP/LCP -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com" />
-    <link rel="preconnect" href="https://yd3h82fk.apicdn.sanity.io" />
-    <link rel="preload" as="image" href="/images/Banner01.webp" type="image/webp" />
+    <link rel="preconnect" href="https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com" crossorigin />
+    <link rel="preconnect" href="https://yd3h82fk.apicdn.sanity.io" crossorigin />
+    <!-- Non-blocking asynchronous Google Fonts loading -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" />
+    </noscript>
+    <link rel="preload" as="image" href="/images/Banner01.webp" type="image/webp" fetchpriority="high" />
   </head>
   <body>
     <div id="root"></div>

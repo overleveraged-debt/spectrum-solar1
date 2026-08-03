@@ -7,27 +7,36 @@ export const useNavbarScroll = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    let ticking = false;
 
+    const checkScroll = () => {
+      const scrolled = window.scrollY > 50;
       const lightSections = document.querySelectorAll('[data-nav-light]');
       let overLight = false;
       const navHeight = 80;
 
       lightSections.forEach(sec => {
         const pos = sec.getBoundingClientRect();
-        // Section is 'Light' if it covers the top 80px of the viewport
         if (pos.top < navHeight && pos.bottom > 10) overLight = true;
       });
 
+      setIsScrolled(scrolled);
       setIsOverLightSection(overLight);
+      ticking = false;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(checkScroll);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     // Immediate check + slight delay for SPA DOM stability
-    handleScroll();
-    const timer = setTimeout(handleScroll, 100);
+    checkScroll();
+    const timer = setTimeout(checkScroll, 100);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

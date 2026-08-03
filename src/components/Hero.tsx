@@ -12,11 +12,20 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) => {
   const [scrollY, setScrollY] = useState(0);
 
-  const resolvedSrc = videoUrl || "https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/hero-bg.mp4";
+  const resolvedSrc = videoUrl || "https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/spectrum%20small%20(1).mp4";
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -45,6 +54,7 @@ const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) =
           loop 
           playsInline 
           preload="auto"
+          {...({ fetchpriority: "high" } as any)}
           onCanPlayThrough={() => onLoaded?.()}
           className="w-full h-full object-cover transition-all duration-1000 filter saturate-100 brightness-100 md:saturate-[0.6] md:brightness-[0.35]"
           poster={videoPoster || "/images/Banner01.webp"}

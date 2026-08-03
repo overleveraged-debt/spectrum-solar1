@@ -40,6 +40,7 @@ const SupportWidget: React.FC = () => {
       {/* Floating Action Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle Sun Support Hub"
         className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-90 shadow-xl ${isOpen ? 'bg-zinc-900 text-white rotate-90' : 'bg-yellow-400 text-black'}`}
       >
         {/* Soft Pulsing Sun Glow Aura behind button */}
@@ -107,7 +108,7 @@ const SupportWidget: React.FC = () => {
               <span className="text-zinc-600 text-[9px] font-medium block">Instant help</span>
             </div>
           </div>
-          <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-white transition-colors">
+          <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Direct WhatsApp Chat with Sales Engineer" className="text-yellow-400 hover:text-white transition-colors">
             <ExternalLink className="w-5 h-5" />
           </a>
         </div>

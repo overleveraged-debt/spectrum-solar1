@@ -249,7 +249,7 @@ const Header: React.FC = () => {
         {/* Header bar */}
         <div className="flex justify-between items-center px-6 py-5 border-b border-white/8 flex-shrink-0 bg-zinc-900/60">
           <Link to="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
-            <img src="/logo.png" alt="Spectrum Powers" className="h-7 w-auto" />
+            <img src="/logo.png" alt="Spectrum Powers" width="115" height="28" className="h-7 w-auto" />
           </Link>
           <button
             className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-zinc-400 hover:text-white transition-all"

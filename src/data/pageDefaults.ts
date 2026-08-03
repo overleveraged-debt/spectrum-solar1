@@ -5,7 +5,7 @@ export const defaultPagesData: Record<string, any> = {
     showHero: true,
     heroTitle: 'Precision Since 2002.',
     heroVideoPoster: '/images/Banner01.jpg',
-    heroVideoUrl: 'https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/hero-bg.mp4',
+    heroVideoUrl: 'https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/spectrum%20small%20(1).mp4',
     showStatsBar: true,
     stat1Value: '25+',
     stat1Label: 'Years Industry Lead',

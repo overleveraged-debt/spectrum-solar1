@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2 border-b md:border-b-0 border-white/5 pb-4 md:pb-0">
             <button 
               onClick={() => toggleSection('solar')}
-              className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+              className="w-full flex items-center justify-between md:cursor-default text-left py-3.5 md:py-0 min-h-[48px] md:min-h-0"
               aria-label="Toggle Solar Solutions Navigation"
             >
               <h3 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Solar Solutions</h3>
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
                   { label: 'Solar Calculator', path: '/calculator' }
                 ].map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group">
+                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group py-1 inline-flex">
                       <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                       {link.label}
                     </Link>
@@ -132,7 +132,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2 border-b md:border-b-0 border-white/5 pb-4 md:pb-0">
             <button 
               onClick={() => toggleSection('power')}
-              className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+              className="w-full flex items-center justify-between md:cursor-default text-left py-3.5 md:py-0 min-h-[48px] md:min-h-0"
               aria-label="Toggle Power Backup Navigation"
             >
               <h3 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Power Backup</h3>
@@ -148,7 +148,7 @@ const Footer: React.FC = () => {
                   { label: 'Tubular Batteries', path: '/power/tubular-batteries' }
                 ].map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group">
+                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group py-1 inline-flex">
                       <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                       {link.label}
                     </Link>
@@ -162,7 +162,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2 border-b md:border-b-0 border-white/5 pb-4 md:pb-0">
             <button 
               onClick={() => toggleSection('partner')}
-              className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
+              className="w-full flex items-center justify-between md:cursor-default text-left py-3.5 md:py-0 min-h-[48px] md:min-h-0"
               aria-label="Toggle Partner With Us Navigation"
             >
               <h3 className="font-thin text-base tracking-widest text-white md:font-black md:text-[10px] md:tracking-[0.3em] md:mb-8">Partner With Us</h3>
@@ -179,7 +179,7 @@ const Footer: React.FC = () => {
                   { label: 'Help & Support', path: '/support' }
                 ].map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group">
+                    <Link to={link.path} className="text-zinc-400 hover:text-yellow-400 text-sm font-light md:text-xs md:font-medium transition-colors flex items-center gap-2 group py-1 inline-flex">
                       <span className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-yellow-400 transition-colors" />
                       {link.label}
                     </Link>

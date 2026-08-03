@@ -15,7 +15,7 @@ const DEFAULT_HOME_DATA = {
   showHero: true,
   heroTitle: 'Precision Since 2002.',
   heroVideoPoster: '/images/Banner01.webp',
-  heroVideoUrl: 'https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/hero-bg.mp4',
+  heroVideoUrl: 'https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/spectrum%20small%20(1).mp4',
 
   // Stats Bar
   showStatsBar: true,
@@ -366,6 +366,8 @@ const Home: React.FC = () => {
             <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 420px)' }}>
               <img
                 src={pageData.solarSectionImage}
+                srcSet={pageData.solarSectionImage === '/images/home_solar_banner.webp' ? '/images/home_solar_banner_mob.webp 700w, /images/home_solar_banner.webp 1024w' : undefined}
+                sizes="(max-width: 768px) 100vw, 1024px"
                 alt="Solar panels on modern home"
                 className="w-full h-full object-cover object-center"
               />
@@ -428,6 +430,8 @@ const Home: React.FC = () => {
             <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 380px)' }}>
               <img
                 src={pageData.backupSectionImage}
+                srcSet={pageData.backupSectionImage === '/images/home_backup_banner.webp' ? '/images/home_backup_banner_mob.webp 700w, /images/home_backup_banner.webp 2400w' : undefined}
+                sizes="(max-width: 768px) 100vw, 1200px"
                 alt="Modern backup power systems"
                 className="w-full h-full object-cover object-[center_30%]"
               />
@@ -452,7 +456,7 @@ const Home: React.FC = () => {
                       <Icon className="w-5 h-5 text-yellow-400 group-hover:text-yellow-300 transition-colors" />
                     </div>
                     <div>
-                      <h4 className="font-black text-sm uppercase tracking-tight text-white leading-tight">{p.title}</h4>
+                      <h3 className="font-black text-sm uppercase tracking-tight text-white leading-tight">{p.title}</h3>
                       <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 mt-0.5 block">{p.sub}</span>
                     </div>
                     <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-yellow-400 mt-auto">
@@ -470,7 +474,13 @@ const Home: React.FC = () => {
       {pageData.showWhySpectrum !== false && (
         <section className="relative py-28 md:py-40 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img src={pageData.whySpectrumBgImage} className="w-full h-full object-cover" alt="Kerala Nature" />
+            <img 
+              src={pageData.whySpectrumBgImage} 
+              srcSet={pageData.whySpectrumBgImage === '/images/nature-kerala.webp' ? '/images/nature-kerala_mob.webp 700w, /images/nature-kerala.webp 1024w' : undefined}
+              sizes="(max-width: 768px) 100vw, 1024px"
+              className="w-full h-full object-cover" 
+              alt="Kerala Nature" 
+            />
             <div className="absolute inset-0 bg-black/65" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -520,6 +530,8 @@ const Home: React.FC = () => {
             <div className="reveal rounded-[2rem] overflow-hidden" style={{ height: 'clamp(480px, 80vw, 520px)' }}>
               <img
                 src={pageData.whyGoSolarImage}
+                srcSet={pageData.whyGoSolarImage === '/images/home_why_solar.webp' ? '/images/home_why_solar_mob.webp 700w, /images/home_why_solar.webp 1024w' : undefined}
+                sizes="(max-width: 768px) 100vw, 1024px"
                 alt="Solar panels powering a beautiful home"
                 className="w-full h-full object-cover object-center"
               />
@@ -571,6 +583,8 @@ const Home: React.FC = () => {
             <div className="reveal rounded-[2rem] overflow-hidden mb-16" style={{ height: 'clamp(480px, 80vw, 480px)' }}>
               <img
                 src={pageData.heritageImage}
+                srcSet={pageData.heritageImage === '/images/home_heritage_banner.webp' ? '/images/home_heritage_banner_mob.webp 700w, /images/home_heritage_banner.webp 1376w' : undefined}
+                sizes="(max-width: 768px) 100vw, 1200px"
                 alt="Spectrum Engineering Heritage"
                 className="w-full h-full object-cover object-center"
               />
