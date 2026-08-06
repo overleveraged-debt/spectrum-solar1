@@ -90,7 +90,7 @@ const HybridSolar: React.FC = () => {
     }
   };
 
-  const faqs = [
+  const faqs = pageData.faqs || [
     {
       q: "Will it work during power cuts?",
       a: "Yes. Hybrid solar systems switch to battery backup instantly during power cuts, ensuring your home or business stays powered without any interruption."
@@ -511,7 +511,7 @@ const HybridSolar: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            {faqs.map((faq, i) => (
+            {faqs.map((faq: { q: string; a: string }, i: number) => (
               <div key={i} className={`bg-zinc-900 rounded-2xl overflow-hidden border transition-all duration-300 ${activeFaq === i ? 'border-yellow-400/40' : 'border-white/5'}`}>
                 <button
                   className="w-full text-left px-6 md:px-8 py-5 md:py-6 flex items-center justify-between gap-4"

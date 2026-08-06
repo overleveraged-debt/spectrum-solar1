@@ -34,7 +34,6 @@ export const companyDefaults = {
         tagline: 'Net-metered. Reduced electricity bills.',
         description: 'Grid-connected solar systems that feed excess power back to the KSEB grid through net metering. The most cost-effective way to slash your bill to zero.',
         accentColor: '#facc15',
-        badge: 'Most Popular',
         features: ['Net-Metering with KSEB', 'Real-time ERP Monitoring', '25-Year Panel Warranty', 'Government Subsidy Eligible'],
         specs: [
           { label: 'Capacity Range', value: '3kW – 500kW+' },
@@ -113,7 +112,6 @@ export const companyDefaults = {
         tagline: 'Instant zero-switch backup.',
         description: 'All-in-one wall-mountable lithium UPS systems. Instant zero-switch backup with 5x longer battery lifespan.',
         accentColor: '#facc15',
-        badge: 'Next Gen',
         features: ['Instant Switchover (<10ms)', 'LifePO4 Safety Chemistry', '10-Year Maintenance-Free', 'Wall-Mountable Chassis'],
         specs: [
           { label: 'Capacity Range', value: '1kVA – 10kVA' },
@@ -165,7 +163,6 @@ export const companyDefaults = {
         tagline: 'Double-conversion. Zero millisecond delay.',
         description: 'True Online Double-Conversion UPS engineered for critical IT infrastructure, medical equipment, servers, and industrial automation.',
         accentColor: '#facc15',
-        badge: 'Mission Critical',
         features: ['True Double Conversion', 'Zero Transfer Time (0ms)', 'DSP Controlled Technology', 'SNMP / Remote Monitoring'],
         specs: [
           { label: 'Capacity Range', value: '1kVA – 120kVA' },
@@ -183,7 +180,6 @@ export const companyDefaults = {
         tagline: 'Fast charge. 4000+ cycle life.',
         description: 'Advanced Lithium Iron Phosphate (LiFePO4) battery packs with integrated Smart BMS. Charges 3x faster than lead-acid with zero maintenance.',
         accentColor: '#facc15',
-        badge: 'Zero Maintenance',
         features: ['4000+ Cycle Life', 'Integrated Smart BMS', 'Ultra-Fast Charging', '95% Depth of Discharge'],
         specs: [
           { label: 'Capacities', value: '12.8V / 25.6V / 48V (50Ah – 200Ah)' },

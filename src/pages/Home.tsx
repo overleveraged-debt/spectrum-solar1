@@ -380,10 +380,10 @@ const Home: React.FC = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 reveal">
               {[
-                { id: 'on-grid', icon: Sun, title: pageData.solarBox1Title, sub: pageData.solarBox1Sub, desc: pageData.solarBox1Desc, badge: 'Most Popular', color: '#ca8a04', to: '/solar/on-grid' },
-                { id: 'hybrid', icon: Zap, title: pageData.solarBox2Title, sub: pageData.solarBox2Sub, desc: pageData.solarBox2Desc, badge: null, color: '#ca8a04', to: '/solar/hybrid' },
-                { id: 'off-grid', icon: Leaf, title: pageData.solarBox3Title, sub: pageData.solarBox3Sub, desc: pageData.solarBox3Desc, badge: null, color: '#ca8a04', to: '/solar/off-grid' },
-                { id: 'water-heaters', icon: Droplets, title: pageData.solarBox4Title, sub: pageData.solarBox4Sub, desc: pageData.solarBox4Desc, badge: null, color: '#ca8a04', to: '/solar/water-heaters' },
+                { id: 'on-grid', icon: Sun, title: pageData.solarBox1Title, sub: pageData.solarBox1Sub, desc: pageData.solarBox1Desc, color: '#ca8a04', to: '/solar/on-grid' },
+                { id: 'hybrid', icon: Zap, title: pageData.solarBox2Title, sub: pageData.solarBox2Sub, desc: pageData.solarBox2Desc, color: '#ca8a04', to: '/solar/hybrid' },
+                { id: 'off-grid', icon: Leaf, title: pageData.solarBox3Title, sub: pageData.solarBox3Sub, desc: pageData.solarBox3Desc, color: '#ca8a04', to: '/solar/off-grid' },
+                { id: 'water-heaters', icon: Droplets, title: pageData.solarBox4Title, sub: pageData.solarBox4Sub, desc: pageData.solarBox4Desc, color: '#ca8a04', to: '/solar/water-heaters' },
               ].map((p) => {
                 const Icon = p.icon;
                 return (
@@ -396,7 +396,6 @@ const Home: React.FC = () => {
                       <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300" style={{ backgroundColor: p.color + '15', border: `1px solid ${p.color}30` }}>
                         <Icon className="w-5 h-5" style={{ color: p.color }} />
                       </div>
-                      {p.badge && <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full mb-3 inline-block" style={{ color: p.color, backgroundColor: p.color + '15', border: `1px solid ${p.color}30` }}>{p.badge}</span>}
                       <h3 className="text-lg font-light text-black uppercase tracking-tight mb-2">{p.title}</h3>
                       <span className="text-[9px] font-black uppercase tracking-widest mb-3 block" style={{ color: p.color }}>{p.sub}</span>
                       <p className="text-zinc-500 text-xs leading-relaxed">{p.desc}</p>

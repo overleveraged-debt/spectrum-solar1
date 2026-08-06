@@ -50,6 +50,13 @@ export const productDefaults = {
       { label: "Hospitals & Diagnostic Centers", sub: "Reliable power generation during daytime peaks" },
       { label: "Manufacturing & Industrial Units", sub: "Lower operations costs on large roof spaces" }
     ],
+    installationSteps: [
+      { title: "Site Survey & Feasibility", desc: "Our engineers inspect your roof space, orientation, and shadow profiles." },
+      { title: "System Design & Engineering", desc: "Custom electrical layouts and structural mounting designs prepared." },
+      { title: "Utility Approvals & Permits", desc: "We handle net metering applications and local government approvals." },
+      { title: "Installation & Setup", desc: "Clean panel mounting, inverter setup, and complete safety wiring." },
+      { title: "Net Meter & Commissioning", desc: "Grid synchronization, test run, and hand-over of active solar dashboard." }
+    ],
     faqs: [
       { q: "What is net metering?", a: "Net metering is a billing mechanism that credits solar energy system owners for the electricity they add to the grid. It allows you to export excess electricity generated during the day and get bill credits, effectively reducing your overall energy costs." },
       { q: "What is the lifespan of an on-grid system?", a: "Our high-efficiency Mono PERC solar panels come with a 25+ year performance lifespan. Inverters typically last 10–15 years and can be easily replaced, ensuring decades of reliable power generation." },
@@ -89,6 +96,18 @@ export const productDefaults = {
       { icon: 'Clock', title: 'Extended Battery Life', desc: 'BMS-controlled charging optimizes battery life and prevents deep discharge.' },
       { icon: 'Leaf', title: 'Eco & Budget Friendly', desc: 'Combines renewable solar generation with reliable power reserve.' }
     ],
+    advancedFeatures: [
+      "Hybrid Pure Sine Inverter",
+      "Lithium LFP Battery Storage",
+      "Smart Integrated BMS",
+      "Instant Switchover (<10ms)",
+      "Grid Export & Net Metering",
+      "Multi-Source Priority Logic",
+      "App-Based Power Monitoring",
+      "Surge & Lightning Protection",
+      "Silent Automatic Operation",
+      "10-Year Extended Warranty"
+    ],
     perfectFor: [
       { label: "Residences in Frequent Outage Areas", sub: "Never lose power during grid blackouts" },
       { label: "Commercial Establishments", sub: "Keep critical IT and point-of-sale systems running" },
@@ -96,9 +115,17 @@ export const productDefaults = {
       { label: "Medical & Diagnostic Clinics", sub: "Uninterrupted operation for diagnostic gear" },
       { label: "Educational Institutions", sub: "Reliable power for labs, computers and lighting" }
     ],
+    installationSteps: [
+      { title: "Energy Audit & Load Sizing", desc: "Engineers analyze your peak load and required backup duration." },
+      { title: "Hybrid System Design", desc: "Custom solar panel layout paired with LFP lithium battery storage capacity." },
+      { title: "Sanctions & Approvals", desc: "Handling net-metering DISCOM applications and electrical permits." },
+      { title: "Mounting & Wiring", desc: "Professional installation of panels, hybrid inverter, and lithium battery bank." },
+      { title: "Grid Sync & Testing", desc: "Seamless switchover verification, grid sync, and mobile app setup." }
+    ],
     faqs: [
       { q: "How fast does a hybrid system switch during power cuts?", a: "Switchover happens in less than 10 milliseconds — imperceptible to computers and sensitive electronics." },
-      { q: "Can a hybrid system work without grid power?", a: "Yes. In off-grid mode, the system draws energy directly from solar panels and battery storage." }
+      { q: "Can a hybrid system work without grid power?", a: "Yes. In off-grid mode, the system draws energy directly from solar panels and battery storage." },
+      { q: "What is the lifespan of the lithium battery bank?", a: "Lithium LiFePO4 batteries deliver over 4,000 charge cycles, providing 10+ years of daily reliable operation." }
     ]
   },
 
@@ -152,8 +179,16 @@ export const productDefaults = {
       { label: "Agricultural Pump Houses", sub: "Solar powered irrigation independent of grid power" },
       { label: "Off-Grid Cabins & Retreats", sub: "Complete self-sufficient living with zero electric bills" }
     ],
+    installationSteps: [
+      { title: "Remote Site Survey", desc: "Engineers assess solar irradiation, daily load profile, and mounting terrain." },
+      { title: "Autonomy System Sizing", desc: "Calculating battery capacity needed for 2-3 days of rainy weather autonomy." },
+      { title: "Panel & Array Mounting", desc: "Heavy-duty structural mounting designed for high wind load and tropical weather." },
+      { title: "BMS & Inverter Wiring", desc: "Connecting LFP battery storage packs with MPPT solar charge controllers." },
+      { title: "System Commissioning", desc: "Complete testing, safety earth grounding, and off-grid power handover." }
+    ],
     faqs: [
-      { q: "What happens on rainy or cloudy days?", a: "The system is sized with 2–3 days of battery autonomy to keep your loads powered seamlessly." }
+      { q: "What happens on rainy or cloudy days?", a: "The system is sized with 2–3 days of battery autonomy to keep your loads powered seamlessly." },
+      { q: "Can an off-grid system handle heavy motor loads?", a: "Yes. Off-grid inverters are selected with high surge capacity to start water pumps, refrigerators, and power tools." }
     ]
   },
 
@@ -188,6 +223,16 @@ export const productDefaults = {
       { icon: "Layers", title: "Auxiliary Electric Heater", desc: "Built-in backup heating element ensures hot water during prolonged monsoon rains." },
       { icon: "Leaf", title: "Eco-Friendly Solution", desc: "Displace high-wattage electric geysers to lower your household carbon footprint." }
     ],
+    advancedFeatures: [
+      "Evacuated Tube Collector (ETC)",
+      "Food-Grade Stainless Steel Tank",
+      "High-Density PUF Insulation",
+      "Auxiliary Backup Electric Element",
+      "Sacrificial Anode Rod Protection",
+      "Powder-Coated Mounting Structure",
+      "Pressure-Tested Plumbing Ports",
+      "Weatherproof Outer Shell"
+    ],
     perfectFor: [
       { label: "Residential Households & Villas", sub: "Daily hot water for bathing and kitchen needs" },
       { label: "Hotels & Homestays", sub: "Large-volume hot water heating with fast payback" },
@@ -195,8 +240,16 @@ export const productDefaults = {
       { label: "Hospitals & Healthcare Facilities", sub: "Sterilization and continuous hot water supply" },
       { label: "Food & Beverage Industries", sub: "Free pre-heated boiler water feed" }
     ],
+    installationSteps: [
+      { title: "Roof Inspection & Plumbing Survey", desc: "Checking roof elevation, water pressure, and plumbing inlet/outlet routes." },
+      { title: "Mounting Frame Assembly", desc: "Assembling corrosion-resistant steel stand at optimum solar tilt angle." },
+      { title: "Insulated Tank Positioning", desc: "Securing inner stainless steel water storage tank to the frame." },
+      { title: "Collector Tube Insertion", desc: "Fitting borosilicate glass evacuated tubes with thermal sealing gaskets." },
+      { title: "Pipeline Connection & Pressure Test", desc: "Connecting inlet water line, hot water outlet, and leak testing." }
+    ],
     faqs: [
-      { q: "Do solar water heaters work on cloudy days?", a: "Yes. ETC evacuated tubes absorb diffused sunlight, and systems include auxiliary electric heating elements for monsoon backups." }
+      { q: "Do solar water heaters work on cloudy days?", a: "Yes. ETC evacuated tubes absorb diffused sunlight, and systems include auxiliary electric heating elements for monsoon backups." },
+      { q: "How long does water stay hot in the tank?", a: "High-density PUF insulation retains heat effectively, keeping water hot for up to 48 hours." }
     ]
   },
 
@@ -248,6 +301,12 @@ export const productDefaults = {
       { label: "Retail Stores & Salons", sub: "Billing systems and lights stay online" },
       { label: "Smart Homes", sub: "Seamless integration with automation hubs" },
       { label: "IT & Server Racks", sub: "Clean pure sine wave zero reboot backup" }
+    ],
+    installationSteps: [
+      { title: "Wall Bracket Mounting", desc: "Securing heavy-duty wall bracket near main distribution board." },
+      { title: "Unit Mounting", desc: "Mounting the compact all-in-one Lithium UPS onto the wall chassis." },
+      { title: "Input/Output Wiring", desc: "Connecting AC input grid line and dedicated output backup circuit." },
+      { title: "Power On & Self-Test", desc: "Activating BMS diagnostics, verifying zero transfer time, and handover." }
     ],
     faqs: [
       { q: "How long do lithium UPS batteries last?", a: "Lithium LFP batteries last 8–10 years (4,000+ charge cycles) compared to 2–3 years for tubular batteries." }
@@ -304,6 +363,12 @@ export const productDefaults = {
       { label: "Work-From-Home Setups", sub: "No dropped calls or lost work" },
       { label: "Entertainment & Home Appliances", sub: "Keep TV, music and AC running" }
     ],
+    installationSteps: [
+      { title: "Load Audit & Sizing", desc: "Determining exact wattage of lights, fans, TV, and appliances." },
+      { title: "Location Setup", desc: "Selecting a ventilated, safe spot near your distribution panel." },
+      { title: "Battery & Inverter Setup", desc: "Connecting deep cycle battery pack to pure sine wave inverter." },
+      { title: "Main Line Integration", desc: "Wiring UPS output to essential home appliance circuits." }
+    ],
     faqs: [
       { q: "What capacity UPS do I need for my home?", a: "A standard 1kVA system powers lights, fans, and TV. For refrigerators and ACs, 2kVA to 5kVA systems are recommended." }
     ]
@@ -357,6 +422,12 @@ export const productDefaults = {
       { label: "Offices & Outlets", sub: "Power computers, printers, Wi-Fi routers and security cameras" },
       { label: "Educational Centers & Tuition Hubs", sub: "Uninterrupted lighting and projectors during classes" },
       { label: "Clinics & Pharmacies", sub: "Keep medicine refrigerators and diagnostic monitors powered" }
+    ],
+    installationSteps: [
+      { title: "Capacity Sizing", desc: "Matching inverter VA rating to connected electrical loads." },
+      { title: "Battery Terminal Connection", desc: "Connecting heavy-gauge copper leads to battery terminals." },
+      { title: "Distribution Wiring", desc: "Connecting inverter AC output to dedicated power circuits." },
+      { title: "Load Test & Verification", desc: "Simulating grid cut to verify automatic switchover performance." }
     ],
     faqs: [
       { q: "What is the difference between an Inverter and a UPS?", a: "A UPS has faster switchover time (<10ms) designed for computers, while standard inverters switch in 15–20ms." }
@@ -412,6 +483,12 @@ export const productDefaults = {
       { label: "Broadcasting & Telecom Hubs", sub: "Continuous clean signal without electrical line noise" },
       { label: "Financial Institutions & ATMs", sub: "Non-stop uptime for transaction processing servers" }
     ],
+    installationSteps: [
+      { title: "Critical Load Assessment", desc: "Determining exact kVA/KW rating, power factor, and runtime requirements." },
+      { title: "Battery Bank Setup", desc: "Assembling high-rate battery racks and inter-battery bus bar wiring." },
+      { title: "Online UPS Integration", desc: "Hardwiring input/output distribution panels with isolation transformers." },
+      { title: "0ms Switchover Test", desc: "Simulating grid utility blackouts under full IT server load conditions." }
+    ],
     faqs: [
       { q: "Why is an Online UPS better for servers?", a: "Because it continuously regulates voltage with true zero millisecond transfer time." }
     ]
@@ -458,6 +535,12 @@ export const productDefaults = {
       { label: "Telecom Tower Power", sub: "Remote maintenance-free battery banks" },
       { label: "Off-Grid Solar Cabins", sub: "Lightweight and long-lasting storage for off-grid living" }
     ],
+    installationSteps: [
+      { title: "Capacity Sizing & Voltage Selection", desc: "Choosing matching 12V, 24V, or 48V LFP battery pack." },
+      { title: "Wall/Rack Mount Assembly", desc: "Securing compact lithium battery enclosure to wall or rack." },
+      { title: "BMS Cable Integration", desc: "Connecting BMS communication cables to solar/UPS inverter." },
+      { title: "BMS Initialization & Testing", desc: "Verifying cell balance, temperature sensors, and charge cutoff limits." }
+    ],
     faqs: [
       { q: "Are lithium batteries safe for indoors?", a: "Yes. LiFePO4 (LFP) chemistry is non-combustible, thermal-runaway safe, and completely sealed with no toxic fumes." }
     ]
@@ -503,6 +586,12 @@ export const productDefaults = {
       { label: "Retail Outlets & Shops", sub: "Dependable daily backup for billing counters and lighting" },
       { label: "Agricultural & Rural Setup", sub: "Handles wide voltage swings and harsh environments" },
       { label: "Commercial Office Backups", sub: "Cost-effective power bank for office workstations" }
+    ],
+    installationSteps: [
+      { title: "Placement & Tray Setup", desc: "Placing acid-resistant battery trolley in ventilated area." },
+      { title: "Electrolyte Check", desc: "Verifying gravity and level indicators on ceramic vent plugs." },
+      { title: "Terminal Petroleum Jelly Coating", desc: "Coating heavy duty posts to prevent lead sulfate corrosion." },
+      { title: "UPS Cable Connection", desc: "Securing heavy copper cable clamps and conducting initial boost charge." }
     ],
     faqs: [
       { q: "How often do tubular batteries need distilled water topping?", a: "Typically every 3–6 months depending on usage." }

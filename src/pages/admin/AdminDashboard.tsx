@@ -6,8 +6,8 @@ import BlogManager from './BlogManager';
 import LeadsViewer from './LeadsViewer';
 import ApplicationsViewer from './ApplicationsViewer';
 
-type Tab = 
-  | 'home' | 'about' | 'solar-solutions' | 'power-backup' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs' 
+type Tab =
+  | 'home' | 'about' | 'solar-solutions' | 'power-backup' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs'
   | 'map-locations' | 'privacy-policy' | 'terms-conditions'
   | 'leads' | 'applications' | 'testimonials' | 'footer';
 
@@ -45,7 +45,7 @@ export default function AdminDashboard() {
     { id: 'home', label: 'Home Page', icon: FileText, category: 'Page Editors' },
     { id: 'about', label: 'About Page', icon: FileText, category: 'Page Editors' },
     { id: 'solar-solutions', label: 'Solar Overview Page', icon: FileText, category: 'Page Editors' },
-    { id: 'power-backup', label: 'Power Backup Overview Page', icon: FileText, category: 'Page Editors' },
+    { id: 'power-backup', label: 'Power Backup Page', icon: FileText, category: 'Page Editors' },
     { id: 'product-details', label: 'Product Landing Pages', icon: FileText, category: 'Page Editors' },
     { id: 'map-locations', label: 'Map Locations', icon: FileText, category: 'Page Editors' },
     { id: 'careers', label: 'Careers Page', icon: FileText, category: 'Page Editors' },
@@ -61,18 +61,18 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white flex font-sans">
+    <div className="h-screen overflow-hidden bg-zinc-950 text-white flex font-sans">
       {/* Sidebar */}
-      <aside className={`bg-zinc-900 border-r border-zinc-800 flex flex-col justify-between shrink-0 transition-all duration-300 overflow-hidden ${isSidebarCollapsed ? 'w-0 border-r-0' : 'w-64'}`}>
-        <div className="w-64">
+      <aside className={`h-screen sticky top-0 bg-zinc-900 border-r border-zinc-800 flex flex-col justify-between shrink-0 transition-all duration-300 overflow-hidden ${isSidebarCollapsed ? 'w-0 border-r-0' : 'w-64'}`}>
+        <div className="w-64 flex flex-col h-full overflow-hidden">
           {/* Logo */}
-          <div className="h-20 border-b border-zinc-800 flex flex-col items-start justify-center px-6 gap-1.5">
+          <div className="h-20 shrink-0 border-b border-zinc-800 flex flex-col items-start justify-center px-6 gap-1.5">
             <img src="/logo.png" alt="Spectrum" className="h-6 w-auto" />
             <span className="text-[8px] text-zinc-500 uppercase tracking-[0.2em] font-black bg-zinc-950 px-2 py-0.5 rounded border border-zinc-850">Admin Console</span>
           </div>
 
           {/* Navigation Items */}
-          <nav className="p-4 space-y-6">
+          <nav className="flex-1 overflow-y-auto p-4 space-y-6 custom-scrollbar">
             {/* Category Groups */}
             {['Page Editors', 'Content Manager', 'Business Inbox'].map((category) => (
               <div key={category} className="space-y-2">
@@ -89,17 +89,16 @@ export default function AdminDashboard() {
                         <button
                           key={item.id}
                           onClick={() => handleTabClick(item.id as Tab)}
-                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-200 text-sm ${
-                            isActive
+                          className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-200 text-sm ${isActive
                               ? 'bg-yellow-400 text-zinc-950 font-semibold'
                               : 'text-zinc-400 hover:bg-zinc-800 hover:text-white'
-                          }`}
+                            }`}
                         >
-                          <div className="flex items-center gap-3">
-                            <Icon className="w-4 h-4" />
-                            <span>{item.label}</span>
+                          <div className="flex items-center gap-3 min-w-0 flex-1">
+                            <Icon className="w-4 h-4 shrink-0" />
+                            <span className="truncate flex-1 text-left">{item.label}</span>
                           </div>
-                          {isActive && <ChevronRight className="w-4 h-4" />}
+                          {isActive && <ChevronRight className="w-4 h-4 shrink-0 ml-1" />}
                         </button>
                       );
                     })}
@@ -107,17 +106,17 @@ export default function AdminDashboard() {
               </div>
             ))}
           </nav>
-        </div>
 
-        {/* Footer */}
-        <div className="p-4 border-t border-zinc-800 w-64">
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-zinc-400 hover:bg-red-500/10 hover:text-red-400 transition-all duration-200 text-sm font-medium"
-          >
-            <LogOut className="w-4 h-4" />
-            <span>Sign Out</span>
-          </button>
+          {/* Footer */}
+          <div className="p-4 border-t border-zinc-800 w-64 shrink-0 bg-zinc-900">
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-zinc-400 hover:bg-red-500/10 hover:text-red-400 transition-all duration-200 text-sm font-medium"
+            >
+              <LogOut className="w-4 h-4 shrink-0" />
+              <span>Sign Out</span>
+            </button>
+          </div>
         </div>
       </aside>
 

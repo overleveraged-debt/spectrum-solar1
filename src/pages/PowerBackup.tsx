@@ -332,11 +332,6 @@ const PowerBackup: React.FC = () => {
                             >
                               {product.category}
                             </span>
-                            {product.badge && (
-                              <span className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-yellow-400/10 text-yellow-400 border border-yellow-400/30 flex-shrink-0">
-                                {product.badge}
-                              </span>
-                            )}
                           </div>
                           <p className="text-zinc-500 text-[11px] font-medium uppercase tracking-widest mt-1 hidden md:block">
                             {product.tagline}
