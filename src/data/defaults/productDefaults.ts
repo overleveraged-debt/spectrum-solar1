@@ -84,12 +84,17 @@ export const productDefaults = {
     benefits: [
       { icon: 'Zap', title: 'Uninterrupted 24/7 Power', desc: 'Instant switchover (<10ms) ensures continuous electricity during outages.' },
       { icon: 'Battery', title: 'Smart Battery Storage', desc: 'Store excess solar energy generated during the day for night-time use.' },
-      { icon: 'TrendingUp', title: 'Grid Savings + Backup', desc: 'Export power when battery is full and grid is active to maximize returns.' }
+      { icon: 'TrendingUp', title: 'Grid Savings + Backup', desc: 'Export power when battery is full and grid is active to maximize returns.' },
+      { icon: 'ShieldCheck', title: 'Automated Energy Control', desc: 'Intelligent hybrid inverter selects optimal power source automatically.' },
+      { icon: 'Clock', title: 'Extended Battery Life', desc: 'BMS-controlled charging optimizes battery life and prevents deep discharge.' },
+      { icon: 'Leaf', title: 'Eco & Budget Friendly', desc: 'Combines renewable solar generation with reliable power reserve.' }
     ],
     perfectFor: [
       { label: "Residences in Frequent Outage Areas", sub: "Never lose power during grid blackouts" },
       { label: "Commercial Establishments", sub: "Keep critical IT and point-of-sale systems running" },
-      { label: "Luxury Homes & Estates", sub: "Quiet, automated energy independence" }
+      { label: "Luxury Homes & Estates", sub: "Quiet, automated energy independence" },
+      { label: "Medical & Diagnostic Clinics", sub: "Uninterrupted operation for diagnostic gear" },
+      { label: "Educational Institutions", sub: "Reliable power for labs, computers and lighting" }
     ],
     faqs: [
       { q: "How fast does a hybrid system switch during power cuts?", a: "Switchover happens in less than 10 milliseconds — imperceptible to computers and sensitive electronics." },
@@ -143,7 +148,9 @@ export const productDefaults = {
     perfectFor: [
       { label: "Remote Farmhouses & Estates", sub: "Reliable electricity where grid lines are unavailable" },
       { label: "Eco Resorts & Homestays", sub: "Silent, green power for guests with zero generator noise" },
-      { label: "Telecom & Remote Monitoring Sites", sub: "24/7 continuous power for critical infrastructure" }
+      { label: "Telecom & Remote Monitoring Sites", sub: "24/7 continuous power for critical infrastructure" },
+      { label: "Agricultural Pump Houses", sub: "Solar powered irrigation independent of grid power" },
+      { label: "Off-Grid Cabins & Retreats", sub: "Complete self-sufficient living with zero electric bills" }
     ],
     faqs: [
       { q: "What happens on rainy or cloudy days?", a: "The system is sized with 2–3 days of battery autonomy to keep your loads powered seamlessly." }
@@ -173,9 +180,20 @@ export const productDefaults = {
       { step: '03', icon: 'Droplets', title: 'Store', desc: 'Hot water stored in insulated tank.' },
       { step: '04', icon: 'Activity', title: 'Use', desc: 'Ready for use anytime you need it.' }
     ],
+    benefits: [
+      { icon: "Zap", title: "80% Water Heating Savings", desc: "Slash your water heating electricity bills by harnessing free solar thermal energy." },
+      { icon: "Sun", title: "Evacuated Tube Tech", desc: "High-absorption vacuum tubes perform efficiently even in cloudy weather." },
+      { icon: "ShieldCheck", title: "High-Density Insulation", desc: "Polyurethane insulation keeps water hot for up to 48 hours." },
+      { icon: "Clock", title: "Long Service Lifespan", desc: "Rust-proof outer shell and food-grade stainless steel inner tank." },
+      { icon: "Layers", title: "Auxiliary Electric Heater", desc: "Built-in backup heating element ensures hot water during prolonged monsoon rains." },
+      { icon: "Leaf", title: "Eco-Friendly Solution", desc: "Displace high-wattage electric geysers to lower your household carbon footprint." }
+    ],
     perfectFor: [
-      { label: "Residential Households & Apartments", sub: "Daily hot water for bathing and kitchen needs" },
-      { label: "Hotels & Hostels", sub: "Large-volume hot water heating with fast payback" }
+      { label: "Residential Households & Villas", sub: "Daily hot water for bathing and kitchen needs" },
+      { label: "Hotels & Homestays", sub: "Large-volume hot water heating with fast payback" },
+      { label: "Hostels & Dormitories", sub: "High capacity bathing water solutions" },
+      { label: "Hospitals & Healthcare Facilities", sub: "Sterilization and continuous hot water supply" },
+      { label: "Food & Beverage Industries", sub: "Free pre-heated boiler water feed" }
     ],
     faqs: [
       { q: "Do solar water heaters work on cloudy days?", a: "Yes. ETC evacuated tubes absorb diffused sunlight, and systems include auxiliary electric heating elements for monsoon backups." }
@@ -209,7 +227,9 @@ export const productDefaults = {
       { icon: "Zap", title: "True Zero Switchover", desc: "Transition to backup power happens in under 10 milliseconds — zero reboot risk." },
       { icon: "Sun", title: "Space-Saving Design", desc: "Wall-mountable, compact chassis replaces heavy, messy external lead-acid batteries." },
       { icon: "ShieldCheck", title: "LFP Cell Safety", desc: "Advanced Lithium Iron Phosphate chemistry prevents thermal runaway risks." },
-      { icon: "Clock", title: "10-Year Service Life", desc: "Over 4,000 charge cycles offer a decade of maintenance-free operation." }
+      { icon: "Clock", title: "10-Year Service Life", desc: "Over 4,000 charge cycles offer a decade of maintenance-free operation." },
+      { icon: "Layers", title: "Intelligent Charging", desc: "Ultra-fast charging reaches 80% capacity in less than 2 hours." },
+      { icon: "Leaf", title: "Maintenance-Free", desc: "Zero water topping, zero acid fumes, and zero active servicing required." }
     ],
     advancedFeatures: [
       "Integrated LifePO4 Cells",
@@ -224,7 +244,10 @@ export const productDefaults = {
     ],
     perfectFor: [
       { label: "Apartments & Modern Homes", sub: "Sleek wall-mounted design with zero footprint" },
-      { label: "IT Workstations & Home Offices", sub: "Zero transfer time keeps PCs from rebooting" }
+      { label: "IT Workstations & Home Offices", sub: "Zero transfer time keeps PCs from rebooting" },
+      { label: "Retail Stores & Salons", sub: "Billing systems and lights stay online" },
+      { label: "Smart Homes", sub: "Seamless integration with automation hubs" },
+      { label: "IT & Server Racks", sub: "Clean pure sine wave zero reboot backup" }
     ],
     faqs: [
       { q: "How long do lithium UPS batteries last?", a: "Lithium LFP batteries last 8–10 years (4,000+ charge cycles) compared to 2–3 years for tubular batteries." }
@@ -258,17 +281,28 @@ export const productDefaults = {
     benefits: [
       { icon: "Zap", title: "No Interruption in Daily Life", desc: "Switches to battery power in milliseconds — your family doesn't even notice the power cut." },
       { icon: "Home", title: "Supports Home Appliances", desc: "Lights, fans, TV, Wi-Fi and more — all kept running during outages." },
-      { icon: "ShieldCheck", title: "Safe & Stable Voltage", desc: "Pure sine wave output protects all sensitive electronics in your home." }
+      { icon: "ShieldCheck", title: "Safe & Stable Voltage", desc: "Pure sine wave output protects all sensitive electronics in your home." },
+      { icon: "Layers", title: "Customizable Capacity", desc: "Sized perfectly for your home's load — from basic to advanced setups." },
+      { icon: "Clock", title: "Affordable Solution", desc: "Best value power backup for residential use with long-lasting performance." },
+      { icon: "Activity", title: "Smart Charging", desc: "Intelligent battery charging system extends battery lifespan significantly." }
     ],
     advancedFeatures: [
       "Pure Sine Wave Inverter",
       "Microcontroller Based Design",
       "Multi-Stage Smart Charging",
       "Wide Input Voltage Window",
-      "Overload & Short Circuit Protection"
+      "Overload & Short Circuit Protection",
+      "Easy Battery Select Option",
+      "LED Status Indications",
+      "Thermal Management System",
+      "Silent Ventilation Fan"
     ],
     perfectFor: [
-      { label: "Residential Homes & Apartments", sub: "Keep lights, fans, TVs, and refrigerators running during power cuts" }
+      { label: "Independent Houses", sub: "Full-home backup solutions" },
+      { label: "Apartments", sub: "Compact, wall-friendly units" },
+      { label: "Families with Daily Power Needs", sub: "Non-stop routine for the family" },
+      { label: "Work-From-Home Setups", sub: "No dropped calls or lost work" },
+      { label: "Entertainment & Home Appliances", sub: "Keep TV, music and AC running" }
     ],
     faqs: [
       { q: "What capacity UPS do I need for my home?", a: "A standard 1kVA system powers lights, fans, and TV. For refrigerators and ACs, 2kVA to 5kVA systems are recommended." }
@@ -300,17 +334,29 @@ export const productDefaults = {
       { step: '05', icon: 'Clock', title: 'Sustain', desc: 'Continuous stable power until grid returns.' }
     ],
     benefits: [
-      { icon: "Zap", title: "High Surge Capability", desc: "Starts heavy inductive loads like motors, pumps, and laser printers easily." },
-      { icon: "Sun", title: "Dual Charging Modes", desc: "Supports both quick charging and normal charging to adapt to grid schedules." }
+      { icon: "Zap", title: "High Surge Capability", desc: "Starts heavy inductive loads like motors, pumps, and refrigerators easily." },
+      { icon: "Sun", title: "Dual Charging Modes", desc: "Supports both quick charging and normal charging to adapt to grid schedules." },
+      { icon: "ShieldCheck", title: "Pure Sine Wave Output", desc: "Delivers clean grid-quality power protecting all sensitive home electronics." },
+      { icon: "Clock", title: "Automated Voltage Regulator", desc: "Handles wide voltage fluctuations without switching needlessly to battery." },
+      { icon: "Layers", title: "Overload Protection", desc: "Auto-reset and short-circuit cutoff safeguard the inverter and connected loads." },
+      { icon: "Activity", title: "Silent Operation", desc: "Advanced thermal management keeps cooling fans quiet during operation." }
     ],
     advancedFeatures: [
       "DSP Microcontroller Inverter",
       "High Surge Capacity Design",
       "Dual Mode Charging Support",
-      "Automatic Voltage Regulation"
+      "Automatic Voltage Regulation",
+      "Overload Short Circuit Cut",
+      "Battery Deep Discharge Protection",
+      "Low Battery Pre-Alarm",
+      "Smart Cooling Fan Control"
     ],
     perfectFor: [
-      { label: "Shops & Commercial Stores", sub: "Continuous power for lighting, billing computers, and displays" }
+      { label: "Shops & Commercial Stores", sub: "Continuous power for lighting, billing computers, and displays" },
+      { label: "Residential Houses & Flats", sub: "Reliable backup for lights, fans, TV and kitchen appliances" },
+      { label: "Offices & Outlets", sub: "Power computers, printers, Wi-Fi routers and security cameras" },
+      { label: "Educational Centers & Tuition Hubs", sub: "Uninterrupted lighting and projectors during classes" },
+      { label: "Clinics & Pharmacies", sub: "Keep medicine refrigerators and diagnostic monitors powered" }
     ],
     faqs: [
       { q: "What is the difference between an Inverter and a UPS?", a: "A UPS has faster switchover time (<10ms) designed for computers, while standard inverters switch in 15–20ms." }
@@ -343,17 +389,28 @@ export const productDefaults = {
     ],
     benefits: [
       { icon: "Server", title: "Zero Transfer. Zero Downtime.", desc: "Equipment receives continuous clean power 24/7 — no switching, no gaps, no disruption ever." },
-      { icon: "Zap", title: "Zero Transfer Time", desc: "Double conversion ensures no power gap whatsoever during outages." }
+      { icon: "Zap", title: "Zero Transfer Time", desc: "Double conversion ensures no power gap whatsoever during outages." },
+      { icon: "ShieldCheck", title: "Isolated Load Power", desc: "Galvanic isolation and double conversion filter all voltage spikes and noise." },
+      { icon: "Clock", title: "Active Power Factor Correction", desc: "High input power factor lowers electricity consumption and heat generation." },
+      { icon: "Layers", title: "SNMP & Remote Monitoring", desc: "Real-time network monitoring alerts administrators of battery or power status." },
+      { icon: "Activity", title: "Redundant Parallel Capability", desc: "Connect multiple units in parallel for scalable capacity or N+1 redundancy." }
     ],
     advancedFeatures: [
       "True Double Conversion Tech",
       "Zero Switch Transfer (0ms)",
       "Pure Sine Wave Output",
-      "Active Input Power Correction"
+      "Active Input Power Correction",
+      "Wide Input Voltage Range",
+      "Galvanic Isolation Transformer",
+      "Emergency Power Off (EPO)",
+      "SNMP Network Card Support"
     ],
     perfectFor: [
       { label: "Hospitals & Medical Labs", sub: "Zero-delay power for life-critical diagnostic equipment" },
-      { label: "Data Centers & IT Servers", sub: "Clean double-conversion power preventing server reboots" }
+      { label: "Data Centers & IT Servers", sub: "Clean double-conversion power preventing server reboots" },
+      { label: "Industrial Automation Lines", sub: "Protect CNC machines and PLC controllers from power sags" },
+      { label: "Broadcasting & Telecom Hubs", sub: "Continuous clean signal without electrical line noise" },
+      { label: "Financial Institutions & ATMs", sub: "Non-stop uptime for transaction processing servers" }
     ],
     faqs: [
       { q: "Why is an Online UPS better for servers?", a: "Because it continuously regulates voltage with true zero millisecond transfer time." }
@@ -376,14 +433,30 @@ export const productDefaults = {
     overviewTitle: "Smarter. Longer-Lasting.",
     overviewDesc1: "LFP technology delivers fast 2-hour charging, high depth of discharge, and zero maintenance.",
     overviewDesc2: "Spectrum Powers supplies premium lithium battery banks engineered for solar and UPS integration.",
+    benefits: [
+      { icon: "Zap", title: "4,000+ Charge Cycles", desc: "Delivers over 10 years of daily deep cycling — 5x longer life than lead-acid." },
+      { icon: "Battery", title: "95% Depth of Discharge", desc: "Use nearly 100% of stored energy without damaging battery capacity." },
+      { icon: "ShieldCheck", title: "Smart Inbuilt BMS", desc: "Microprocessor monitors individual cell balance, voltage, current and temp." },
+      { icon: "Clock", title: "Ultra-Fast 2-Hour Charge", desc: "Accepts high charging currents to fully recharge in a fraction of standard time." },
+      { icon: "Layers", title: "Ultra Compact & Lightweight", desc: "1/3rd the weight and half the size of traditional lead-acid battery banks." },
+      { icon: "Leaf", title: "Zero Maintenance", desc: "Sealed design requires zero water topping, zero acid checks, and zero venting." }
+    ],
     advancedFeatures: [
       "Advanced LifePO4 Chemistry",
       "Smart Integrated BMS",
       "4000+ Lifetime Charge Cycles",
-      "95% Depth of Discharge"
+      "95% Depth of Discharge",
+      "Rapid 2-Hour Charge Rate",
+      "Overcharge Thermal Protection",
+      "Compact Wall/Rack Mount",
+      "Zero Acid Fume Generation"
     ],
     perfectFor: [
-      { label: "Solar Energy Storage", sub: "High cycle life ideal for daily solar charge/discharge" }
+      { label: "Solar Energy Storage", sub: "High cycle life ideal for daily solar charge/discharge" },
+      { label: "Residential Energy Backup", sub: "Clean, wall-mountable home power reserves" },
+      { label: "Commercial Solar Power", sub: "Heavy daily cycling for stores and offices" },
+      { label: "Telecom Tower Power", sub: "Remote maintenance-free battery banks" },
+      { label: "Off-Grid Solar Cabins", sub: "Lightweight and long-lasting storage for off-grid living" }
     ],
     faqs: [
       { q: "Are lithium batteries safe for indoors?", a: "Yes. LiFePO4 (LFP) chemistry is non-combustible, thermal-runaway safe, and completely sealed with no toxic fumes." }
@@ -406,14 +479,30 @@ export const productDefaults = {
     overviewTitle: "Built for Long Power Cuts.",
     overviewDesc1: "Tubular plate design ensures high resistance to deep discharge and harsh temperature conditions.",
     overviewDesc2: "Ideal for long backup hours in homes, offices, and rural locations across India.",
+    benefits: [
+      { icon: "Zap", title: "Deep Cycle Power Backup", desc: "Engineered specifically for long 6-12 hour power outage durations." },
+      { icon: "Battery", title: "Heavy Duty Alloy Grid", desc: "Thick tubular positive plates resist corrosion in high ambient heat." },
+      { icon: "ShieldCheck", title: "High Acid Reserve", desc: "Extra electrolyte volume minimizes frequency of distilled water topping." },
+      { icon: "Clock", title: "5-Year Extended Warranty", desc: "Backed by comprehensive manufacturer replacement warranties." },
+      { icon: "Layers", title: "Low Self-Discharge", desc: "Special grid alloy keeps battery charged during extended standby periods." },
+      { icon: "Leaf", title: "Proven Track Record", desc: "Time-tested, economical lead-acid technology trusted across India." }
+    ],
     advancedFeatures: [
       "Tall Tubular Container",
       "Thick Cast Positive Plate Grid",
       "Low Antimony Grid Alloy",
-      "High Acid Reserve Design"
+      "High Acid Reserve Design",
+      "Ceramic Vent Plug System",
+      "Deep Discharge Recovery",
+      "High Ambient Temp Tolerance",
+      "Heavy Duty Terminal Post"
     ],
     perfectFor: [
-      { label: "Long Power Outage Zones", sub: "Rugged lead-acid backups built for extended 6-12 hour power outages" }
+      { label: "Long Power Outage Zones", sub: "Rugged lead-acid backups built for extended 6-12 hour power outages" },
+      { label: "Residential Home UPS", sub: "Economical energy storage for household lights and fans" },
+      { label: "Retail Outlets & Shops", sub: "Dependable daily backup for billing counters and lighting" },
+      { label: "Agricultural & Rural Setup", sub: "Handles wide voltage swings and harsh environments" },
+      { label: "Commercial Office Backups", sub: "Cost-effective power bank for office workstations" }
     ],
     faqs: [
       { q: "How often do tubular batteries need distilled water topping?", a: "Typically every 3–6 months depending on usage." }

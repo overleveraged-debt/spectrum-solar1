@@ -387,7 +387,7 @@ const SolarSolutions: React.FC = () => {
           </div>
           <Link
             to="/contact"
-            className="w-full md:w-auto bg-yellow-400 text-black px-12 py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform whitespace-nowrap shadow-xl text-center"
+            className="w-full md:w-auto bg-yellow-400 text-black px-4 xs:px-6 sm:px-12 py-4 sm:py-5 rounded-full font-black uppercase text-[10px] xs:text-xs sm:text-sm tracking-[0.1em] sm:tracking-widest hover:scale-105 transition-transform whitespace-nowrap shadow-xl text-center flex items-center justify-center"
           >
             Schedule Site Audit
           </Link>

@@ -431,8 +431,11 @@ const OnlineUps: React.FC = () => {
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full md:w-auto">
-                <Link to="/contact" className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm">
-                  Get Free Consultation <ArrowRight className="w-4 h-4" />
+                <Link
+                  to="/contact"
+                  className="bg-black text-white px-4 xs:px-6 sm:px-10 py-4 sm:py-5 rounded-full font-black uppercase text-xs sm:text-sm tracking-[0.1em] sm:tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl whitespace-nowrap w-full sm:w-auto"
+                >
+                  Get Free Consultation <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
                 <a href="tel:+919745660055" className="bg-white/30 text-black px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:bg-white/40 transition-all flex items-center justify-center gap-2 border border-black/10 text-sm">
                   <PhoneCall className="w-4 h-4" /> Call Now

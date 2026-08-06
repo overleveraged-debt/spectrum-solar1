@@ -532,24 +532,24 @@ const HybridSolar: React.FC = () => {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="px-6 pb-20 md:pb-24">
+      <section className="px-4 sm:px-6 pb-12 sm:pb-20 md:pb-24">
         <div className="max-w-7xl mx-auto reveal">
-          <div className="relative bg-yellow-400 rounded-[2.5rem] md:rounded-[3rem] p-10 md:p-20 overflow-hidden">
+          <div className="relative bg-yellow-400 rounded-3xl sm:rounded-[3rem] p-6 sm:p-10 md:p-20 overflow-hidden">
             <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-black/5 rounded-full translate-x-1/3 -translate-y-1/3" />
             <div className="absolute bottom-0 left-0 w-48 md:w-64 h-48 md:h-64 bg-black/5 rounded-full -translate-x-1/3 translate-y-1/3" />
-            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-10">
-              <div>
-                <div className="text-black/50 text-[10px] font-black uppercase tracking-[0.4em] mb-3">Upgrade to Smart Energy</div>
-                <h2 className="text-3xl md:text-6xl font-thin uppercase tracking-tight text-black leading-[0.9]">
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10">
+              <div className="text-center md:text-left">
+                <div className="text-black/50 text-[10px] font-black uppercase tracking-[0.4em] mb-2 sm:mb-3">Upgrade to Smart Energy</div>
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-thin uppercase tracking-tight text-black leading-[0.9]">
                   Go Hybrid.<br />Go Uninterrupted.
                 </h2>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 w-full md:w-auto">
-                <Link to="/contact" className="bg-black text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl text-sm">
-                  Get Free Consultation <ArrowRight className="w-4 h-4" />
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-shrink-0 w-full sm:w-auto">
+                <Link to="/contact" className="bg-black text-white px-4 xs:px-6 sm:px-10 py-4 sm:py-5 rounded-full font-black uppercase text-xs sm:text-sm tracking-[0.1em] sm:tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl whitespace-nowrap w-full sm:w-auto">
+                  Get Free Consultation <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
-                <a href="tel:+919745660055" className="bg-white/30 text-black px-8 md:px-10 py-4 md:py-5 rounded-full font-black uppercase tracking-widest hover:bg-white/40 transition-all flex items-center justify-center gap-2 border border-black/10 text-sm">
-                  <PhoneCall className="w-4 h-4" /> Call Now
+                <a href="tel:+919745660055" className="bg-white/30 text-black px-4 xs:px-6 sm:px-10 py-4 sm:py-5 rounded-full font-black uppercase text-xs sm:text-sm tracking-[0.1em] sm:tracking-widest hover:bg-white/40 transition-all flex items-center justify-center gap-2 border border-black/10 whitespace-nowrap w-full sm:w-auto">
+                  <PhoneCall className="w-4 h-4 sm:w-5 sm:h-5" /> Call Now
                 </a>
               </div>
             </div>

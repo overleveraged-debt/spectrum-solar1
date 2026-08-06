@@ -101,70 +101,70 @@ const Support: React.FC = () => {
       )}
 
       {/* Support Info Cards */}
-      <section className="px-6 py-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="reveal p-8 rounded-3xl bg-zinc-900 border border-zinc-800 flex flex-col justify-between">
+      <section className="px-4 sm:px-6 py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          <div className="reveal p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-zinc-900 border border-zinc-800 flex flex-col justify-between">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 flex items-center justify-center mb-6">
-                <PhoneCall className="w-6 h-6" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 flex items-center justify-center mb-4 sm:mb-6">
+                <PhoneCall className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="text-lg font-black uppercase tracking-tight text-white mb-2">Call Support</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-6">Speak directly with our service coordinators for immediate technical assistance.</p>
+              <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-white mb-1.5 sm:mb-2">Call Support</h3>
+              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">Speak directly with our service coordinators for immediate technical assistance.</p>
             </div>
-            <a href={`tel:${pageData.phone}`} className="inline-flex items-center gap-2 text-yellow-400 font-black text-sm uppercase tracking-wider hover:underline">
+            <a href={`tel:${pageData.phone}`} className="inline-flex items-center gap-2 text-yellow-400 font-black text-xs sm:text-sm uppercase tracking-wider hover:underline">
               {pageData.phone}
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </a>
           </div>
 
-          <div className="reveal p-8 rounded-3xl bg-zinc-900 border border-zinc-800 flex flex-col justify-between" style={{ transitionDelay: '100ms' }}>
+          <div className="reveal p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-zinc-900 border border-zinc-800 flex flex-col justify-between" style={{ transitionDelay: '100ms' }}>
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 flex items-center justify-center mb-6">
-                <Clock className="w-6 h-6" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 flex items-center justify-center mb-4 sm:mb-6">
+                <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="text-lg font-black uppercase tracking-tight text-white mb-2">Office Hours</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-6">Our phone lines are active during standard operating office shifts.</p>
+              <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-white mb-1.5 sm:mb-2">Office Hours</h3>
+              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">Our phone lines are active during standard operating office shifts.</p>
             </div>
-            <span className="text-zinc-300 font-black text-xs uppercase tracking-widest block">{pageData.hours}</span>
+            <span className="text-zinc-300 font-black text-[10px] sm:text-xs uppercase tracking-widest block">{pageData.hours}</span>
           </div>
 
-          <div className="reveal p-8 rounded-3xl bg-zinc-900 border border-zinc-800 flex flex-col justify-between" style={{ transitionDelay: '200ms' }}>
+          <div className="reveal p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-zinc-900 border border-zinc-800 flex flex-col justify-between" style={{ transitionDelay: '200ms' }}>
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 flex items-center justify-center mb-6">
-                <Headphones className="w-6 h-6" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 flex items-center justify-center mb-4 sm:mb-6">
+                <Headphones className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="text-lg font-black uppercase tracking-tight text-white mb-2">Email Support</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-6">Send us diagnostic screenshots or documents. We reply within 4 working hours.</p>
+              <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-white mb-1.5 sm:mb-2">Email Support</h3>
+              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">Send us diagnostic screenshots or documents. We reply within 4 working hours.</p>
             </div>
-            <a href={`mailto:${pageData.email}`} className="inline-flex items-center gap-2 text-yellow-400 font-black text-sm uppercase tracking-wider hover:underline">
+            <a href={`mailto:${pageData.email}`} className="inline-flex items-center gap-2 text-yellow-400 font-black text-xs sm:text-sm uppercase tracking-wider hover:underline">
               {pageData.email}
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </a>
           </div>
         </div>
       </section>
 
       {/* Main Support Grid */}
-      <section className="px-6 py-24 border-t border-white/5 bg-zinc-950">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <section className="px-4 sm:px-6 py-12 sm:py-24 border-t border-white/5 bg-zinc-950">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* FAQ list */}
           <div className="reveal">
             <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Knowledge Base</span>
-            <h2 className="text-4xl md:text-5xl font-thin mb-12 tracking-tight uppercase text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-thin mb-8 sm:mb-12 tracking-tight uppercase text-white">
               {pageData.faqsTitle || "General FAQs."}
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {activeFaqs.map((faq, idx) => (
-                <div key={idx} className="border border-zinc-800 rounded-2xl bg-zinc-900/50 overflow-hidden transition-all duration-350">
+                <div key={idx} className="border border-zinc-800 rounded-xl sm:rounded-2xl bg-zinc-900/50 overflow-hidden transition-all duration-350">
                   <button
-                    className="w-full flex justify-between items-center p-6 text-left"
+                    className="w-full flex justify-between items-center p-4 sm:p-6 text-left gap-4"
                     onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                   >
-                    <span className="font-black text-sm uppercase tracking-tight text-white">{faq.q}</span>
-                    <ChevronDown className={`w-5 h-5 text-zinc-500 transition-transform duration-300 ${openFaq === idx ? 'rotate-180 text-yellow-400' : ''}`} />
+                    <span className="font-black text-xs sm:text-sm uppercase tracking-tight text-white">{faq.q}</span>
+                    <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 text-zinc-500 shrink-0 transition-transform duration-300 ${openFaq === idx ? 'rotate-180 text-yellow-400' : ''}`} />
                   </button>
                   <div className={`transition-all duration-350 ease-in-out overflow-hidden ${openFaq === idx ? 'max-h-96 border-t border-zinc-800' : 'max-h-0'}`}>
-                    <div className="p-6 text-zinc-400 text-sm leading-relaxed bg-zinc-900">
+                    <div className="p-4 sm:p-6 text-zinc-400 text-xs sm:text-sm leading-relaxed bg-zinc-900">
                       {faq.a}
                     </div>
                   </div>
@@ -174,15 +174,15 @@ const Support: React.FC = () => {
           </div>
 
           {/* Form */}
-          <div className="reveal p-8 md:p-12 bg-zinc-900 border border-zinc-800 rounded-[2.5rem]" style={{ transitionDelay: '150ms' }}>
-            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Support Intake</span>
-            <h2 className="text-3xl md:text-4xl font-thin tracking-tight uppercase text-white mb-2">
+          <div className="reveal p-5 sm:p-8 md:p-12 bg-zinc-900 border border-zinc-800 rounded-2xl sm:rounded-[2.5rem]" style={{ transitionDelay: '150ms' }}>
+            <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-3 sm:mb-4 block">Support Intake</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-thin tracking-tight uppercase text-white mb-2">
               {pageData.ticketTitle || "Submit a Ticket."}
             </h2>
             {pageData.ticketDesc && (
-              <p className="text-zinc-400 text-xs leading-relaxed mb-8">{pageData.ticketDesc}</p>
+              <p className="text-zinc-400 text-xs leading-relaxed mb-6 sm:mb-8">{pageData.ticketDesc}</p>
             )}
-            <div className="text-black bg-zinc-900 rounded-3xl p-1">
+            <div className="text-black bg-zinc-900 rounded-2xl sm:rounded-3xl p-1">
               <SmartForm initialType="support" />
             </div>
           </div>

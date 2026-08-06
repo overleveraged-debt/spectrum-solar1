@@ -53,42 +53,42 @@ const SupportWidget: React.FC = () => {
       </button>
 
       {/* Popup Modal */}
-      <div className={`absolute bottom-[4.5rem] left-0 w-[400px] max-w-[calc(100vw-4rem)] max-h-[calc(100svh-10rem)] sm:max-h-[calc(100vh-8rem)] flex flex-col bg-zinc-900 border border-white/10 rounded-[2.5rem] shadow-2xl transition-all duration-500 origin-bottom-left overflow-hidden ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-10 pointer-events-none'}`}>
+      <div className={`absolute bottom-[4.25rem] left-0 w-[calc(100vw-3rem)] xs:w-[350px] sm:w-[400px] max-w-[calc(100vw-2.5rem)] max-h-[calc(100svh-9rem)] flex flex-col bg-zinc-900 border border-white/10 rounded-3xl sm:rounded-[2.5rem] shadow-2xl transition-all duration-500 origin-bottom-left overflow-hidden ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-10 pointer-events-none'}`}>
 
         {/* Header */}
-        <div className="p-6 sm:p-8 pb-4 border-b border-white/5">
-          <h3 className="text-white text-xl sm:text-2xl font-black uppercase tracking-tighter mb-1 sm:mb-2">Support Hub</h3>
-          <p className="text-zinc-500 text-[10px] sm:text-xs font-medium uppercase tracking-widest">How can we help you today?</p>
+        <div className="p-4 sm:p-6 md:p-8 pb-3 sm:pb-4 border-b border-white/5">
+          <h3 className="text-white text-lg sm:text-xl md:text-2xl font-black uppercase tracking-tighter mb-1">Support Hub</h3>
+          <p className="text-zinc-500 text-[9px] sm:text-[10px] md:text-xs font-medium uppercase tracking-widest">How can we help you today?</p>
         </div>
 
-        <div className="p-6 sm:p-8 flex-1 overflow-y-auto no-scrollbar space-y-6 sm:space-y-8">
+        <div className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto no-scrollbar space-y-5 sm:space-y-6 md:space-y-8">
           {/* Main Action - Enquiry */}
-          <div className="space-y-3">
-            <h4 className="text-white text-[10px] font-black uppercase tracking-widest mb-2 px-1 opacity-50">Quick Actions</h4>
+          <div className="space-y-2.5 sm:space-y-3">
+            <h4 className="text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest mb-1.5 px-1 opacity-50">Quick Actions</h4>
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}
-              className="w-full bg-yellow-400 text-black font-black uppercase tracking-widest py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-yellow-300 transition-all shadow-xl group text-sm"
+              className="w-full bg-yellow-400 text-black font-black uppercase tracking-[0.1em] sm:tracking-widest py-3 sm:py-4 px-3 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 sm:gap-3 hover:bg-yellow-300 transition-all shadow-xl group text-xs sm:text-sm whitespace-nowrap"
             >
-              Book Consultation <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Book Consultation <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/support"
               onClick={() => setIsOpen(false)}
-              className="w-full bg-zinc-800 hover:bg-zinc-750 text-white font-black uppercase tracking-widest py-4 rounded-2xl flex items-center justify-center gap-3 transition-all border border-white/5 group text-xs animate-fade-in"
+              className="w-full bg-zinc-800 hover:bg-zinc-750 text-white font-black uppercase tracking-[0.1em] sm:tracking-widest py-3 sm:py-4 px-3 rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 sm:gap-3 transition-all border border-white/5 group text-[10px] sm:text-xs animate-fade-in whitespace-nowrap"
             >
-              Submit Support Ticket <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Submit Support Ticket <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
           {/* FAQ Section */}
-          <div className="space-y-4">
-            <h4 className="text-white text-[10px] font-black uppercase tracking-widest mb-2 px-1 opacity-50">Frequently Asked</h4>
-            <div className="space-y-3">
+          <div className="space-y-3 sm:space-y-4">
+            <h4 className="text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest mb-1.5 px-1 opacity-50">Frequently Asked</h4>
+            <div className="space-y-2.5 sm:space-y-3">
               {faqs.map((faq, i) => (
-                <div key={i} className="p-4 sm:p-5 bg-white/5 rounded-2xl border border-white/5 group hover:border-white/10 transition-colors">
-                  <h4 className="text-white text-[10px] sm:text-[11px] font-black uppercase tracking-tighter mb-1.5 sm:mb-2 flex items-center gap-2">
-                    <HelpCircle className="w-3 h-3 text-yellow-400" /> {faq.q}
+                <div key={i} className="p-3.5 sm:p-4 md:p-5 bg-white/5 rounded-xl sm:rounded-2xl border border-white/5 group hover:border-white/10 transition-colors">
+                  <h4 className="text-white text-[10px] sm:text-[11px] font-black uppercase tracking-tighter mb-1 sm:mb-2 flex items-center gap-2">
+                    <HelpCircle className="w-3 h-3 text-yellow-400 shrink-0" /> {faq.q}
                   </h4>
                   <p className="text-zinc-500 text-[9px] sm:text-[10px] font-medium leading-relaxed">{faq.a}</p>
                 </div>
@@ -98,18 +98,18 @@ const SupportWidget: React.FC = () => {
         </div>
 
         {/* Footer Quick Contact */}
-        <div className="p-6 sm:p-8 bg-white/5 rounded-b-[2.5rem] border-t border-white/5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center">
-              <MessageSquare className="w-4 h-4" />
+        <div className="p-4 sm:p-6 md:p-8 bg-white/5 rounded-b-3xl sm:rounded-b-[2.5rem] border-t border-white/5 flex items-center justify-between">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center shrink-0">
+              <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
             <div>
               <span className="text-white text-[10px] font-black uppercase tracking-tighter block leading-none">WhatsApp</span>
               <span className="text-zinc-600 text-[9px] font-medium block">Instant help</span>
             </div>
           </div>
-          <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Direct WhatsApp Chat with Sales Engineer" className="text-yellow-400 hover:text-white transition-colors">
-            <ExternalLink className="w-5 h-5" />
+          <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Direct WhatsApp Chat with Sales Engineer" className="text-yellow-400 hover:text-white transition-colors p-1">
+            <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
           </a>
         </div>
 

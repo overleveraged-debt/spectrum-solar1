@@ -13,7 +13,19 @@ export function usePageContent(pageId: string) {
         if (isMounted && res && res.content) {
           try {
             const parsed = JSON.parse(res.content);
-            setPageData((prev: any) => ({ ...prev, ...parsed }));
+            setPageData((prev: any) => {
+              const combined = { ...prev, ...parsed };
+              if (Array.isArray(prev.benefits) && Array.isArray(parsed.benefits)) {
+                combined.benefits = prev.benefits.map((defItem: any, idx: number) => parsed.benefits[idx] || defItem);
+              }
+              if (Array.isArray(prev.perfectFor) && Array.isArray(parsed.perfectFor)) {
+                combined.perfectFor = prev.perfectFor.map((defItem: any, idx: number) => parsed.perfectFor[idx] || defItem);
+              }
+              if (Array.isArray(prev.howItWorksSteps) && Array.isArray(parsed.howItWorksSteps)) {
+                combined.howItWorksSteps = prev.howItWorksSteps.map((defItem: any, idx: number) => parsed.howItWorksSteps[idx] || defItem);
+              }
+              return combined;
+            });
           } catch (e) {
             console.error(`Failed to parse page content for ${pageId}`, e);
           }

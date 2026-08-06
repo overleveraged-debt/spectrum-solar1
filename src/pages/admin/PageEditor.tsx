@@ -493,6 +493,15 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
             const parsed = JSON.parse(result.content);
             const defaults = defaultPagesData[activeFetchId] || {};
             const combined = { ...defaults, ...parsed };
+            if (Array.isArray(defaults.benefits) && Array.isArray(parsed.benefits)) {
+              combined.benefits = defaults.benefits.map((defItem: any, idx: number) => parsed.benefits[idx] || defItem);
+            }
+            if (Array.isArray(defaults.perfectFor) && Array.isArray(parsed.perfectFor)) {
+              combined.perfectFor = defaults.perfectFor.map((defItem: any, idx: number) => parsed.perfectFor[idx] || defItem);
+            }
+            if (Array.isArray(defaults.howItWorksSteps) && Array.isArray(parsed.howItWorksSteps)) {
+              combined.howItWorksSteps = defaults.howItWorksSteps.map((defItem: any, idx: number) => parsed.howItWorksSteps[idx] || defItem);
+            }
             setData(combined);
             setOriginalData(combined);
           } else {
