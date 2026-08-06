@@ -127,16 +127,192 @@ export const defaultPagesData: Record<string, any> = {
     heroImage: '/images/banner1090x908.jpg',
     heroDesc: "UPS, inverters, and batteries — built for India's power conditions.",
     showProducts: true,
-    products: []
+    products: [
+      {
+        id: 'lithium-ups',
+        number: '01',
+        title: 'Lithium Inbuilt UPS',
+        category: 'Next-Gen Storage',
+        tagline: 'Zero switchover. Wall-mounted compact power.',
+        description: 'Next-generation energy storage combining high-efficiency lithium LFP battery technology with pure sine wave inverter architecture in a sleek wall-mountable unit.',
+        accentColor: '#facc15',
+        badge: 'Top Seller',
+        features: ['LFP Lithium Technology', 'Zero Switchover (<10ms)', 'Wall-Mountable Sleek Design', '10-Year Battery Life'],
+        specs: [
+          { label: 'Capacity Range', value: '1kVA – 10kVA' },
+          { label: 'Battery Chemistry', value: 'LiFePO4 (LFP)' },
+          { label: 'Switchover', value: '< 10ms' },
+          { label: 'Warranty', value: '5-Year Complete' }
+        ],
+        image: '/images/lithium_hero.webp'
+      },
+      {
+        id: 'home-ups',
+        number: '02',
+        title: 'Home UPS System',
+        category: 'Residential Backup',
+        tagline: 'Reliable power for every home.',
+        description: 'Designed specifically for home appliances, IT equipment, and lighting loads during unexpected grid power cuts.',
+        accentColor: '#facc15',
+        features: ['Pure Sine Wave Output', 'Smart Battery Charging', 'Overload & Short Circuit Protection', 'Silent Operation'],
+        specs: [
+          { label: 'Capacity Range', value: '700VA – 5kVA' },
+          { label: 'Battery Compatibility', value: 'Tubular / Flat / Lithium' },
+          { label: 'Waveform', value: 'Pure Sine Wave' },
+          { label: 'Warranty', value: '2 Years' }
+        ],
+        image: '/images/home_ups_hero.webp'
+      },
+      {
+        id: 'inverters',
+        number: '03',
+        title: 'Inverters',
+        category: 'Power Conversion',
+        tagline: 'High-efficiency energy conversion.',
+        description: 'Heavy-duty power inverters built to run high-load appliances like air conditioners, pumps, and motors with maximum efficiency.',
+        accentColor: '#facc15',
+        features: ['High Surge Capability', 'Mains Voltage Regulation', 'Eco & UPS Modes', 'Wide Input Voltage Window'],
+        specs: [
+          { label: 'Capacity Range', value: '1.5kVA – 15kVA' },
+          { label: 'Topology', value: 'Transformer Based' },
+          { label: 'Efficiency', value: '> 88%' },
+          { label: 'Warranty', value: '2 Years' }
+        ],
+        image: '/images/inverter_hero.webp'
+      },
+      {
+        id: 'online-ups',
+        number: '04',
+        title: 'Online UPS',
+        category: 'Critical Protection',
+        tagline: 'Double-conversion. Zero millisecond delay.',
+        description: 'True Online Double-Conversion UPS engineered for critical IT infrastructure, medical equipment, servers, and industrial automation.',
+        accentColor: '#facc15',
+        badge: 'Mission Critical',
+        features: ['True Double Conversion', 'Zero Transfer Time (0ms)', 'DSP Controlled Technology', 'SNMP / Remote Monitoring'],
+        specs: [
+          { label: 'Capacity Range', value: '1kVA – 120kVA' },
+          { label: 'Transfer Time', value: '0 ms (Instant)' },
+          { label: 'Power Factor', value: '0.9 / 1.0' },
+          { label: 'Warranty', value: '2 Years' }
+        ],
+        image: '/images/online_ups_hero.webp'
+      },
+      {
+        id: 'lithium-batteries',
+        number: '05',
+        title: 'Lithium Batteries',
+        category: 'LFP Storage',
+        tagline: 'Fast charge. 4000+ cycle life.',
+        description: 'Advanced Lithium Iron Phosphate (LiFePO4) battery packs with integrated Smart BMS. Charges 3x faster than lead-acid with zero maintenance.',
+        accentColor: '#facc15',
+        badge: 'Zero Maintenance',
+        features: ['4000+ Cycle Life', 'Integrated Smart BMS', 'Ultra-Fast Charging', '95% Depth of Discharge'],
+        specs: [
+          { label: 'Capacities', value: '12.8V / 25.6V / 48V (50Ah – 200Ah)' },
+          { label: 'Chemistry', value: 'LiFePO4' },
+          { label: 'Cycle Life', value: '> 4000 Cycles @ 80% DOD' },
+          { label: 'Warranty', value: '5 Years' }
+        ],
+        image: '/images/lithium_battery_hero.webp'
+      },
+      {
+        id: 'tubular-batteries',
+        number: '06',
+        title: 'Tubular Batteries',
+        category: 'Lead-Acid Storage',
+        tagline: 'Proven technology. Unmatched value.',
+        description: "India's most trusted battery technology for home UPS systems. Tall tubular plates give superior performance in high ambient temperatures.",
+        accentColor: '#facc15',
+        features: ['Tall Tubular Plates', 'Heat-Resistant Design', 'Low Water Topping', 'Deep Discharge Recovery'],
+        specs: [
+          { label: 'Capacity', value: '100Ah – 220Ah' },
+          { label: 'Voltage', value: '12V' },
+          { label: 'Warranty', value: '3 – 5 Years' },
+          { label: 'Life', value: '4 – 6 Years' }
+        ],
+        image: '/images/tubular_battery_hero.webp'
+      }
+    ]
   },
   'solar-solutions': {
     showHero: true,
     heroTitle: 'Solar Solutions',
     heroSubtitle: 'Solar Solutions Specialists',
-    heroImage: '/images/home_solar_banner.jpg',
+    heroImage: '/images/home_solar_banner.webp',
     heroDesc: 'On-grid, hybrid, and off-grid solar systems built for maximum ROI.',
     showProducts: true,
-    products: []
+    products: [
+      {
+        id: 'on-grid',
+        number: '01',
+        title: 'On-Grid Solar System',
+        category: 'Grid-Tied',
+        tagline: 'Net-metered. Reduced electricity bills.',
+        description: 'Grid-connected solar systems that feed excess power back to the KSEB grid through net metering. The most cost-effective way to slash your bill to zero.',
+        accentColor: '#facc15',
+        badge: 'Most Popular',
+        features: ['Net-Metering with KSEB', 'Real-time ERP Monitoring', '25-Year Panel Warranty', 'Government Subsidy Eligible'],
+        specs: [
+          { label: 'Capacity Range', value: '3kW – 500kW+' },
+          { label: 'Grid Feed', value: 'Net-Metered' },
+          { label: 'Warranty', value: '25-Year Panel' },
+          { label: 'ROI Period', value: '3 – 5 Years' }
+        ],
+        image: '/images/ongrid_hero_wide.webp'
+      },
+      {
+        id: 'hybrid',
+        number: '02',
+        title: 'Hybrid Solar System',
+        category: 'Grid + Battery',
+        tagline: 'Solar power + backup. Day and night.',
+        description: 'The best of both worlds — solar generation during the day with a lithium or VRLA battery bank for uninterrupted power during outages.',
+        accentColor: '#facc15',
+        features: ['Day + Night Power', 'Grid + Battery Hybrid', 'Instant Switchover (<10ms)', 'Smart Energy Management'],
+        specs: [
+          { label: 'Capacity Range', value: '2kW – 50kW' },
+          { label: 'Backup', value: '2 – 12 Hours' },
+          { label: 'Battery', value: 'Lithium / VRLA' },
+          { label: 'Switch Time', value: '< 10ms' }
+        ],
+        image: '/images/hybrid_hero.webp'
+      },
+      {
+        id: 'off-grid',
+        number: '03',
+        title: 'Lithium Off-Grid System',
+        category: 'Off-Grid',
+        tagline: 'Total energy independence.',
+        description: 'Fully autonomous solar+lithium battery systems designed for locations without reliable grid access. Absolute power independence.',
+        accentColor: '#facc15',
+        features: ['Zero Grid Dependency', 'Lithium LFP Batteries', 'All-Weather Rated', '10-Year Battery Warranty'],
+        specs: [
+          { label: 'Capacity', value: '1kW – 25kW' },
+          { label: 'Autonomy', value: 'Full Off-Grid' },
+          { label: 'Battery Tech', value: 'LFP Lithium' },
+          { label: 'Cycles', value: '4000+ Charge Cycles' }
+        ],
+        image: '/images/offgrid_hero.webp'
+      },
+      {
+        id: 'water-heaters',
+        number: '04',
+        title: 'Solar Water Heaters',
+        category: 'Thermal Savings',
+        tagline: 'Hot water. Powered by the sun.',
+        description: 'High-performance solar water heaters utilizing evacuated tube collectors (ETC) or flat plate collectors (FPC).',
+        accentColor: '#facc15',
+        features: ['ETC & FPC Options', 'Inner Tank Glass-Lined', 'All-Weather Performance', '5-Year Warranty'],
+        specs: [
+          { label: 'Capacities', value: '100L – 2000L' },
+          { label: 'Outer Tank', value: 'SS / Powder Coated' },
+          { label: 'Inner Tank', value: 'Glass Lined / SUS316' },
+          { label: 'Heating Back', value: 'Auxiliary Element' }
+        ],
+        image: '/images/water_heater_hero.webp'
+      }
+    ]
   },
   calculators: {
     costPerKW: 65000,

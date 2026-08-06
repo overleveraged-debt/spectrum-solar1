@@ -7,7 +7,7 @@ import LeadsViewer from './LeadsViewer';
 import ApplicationsViewer from './ApplicationsViewer';
 
 type Tab = 
-  | 'home' | 'about' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs' 
+  | 'home' | 'about' | 'solar-solutions' | 'power-backup' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs' 
   | 'map-locations' | 'privacy-policy' | 'terms-conditions'
   | 'leads' | 'applications' | 'testimonials' | 'footer';
 
@@ -44,7 +44,9 @@ export default function AdminDashboard() {
   const menuItems = [
     { id: 'home', label: 'Home Page', icon: FileText, category: 'Page Editors' },
     { id: 'about', label: 'About Page', icon: FileText, category: 'Page Editors' },
-    { id: 'product-details', label: 'Product Details', icon: FileText, category: 'Page Editors' },
+    { id: 'solar-solutions', label: 'Solar Overview Page', icon: FileText, category: 'Page Editors' },
+    { id: 'power-backup', label: 'Power Backup Overview Page', icon: FileText, category: 'Page Editors' },
+    { id: 'product-details', label: 'Product Landing Pages', icon: FileText, category: 'Page Editors' },
     { id: 'map-locations', label: 'Map Locations', icon: FileText, category: 'Page Editors' },
     { id: 'careers', label: 'Careers Page', icon: FileText, category: 'Page Editors' },
     { id: 'support', label: 'Support & FAQ', icon: FileText, category: 'Page Editors' },

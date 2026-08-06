@@ -162,6 +162,34 @@ const pageSectionGroups: Record<string, Array<{
     }
   ],
 
+  'solar-solutions': [
+    {
+      id: 'hero',
+      title: 'Hero Banner',
+      description: 'Configure title, subtitle, intro text, and top background image.',
+      fields: ['heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
+    },
+    {
+      id: 'products',
+      title: 'Solar Products Overview List',
+      description: 'Configure titles, descriptions, features, specifications, and images for all 4 solar systems.',
+      fields: ['products']
+    }
+  ],
+  'power-backup': [
+    {
+      id: 'hero',
+      title: 'Hero Banner',
+      description: 'Configure title, subtitle, intro text, and top background image.',
+      fields: ['heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
+    },
+    {
+      id: 'products',
+      title: 'Power Backup Products Overview List',
+      description: 'Configure titles, descriptions, features, specifications, and images for all 6 power backup systems.',
+      fields: ['products']
+    }
+  ],
   calculators: [
     {
       id: 'params',
