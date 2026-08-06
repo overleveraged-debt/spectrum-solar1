@@ -133,7 +133,7 @@ const Careers: React.FC = () => {
                   pageData.heroTitle
                 )}
               </h1>
-              <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
+              <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-light tracking-wide mb-10">
                 {pageData.heroDesc || "Empower your career with India's most trusted solar solutions brand. We are looking for innovators, builders, and green champions."}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

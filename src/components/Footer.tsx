@@ -208,23 +208,17 @@ const Footer: React.FC = () => {
                     <p className="text-zinc-400 text-xs leading-relaxed">Kochi</p>
                   </div>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-yellow-400 shrink-0" />
-                  <div className="space-y-1">
-                    <p className="text-[10px] font-black uppercase text-zinc-400 tracking-wider leading-none">Sales Support</p>
-                    <a href={`tel:${phoneVal.replace(/\s+/g, '')}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
-                      {phoneVal}
-                    </a>
-                  </div>
+                  <a href={`tel:${phoneVal.replace(/\s+/g, '')}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                    {phoneVal}
+                  </a>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-yellow-400 shrink-0" />
-                  <div className="space-y-1">
-                    <p className="text-[10px] font-black uppercase text-zinc-400 tracking-wider leading-none">Email Us</p>
-                    <a href={`mailto:${emailVal}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
-                      {emailVal}
-                    </a>
-                  </div>
+                  <a href={`mailto:${emailVal}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                    {emailVal}
+                  </a>
                 </li>
               </ul>
             </div>

@@ -166,19 +166,6 @@ const Inverters: React.FC = () => {
               <p className="text-zinc-500 leading-relaxed font-light mb-10">
                 Spectrum Powers offers high-quality inverters built with advanced technology to deliver reliable, efficient performance — from basic home models to solar and commercial-grade systems.
               </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Output Type", value: "Pure Sine Wave" },
-                  { label: "Switching", value: "Automatic" },
-                  { label: "Battery Compat.", value: "All Types" },
-                  { label: "Monitoring", value: "Digital Display" },
-                ].map((s, i) => (
-                  <div key={i} className="bg-zinc-900 border border-white/5 rounded-2xl p-4 hover:border-yellow-400/20 transition-colors">
-                    <div className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">{s.label}</div>
-                    <div className="text-white font-black text-xl tracking-tight">{s.value}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

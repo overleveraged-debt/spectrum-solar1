@@ -81,7 +81,7 @@ const Freelance: React.FC = () => {
           <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
             <span className="text-yellow-400">Freelance</span><br />with Spectrum Solar
           </h1>
-          <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-medium mb-10">
+          <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-light tracking-wide mb-10">
             No investment. No experience required. Just refer &amp; earn.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

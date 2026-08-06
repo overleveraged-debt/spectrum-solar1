@@ -186,19 +186,6 @@ const OffGridSolar: React.FC = () => {
                 This system ensures stable, eco-friendly, and uninterrupted energy for your daily needs — whether you're in a remote village, farm, or off-grid retreat.
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Grid Connection", value: "Not Required" },
-                  { label: "Battery Technology", value: "Lithium LFP" },
-                  { label: "Electricity Bills", value: "Zero" },
-                  { label: "Operation", value: "24/7 Silent" },
-                ].map((s, i) => (
-                  <div key={i} className="bg-zinc-900 border border-white/5 rounded-2xl p-4 hover:border-yellow-400/20 transition-colors">
-                    <div className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">{s.label}</div>
-                    <div className="text-white font-black text-xl tracking-tight">{s.value}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

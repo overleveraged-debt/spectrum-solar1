@@ -218,9 +218,6 @@ const SolarSolutions: React.FC = () => {
             <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
-              {pageData.heroSubtitle}
-            </span>
             <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
               {pageData.heroTitle.includes('Solar Solutions') ? (
                 <>Solar <br className="hidden md:block" /> Solutions</>
@@ -228,7 +225,7 @@ const SolarSolutions: React.FC = () => {
                 pageData.heroTitle
               )}
             </h1>
-            <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-light tracking-wide drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
               {pageData.heroDesc}
             </p>
           </div>
@@ -318,40 +315,27 @@ const SolarSolutions: React.FC = () => {
                         }`}
                       >
                         <div className="px-6 md:px-14 pb-10 border-t border-white/5">
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 pt-8">
-                            <div className="md:col-span-1">
-                              <p className="text-zinc-300 text-base leading-relaxed mb-6 font-light">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 pt-8">
+                            <div className="md:col-span-1 space-y-6">
+                              <p className="text-zinc-300 text-base leading-relaxed font-light">
                                 {product.description}
                               </p>
-                              <ul className="space-y-3">
-                                {(product.features || []).map((feature, i) => (
-                                  <li key={i} className="flex items-center gap-3">
-                                    <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: accentColor }} />
-                                    <span className="text-zinc-300 text-sm font-medium">{feature}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-
-                            <div className="md:col-span-1">
-                              <p className="text-[9px] font-black uppercase tracking-[0.4em] mb-5" style={{ color: accentColor }}>
-                                Technical Specifications
-                              </p>
-                              <div className="grid grid-cols-2 gap-3">
-                                {(product.specs || []).map((spec, i) => (
-                                  <div
-                                    key={i}
-                                    className="p-4 rounded-xl"
-                                    style={{ background: accentColor + '08', border: `1px solid ${accentColor}20` }}
-                                  >
-                                    <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">{spec.label}</p>
-                                    <p className="text-white font-black text-sm leading-tight">{spec.value}</p>
-                                  </div>
-                                ))}
+                              <div>
+                                <p className="text-[9px] font-black uppercase tracking-[0.4em] mb-4" style={{ color: accentColor }}>
+                                  Key Features & Benefits
+                                </p>
+                                <ul className="space-y-3">
+                                  {(product.features || []).map((feature, i) => (
+                                    <li key={i} className="flex items-center gap-3">
+                                      <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: accentColor }} />
+                                      <span className="text-zinc-300 text-sm font-medium">{feature}</span>
+                                    </li>
+                                  ))}
+                                </ul>
                               </div>
                               <Link
                                 to="/contact?type=solar"
-                                className="inline-flex items-center gap-2 mt-6 font-black text-[10px] uppercase tracking-[0.3em] transition-all group/cta"
+                                className="inline-flex items-center gap-2 mt-4 font-black text-[10px] uppercase tracking-[0.3em] transition-all group/cta"
                                 style={{ color: accentColor }}
                                 onClick={(e) => e.stopPropagation()}
                               >

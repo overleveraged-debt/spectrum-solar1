@@ -198,19 +198,6 @@ const HybridSolar: React.FC = () => {
                 This makes it the ideal solution for homes and businesses facing frequent power cuts or voltage fluctuations — complete energy reliability in one system.
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Power Availability", value: "24/7" },
-                  { label: "Battery Life", value: "8–12 Years" },
-                  { label: "Backup Switchover", value: "< 10ms" },
-                  { label: "Monitoring", value: "Mobile App" },
-                ].map((s, i) => (
-                  <div key={i} className="bg-zinc-900 border border-white/5 rounded-2xl p-4 hover:border-yellow-400/20 transition-colors">
-                    <div className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">{s.label}</div>
-                    <div className="text-white font-black text-xl tracking-tight">{s.value}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

@@ -193,20 +193,6 @@ const LithiumUps: React.FC = () => {
                 Spectrum Powers delivers advanced lithium UPS systems engineered for efficiency, reliability, and space-saving installation — trusted by homes and businesses nationwide.
               </p>
 
-              {/* Mini stat cards */}
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Lifespan", value: "5–10+ Years" },
-                  { label: "Charge Cycles", value: "4,000+" },
-                  { label: "Switch Time", value: "< 10ms" },
-                  { label: "Maintenance", value: "Zero" },
-                ].map((s, i) => (
-                  <div key={i} className="bg-zinc-900 border border-white/5 rounded-2xl p-4 hover:border-yellow-400/20 transition-colors">
-                    <div className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">{s.label}</div>
-                    <div className="text-white font-black text-xl tracking-tight">{s.value}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

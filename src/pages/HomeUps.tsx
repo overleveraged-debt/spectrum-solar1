@@ -154,19 +154,6 @@ const HomeUps: React.FC = () => {
                 {pageData.overviewDesc2 || "Spectrum Powers offers customized UPS solutions based on your home's power requirements — ensuring optimal performance and efficiency for every family."}
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
-                {(pageData.overviewCards || [
-                  { label: "Switching Time", value: "Instant" },
-                  { label: "Output Type", value: "Pure Sine Wave" },
-                  { label: "Noise Level", value: "Silent" },
-                  { label: "Customization", value: "Load-Based" },
-                ]).map((s: any, i: number) => (
-                  <div key={i} className="bg-zinc-900 border border-white/5 rounded-2xl p-4 hover:border-yellow-400/20 transition-colors">
-                    <div className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">{s.label}</div>
-                    <div className="text-white font-black text-xl tracking-tight">{s.value}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

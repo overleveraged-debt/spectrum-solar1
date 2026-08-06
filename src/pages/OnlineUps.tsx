@@ -140,19 +140,6 @@ const OnlineUps: React.FC = () => {
               <p className="text-zinc-500 leading-relaxed font-light mb-10">
                 Ideal for critical equipment that cannot tolerate even a fraction of a second power loss — data centers, hospitals, industrial systems and mission-critical IT infrastructure.
               </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Technology", value: "Double Conversion" },
-                  { label: "Transfer Time", value: "Zero (0ms)" },
-                  { label: "Output", value: "Pure Sine Wave" },
-                  { label: "Monitoring", value: "LCD + Remote" },
-                ].map((s, i) => (
-                  <div key={i} className="bg-zinc-900 border border-white/5 rounded-2xl p-4 hover:border-yellow-400/20 transition-colors">
-                    <div className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">{s.label}</div>
-                    <div className="text-white font-black text-xl tracking-tight">{s.value}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

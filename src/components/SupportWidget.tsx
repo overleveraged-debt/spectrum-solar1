@@ -41,14 +41,14 @@ const SupportWidget: React.FC = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle Sun Support Hub"
-        className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-90 shadow-xl ${isOpen ? 'bg-zinc-900 text-white rotate-90' : 'bg-yellow-400 text-black'}`}
+        className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-90 shadow-xl ${isOpen ? 'bg-zinc-900 text-white rotate-90' : 'bg-yellow-400 text-black'}`}
       >
         {/* Soft Pulsing Sun Glow Aura behind button */}
         <span className="absolute inset-0 rounded-full bg-yellow-400 blur-lg opacity-50 animate-pulse -z-10" />
         {isOpen ? (
-          <X className="w-8 h-8 relative z-10" />
+          <X className="w-6 h-6 relative z-10" />
         ) : (
-          <Sun className="w-8 h-8 text-black relative z-10" />
+          <Sun className="w-6 h-6 text-black relative z-10" />
         )}
       </button>
 

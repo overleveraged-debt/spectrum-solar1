@@ -230,47 +230,25 @@ const About: React.FC = () => {
       {/* CEO Message Section */}
       {pageData.showCeoMessage !== false && (
         <section className="px-6 py-24 border-t border-white/5 bg-zinc-900/40">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              {/* CEO Image Container */}
-              <div className="lg:col-span-5 reveal">
-                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 aspect-[4/5] shadow-2xl bg-zinc-900 group">
-                  <img
-                    src={pageData.ceoImage || '/images/ceo_placeholder.webp'}
-                    alt={pageData.ceoName || 'CEO'}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    onError={(e) => {
-                      (e.target as HTMLElement).style.display = 'none';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="text-white font-black text-xl uppercase tracking-tight">{pageData.ceoName}</div>
-                    <div className="text-yellow-400 text-xs font-medium uppercase tracking-widest mt-1">{pageData.ceoRole}</div>
-                  </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="reveal">
+              <Quote className="w-12 h-12 text-yellow-400/40 mb-6" />
+              <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">
+                {pageData.ceoSubtitle}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-thin mb-8 tracking-tight uppercase text-white leading-tight">
+                {pageData.ceoTitle}
+              </h2>
+              <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed mb-8 italic">
+                "{pageData.ceoMessage}"
+              </p>
+              <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+                <div>
+                  <span className="text-white font-black uppercase text-sm tracking-wider block">{pageData.ceoName}</span>
+                  <span className="text-zinc-500 text-xs uppercase tracking-widest block">{pageData.ceoRole}</span>
                 </div>
-              </div>
-
-              {/* CEO Quote & Message */}
-              <div className="lg:col-span-7 reveal" style={{ transitionDelay: '150ms' }}>
-                <Quote className="w-12 h-12 text-yellow-400/40 mb-6" />
-                <span className="text-yellow-400 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">
-                  {pageData.ceoSubtitle}
-                </span>
-                <h2 className="text-3xl md:text-5xl font-thin mb-8 tracking-tight uppercase text-white leading-tight">
-                  {pageData.ceoTitle}
-                </h2>
-                <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed mb-8 italic">
-                  "{pageData.ceoMessage}"
-                </p>
-                <div className="pt-6 border-t border-white/10 flex items-center justify-between">
-                  <div>
-                    <span className="text-white font-black uppercase text-sm tracking-wider block">{pageData.ceoName}</span>
-                    <span className="text-zinc-500 text-xs uppercase tracking-widest block">{pageData.ceoRole}</span>
-                  </div>
-                  <div className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] bg-yellow-400/10 border border-yellow-400/20 px-4 py-2 rounded-full">
-                    Spectrum Powers
-                  </div>
+                <div className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] bg-yellow-400/10 border border-yellow-400/20 px-4 py-2 rounded-full">
+                  Spectrum Powers
                 </div>
               </div>
             </div>

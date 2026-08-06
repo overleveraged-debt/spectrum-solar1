@@ -71,8 +71,14 @@ const DEFAULT_HOME_DATA = {
   showWhySpectrum: true,
   whySpectrumSubtitle: 'Why Spectrum',
   whySpectrumTitle: "India's Most Trusted Solar Partner.",
-  whySpectrumDesc: '25 years. 6,145+ Solar Installations. Government-awarded excellence. Engineered for India\'s diverse climate.',
+  whySpectrumDesc: '24+ years. 6,145+ Solar Installations. Government-awarded excellence. Engineered for India\'s diverse climate.',
   whySpectrumBgImage: '/images/nature-kerala.webp',
+  whySpectrumStat1Value: '6,145+',
+  whySpectrumStat1Label: 'Installations',
+  whySpectrumStat2Value: '25yr',
+  whySpectrumStat2Label: 'Track Record',
+  whySpectrumStat3Value: '100%',
+  whySpectrumStat3Label: 'Service Rate',
   
   // Why Go Solar Section
   showWhyGoSolar: true,
@@ -317,11 +323,11 @@ const Home: React.FC = () => {
                 )}
               </h1>
               <div className="flex flex-col gap-3">
-                <Link to="/solar" className="w-full flex items-center justify-center gap-3 bg-yellow-400 text-black px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300 shadow-lg shadow-yellow-400/20">
-                  Solar Solutions <Sun className="w-4 h-4" />
+                <Link to="/solar" className="w-full flex items-center justify-center gap-1.5 xs:gap-2 bg-yellow-400 text-black px-2 xs:px-3 py-3.5 rounded-full font-black text-[9px] xs:text-[10px] sm:text-[11px] uppercase tracking-[0.08em] xs:tracking-[0.15em] sm:tracking-[0.25em] transition-all duration-300 shadow-lg shadow-yellow-400/20 whitespace-nowrap">
+                  Solar Solutions <Sun className="w-3.5 h-3.5 xs:w-4 xs:h-4 shrink-0" />
                 </Link>
-                <Link to="/power" className="w-full flex items-center justify-center gap-3 bg-yellow-400 text-black px-6 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] transition-all duration-300 shadow-lg shadow-yellow-400/20">
-                  Power Backup Solutions <BatteryCharging className="w-4 h-4 text-black" />
+                <Link to="/power" className="w-full flex items-center justify-center gap-1.5 xs:gap-2 bg-yellow-400 text-black px-2 xs:px-3 py-3.5 rounded-full font-black text-[9px] xs:text-[10px] sm:text-[11px] uppercase tracking-[0.08em] xs:tracking-[0.15em] sm:tracking-[0.25em] transition-all duration-300 shadow-lg shadow-yellow-400/20 whitespace-nowrap">
+                  Power Backup Solutions <BatteryCharging className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-black shrink-0" />
                 </Link>
               </div>
             </div>
@@ -360,7 +366,7 @@ const Home: React.FC = () => {
                 </h2>
               </div>
               <Link to="/solar" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:gap-3 transition-all reveal">
-                All Solar Products <ArrowRight className="w-3 h-3" />
+                Explore Solar Solutions <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
             <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 420px)' }}>
@@ -424,7 +430,7 @@ const Home: React.FC = () => {
                 </h2>
               </div>
               <Link to="/power" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-400 hover:gap-3 transition-all reveal">
-                All Power Products <ArrowRight className="w-3 h-3" />
+                Explore Power Backup <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
             <div className="reveal rounded-[2rem] overflow-hidden mb-10" style={{ height: 'clamp(450px, 80vw, 380px)' }}>
@@ -499,7 +505,11 @@ const Home: React.FC = () => {
                 {pageData.whySpectrumDesc}
               </p>
               <div className="grid grid-cols-3 gap-6">
-                {[{ v: '6,145+', l: 'Installations' }, { v: '25yr', l: 'Track Record' }, { v: '100%', l: 'Service Rate' }].map((s, i) => (
+                {[
+                  { v: pageData.whySpectrumStat1Value || '6,145+', l: pageData.whySpectrumStat1Label || 'Installations' },
+                  { v: pageData.whySpectrumStat2Value || '25yr', l: pageData.whySpectrumStat2Label || 'Track Record' },
+                  { v: pageData.whySpectrumStat3Value || '100%', l: pageData.whySpectrumStat3Label || 'Service Rate' }
+                ].map((s, i) => (
                   <div key={i} className="border-l border-yellow-400/40 pl-4">
                     <div className="text-3xl font-black text-yellow-400 tracking-tighter">{s.v}</div>
                     <div className="text-[10px] font-black uppercase tracking-widest text-white/50 mt-1">{s.l}</div>
@@ -638,7 +648,7 @@ const Home: React.FC = () => {
             <p className="text-white/60 text-base md:text-lg font-light mb-10 max-w-md mx-auto">
               {pageData.contactDesc}
             </p>
-            <Link to="/contact" className="inline-block w-full sm:w-auto bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-xs uppercase tracking-[0.3em] hover:scale-105 hover:bg-yellow-300 transition-all shadow-2xl">Connect with Experts</Link>
+            <Link to="/contact" className="inline-flex items-center justify-center w-full sm:w-auto bg-yellow-400 text-black px-6 sm:px-12 py-5 sm:py-6 rounded-full font-black text-[10px] sm:text-xs uppercase tracking-[0.12em] sm:tracking-[0.3em] hover:scale-105 hover:bg-yellow-300 transition-all shadow-2xl whitespace-nowrap">Connect with Experts</Link>
           </div>
         </section>
       )}
