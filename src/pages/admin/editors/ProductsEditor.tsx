@@ -1,0 +1,272 @@
+import React from 'react';
+import { Plus, Trash2, ChevronRight } from 'lucide-react';
+
+interface ProductsEditorProps {
+  products: any[];
+  activeIdx: number;
+  setActiveIdx: (idx: number) => void;
+  onChange: (newList: any[]) => void;
+  textareaClass: string;
+}
+
+export default function ProductsEditor({
+  products = [],
+  activeIdx,
+  setActiveIdx,
+  onChange,
+  textareaClass,
+}: ProductsEditorProps) {
+  const list = products;
+  const currentIdx = activeIdx ?? 0;
+  const activeProd = list[currentIdx] || list[0] || {};
+
+  return (
+    <div className="space-y-4 md:col-span-2">
+      <div className="flex items-center justify-between">
+        <label className="text-sm font-bold text-white block">Products Catalog Items ({list.length} cards)</label>
+        <span className="text-[10px] text-zinc-500 uppercase font-bold">Catalog Grid Cards</span>
+      </div>
+
+      {/* Master-Detail Split Container */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* Left Column: Product Cards Selector Navigation (4 cols) */}
+        <div className="lg:col-span-4 space-y-2.5">
+          {list.map((prod: any, idx: number) => {
+            const isSelected = currentIdx === idx;
+            return (
+              <div
+                key={idx}
+                onClick={() => setActiveIdx(idx)}
+                className={`p-3.5 rounded-2xl border transition-all duration-200 cursor-pointer flex items-center gap-3 relative ${
+                  isSelected
+                    ? 'bg-zinc-900 border-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.12)]'
+                    : 'bg-zinc-950 border-zinc-900 hover:border-zinc-800 hover:bg-zinc-900/50'
+                }`}
+              >
+                {/* Active Indicator Bar */}
+                {isSelected && <div className="absolute left-0 top-3 bottom-3 w-1 bg-yellow-400 rounded-r-full" />}
+
+                {/* Thumbnail Image */}
+                <div className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden shrink-0 flex items-center justify-center">
+                  {prod.image ? (
+                    <img src={prod.image} alt={prod.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-[9px] text-zinc-600 font-bold">NO IMG</span>
+                  )}
+                </div>
+
+                <div className="min-w-0 flex-1 pl-1">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <span className="text-[9px] font-black uppercase text-yellow-400 tracking-wider">
+                      Card #{idx + 1}
+                    </span>
+                  </div>
+                  <h4 className="text-xs font-bold text-white truncate">{prod.title || 'Untitled Card'}</h4>
+                  <span className="text-[10px] text-zinc-500 block truncate mt-0.5">{prod.category || 'General'}</span>
+                </div>
+
+                <ChevronRight
+                  className={`w-4 h-4 shrink-0 transition-transform ${isSelected ? 'text-yellow-400 translate-x-0.5' : 'text-zinc-600'}`}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Right Column: Active Card Live Preview & Interactive Editor Panel (8 cols) */}
+        <div className="lg:col-span-8 bg-zinc-950 border border-zinc-900 rounded-3xl p-6 space-y-6">
+          {/* Live Website Card Preview Box */}
+          <div className="bg-zinc-900/60 border border-zinc-850 p-5 rounded-2xl space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-black uppercase text-yellow-400 tracking-widest flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Live Website Card Preview (Card #{currentIdx + 1})
+              </span>
+              {activeProd.category && (
+                <span className="text-[9px] bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded-full uppercase font-bold">
+                  {activeProd.category}
+                </span>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-zinc-950 p-4 rounded-xl border border-zinc-900">
+              {activeProd.image && (
+                <img
+                  src={activeProd.image}
+                  alt="Preview"
+                  className="w-16 h-14 rounded-xl object-cover border border-zinc-800 shrink-0"
+                />
+              )}
+              <div className="space-y-1 min-w-0 flex-1">
+                <div className="flex items-center gap-2">
+                  <h3 className="font-bold text-sm text-white uppercase">{activeProd.title || 'Product Title'}</h3>
+                </div>
+                <p className="text-zinc-400 text-xs line-clamp-1">{activeProd.tagline || activeProd.description}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Form Fields for Active Card */}
+          <div className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
+                  Product Title
+                </label>
+                <input
+                  type="text"
+                  value={activeProd.title || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[currentIdx] = { ...newList[currentIdx], title: e.target.value };
+                    onChange(newList);
+                  }}
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white font-bold rounded-xl py-2.5 px-3.5 text-xs outline-none focus:border-yellow-400/50 transition-all"
+                  placeholder="e.g. Lithium Inbuilt UPS"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
+                  Category Label
+                </label>
+                <input
+                  type="text"
+                  value={activeProd.category || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[currentIdx] = { ...newList[currentIdx], category: e.target.value };
+                    onChange(newList);
+                  }}
+                  className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2.5 px-3.5 text-xs outline-none focus:border-yellow-400/50 transition-all"
+                  placeholder="e.g. Zero-Switch Technology"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
+                Tagline Subheading
+              </label>
+              <input
+                type="text"
+                value={activeProd.tagline || ''}
+                onChange={(e) => {
+                  const newList = [...list];
+                  newList[currentIdx] = { ...newList[currentIdx], tagline: e.target.value };
+                  onChange(newList);
+                }}
+                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2.5 px-3.5 text-xs outline-none focus:border-yellow-400/50 transition-all"
+                placeholder="e.g. Instant zero-switch backup."
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
+                Card Description Paragraph
+              </label>
+              <textarea
+                value={activeProd.description || ''}
+                onChange={(e) => {
+                  const newList = [...list];
+                  newList[currentIdx] = { ...newList[currentIdx], description: e.target.value };
+                  onChange(newList);
+                }}
+                className={textareaClass}
+                placeholder="Detailed description..."
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
+                Image Path or URL
+              </label>
+              <div className="flex gap-3 items-center">
+                <input
+                  type="text"
+                  value={activeProd.image || ''}
+                  onChange={(e) => {
+                    const newList = [...list];
+                    newList[currentIdx] = { ...newList[currentIdx], image: e.target.value };
+                    onChange(newList);
+                  }}
+                  className="flex-1 bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2.5 px-3.5 text-xs outline-none focus:border-yellow-400/50 transition-all"
+                  placeholder="e.g. /images/lithium_hero.webp"
+                />
+                {activeProd.image && (
+                  <div className="w-12 h-10 rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden shrink-0">
+                    <img src={activeProd.image} alt="Preview" className="w-full h-full object-cover" />
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Interactive Feature Bullets List */}
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center justify-between">
+                <label className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
+                  Bullet Features Checklist ({(activeProd.features || []).length} items)
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newList = [...list];
+                    const currentFeatures = newList[currentIdx]?.features || [];
+                    newList[currentIdx] = {
+                      ...newList[currentIdx],
+                      features: [...currentFeatures, 'New Feature Point'],
+                    };
+                    onChange(newList);
+                  }}
+                  className="text-yellow-400 hover:text-yellow-300 text-xs font-semibold flex items-center gap-1"
+                >
+                  <Plus className="w-3.5 h-3.5" /> Add Feature Bullet
+                </button>
+              </div>
+
+              <div className="space-y-2">
+                {(activeProd.features || []).map((feat: string, fIdx: number) => (
+                  <div key={fIdx} className="flex items-center gap-2 bg-zinc-900 border border-zinc-850 p-2 px-3 rounded-xl">
+                    <span className="w-2 h-2 rounded-full bg-yellow-400 shrink-0" />
+                    <input
+                      type="text"
+                      value={feat || ''}
+                      onChange={(e) => {
+                        const newList = [...list];
+                        const updatedFeatures = [...(newList[currentIdx].features || [])];
+                        updatedFeatures[fIdx] = e.target.value;
+                        newList[currentIdx] = {
+                          ...newList[currentIdx],
+                          features: updatedFeatures,
+                        };
+                        onChange(newList);
+                      }}
+                      className="flex-1 bg-transparent text-white text-xs outline-none font-medium"
+                      placeholder="e.g. Instant Switchover (<10ms)"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newList = [...list];
+                        const updatedFeatures = [...(newList[currentIdx].features || [])];
+                        updatedFeatures.splice(fIdx, 1);
+                        newList[currentIdx] = {
+                          ...newList[currentIdx],
+                          features: updatedFeatures,
+                        };
+                        onChange(newList);
+                      }}
+                      className="text-rose-400 hover:text-rose-300 text-xs font-semibold p-1"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
