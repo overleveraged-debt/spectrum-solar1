@@ -16,6 +16,12 @@ import HowItWorksStepsEditor from './editors/HowItWorksStepsEditor';
 import InstallationStepsEditor from './editors/InstallationStepsEditor';
 import AdvancedFeaturesEditor from './editors/AdvancedFeaturesEditor';
 import FaqsEditor from './editors/FaqsEditor';
+import OverviewCardsEditor from './editors/OverviewCardsEditor';
+import SpecsEditor from './editors/SpecsEditor';
+import FeaturesEditor from './editors/FeaturesEditor';
+import OpportunitiesCardsEditor from './editors/OpportunitiesCardsEditor';
+import FormFieldRenderer from './components/FormFieldRenderer';
+import { pageSectionGroups, fieldMeta, productOptions } from './config/pageEditorConfig';
 import { defaultPagesData } from '../../data/pageDefaults';
 import { KERALA_GEOJSON } from '../../data/keralaGeojson';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, GeoJSON } from 'react-leaflet';
@@ -48,519 +54,6 @@ interface PageEditorProps {
   pageId: string;
   onDirtyChange?: (isDirty: boolean) => void;
 }
-
-// Section groups mapping to make form structured and clean
-const pageSectionGroups: Record<string, Array<{
-  id: string;
-  title: string;
-  description: string;
-  fields: string[];
-}>> = {
-  home: [
-    {
-      id: 'hero',
-      title: 'Hero Banner',
-      description: 'Configure the primary title, background video, and poster fallback.',
-      fields: ['heroTitle', 'heroVideoUrl', 'heroVideoPoster']
-    },
-    {
-      id: 'stats',
-      title: 'Statistics Bar (Black Strip)',
-      description: 'Configure the 4 key metrics and titles displayed right below the Hero video. Use the toggle to show or hide the bar entirely.',
-      fields: [
-        'showStatsBar',
-        'stat1Value', 'stat1Label',
-        'stat2Value', 'stat2Label',
-        'stat3Value', 'stat3Label',
-        'stat4Value', 'stat4Label'
-      ]
-    },
-    {
-      id: 'solar',
-      title: 'Solar Systems Section',
-      description: 'Configure heading, banner picture, and the 4 interactive solar product cards.',
-      fields: [
-        'solarSectionSubtitle', 'solarSectionTitle', 'solarSectionImage',
-        'solarBox1Title', 'solarBox1Sub', 'solarBox1Desc',
-        'solarBox2Title', 'solarBox2Sub', 'solarBox2Desc',
-        'solarBox3Title', 'solarBox3Sub', 'solarBox3Desc',
-        'solarBox4Title', 'solarBox4Sub', 'solarBox4Desc'
-      ]
-    },
-    {
-      id: 'backup',
-      title: 'Backup Systems Section',
-      description: 'Configure headings, wide banner, and the 6 power backup product cards.',
-      fields: [
-        'backupSectionSubtitle', 'backupSectionTitle', 'backupSectionImage',
-        'backupBox1Title', 'backupBox1Sub',
-        'backupBox2Title', 'backupBox2Sub',
-        'backupBox3Title', 'backupBox3Sub',
-        'backupBox4Title', 'backupBox4Sub',
-        'backupBox5Title', 'backupBox5Sub',
-        'backupBox6Title', 'backupBox6Sub'
-      ]
-    },
-    {
-      id: 'whySpectrum',
-      title: 'Why Spectrum Section',
-      description: 'Configure background nature image, core taglines, and description.',
-      fields: ['whySpectrumSubtitle', 'whySpectrumTitle', 'whySpectrumDesc', 'whySpectrumBgImage']
-    },
-    {
-      id: 'whyGoSolar',
-      title: 'Why Go Solar Section',
-      description: 'Configure illustrations and titles explaining solar advantages.',
-      fields: ['whyGoSolarSubtitle', 'whyGoSolarTitle', 'whyGoSolarImage']
-    },
-    {
-      id: 'heritage',
-      title: 'Heritage & Accreditations',
-      description: 'Configure heritage block text, awards, and certificates details.',
-      fields: ['heritageSubtitle', 'heritageTitle', 'heritageImage', 'heritageDesc', 'heritageAccreditationTitle', 'heritageAccreditationDesc']
-    },
-    {
-      id: 'contact',
-      title: 'Contact Call-to-Action',
-      description: 'Configure the bottom call-to-action details, descriptions, and backdrop.',
-      fields: ['contactSubtitle', 'contactTitle', 'contactDesc', 'contactBgImage']
-    }
-  ],
-  about: [
-    {
-      id: 'hero',
-      title: 'Hero Section',
-      description: 'Configure title, subtitle, backdrop image and intro text paragraph.',
-      fields: ['heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
-    },
-    {
-      id: 'stats',
-      title: 'Statistics Grid',
-      description: 'Configure the 4 large counters displayed on the about page. Use the toggle to show or hide the grid entirely.',
-      fields: [
-        'showStats',
-        'stat1Value', 'stat1Label', 'stat1Sub',
-        'stat2Value', 'stat2Label', 'stat2Sub',
-        'stat3Value', 'stat3Label', 'stat3Sub',
-        'stat4Value', 'stat4Label', 'stat4Sub'
-      ]
-    },
-    {
-      id: 'heritage',
-      title: 'Heritage Section',
-      description: 'Configure founded date, headquarters, branch count and descriptive copy.',
-      fields: ['heritageSubtitle', 'heritageTitle', 'heritageDesc', 'heritageFounded', 'heritageHeadquarters', 'heritageCenters', 'heritageImage']
-    },
-    {
-      id: 'quality',
-      title: 'Quality & Accreditations',
-      description: 'Configure brand excellence text, state awards, and illustrational photo.',
-      fields: ['qualitySubtitle', 'qualityTitle', 'qualityDesc', 'qualityAwardTitle', 'qualityAwardDesc', 'qualityImage']
-    },
-    {
-      id: 'ceoMessage',
-      title: 'CEO & Leadership Message',
-      description: 'Configure CEO photo, name, title, and quote message.',
-      fields: ['showCeoMessage', 'ceoSubtitle', 'ceoTitle', 'ceoName', 'ceoRole', 'ceoImage', 'ceoMessage']
-    },
-    {
-      id: 'presence',
-      title: 'Regional Presence Map',
-      description: 'Configure text content next to the interactive presence map.',
-      fields: ['presenceSubtitle', 'presenceTitle', 'presenceDesc']
-    },
-    {
-      id: 'cta',
-      title: 'Bottom CTA Panel',
-      description: 'Configure the call-to-action yellow box at the bottom of the page.',
-      fields: ['ctaTitle', 'ctaDesc']
-    }
-  ],
-
-  'solar-solutions': [
-    {
-      id: 'hero',
-      title: 'Hero Banner',
-      description: 'Configure title, subtitle, intro text, and top background image.',
-      fields: ['heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
-    },
-    {
-      id: 'products',
-      title: 'Solar Products Overview List',
-      description: 'Configure titles, descriptions, features, specifications, and images for all 4 solar systems.',
-      fields: ['products']
-    }
-  ],
-  'power-backup': [
-    {
-      id: 'hero',
-      title: 'Hero Banner',
-      description: 'Configure title, subtitle, intro text, and top background image.',
-      fields: ['heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
-    },
-    {
-      id: 'products',
-      title: 'Power Backup Products Overview List',
-      description: 'Configure titles, descriptions, features, specifications, and images for all 6 power backup systems.',
-      fields: ['products']
-    }
-  ],
-  calculators: [
-    {
-      id: 'params',
-      title: 'Calculators Pricing Parameters',
-      description: 'Modify variables used to compute ROI and payback periods.',
-      fields: ['costPerKW', 'blendedTariff']
-    }
-  ],
-  careers: [
-    {
-      id: 'hero',
-      title: 'Hero Section',
-      description: 'Configure title, subtitle, subtext and banner image.',
-      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
-    },
-    {
-      id: 'stats',
-      title: 'Careers Statistics',
-      description: 'Configure value/label pairs displayed in the stats bar.',
-      fields: ['showStats', 'stats']
-    },
-    {
-      id: 'why',
-      title: 'Why Join Us',
-      description: 'Configure list of benefits and title.',
-      fields: ['whyTitle', 'whyItems']
-    },
-    {
-      id: 'positions',
-      title: 'Open Job Positions',
-      description: 'Manage open listings.',
-      fields: ['positionsTitle', 'openPositions']
-    },
-    {
-      id: 'faqs',
-      title: 'Careers FAQs',
-      description: 'Manage job FAQs.',
-      fields: ['faqsTitle', 'faqs']
-    }
-  ],
-  support: [
-    {
-      id: 'hero',
-      title: 'Hero Section',
-      description: 'Configure title, subtitle and background banner image.',
-      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage']
-    },
-    {
-      id: 'contactInfo',
-      title: 'Contacts Information',
-      description: 'Edit phone numbers, emails, and availability hours.',
-      fields: ['phone', 'email', 'hours']
-    },
-    {
-      id: 'faqs',
-      title: 'General Support FAQs',
-      description: 'Manage help topics.',
-      fields: ['faqsTitle', 'faqs']
-    }
-  ],
-  contact: [
-    {
-      id: 'hero',
-      title: 'Hero Section',
-      description: 'Configure page headlines.',
-      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
-    },
-    {
-      id: 'offices',
-      title: 'Our Offices List',
-      description: 'Manage office cities and addresses.',
-      fields: ['offices']
-    }
-  ],
-  'map-locations': [
-    {
-      id: 'pins',
-      title: 'Map Pins Locations',
-      description: 'Manage pin locations, hover tooltips, and Google Maps direction links.',
-      fields: ['pins']
-    }
-  ],
-  'product-details': [
-    {
-      id: 'hero',
-      title: 'Hero Banner',
-      description: 'Configure product title, subtitle, image, and intro paragraph.',
-      fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
-    },
-    {
-      id: 'stats',
-      title: 'Statistics Strip (Hero Bottom)',
-      description: 'Configure 4 key value metrics displayed in the yellow strip.',
-      fields: [
-        'showStats',
-        'stat1Value', 'stat1Label',
-        'stat2Value', 'stat2Label',
-        'stat3Value', 'stat3Label',
-        'stat4Value', 'stat4Label'
-      ]
-    },
-    {
-      id: 'details',
-      title: 'Product Overview',
-      description: 'Configure introductory overview subtitle, headline, and paragraphs.',
-      fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description']
-    },
-    {
-      id: 'how-it-works',
-      title: 'How It Works / Mechanism Steps',
-      description: 'Configure step-by-step visual process.',
-      fields: ['showHowItWorks', 'howItWorksSteps']
-    },
-    {
-      id: 'benefits',
-      title: 'Key Benefits (Bento Grid)',
-      description: 'Configure key bento advantages grid items.',
-      fields: ['benefits']
-    },
-    {
-      id: 'advanced-features',
-      title: 'Technical Features (Pill Tags)',
-      description: 'Configure engineering bullet point tags.',
-      fields: ['advancedFeatures']
-    },
-    {
-      id: 'applications',
-      title: 'Perfect For (Target Applications)',
-      description: 'Configure target application scenarios (label and sub-description).',
-      fields: ['perfectFor']
-    },
-    {
-      id: 'installation',
-      title: 'Installation Timeline Process',
-      description: 'Configure project phases and timing guidelines.',
-      fields: ['installationSteps']
-    },
-    {
-      id: 'faqs',
-      title: 'Frequently Asked Questions (FAQ)',
-      description: 'Configure product-specific accordion questions.',
-      fields: ['faqs']
-    }
-  ],
-  'on-grid': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'hybrid': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'off-grid': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'water-heaters': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'lithium-ups': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'home-ups': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'inverters': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'online-ups': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'lithium-batteries': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'tubular-batteries': [
-    { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
-    { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
-    { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
-    { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
-    { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
-  ],
-  'privacy-policy': [
-    {
-      id: 'general',
-      title: 'Privacy Policy Document Content',
-      description: 'Configure content headings and description text.',
-      fields: ['title', 'lastUpdated', 'sections']
-    }
-  ],
-  'terms-conditions': [
-    {
-      id: 'general',
-      title: 'Terms & Conditions Document Content',
-      description: 'Configure content headings and description text.',
-      fields: ['title', 'lastUpdated', 'sections']
-    }
-  ],
-  testimonials: [
-    {
-      id: 'testimonials-list',
-      title: 'Manage Client Testimonials',
-      description: 'Add, edit, or delete customer reviews displayed across the website.',
-      fields: ['testimonials']
-    }
-  ],
-  footer: [
-    {
-      id: 'general',
-      title: 'Footer Layout Content',
-      description: 'Configure brand pitch, social links, and MNRE/ISO accreditations.',
-      fields: ['brandPitch', 'instagram', 'facebook', 'linkedin', 'twitter', 'isoCert', 'mnreApproved']
-    }
-  ]
-};
-
-// Rich labels, descriptions and placeholders for inputs
-const fieldMeta: Record<string, { label: string; desc?: string; placeholder?: string }> = {
-  brandPitch: { label: 'Footer Brand Pitch Description', desc: 'Short introductory tagline displayed right below the logo in the footer.', placeholder: 'Spectrum Solar is a pioneer...' },
-  instagram: { label: 'Instagram Profile Link', desc: 'Social media link for Instagram icon.', placeholder: '#' },
-  facebook: { label: 'Facebook Page Link', desc: 'Social media link for Facebook icon.', placeholder: '#' },
-  linkedin: { label: 'LinkedIn Profile Link', desc: 'Social media link for LinkedIn icon.', placeholder: '#' },
-  twitter: { label: 'Twitter / X Profile Link', desc: 'Social media link for Twitter icon.', placeholder: '#' },
-  isoCert: { label: 'ISO Certification Label', desc: 'Accreditation tag in footer.', placeholder: 'ISO 9001:2015' },
-  mnreApproved: { label: 'MNRE Approval Label', desc: 'Government approval tag in footer.', placeholder: 'MNRE Approved' },
-  showHowItWorks: { label: 'Enable How It Works Section', desc: 'Toggle the visibility of the visual step-by-step mechanism on this product page.' },
-  title: { label: 'Document/Page Title', desc: 'Header title of this document.', placeholder: 'e.g. Privacy Policy' },
-  lastUpdated: { label: 'Last Updated Date Status', desc: 'Indicate revision date at the top.', placeholder: 'e.g. Last Updated: April 2026' },
-  sections: { label: 'Policy Sections List', desc: 'List of policy headers and content paragraphs.' },
-  showHero: { label: 'Enable Hero Banner Section', desc: 'Show or hide the video/image banner at the top.' },
-  heroTitle: { label: 'Hero Headline', desc: 'The main overlay title on the banner.', placeholder: 'e.g. Precision Since 2002.' },
-  heroSubtitle: { label: 'Hero Subtitle', desc: 'Tagline displayed right below the primary headline.', placeholder: 'e.g. Powering India...' },
-  heroVideoPoster: { label: 'Video Fallback Poster', desc: 'Image shown on slow networks while background video is loading.', placeholder: '/images/Banner01.jpg' },
-  heroVideoUrl: { label: 'Background Video File URL', desc: 'Path or link to the background MP4 video.', placeholder: '/videos/hero-bg.mp4' },
-  heroImage: { label: 'Hero Background Image', desc: 'The banner photo used behind headers.', placeholder: '/images/about_hero.webp' },
-  heroDesc: { label: 'Hero Description text', desc: 'Short introductory tagline overlay.', placeholder: 'Since 2001, powering thousands...' },
-  costPerKW: { label: 'Solar Cost per kW (₹)', desc: 'Base pricing variable used for system size multiplier.', placeholder: '65000' },
-  blendedTariff: { label: 'Average KSEB blended tariff rate (₹)', desc: 'Blended price per unit to compute monthly savings.', placeholder: '7.5' },
-  phone: { label: 'Helpline Phone Link', desc: 'Toll-free or support phone number.', placeholder: '+91 9447...' },
-  email: { label: 'Support Email Address', desc: 'Central contact email.', placeholder: 'support@...' },
-  hours: { label: 'Working Hours', desc: 'Operating schedule.', placeholder: '9:00 AM - 6:00 PM...' },
-  whyTitle: { label: 'Careers Grid Title', desc: 'Header for the Careers grid.', placeholder: 'Why Join Spectrum?' },
-  description: { label: 'Product Main Overview', desc: 'Paragraph explaining product capabilities.', placeholder: 'Product details...' },
-  showStats: { label: 'Enable Statistics Strip', desc: 'Toggle the yellow stat block visibility.' },
-
-  // Overview Headers
-  overviewSubtitle: { label: 'Overview Section Subtitle', desc: 'Sleek orange top subtitle for the overview section.', placeholder: 'e.g. Comfort & Continuity for Your Home' },
-  overviewTitle: { label: 'Overview Section Headline', desc: 'Large overlay title for the overview section.', placeholder: 'e.g. Power That Keeps Your Home Running.' },
-  overviewDesc1: { label: 'Overview Description Paragraph 1', desc: 'First overview text paragraph.', placeholder: 'Product intro details...' },
-  overviewDesc2: { label: 'Overview Description Paragraph 2', desc: 'Second overview text paragraph.', placeholder: 'Secondary details...' },
-
-  // Stats Bar / Grid
-  showStatsBar: { label: 'Enable Statistics Bar', desc: 'Show or hide the black statistics strip below the video.' },
-  stat1Value: { label: 'Stat 1 Value', placeholder: 'e.g. 25+' },
-  stat1Label: { label: 'Stat 1 Label', placeholder: 'e.g. Years of Excellence' },
-  stat1Sub: { label: 'Stat 1 Tagline', placeholder: 'e.g. Since 2000' },
-  stat2Value: { label: 'Stat 2 Value', placeholder: 'e.g. 40K+' },
-  stat2Label: { label: 'Stat 2 Label', placeholder: 'e.g. Satisfied Customers' },
-  stat2Sub: { label: 'Stat 2 Tagline', placeholder: 'e.g. Across India' },
-  stat3Value: { label: 'Stat 3 Value', placeholder: 'e.g. 6,145+' },
-  stat3Label: { label: 'Stat 3 Label', placeholder: 'e.g. Solar Projects' },
-  stat3Sub: { label: 'Stat 3 Tagline', placeholder: 'e.g. Installed & Running' },
-  stat4Value: { label: 'Stat 4 Value', placeholder: 'e.g. 60+' },
-  stat4Label: { label: 'Stat 4 Label', placeholder: 'e.g. Service Engineers' },
-  stat4Sub: { label: 'Stat 4 Tagline', placeholder: 'e.g. Certified Experts' },
-  positionsTitle: { label: 'Job Positions Header Title', desc: 'Title displayed above job positions.', placeholder: 'Open Positions.' },
-  faqsTitle: { label: 'Careers FAQ Header Title', desc: 'Title displayed above Careers FAQs.', placeholder: 'Frequently Asked Questions.' },
-  stats: { label: 'Careers Statistics Grid', desc: 'Key-value pairs for the yellow statistics strip.' },
-  ticketTitle: { label: 'Ticket Form Headline', desc: 'Title displayed above support intake form.', placeholder: 'Submit a Support Ticket' },
-  ticketDesc: { label: 'Ticket Form Subtext', desc: 'Short paragraph explaining form purpose.', placeholder: 'Register a service enquiry...' }
-};
-
-const productOptions = [
-  { id: 'on-grid', name: 'On-Grid Solar System' },
-  { id: 'hybrid', name: 'Hybrid Solar System' },
-  { id: 'off-grid', name: 'Lithium Off-Grid System' },
-  { id: 'water-heaters', name: 'Solar Water Heaters' },
-  { id: 'lithium-ups', name: 'Lithium Inbuilt UPS' },
-  { id: 'home-ups', name: 'Home UPS System' },
-  { id: 'inverters', name: 'Home & Commercial Inverters' },
-  { id: 'online-ups', name: 'True Online UPS' },
-  { id: 'lithium-batteries', name: 'LFP Lithium Batteries' },
-  { id: 'tubular-batteries', name: 'Tall Tubular Batteries' }
-];
 
 export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
   const [selectedProduct, setSelectedProduct] = useState('on-grid');
@@ -722,6 +215,18 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
     <WhyItemsEditor whyItems={data.whyItems || []} onChange={(newList) => handleFieldChange('whyItems', newList)} textareaClass={EXPANDING_TEXTAREA_CLASS} />
   );
 
+  const renderWhyGoSolarBoxesEditor = () => (
+    <WhyItemsEditor whyItems={data.whyGoSolarBoxes || [
+      { title: 'Zero Electricity Bills', desc: 'Net-metered solar plants can reduce your KSEB bill to ₹0. Pay for the system once, generate free power for 25 years.' },
+      { title: 'Clean & Sustainable', desc: 'Every kW of solar installed avoids hundreds of kg of CO₂ per year. Power your home without harming the planet.' },
+      { title: 'Fast ROI — 3 to 5 Years', desc: 'With government subsidies and KSEB net metering, most systems pay for themselves in under 5 years.' }
+    ]} onChange={(newList) => handleFieldChange('whyGoSolarBoxes', newList)} textareaClass={EXPANDING_TEXTAREA_CLASS} />
+  );
+
+  const renderOpportunitiesCardsEditor = () => (
+    <OpportunitiesCardsEditor opportunities={data.opportunities || []} onChange={(newList) => handleFieldChange('opportunities', newList)} />
+  );
+
   const renderStatsListEditor = () => (
     <StatsEditor stats={data.stats || []} onChange={(newList) => handleFieldChange('stats', newList)} />
   );
@@ -774,297 +279,56 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
     <MapPinsEditor pins={data.pins || []} activePinIdx={activePinIdx} setActivePinIdx={setActivePinIdx} onChange={(newList: any[]) => handleFieldChange('pins', newList)} />
   );
 
-  const renderOverviewCardsEditor = () => {
-    const list = data.overviewCards || [];
-    return (
-      <div className="space-y-4 md:col-span-2">
-        <label className="text-sm font-bold text-white block">Overview Highlight Spec Cards (Max 4)</label>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {Array.from({ length: 4 }).map((_, idx) => {
-            const item = list[idx] || { label: `Spec ${idx + 1}`, value: "Value" };
-            return (
-              <div key={idx} className="p-4 bg-zinc-950 border border-zinc-900 rounded-2xl space-y-2">
-                <div>
-                  <label className="text-[10px] font-black uppercase text-zinc-500 mb-1 block">Label</label>
-                  <input
-                    type="text"
-                    value={item.label || ''}
-                    onChange={(e) => {
-                      const newList = [...list];
-                      newList[idx] = { ...item, label: e.target.value };
-                      handleFieldChange('overviewCards', newList);
-                    }}
-                    className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-1.5 px-2.5 text-xs outline-none"
-                    placeholder="e.g. Output"
-                  />
-                </div>
-                <div>
-                  <label className="text-[10px] font-black uppercase text-zinc-500 mb-1 block">Value</label>
-                  <input
-                    type="text"
-                    value={item.value || ''}
-                    onChange={(e) => {
-                      const newList = [...list];
-                      newList[idx] = { ...item, value: e.target.value };
-                      handleFieldChange('overviewCards', newList);
-                    }}
-                    className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-1.5 px-2.5 text-xs outline-none"
-                    placeholder="e.g. Pure Sine Wave"
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
+  const renderOverviewCardsEditor = () => (
+    <OverviewCardsEditor overviewCards={data.overviewCards || []} onChange={(newList) => handleFieldChange('overviewCards', newList)} />
+  );
+
+  const renderSpecsListEditor = () => (
+    <SpecsEditor specs={data.specs || []} onChange={(newList) => handleFieldChange('specs', newList)} />
+  );
+
+  const renderFeaturesListEditor = () => (
+    <FeaturesEditor features={data.features || data.products || []} onChange={(newList) => handleFieldChange('features', newList)} />
+  );
+
+  const renderFranchiseBenefitsEditor = () => {
+    const rawBenefits = data.benefits || [];
+    const stringList = Array.isArray(rawBenefits)
+      ? rawBenefits.map((b: any) => typeof b === 'string' ? b : (b.title || b.text || b.desc || ''))
+      : [];
+    return <FeaturesEditor features={stringList} onChange={(newList) => handleFieldChange('benefits', newList)} />;
   };
 
-  const renderSpecsListEditor = () => {
-    const list = data.specs || [];
-    return (
-      <div className="space-y-4">
-        <label className="text-sm font-bold text-white block">Technical Specifications Table</label>
-        {list.map((item: any, idx: number) => (
-          <div key={idx} className="grid grid-cols-12 gap-2 bg-zinc-950 p-3 rounded-2xl border border-zinc-900 items-center">
-            <div className="col-span-5">
-              <input
-                type="text"
-                value={item.label || ''}
-                onChange={(e) => {
-                  const newList = [...list];
-                  newList[idx] = { ...newList[idx], label: e.target.value };
-                  handleFieldChange('specs', newList);
-                }}
-                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none font-bold"
-                placeholder="Spec Label (e.g. Capacity)"
-              />
-            </div>
-            <div className="col-span-5">
-              <input
-                type="text"
-                value={item.value || ''}
-                onChange={(e) => {
-                  const newList = [...list];
-                  newList[idx] = { ...newList[idx], value: e.target.value };
-                  handleFieldChange('specs', newList);
-                }}
-                className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
-                placeholder="Spec Value (e.g. 10kW)"
-              />
-            </div>
-            <div className="col-span-2 text-right">
-              <button
-                type="button"
-                onClick={() => {
-                  const newList = [...list];
-                  newList.splice(idx, 1);
-                  handleFieldChange('specs', newList);
-                }}
-                className="text-rose-400 text-xs font-semibold"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={() => {
-            const newList = [...list, { label: 'Property', value: 'Details' }];
-            handleFieldChange('specs', newList);
-          }}
-          className="w-full bg-zinc-950 hover:bg-zinc-900 border border-zinc-900 text-yellow-400 text-xs py-2 rounded-xl transition-colors"
-        >
-          + Add Spec Row
-        </button>
-      </div>
-    );
+  const renderResponsibilitiesListEditor = () => (
+    <FeaturesEditor features={data.responsibilities || []} onChange={(newList) => handleFieldChange('responsibilities', newList)} />
+  );
+
+  const renderDealershipBenefitsEditor = () => {
+    const rawBenefits = data.benefits || [];
+    const stringList = Array.isArray(rawBenefits)
+      ? rawBenefits.map((b: any) => typeof b === 'string' ? b : (b.title || b.text || b.desc || ''))
+      : [];
+    return <FeaturesEditor features={stringList} onChange={(newList) => handleFieldChange('benefits', newList)} />;
   };
 
-  const renderFeaturesListEditor = () => {
-    const list = data.features || [];
-    return (
-      <div className="space-y-4 md:col-span-2">
-        <label className="text-sm font-bold text-white block">Key Features Checklist ({list.length})</label>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {list.map((feature: string, idx: number) => (
-            <div key={idx} className="flex items-center gap-3 bg-zinc-950 border border-zinc-900 p-3 rounded-2xl relative">
-              <input
-                type="text"
-                value={feature || ''}
-                onChange={(e) => {
-                  const newList = [...list];
-                  newList[idx] = e.target.value;
-                  handleFieldChange('features', newList);
-                }}
-                className="flex-1 bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2 px-3 text-xs outline-none"
-                placeholder="e.g. Pure Sine Wave output"
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  const newList = [...list];
-                  newList.splice(idx, 1);
-                  handleFieldChange('features', newList);
-                }}
-                className="text-rose-400 hover:text-rose-350 text-xs font-semibold"
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-        </div>
-        <button
-          type="button"
-          onClick={() => {
-            const newList = [...list, 'New Feature Item'];
-            handleFieldChange('features', newList);
-          }}
-          className="w-full bg-zinc-950 hover:bg-zinc-900 border border-zinc-900 text-yellow-400 text-xs py-2.5 rounded-xl transition-colors font-semibold"
-        >
-          + Add Feature Checkpoint
-        </button>
-      </div>
-    );
+  const renderWhoCanJoinEditor = () => {
+    const rawItems = data.whoCanJoin || [];
+    const stringList = Array.isArray(rawItems)
+      ? rawItems.map((item: any) => typeof item === 'string' ? item : (item.label || item.title || ''))
+      : [];
+    return <FeaturesEditor features={stringList} onChange={(newList) => handleFieldChange('whoCanJoin', newList)} />;
   };
 
-  const renderField = (key: string, val: any) => {
-    const isBoolean = typeof val === 'boolean';
-    const isImage = (typeof val === 'string' && (val.startsWith('http') || val.includes('/images/') || val.includes('.webp') || val.includes('.png') || val.includes('.jpg'))) ||
-                    key.toLowerCase().includes('image') ||
-                    key.toLowerCase().includes('img') ||
-                    key.toLowerCase().includes('photo') ||
-                    key.toLowerCase().includes('banner');
-    const isVideo = key.toLowerCase().includes('video') || key.toLowerCase().includes('vid');
-
-    const meta = fieldMeta[key] || {
-      label: key.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase()),
-      desc: '',
-      placeholder: ''
-    };
-
-    const isTextArea = (key.toLowerCase().includes('text') || key.toLowerCase().includes('desc')) && !key.toLowerCase().includes('title') && !key.toLowerCase().includes('subtitle');
-    const isFullWidth = isTextArea || isImage || isVideo;
-    const colSpanClass = isFullWidth ? 'md:col-span-2' : 'col-span-1';
-
-    if (isBoolean) {
-      return (
-        <div key={key} className={`flex items-center justify-between p-5 bg-zinc-950 border border-zinc-900 rounded-2xl ${colSpanClass}`}>
-          <div>
-            <label className="font-semibold text-sm block text-white">{meta.label}</label>
-            {meta.desc && <span className="text-xs text-zinc-500 mt-1 block">{meta.desc}</span>}
-          </div>
-          <button
-            onClick={() => handleFieldChange(key, !val)}
-            className={`w-14 h-8 rounded-full transition-all duration-300 relative p-1 ${
-              val ? 'bg-yellow-400' : 'bg-zinc-800'
-            }`}
-          >
-            <div
-              className={`w-6 h-6 rounded-full bg-zinc-950 transition-all duration-300 transform ${
-                val ? 'translate-x-6' : 'translate-x-0'
-              }`}
-            />
-          </button>
-        </div>
-      );
-    }
-
-    if (isImage) {
-      return (
-        <div key={key} className={`space-y-2 p-5 bg-zinc-950 border border-zinc-900 rounded-2xl ${colSpanClass}`}>
-          <div>
-            <label className="font-semibold text-sm text-zinc-300 block">{meta.label}</label>
-            {meta.desc && <span className="text-xs text-zinc-500 mt-1 block">{meta.desc}</span>}
-          </div>
-          <div className="flex items-center gap-6 pt-2">
-            <div className="w-20 h-20 rounded-xl overflow-hidden bg-black border border-zinc-880 flex-shrink-0 flex items-center justify-center">
-              {val ? (
-                <img src={val} alt={meta.label} className="w-full h-full object-cover" />
-              ) : (
-                <span className="text-zinc-700 text-xs">No Image</span>
-              )}
-            </div>
-            <div className="flex-1 space-y-2">
-              <div className="relative">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImageUpload(key, e)}
-                  className="hidden"
-                  id={`file-upload-${key}`}
-                  disabled={uploadingImage !== null}
-                />
-                <label
-                  htmlFor={`file-upload-${key}`}
-                  className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-xs py-2 px-4 rounded-xl cursor-pointer transition-colors"
-                >
-                  {uploadingImage === key ? (
-                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  ) : (
-                    <Upload className="w-3.5 h-3.5" />
-                  )}
-                  <span>Upload Photo</span>
-                </label>
-              </div>
-              <input
-                type="text"
-                value={val || ''}
-                onChange={(e) => handleFieldChange(key, e.target.value)}
-                className="w-full bg-zinc-900 border border-zinc-850 text-zinc-400 text-xs rounded-xl py-2 px-3 focus:border-zinc-700 outline-none"
-                placeholder={meta.placeholder || 'Image path or URL'}
-              />
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    if (isVideo) {
-      return (
-        <div key={key} className={`space-y-2 p-5 bg-zinc-950 border border-zinc-900 rounded-2xl ${colSpanClass}`}>
-          <div>
-            <label className="font-semibold text-sm text-zinc-300 block">{meta.label}</label>
-            {meta.desc && <span className="text-xs text-zinc-500 mt-1 block">{meta.desc}</span>}
-          </div>
-          <input
-            type="text"
-            value={val || ''}
-            onChange={(e) => handleFieldChange(key, e.target.value)}
-            className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none transition-colors"
-            placeholder={meta.placeholder || 'Enter video file link...'}
-          />
-        </div>
-      );
-    }
-
-    return (
-      <div key={key} className={`space-y-2 p-5 bg-zinc-950 border border-zinc-900 rounded-2xl ${colSpanClass}`}>
-        <div>
-          <label className="font-semibold text-sm text-zinc-300 block">{meta.label}</label>
-          {meta.desc && <span className="text-xs text-zinc-500 mt-1 block">{meta.desc}</span>}
-        </div>
-        {isTextArea ? (
-          <textarea
-            value={val || ''}
-            onChange={(e) => handleFieldChange(key, e.target.value)}
-            rows={4}
-            className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none transition-colors"
-            placeholder={meta.placeholder}
-          />
-        ) : (
-          <input
-            type="text"
-            value={val || ''}
-            onChange={(e) => handleFieldChange(key, e.target.value)}
-            className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none transition-colors"
-            placeholder={meta.placeholder}
-          />
-        )}
-      </div>
-    );
-  };
+  const renderField = (key: string, val: any) => (
+    <FormFieldRenderer
+      key={key}
+      fieldKey={key}
+      val={val}
+      handleFieldChange={handleFieldChange}
+      handleImageUpload={handleImageUpload}
+      uploadingImage={uploadingImage}
+    />
+  );
 
   if (loading || !data) {
     return (
@@ -1209,8 +473,14 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
                           if (fieldKey === 'stats') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderStatsListEditor()}</div>;
                           }
+                          if (fieldKey === 'opportunities') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderOpportunitiesCardsEditor()}</div>;
+                          }
                           if (fieldKey === 'whyItems') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderWhyItemsEditor()}</div>;
+                          }
+                          if (fieldKey === 'whyGoSolarBoxes') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderWhyGoSolarBoxesEditor()}</div>;
                           }
                           if (fieldKey === 'openPositions') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderPositionsEditor()}</div>;
@@ -1220,6 +490,18 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
                           }
                           if (fieldKey === 'faqs') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderFaqsEditor()}</div>;
+                          }
+                          if (fieldKey === 'freelanceBenefits') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderFranchiseBenefitsEditor()}</div>;
+                          }
+                          if (fieldKey === 'whoCanJoin') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderWhoCanJoinEditor()}</div>;
+                          }
+                          if (fieldKey === 'dealershipBenefits') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderDealershipBenefitsEditor()}</div>;
+                          }
+                          if (fieldKey === 'responsibilities') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderResponsibilitiesListEditor()}</div>;
                           }
                           if (fieldKey === 'benefits') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderBenefitsListEditor()}</div>;

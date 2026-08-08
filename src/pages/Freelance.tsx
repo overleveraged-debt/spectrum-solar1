@@ -3,6 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Users, CheckCircle2, ArrowRight, Banknote, MapPin, Zap, UserCheck, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { usePageContent } from '../hooks/usePageContent';
 
 const howItWorks = [
   { step: '01', title: 'Join as a Freelance Partner', desc: "Register with us for free — no investment, no paperwork hassle. Just fill out the form and we'll onboard you within 24 hours." },
@@ -35,6 +36,7 @@ const benefits = [
 
 const Freelance: React.FC = () => {
   useScrollReveal();
+  const { pageData } = usePageContent('freelance');
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -76,36 +78,18 @@ const Freelance: React.FC = () => {
 
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-32 md:pt-36 pb-8 text-center">
           <div className="inline-flex items-center gap-2 bg-yellow-400/15 border border-yellow-400/40 rounded-full px-5 py-2 mb-8">
-            <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Earn From Anywhere</span>
+            <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">{pageData.heroBadge || "Earn From Anywhere"}</span>
           </div>
           <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-            <span className="text-yellow-400">Freelance</span><br />with Spectrum Solar
+            {pageData.heroTitle || "Freelance with Spectrum Solar"}
           </h1>
           <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-light tracking-wide mb-10">
-            No investment. No experience required. Just refer &amp; earn.
+            {pageData.heroSubtitle || "No investment. No experience required. Just refer & earn."}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact?type=freelance" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
               <ArrowRight className="w-5 h-5" /> Join Free – Start Earning
             </Link>
-          </div>
-        </div>
-
-        <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4">
-              {[
-                { value: '₹0', label: 'Investment Required' },
-                { value: '24+', label: 'Years of Trust' },
-                { value: '∞', label: 'Earning Potential' },
-                { value: 'Nationwide', label: 'Coverage Area' },
-              ].map((s, i) => (
-                <div key={s.label} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{s.value}</div>
-                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -147,8 +131,8 @@ const Freelance: React.FC = () => {
             <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-widest mb-3 block">Refer These</span>
             <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-6 text-black">What You Can Refer</h3>
             <ul className="space-y-3">
-              {referItems.map((item) => (
-                <li key={item} className="flex items-center gap-3">
+              {(pageData.features || pageData.referItems || referItems).map((item: string, i: number) => (
+                <li key={i} className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-yellow-500 flex-shrink-0" />
                   <span className="text-zinc-700 text-sm">{item}</span>
                 </li>
@@ -160,14 +144,20 @@ const Freelance: React.FC = () => {
             <span className="text-zinc-400 font-medium text-[10px] uppercase tracking-widest mb-3 block">Open to Everyone</span>
             <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-6 text-black">Who Can Join?</h3>
             <div className="space-y-3">
-              {whoCanJoin.map(({ label, icon: Icon }) => (
-                <div key={label} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-yellow-400/20">
-                  <div className="w-8 h-8 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-4 h-4 text-yellow-500" />
+              {(pageData.whoCanJoin || whoCanJoin).map((item: any, i: number) => {
+                const label = typeof item === 'string' ? item : item.label;
+                const defaultObj = whoCanJoin[i] || whoCanJoin[0];
+                const Icon = defaultObj.icon || Users;
+
+                return (
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-yellow-400/20">
+                    <div className="w-8 h-8 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-4 h-4 text-yellow-500" />
+                    </div>
+                    <span className="text-zinc-700 text-sm">{label}</span>
                   </div>
-                  <span className="text-zinc-700 text-sm">{label}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -183,7 +173,7 @@ const Freelance: React.FC = () => {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {benefits.map((benefit, index) => (
+            {(pageData.benefits || benefits).map((benefit: string, index: number) => (
               <div
                 key={index}
                 className="reveal premium-cream-card flex items-start gap-3 p-6 rounded-[1.5rem]"

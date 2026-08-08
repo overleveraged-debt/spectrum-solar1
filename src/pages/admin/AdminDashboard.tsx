@@ -7,7 +7,7 @@ import LeadsViewer from './LeadsViewer';
 import ApplicationsViewer from './ApplicationsViewer';
 
 type Tab =
-  | 'home' | 'about' | 'solar-solutions' | 'power-backup' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs'
+  | 'home' | 'about' | 'solar-solutions' | 'power-backup' | 'opportunities' | 'franchise' | 'dealership' | 'freelance' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs'
   | 'map-locations' | 'privacy-policy' | 'terms-conditions'
   | 'leads' | 'applications' | 'testimonials' | 'footer';
 
@@ -42,22 +42,40 @@ export default function AdminDashboard() {
   };
 
   const menuItems = [
-    { id: 'home', label: 'Home Page', icon: FileText, category: 'Page Editors' },
-    { id: 'about', label: 'About Page', icon: FileText, category: 'Page Editors' },
-    { id: 'solar-solutions', label: 'Solar Overview Page', icon: FileText, category: 'Page Editors' },
-    { id: 'power-backup', label: 'Power Backup Page', icon: FileText, category: 'Page Editors' },
-    { id: 'product-details', label: 'Product Landing Pages', icon: FileText, category: 'Page Editors' },
-    { id: 'map-locations', label: 'Map Locations', icon: FileText, category: 'Page Editors' },
-    { id: 'careers', label: 'Careers Page', icon: FileText, category: 'Page Editors' },
-    { id: 'support', label: 'Support & FAQ', icon: FileText, category: 'Page Editors' },
-    { id: 'contact', label: 'Enquiry Page', icon: FileText, category: 'Page Editors' },
-    { id: 'privacy-policy', label: 'Privacy Policy', icon: FileText, category: 'Page Editors' },
-    { id: 'terms-conditions', label: 'Terms & Conditions', icon: FileText, category: 'Page Editors' },
-    { id: 'footer', label: 'Footer Settings', icon: FileText, category: 'Page Editors' },
-    { id: 'blogs', label: 'Blog Posts', icon: FileCode, category: 'Content Manager' },
-    { id: 'testimonials', label: 'Client Testimonials', icon: MessageSquare, category: 'Content Manager' },
     { id: 'leads', label: 'Leads & Enquiries', icon: Inbox, category: 'Business Inbox' },
     { id: 'applications', label: 'Job Applications', icon: Users, category: 'Business Inbox' },
+
+    { id: 'home', label: 'Home Page', icon: FileText, category: 'Core Site Pages' },
+    { id: 'about', label: 'About Page', icon: FileText, category: 'Core Site Pages' },
+    { id: 'solar-solutions', label: 'Solar Overview Page', icon: FileText, category: 'Core Site Pages' },
+    { id: 'power-backup', label: 'Power Backup Page', icon: FileText, category: 'Core Site Pages' },
+    { id: 'map-locations', label: 'Map Locations', icon: FileText, category: 'Core Site Pages' },
+    { id: 'support', label: 'Support & FAQ', icon: FileText, category: 'Core Site Pages' },
+    { id: 'footer', label: 'Footer Settings', icon: FileText, category: 'Core Site Pages' },
+
+    { id: 'opportunities', label: 'Opportunities Overview', icon: FileText, category: 'Partner & Careers' },
+    { id: 'franchise', label: 'Franchise Page', icon: FileText, category: 'Partner & Careers' },
+    { id: 'dealership', label: 'Dealership Page', icon: FileText, category: 'Partner & Careers' },
+    { id: 'freelance', label: 'Freelance Dealer Page', icon: FileText, category: 'Partner & Careers' },
+    { id: 'careers', label: 'Careers Page', icon: FileText, category: 'Partner & Careers' },
+
+    { id: 'product-details', label: 'Product Landing Pages', icon: FileText, category: 'Products' },
+
+    { id: 'blogs', label: 'Blog Posts', icon: FileCode, category: 'Content Manager' },
+    { id: 'testimonials', label: 'Client Testimonials', icon: MessageSquare, category: 'Content Manager' },
+
+    { id: 'contact', label: 'Enquiry Page', icon: FileText, category: 'Legal & Forms' },
+    { id: 'privacy-policy', label: 'Privacy Policy', icon: FileText, category: 'Legal & Forms' },
+    { id: 'terms-conditions', label: 'Terms & Conditions', icon: FileText, category: 'Legal & Forms' },
+  ];
+
+  const categories = [
+    'Business Inbox',
+    'Core Site Pages',
+    'Partner & Careers',
+    'Products',
+    'Content Manager',
+    'Legal & Forms',
   ];
 
   return (
@@ -74,7 +92,7 @@ export default function AdminDashboard() {
           {/* Navigation Items */}
           <nav className="flex-1 overflow-y-auto p-4 space-y-6 custom-scrollbar">
             {/* Category Groups */}
-            {['Page Editors', 'Content Manager', 'Business Inbox'].map((category) => (
+            {categories.map((category) => (
               <div key={category} className="space-y-2">
                 <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest px-3">
                   {category}

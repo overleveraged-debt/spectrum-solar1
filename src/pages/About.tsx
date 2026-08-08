@@ -125,7 +125,7 @@ const About: React.FC = () => {
                 pageData.heroTitle
               )}
             </h1>
-            <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+            <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-light tracking-wide drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
               {pageData.heroDesc}
             </p>
           </div>

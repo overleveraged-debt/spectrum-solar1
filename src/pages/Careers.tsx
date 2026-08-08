@@ -147,21 +147,7 @@ const Careers: React.FC = () => {
         </section>
       )}
 
-      {/* Dynamic Statistics Bar */}
-      {pageData.showStats !== false && pageData.stats && pageData.stats.length > 0 && (
-        <section className="relative z-10 w-full bg-yellow-400 py-6 border-b border-black/5">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 md:gap-y-0">
-              {pageData.stats.map((stat: any, i: number) => (
-                <div key={i} className={`px-4 text-center ${i < pageData.stats.length - 1 ? 'border-r border-black/10' : ''}`}>
-                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{stat.value}</div>
-                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+
 
       {/* Why Section */}
       <section className="px-6 py-24 md:py-32 bg-white" data-nav-light>

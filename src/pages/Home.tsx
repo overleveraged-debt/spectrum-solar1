@@ -546,12 +546,13 @@ const Home: React.FC = () => {
               />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-12 reveal">
-              {[
-                { icon: Sun, title: 'Zero Electricity Bills', desc: 'Net-metered solar plants can reduce your KSEB bill to ₹0. Pay for the system once, generate free power for 25 years.' },
-                { icon: Leaf, title: 'Clean & Sustainable', desc: 'Every kW of solar installed avoids hundreds of kg of CO₂ per year. Power your home without harming the planet.' },
-                { icon: TrendingUp, title: 'Fast ROI — 3 to 5 Years', desc: 'With government subsidies and KSEB net metering, most systems pay for themselves in under 5 years.' },
-              ].map((b, i) => {
-                const Icon = b.icon;
+              {((pageData as any).whyGoSolarBoxes || [
+                { title: 'Zero Electricity Bills', desc: 'Net-metered solar plants can reduce your KSEB bill to ₹0. Pay for the system once, generate free power for 25 years.' },
+                { title: 'Clean & Sustainable', desc: 'Every kW of solar installed avoids hundreds of kg of CO₂ per year. Power your home without harming the planet.' },
+                { title: 'Fast ROI — 3 to 5 Years', desc: 'With government subsidies and KSEB net metering, most systems pay for themselves in under 5 years.' },
+              ]).map((b: any, i: number) => {
+                const icons = [Sun, Leaf, TrendingUp];
+                const Icon = icons[i % icons.length];
                 return (
                   <div key={i} className="group p-6 premium-cream-card rounded-2xl hover:shadow-xl transition-all duration-300 flex flex-col gap-4">
                     <div className="w-12 h-12 bg-yellow-400/10 border border-yellow-400/20 rounded-xl flex items-center justify-center transition-colors group-hover:bg-yellow-400/20">

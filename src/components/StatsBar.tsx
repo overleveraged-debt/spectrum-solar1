@@ -64,12 +64,12 @@ interface StatsBarProps {
 }
 
 const StatsBar: React.FC<StatsBarProps> = ({
-  stat1Value = "25+",
+  stat1Value = "24+",
   stat1Label = "Years Industry Lead",
-  stat2Value = "20",
-  stat2Label = "Regional Outlets",
-  stat3Value = "12",
-  stat3Label = "Franchise Units",
+  stat2Value = "25+",
+  stat2Label = "Sales & Service Centres",
+  stat3Value = "50000+",
+  stat3Label = "Happy Customers",
   stat4Value = "ERP",
   stat4Label = "Enabled since 2005",
 }) => {

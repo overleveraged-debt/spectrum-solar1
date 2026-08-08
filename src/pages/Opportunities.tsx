@@ -3,6 +3,8 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Briefcase, MapPin, Users, Rocket, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { usePageContent } from '../hooks/usePageContent';
+import StatsBar from '../components/StatsBar';
 
 const opportunities = [
   {
@@ -85,6 +87,8 @@ const opportunities = [
 
 const Opportunities: React.FC = () => {
   useScrollReveal();
+  const { pageData: homeData } = usePageContent('home');
+  const { pageData: oppData } = usePageContent('opportunities');
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
       <SEO 
@@ -116,22 +120,19 @@ const Opportunities: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Strip */}
-      <div className="bg-zinc-900 border-y border-white/5 py-8">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { value: '12+', label: 'Active Franchises' },
-            { value: '20+', label: 'Regional Outlets' },
-            { value: '300+', label: 'Team Members' },
-            { value: '25+', label: 'Years of Trust' },
-          ].map((s) => (
-            <div key={s.label}>
-              <p className="text-3xl md:text-4xl font-black text-yellow-400 tracking-tighter">{s.value}</p>
-              <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mt-1">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Hero Black Stats Bar */}
+      {(oppData as any).showStatsBar !== false && (
+        <StatsBar
+          stat1Value={(oppData as any).stat1Value}
+          stat1Label={(oppData as any).stat1Label}
+          stat2Value={(oppData as any).stat2Value}
+          stat2Label={(oppData as any).stat2Label}
+          stat3Value={(oppData as any).stat3Value}
+          stat3Label={(oppData as any).stat3Label}
+          stat4Value={(oppData as any).stat4Value}
+          stat4Label={(oppData as any).stat4Label}
+        />
+      )}
 
       {/* Opportunity Cards */}
       <section className="pt-24 pb-16">
@@ -147,65 +148,77 @@ const Opportunities: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {opportunities.map((opp, index) => (
-              <Link
-                key={opp.id}
-                to={opp.link}
-                className="reveal group relative border border-zinc-800 rounded-3xl overflow-hidden transition-all duration-500 hover:border-zinc-600 block"
-                style={{ transitionDelay: `${index * 80}ms` }}
-              >
-                {/* Image with overlay */}
-                <div className="relative h-52 overflow-hidden">
-                  <img
-                    src={opp.image}
-                    alt={opp.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
-                  <div
-                    className="absolute top-4 left-4 w-12 h-12 rounded-2xl flex items-center justify-center"
-                    style={{ backgroundColor: opp.accentColor + '20', border: `1px solid ${opp.accentColor}40`, color: opp.accentColor }}
-                  >
-                    {opp.icon}
-                  </div>
-                </div>
+            {(((oppData as any).opportunities || opportunities)).map((opp: any, index: number) => {
+              const defaultOpp = opportunities[index] || opportunities[0];
+              const accentColor = opp.accentColor || defaultOpp.accentColor || '#facc15';
+              const link = opp.link || defaultOpp.link || '/opportunities';
+              const icon = defaultOpp.icon;
+              const benefitsList = Array.isArray(opp.benefits) ? opp.benefits : (defaultOpp.benefits || []);
 
-                {/* Content */}
-                <div className="p-8">
-                  <span className="text-[9px] font-black uppercase tracking-widest mb-2 block" style={{ color: opp.accentColor }}>
-                    {opp.subtitle}
-                  </span>
-                  <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-4">{opp.title}</h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-light">{opp.description}</p>
-
-                  {/* Benefits */}
-                  <ul className="space-y-2 mb-6">
-                    {opp.benefits.map((b, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: opp.accentColor }} />
-                        <span className="text-zinc-300 text-sm">{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Investment line */}
-                  <div className="p-4 rounded-2xl mb-6" style={{ background: opp.accentColor + '10', border: `1px solid ${opp.accentColor}20` }}>
-                    <p className="text-[9px] font-black uppercase tracking-widest mb-1" style={{ color: opp.accentColor }}>
-                      Investment / Entry
-                    </p>
-                    <p className="text-white font-black text-sm">{opp.investment}</p>
+              return (
+                <Link
+                  key={opp.id || index}
+                  to={link}
+                  className="reveal group relative border border-zinc-800 rounded-3xl overflow-hidden transition-all duration-500 hover:border-zinc-600 block"
+                  style={{ transitionDelay: `${index * 80}ms` }}
+                >
+                  {/* Image with overlay */}
+                  <div className="relative h-52 overflow-hidden">
+                    <img
+                      src={opp.image || defaultOpp.image}
+                      alt={opp.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
+                    <div
+                      className="absolute top-4 left-4 w-12 h-12 rounded-2xl flex items-center justify-center"
+                      style={{ backgroundColor: accentColor + '20', border: `1px solid ${accentColor}40`, color: accentColor }}
+                    >
+                      {icon}
+                    </div>
                   </div>
 
-                  <div
-                    className="inline-flex items-center gap-2 font-black text-[11px] uppercase tracking-[0.3em] transition-all group/cta"
-                    style={{ color: opp.accentColor }}
-                  >
-                    Know More
-                    <ArrowRight className="w-3 h-3 group-hover/cta:translate-x-1 transition-transform" />
+                  {/* Content */}
+                  <div className="p-8">
+                    <span className="text-[9px] font-black uppercase tracking-widest mb-2 block" style={{ color: accentColor }}>
+                      {opp.subtitle}
+                    </span>
+                    <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight mb-4">{opp.title}</h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-light">{opp.description}</p>
+
+                    {/* Benefits */}
+                    {benefitsList.length > 0 && (
+                      <ul className="space-y-2 mb-6">
+                        {benefitsList.map((b: string, i: number) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: accentColor }} />
+                            <span className="text-zinc-300 text-sm">{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {/* Investment line */}
+                    {opp.investment && (
+                      <div className="p-4 rounded-2xl mb-6" style={{ background: accentColor + '10', border: `1px solid ${accentColor}20` }}>
+                        <p className="text-[9px] font-black uppercase tracking-widest mb-1" style={{ color: accentColor }}>
+                          Investment / Entry
+                        </p>
+                        <p className="text-white font-black text-sm">{opp.investment}</p>
+                      </div>
+                    )}
+
+                    <div
+                      className="inline-flex items-center gap-2 font-black text-[11px] uppercase tracking-[0.3em] transition-all group/cta"
+                      style={{ color: accentColor }}
+                    >
+                      Know More
+                      <ArrowRight className="w-3 h-3 group-hover/cta:translate-x-1 transition-transform" />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

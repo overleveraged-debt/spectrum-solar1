@@ -3,6 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { TrendingUp, CheckCircle2, ArrowRight, Star, MapPin, Zap, ShieldCheck, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { usePageContent } from '../hooks/usePageContent';
 
 const whyItems = [
   { number: '01', title: "India's Fast-Growing Solar Market", desc: 'Solar adoption is rising across homes, businesses, and industries — creating massive demand for premium solar solutions nationwide.', icon: TrendingUp },
@@ -26,6 +27,7 @@ const benefits = [
 
 const Franchise: React.FC = () => {
   useScrollReveal();
+  const { pageData } = usePageContent('franchise');
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -67,36 +69,18 @@ const Franchise: React.FC = () => {
 
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-32 md:pt-36 pb-8 text-center">
           <div className="inline-flex items-center gap-2 bg-yellow-400/15 border border-yellow-400/40 rounded-full px-5 py-2 mb-8">
-            <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">Business Opportunity</span>
+            <span className="text-yellow-400 font-black text-[10px] uppercase tracking-[0.35em]">{pageData.heroBadge || "Business Opportunity"}</span>
           </div>
           <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-8xl font-thin tracking-tight mb-6 leading-[0.88] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)]">
-            Spectrum Solar<br /><span className="text-yellow-400">Franchise</span> in India
+            {pageData.heroTitle || "Spectrum Solar Franchise in India"}
           </h1>
           <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-light tracking-wide mb-10">
-            Partner With India's Most Trusted Solar Energy Brand
+            {pageData.heroSubtitle || "Partner With India's Most Trusted Solar Energy Brand"}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact?type=franchise" className="bg-yellow-400 text-black px-9 py-4 rounded-full font-black uppercase tracking-widest hover:scale-105 hover:bg-yellow-300 transition-all flex items-center gap-2 shadow-[0_0_40px_rgba(250,204,21,0.3)] text-sm">
               <ArrowRight className="w-5 h-5" /> Apply for Franchise
             </Link>
-          </div>
-        </div>
-
-        <div className="relative z-10 w-full bg-yellow-400 mt-auto flex-shrink-0">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4">
-              {[
-                { value: '24+', label: 'Years of Leadership' },
-                { value: '10K+', label: 'Successful Installations' },
-                { value: '20+', label: 'Regional Outlets' },
-                { value: '12', label: 'Active Franchise Units' },
-              ].map((s, i) => (
-                <div key={s.label} className={`py-6 px-4 text-center ${i < 3 ? 'border-r border-black/10' : ''}`}>
-                  <div className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-none">{s.value}</div>
-                  <div className="text-black/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] mt-1">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -105,24 +89,25 @@ const Franchise: React.FC = () => {
       <section className="px-6 py-20 md:py-28" data-nav-light>
         <div className="max-w-7xl mx-auto">
           <div className="reveal mb-12 md:mb-16">
-            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Why Choose Us</span>
+            <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">{pageData.whySubtitle || "Why Choose Us"}</span>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-thin uppercase tracking-tight leading-none text-black">
-              Why Start a<br />Spectrum Franchise?
+              {pageData.whyTitle || "Why Start a Spectrum Franchise?"}
             </h2>
           </div>
 
           <div className="space-y-4">
-            {whyItems.map((item, index) => {
-              const Icon = item.icon;
+            {(pageData.whyItems || whyItems).map((item: any, index: number) => {
+              const icons = [TrendingUp, Star, ShieldCheck, Layers, MapPin];
+              const Icon = item.icon || icons[index % icons.length];
               return (
                 <div
-                  key={item.number}
+                  key={index}
                   className="reveal group premium-cream-card flex flex-col sm:flex-row gap-5 sm:gap-8 p-6 sm:p-8 rounded-[2rem]"
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
                   <div className="flex items-start gap-5 flex-shrink-0">
                     <span className="text-5xl font-black text-black/[0.06] group-hover:text-yellow-400/20 transition-colors leading-none w-14 text-right flex-shrink-0 hidden sm:block">
-                      {item.number}
+                      {item.number || `0${index + 1}`}
                     </span>
                     <div className="w-12 h-12 rounded-2xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-400/20 transition-colors">
                       <Icon className="w-5 h-5 text-yellow-500" />
@@ -153,8 +138,8 @@ const Franchise: React.FC = () => {
               As a Spectrum Solar Franchise Partner, you get access to our complete product ecosystem — one of the most comprehensive solar and backup ranges in India.
             </p>
             <ul className="space-y-3">
-              {products.map((product) => (
-                <li key={product} className="flex items-center gap-3">
+              {(pageData.features || pageData.products || products).map((product: string, i: number) => (
+                <li key={i} className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center flex-shrink-0">
                     <Zap className="w-4 h-4 text-yellow-500" />
                   </div>
@@ -179,7 +164,7 @@ const Franchise: React.FC = () => {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {benefits.map((benefit, index) => (
+            {(pageData.benefits || benefits).map((benefit: string, index: number) => (
               <div
                 key={index}
                 className="reveal premium-cream-card flex items-start gap-3 p-6 rounded-[1.5rem]"

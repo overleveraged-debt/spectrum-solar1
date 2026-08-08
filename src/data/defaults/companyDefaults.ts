@@ -1,6 +1,14 @@
 import { allTestimonials } from '../testimonials';
+import { opportunitiesDefaults } from './pages/opportunitiesDefaults';
+import { franchiseDefaults } from './pages/franchiseDefaults';
+import { dealershipDefaults } from './pages/dealershipDefaults';
+import { freelanceDefaults } from './pages/freelanceDefaults';
 
 export const companyDefaults = {
+  opportunities: opportunitiesDefaults,
+  franchise: franchiseDefaults,
+  dealership: dealershipDefaults,
+  freelance: freelanceDefaults,
   home: {
     heroTitle: "INTELLIGENT ENERGY SYSTEMS.",
     heroSubtitle: "Spectrum Solar & Power",
@@ -16,7 +24,12 @@ export const companyDefaults = {
     powerSubtitle: "Lithium & Tubular Energy Storage",
     whySpectrumStat1Value: "6,145+", whySpectrumStat1Label: "Installations",
     whySpectrumStat2Value: "25yr", whySpectrumStat2Label: "Track Record",
-    whySpectrumStat3Value: "100%", whySpectrumStat3Label: "Service Rate"
+    whySpectrumStat3Value: "100%", whySpectrumStat3Label: "Service Rate",
+    whyGoSolarBoxes: [
+      { title: 'Zero Electricity Bills', desc: 'Net-metered solar plants can reduce your KSEB bill to ₹0. Pay for the system once, generate free power for 25 years.' },
+      { title: 'Clean & Sustainable', desc: 'Every kW of solar installed avoids hundreds of kg of CO₂ per year. Power your home without harming the planet.' },
+      { title: 'Fast ROI — 3 to 5 Years', desc: 'With government subsidies and KSEB net metering, most systems pay for themselves in under 5 years.' }
+    ]
   },
   'solar-solutions': {
     showHero: true,

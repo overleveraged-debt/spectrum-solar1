@@ -234,7 +234,7 @@ const Footer: React.FC = () => {
             </p>
             {isoCert && (
               <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
-                Awarded Best Solar Energy Industry
+                Award-Winning Solar Energy Company
               </p>
             )}
           </div>
