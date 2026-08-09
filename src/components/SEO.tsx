@@ -14,12 +14,12 @@ const SEO: React.FC<SEOProps> = ({
   title, 
   description, 
   type = 'website', 
-  url = 'https://spectrum-solar1.vercel.app', 
-  image = 'https://spectrum-solar1.vercel.app/images/demo-green-energy-logo-white.png', 
+  url = 'https://www.spectrumpowers.com', 
+  image = 'https://www.spectrumpowers.com/logo.png', 
   schema 
 }) => {
-  const finalImage = image.startsWith('http') ? image : `https://spectrum-solar1.vercel.app${image}`;
-  const finalUrl = url.startsWith('http') ? url : `https://spectrum-solar1.vercel.app${url}`;
+  const finalImage = image.startsWith('http') ? image : `https://www.spectrumpowers.com${image}`;
+  const finalUrl = url.startsWith('http') ? url : `https://www.spectrumpowers.com${url}`;
 
   return (
     <Helmet>
@@ -45,7 +45,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="twitter:image" content={finalImage} />
 
       {/* Discoverable Sitemap */}
-      <link rel="sitemap" type="application/xml" href="https://spectrum-solar1.vercel.app/sitemap.xml" />
+      <link rel="sitemap" type="application/xml" href="https://www.spectrumpowers.com/sitemap.xml" />
 
       {/* Structured Data (Schema.org) */}
       {schema && (
