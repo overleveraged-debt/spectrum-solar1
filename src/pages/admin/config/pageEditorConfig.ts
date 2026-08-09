@@ -159,14 +159,6 @@ export const pageSectionGroups: Record<string, Array<{
       fields: ['products']
     }
   ],
-  calculators: [
-    {
-      id: 'params',
-      title: 'Calculators Pricing Parameters',
-      description: 'Modify variables used to compute ROI and payback periods.',
-      fields: ['costPerKW', 'blendedTariff']
-    }
-  ],
   opportunities: [
     {
       id: 'hero',

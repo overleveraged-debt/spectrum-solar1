@@ -46,10 +46,6 @@ const navGroups: NavGroup[] = [
   {
     label: 'Calculator',
     to: '/calculator',
-    children: [
-      { label: 'Solar ROI Calculator',       to: '/calculator#solar',  icon: Sun,     color: '#facc15', sub: 'Savings & Payback' },
-      { label: 'Power Backup Calculator',    to: '/calculator#power',  icon: Battery, color: '#facc15', sub: 'Battery & UPS Sizing' },
-    ],
   },
   {
     label: 'Opportunities',
@@ -122,81 +118,86 @@ const Header: React.FC = () => {
 
           {/* Desktop Nav */}
           <div className={`hidden lg:flex items-center gap-1 xl:gap-2 text-[10px] font-light uppercase tracking-[0.22em] ${textColor}`}>
-            {navGroups.map((group) => (
-              <div
-                key={group.label}
-                className="relative"
-                onMouseEnter={() => handleMouseEnter(group.label)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Link
-                  to={group.to}
-                  className={`nav-link flex items-center gap-1 px-3 py-2 rounded-lg transition-all duration-200 ${
-                    isGroupActive(group)
-                      ? 'text-yellow-400'
-                      : isLightMode
-                      ? 'hover:text-zinc-950 hover:bg-black/5'
-                      : 'hover:text-white hover:bg-white/5'
-                  }`}
+            {navGroups.map((group) => {
+              const hasChildren = group.children && group.children.length > 0;
+
+              return (
+                <div
+                  key={group.label}
+                  className="relative"
+                  onMouseEnter={() => hasChildren && handleMouseEnter(group.label)}
+                  onMouseLeave={() => hasChildren && handleMouseLeave()}
                 >
-                  {group.label}
-                  <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === group.label ? 'rotate-180' : ''}`} />
-                </Link>
-
-                {/* Dropdown Panel */}
-                {group.children && (
-                  <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 border rounded-2xl shadow-2xl overflow-hidden transition-all duration-200 origin-top ${
-                      isLightMode
-                        ? 'bg-white border-black/8 shadow-black/10'
-                        : 'bg-zinc-950 border-white/10'
-                    } ${
-                      activeDropdown === group.label
-                        ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
-                        : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                  <Link
+                    to={group.to}
+                    className={`nav-link flex items-center gap-1 px-3 py-2 rounded-lg transition-all duration-200 ${
+                      isGroupActive(group)
+                        ? 'text-yellow-400 font-semibold'
+                        : isLightMode
+                        ? 'hover:text-zinc-950 hover:bg-black/5'
+                        : 'hover:text-white hover:bg-white/5'
                     }`}
-                    style={{ minWidth: '220px' }}
-                    onMouseEnter={() => handleMouseEnter(group.label)}
-                    onMouseLeave={handleMouseLeave}
                   >
-                    <div className="p-2">
-                      {group.children.map((child) => {
-                        const Icon = child.icon;
-                        return (
-                          <Link
-                            key={child.label}
-                            to={child.to}
-                            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 group/item ${
-                              isLightMode
-                                ? 'text-zinc-600 hover:text-yellow-600 hover:bg-black/5'
-                                : 'text-zinc-400 hover:text-yellow-400 hover:bg-white/5'
-                            }`}
-                            onClick={() => setActiveDropdown(null)}
-                          >
-                            {Icon && (
-                              <div
-                                className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 transition-all group-hover/item:scale-110"
-                                style={{ backgroundColor: (child.color ?? '#facc15') + (isLightMode ? '22' : '18') }}
-                              >
-                                <Icon className="w-3 h-3" style={{ color: child.color ?? '#facc15' }} />
-                              </div>
-                            )}
-                            <div className="min-w-0">
-                              <p className={`text-[10px] font-medium uppercase tracking-widest leading-tight truncate ${isLightMode ? 'text-zinc-700' : ''}`}>{child.label}</p>
-                              {child.sub && (
-                                <p className={`text-[8px] font-medium uppercase tracking-widest truncate mt-0.5 opacity-50 ${isLightMode ? 'text-zinc-500' : ''}`}>{child.sub}</p>
-                              )}
-                            </div>
-                            <ChevronRight className="w-3 h-3 ml-auto flex-shrink-0 opacity-0 group-hover/item:opacity-100 transition-opacity" style={{ color: child.color ?? '#facc15' }} />
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
+                    {group.label}
+                    {hasChildren && (
+                      <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === group.label ? 'rotate-180' : ''}`} />
+                    )}
+                  </Link>
 
-              </div>
-            ))}
+                  {/* Dropdown Panel */}
+                  {hasChildren && (
+                    <div
+                      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 border rounded-2xl shadow-2xl overflow-hidden transition-all duration-200 origin-top ${
+                        isLightMode
+                          ? 'bg-white border-black/8 shadow-black/10'
+                          : 'bg-zinc-950 border-white/10'
+                      } ${
+                        activeDropdown === group.label
+                          ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
+                          : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                      }`}
+                      style={{ minWidth: '220px' }}
+                      onMouseEnter={() => handleMouseEnter(group.label)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <div className="p-2">
+                        {group.children?.map((child) => {
+                          const Icon = child.icon;
+                          return (
+                            <Link
+                              key={child.label}
+                              to={child.to}
+                              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 group/item ${
+                                isLightMode
+                                  ? 'text-zinc-600 hover:text-yellow-600 hover:bg-black/5'
+                                  : 'text-zinc-400 hover:text-yellow-400 hover:bg-white/5'
+                              }`}
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              {Icon && (
+                                <div
+                                  className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 transition-all group-hover/item:scale-110"
+                                  style={{ backgroundColor: (child.color ?? '#facc15') + (isLightMode ? '22' : '18') }}
+                                >
+                                  <Icon className="w-3 h-3" style={{ color: child.color ?? '#facc15' }} />
+                                </div>
+                              )}
+                              <div className="min-w-0">
+                                <p className={`text-[10px] font-medium uppercase tracking-widest leading-tight truncate ${isLightMode ? 'text-zinc-700' : ''}`}>{child.label}</p>
+                                {child.sub && (
+                                  <p className={`text-[8px] font-medium uppercase tracking-widest truncate mt-0.5 opacity-50 ${isLightMode ? 'text-zinc-500' : ''}`}>{child.sub}</p>
+                                )}
+                              </div>
+                              <ChevronRight className="w-3 h-3 ml-auto flex-shrink-0 opacity-0 group-hover/item:opacity-100 transition-opacity" style={{ color: child.color ?? '#facc15' }} />
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
 
             {/* Single links */}
             {singleLinks.map((link) => (
@@ -205,7 +206,7 @@ const Header: React.FC = () => {
                 to={link.to}
                 className={`nav-link px-3 py-2 rounded-lg transition-all duration-200 ${
                   location.pathname === link.to
-                    ? 'text-yellow-400'
+                    ? 'text-yellow-400 font-semibold'
                     : isLightMode
                     ? 'hover:text-zinc-950 hover:bg-black/5'
                     : 'hover:text-white hover:bg-white/5'
@@ -249,7 +250,7 @@ const Header: React.FC = () => {
         {/* Header bar */}
         <div className="flex justify-between items-center px-6 py-5 border-b border-white/8 flex-shrink-0 bg-zinc-900/60">
           <Link to="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
-            <img src="/logo.png" alt="Spectrum Powers" width="115" height="28" className="h-7 w-auto" />
+            <img src="/logo.png" alt="Spectrum Powers" width="148" height="36" className="h-7 w-auto" />
           </Link>
           <button
             className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-zinc-400 hover:text-white transition-all"
@@ -262,88 +263,109 @@ const Header: React.FC = () => {
 
         {/* Scrollable body */}
         <div className="flex-1 overflow-y-auto">
-          {navGroups.map((group) => (
-            <div key={group.label} className="border-b border-white/5">
-              <button
-                className={`w-full flex items-center justify-between px-6 py-4 transition-colors ${
-                  isGroupActive(group) ? 'text-yellow-400' : 'text-white'
-                }`}
-                onClick={() => setExpandedMobile(expandedMobile === group.label ? null : group.label)}
-              >
-                <div className="flex items-center gap-3">
-                  <div className={`w-1.5 h-1.5 rounded-full ${isGroupActive(group) ? 'bg-yellow-400' : 'bg-zinc-700'}`} />
-                  <span className="text-base font-light uppercase tracking-widest">{group.label}</span>
-                </div>
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    expandedMobile === group.label ? 'rotate-180 text-yellow-400' : 'text-zinc-600'
-                  }`}
-                />
-              </button>
+          {navGroups.map((group) => {
+            const hasChildren = group.children && group.children.length > 0;
 
-              {/* Accordion children */}
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  expandedMobile === group.label ? 'max-h-[600px]' : 'max-h-0'
-                }`}
-              >
-                <div className="px-4 pb-3 space-y-0.5">
-                  {/* View All hub link */}
-                  {group.to && group.children && (
-                    <Link
-                      to={group.to}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-3 py-2.5 px-3 rounded-xl bg-yellow-400/8 border border-yellow-400/20 mb-2 group/hub"
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
-                        <ChevronRight className="w-4 h-4 text-yellow-400" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-sm font-black uppercase tracking-tight text-yellow-400 truncate">
-                          View All {group.label}
-                        </p>
-                        <p className="text-[9px] font-medium uppercase tracking-widest mt-0.5 text-yellow-400/60">
-                          See full product range
-                        </p>
-                      </div>
-                      <ChevronRight className="w-3.5 h-3.5 ml-auto flex-shrink-0 text-yellow-400/60" />
-                    </Link>
-                  )}
-                  {group.children?.map((child) => {
-                    const Icon = child.icon;
-                    return (
+            if (!hasChildren) {
+              return (
+                <Link
+                  key={group.label}
+                  to={group.to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between px-6 py-4 border-b border-white/5 text-white hover:text-yellow-400 transition-colors group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-1.5 h-1.5 rounded-full transition-colors ${isGroupActive(group) ? 'bg-yellow-400' : 'bg-zinc-700 group-hover:bg-yellow-400'}`} />
+                    <span className={`text-base font-light uppercase tracking-widest ${isGroupActive(group) ? 'text-yellow-400' : ''}`}>{group.label}</span>
+                  </div>
+                  <ChevronRight className={`w-4 h-4 transition-colors ${isGroupActive(group) ? 'text-yellow-400' : 'text-zinc-600 group-hover:text-yellow-400'}`} />
+                </Link>
+              );
+            }
+
+            return (
+              <div key={group.label} className="border-b border-white/5">
+                <button
+                  className={`w-full flex items-center justify-between px-6 py-4 transition-colors ${
+                    isGroupActive(group) ? 'text-yellow-400' : 'text-white'
+                  }`}
+                  onClick={() => setExpandedMobile(expandedMobile === group.label ? null : group.label)}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-1.5 h-1.5 rounded-full ${isGroupActive(group) ? 'bg-yellow-400' : 'bg-zinc-700'}`} />
+                    <span className="text-base font-light uppercase tracking-widest">{group.label}</span>
+                  </div>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      expandedMobile === group.label ? 'rotate-180 text-yellow-400' : 'text-zinc-600'
+                    }`}
+                  />
+                </button>
+
+                {/* Accordion children */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    expandedMobile === group.label ? 'max-h-[600px]' : 'max-h-0'
+                  }`}
+                >
+                  <div className="px-4 pb-3 space-y-0.5">
+                    {/* View All hub link */}
+                    {group.to && group.children && (
                       <Link
-                        key={child.label}
-                        to={child.to}
+                        to={group.to}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-white/5 transition-all group/mi"
+                        className="flex items-center gap-3 py-2.5 px-3 rounded-xl bg-yellow-400/8 border border-yellow-400/20 mb-2 group/hub"
                       >
-                        {Icon && (
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                            style={{ backgroundColor: (child.color ?? '#facc15') + '18' }}
-                          >
-                            <Icon className="w-4 h-4" style={{ color: child.color ?? '#facc15' }} />
-                          </div>
-                        )}
-                        <div className="min-w-0">
-                          <p className="text-sm font-black uppercase tracking-tight text-white group-hover/mi:text-yellow-400 transition-colors truncate">
-                            {child.label}
-                          </p>
-                          {child.sub && (
-                            <p className="text-[9px] font-medium uppercase tracking-widest mt-0.5 truncate" style={{ color: child.color ?? '#facc15', opacity: 0.8 }}>
-                              {child.sub}
-                            </p>
-                          )}
+                        <div className="w-8 h-8 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
+                          <ChevronRight className="w-4 h-4 text-yellow-400" />
                         </div>
-                        <ChevronRight className="w-3.5 h-3.5 ml-auto flex-shrink-0 text-zinc-700 group-hover/mi:text-yellow-400 transition-colors" />
+                        <div className="min-w-0">
+                          <p className="text-sm font-black uppercase tracking-tight text-yellow-400 truncate">
+                            View All {group.label}
+                          </p>
+                          <p className="text-[9px] font-medium uppercase tracking-widest mt-0.5 text-yellow-400/60">
+                            See full product range
+                          </p>
+                        </div>
+                        <ChevronRight className="w-3.5 h-3.5 ml-auto flex-shrink-0 text-yellow-400/60" />
                       </Link>
-                    );
-                  })}
+                    )}
+                    {group.children?.map((child) => {
+                      const Icon = child.icon;
+                      return (
+                        <Link
+                          key={child.label}
+                          to={child.to}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-white/5 transition-all group/mi"
+                        >
+                          {Icon && (
+                            <div
+                              className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                              style={{ backgroundColor: (child.color ?? '#facc15') + '18' }}
+                            >
+                              <Icon className="w-4 h-4" style={{ color: child.color ?? '#facc15' }} />
+                            </div>
+                          )}
+                          <div className="min-w-0">
+                            <p className="text-sm font-black uppercase tracking-tight text-white group-hover/mi:text-yellow-400 transition-colors truncate">
+                              {child.label}
+                            </p>
+                            {child.sub && (
+                              <p className="text-[9px] font-medium uppercase tracking-widest mt-0.5 truncate" style={{ color: child.color ?? '#facc15', opacity: 0.8 }}>
+                                {child.sub}
+                              </p>
+                            )}
+                          </div>
+                          <ChevronRight className="w-3.5 h-3.5 ml-auto flex-shrink-0 text-zinc-700 group-hover/mi:text-yellow-400 transition-colors" />
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           {/* Single Links (Careers, Blog) */}
           {singleLinks.map((link) => (
