@@ -7,42 +7,43 @@ export const useNavbarScroll = () => {
   const location = useLocation();
 
   useEffect(() => {
-    let ticking = false;
-
-    const checkScroll = () => {
-      const scrolled = window.scrollY > 50;
-      const lightSections = document.querySelectorAll('[data-nav-light]');
-      let overLight = false;
-      const navHeight = 80;
-
-      lightSections.forEach(sec => {
-        const pos = sec.getBoundingClientRect();
-        if (pos.top < navHeight && pos.bottom > 10) overLight = true;
-      });
-
-      setIsScrolled(scrolled);
-      setIsOverLightSection(overLight);
-      ticking = false;
-    };
-
+    // 1. Passive scroll listener for navbar background translucency
     const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(checkScroll);
-        ticking = true;
-      }
+      const scrolled = window.scrollY > 50;
+      setIsScrolled(scrolled);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Immediate check + slight delay for SPA DOM stability
-    checkScroll();
-    const timer = setTimeout(checkScroll, 100);
+    handleScroll();
+
+    // 2. High-performance IntersectionObserver for light section detection (zero forced reflows)
+    const lightSections = document.querySelectorAll('[data-nav-light]');
+    const activeLightSections = new Set<Element>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activeLightSections.add(entry.target);
+          } else {
+            activeLightSections.delete(entry.target);
+          }
+        });
+        setIsOverLightSection(activeLightSections.size > 0);
+      },
+      {
+        rootMargin: '0px 0px -85% 0px',
+        threshold: 0,
+      }
+    );
+
+    lightSections.forEach((sec) => observer.observe(sec));
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearTimeout(timer);
+      lightSections.forEach((sec) => observer.unobserve(sec));
     };
-  }, [location.pathname]); // Re-run on navigation
+  }, [location.pathname]);
 
   return { isScrolled, isOverLightSection };
 };

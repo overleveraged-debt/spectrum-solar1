@@ -565,7 +565,7 @@ export const fieldMeta: Record<string, { label: string; desc?: string; placehold
   showHero: { label: 'Enable Hero Banner Section', desc: 'Show or hide the video/image banner at the top.' },
   heroTitle: { label: 'Hero Headline', desc: 'The main overlay title on the banner.', placeholder: 'e.g. Precision Since 2002.' },
   heroSubtitle: { label: 'Hero Subtitle', desc: 'Tagline displayed right below the primary headline.', placeholder: 'e.g. Powering India...' },
-  heroVideoPoster: { label: 'Video Fallback Poster', desc: 'Image shown on slow networks while background video is loading.', placeholder: '/images/Banner01.jpg' },
+  heroVideoPoster: { label: 'Video Fallback Poster', desc: 'Image shown on slow networks while background video is loading.', placeholder: '/images/Banner01.webp' },
   heroVideoUrl: { label: 'Background Video File URL', desc: 'Path or link to the background MP4 video.', placeholder: '/videos/hero-bg.mp4' },
   heroImage: { label: 'Hero Background Image', desc: 'The banner photo used behind headers.', placeholder: '/images/about_hero.webp' },
   heroDesc: { label: 'Hero Description text', desc: 'Short introductory tagline overlay.', placeholder: 'Since 2001, powering thousands...' },
