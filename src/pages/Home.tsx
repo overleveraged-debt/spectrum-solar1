@@ -15,7 +15,7 @@ const DEFAULT_HOME_DATA = {
   showHero: true,
   heroTitle: 'Precision Since 2002.',
   heroVideoPoster: '/images/Banner01.webp',
-  heroVideoUrl: 'https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/spectrum%20small%20(1).mp4',
+  heroVideoUrl: '/videos/hero-bg.mp4',
 
   // Stats Bar
   showStatsBar: true,

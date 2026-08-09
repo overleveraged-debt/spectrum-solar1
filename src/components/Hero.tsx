@@ -12,7 +12,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) => {
   const [scrollY, setScrollY] = useState(0);
 
-  const resolvedSrc = videoUrl || "https://m1xmbxx46bhiywtx.public.blob.vercel-storage.com/spectrum%20small%20(1).mp4";
+  const resolvedSrc = videoUrl || "/videos/hero-bg.mp4";
 
   useEffect(() => {
     let ticking = false;
