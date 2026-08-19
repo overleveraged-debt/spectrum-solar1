@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { KeyRound, Eye, EyeOff, ShieldAlert, Clock, AlertTriangle } from 'lucide-react';
+import { createSessionSignature, saveAuthSession } from '../../lib/authCrypto';
 
 const MAX_ATTEMPTS = 5;
 const LOCKOUT_DURATION_MS = 15 * 60 * 1000; // 15 minutes
@@ -36,7 +37,7 @@ export default function AdminLogin() {
     return () => clearInterval(timer);
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (lockoutRemainingSeconds > 0) return;
@@ -49,9 +50,10 @@ export default function AdminLogin() {
       localStorage.removeItem('spectrum_admin_lockout_until');
       localStorage.removeItem('spectrum_admin_expired_msg');
 
-      // Set auth & sliding session activity timestamp
-      localStorage.setItem('spectrum_admin_authenticated', 'true');
-      localStorage.setItem('spectrum_admin_last_active', Date.now().toString());
+      // Generate SHA-256 cryptographic signature
+      const timestamp = Date.now();
+      const signature = await createSessionSignature(passcode, timestamp);
+      saveAuthSession(signature, timestamp);
 
       navigate('/admin/dashboard');
     } else {

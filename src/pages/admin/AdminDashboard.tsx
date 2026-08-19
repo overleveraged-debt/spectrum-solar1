@@ -5,6 +5,7 @@ import PageEditor from './PageEditor';
 import BlogManager from './BlogManager';
 import LeadsViewer from './LeadsViewer';
 import ApplicationsViewer from './ApplicationsViewer';
+import { verifyCurrentSession, refreshActivityTimestamp, clearAuthSession } from '../../lib/authCrypto';
 
 type Tab =
   | 'home' | 'about' | 'solar-solutions' | 'power-backup' | 'opportunities' | 'franchise' | 'dealership' | 'freelance' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs'
@@ -17,39 +18,34 @@ export default function AdminDashboard() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isEditorDirty, setIsEditorDirty] = useState(false);
   const [pendingTabSwitch, setPendingTabSwitch] = useState<Tab | null>(null);
+  const [isAuthChecking, setIsAuthChecking] = useState(true);
   const navigate = useNavigate();
 
-  // 2-Hour Sliding Inactivity Session Management
+  // Cryptographic Signature & 2-Hour Sliding Inactivity Session Management
   useEffect(() => {
-    const INACTIVITY_TIMEOUT_MS = 2 * 60 * 60 * 1000; // 2 hours
-    const auth = localStorage.getItem('spectrum_admin_authenticated');
-    if (auth !== 'true') {
-      navigate('/admin/login');
-      return;
-    }
+    let isMounted = true;
 
-    // Check last active time on load
-    const lastActiveStr = localStorage.getItem('spectrum_admin_last_active');
-    const now = Date.now();
-    if (lastActiveStr) {
-      const lastActive = parseInt(lastActiveStr, 10);
-      if (now - lastActive > INACTIVITY_TIMEOUT_MS) {
-        localStorage.removeItem('spectrum_admin_authenticated');
-        localStorage.removeItem('spectrum_admin_last_active');
-        localStorage.setItem('spectrum_admin_expired_msg', 'Your session expired due to 2 hours of inactivity. Please enter your passcode.');
+    const runAuthVerification = async () => {
+      const result = await verifyCurrentSession();
+      if (!isMounted) return;
+
+      if (!result.isValid) {
+        clearAuthSession();
+        localStorage.setItem('spectrum_admin_expired_msg', result.reason || 'Authentication required.');
         navigate('/admin');
-        return;
+      } else {
+        setIsAuthChecking(false);
       }
-    } else {
-      localStorage.setItem('spectrum_admin_last_active', now.toString());
-    }
+    };
+
+    runAuthVerification();
 
     // Activity tracker that refreshes the sliding session
     let throttleTimer: any = null;
     const updateActivity = () => {
       if (!throttleTimer) {
         throttleTimer = setTimeout(() => {
-          localStorage.setItem('spectrum_admin_last_active', Date.now().toString());
+          refreshActivityTimestamp();
           throttleTimer = null;
         }, 10000); // Throttle writes to once every 10 seconds
       }
@@ -58,18 +54,18 @@ export default function AdminDashboard() {
     const events = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
     events.forEach(event => window.addEventListener(event, updateActivity, { passive: true }));
 
-    // Periodic check every 30 seconds
-    const interval = setInterval(() => {
-      const currentActive = parseInt(localStorage.getItem('spectrum_admin_last_active') || '0', 10);
-      if (Date.now() - currentActive > INACTIVITY_TIMEOUT_MS) {
-        localStorage.removeItem('spectrum_admin_authenticated');
-        localStorage.removeItem('spectrum_admin_last_active');
-        localStorage.setItem('spectrum_admin_expired_msg', 'Your session expired due to 2 hours of inactivity. Please enter your passcode.');
+    // Periodic cryptographic check every 30 seconds
+    const interval = setInterval(async () => {
+      const check = await verifyCurrentSession();
+      if (!check.isValid) {
+        clearAuthSession();
+        localStorage.setItem('spectrum_admin_expired_msg', check.reason || 'Session expired.');
         navigate('/admin');
       }
     }, 30000);
 
     return () => {
+      isMounted = false;
       events.forEach(event => window.removeEventListener(event, updateActivity));
       clearInterval(interval);
       if (throttleTimer) clearTimeout(throttleTimer);
@@ -79,8 +75,7 @@ export default function AdminDashboard() {
   const handleLogout = () => {
     // Clear dirty flag when logging out to bypass alert warning
     setIsEditorDirty(false);
-    localStorage.removeItem('spectrum_admin_authenticated');
-    localStorage.removeItem('spectrum_admin_last_active');
+    clearAuthSession();
     navigate('/admin');
   };
 
@@ -130,6 +125,15 @@ export default function AdminDashboard() {
     'Content Manager',
     'Legal & Forms',
   ];
+
+  if (isAuthChecking) {
+    return (
+      <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center gap-4 text-white">
+        <div className="w-10 h-10 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full animate-spin" />
+        <p className="text-xs text-zinc-500 font-medium uppercase tracking-widest">Validating Security Session...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen overflow-hidden bg-zinc-950 text-white flex font-sans">
