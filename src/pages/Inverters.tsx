@@ -93,14 +93,15 @@ const Inverters: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="Pure Sine Wave Inverters | Stable Power Output | Spectrum Solar"
-        description="High-performance pure sine wave inverters for homes and businesses. Safe for sensitive electronics and built for long-lasting performance."
+        title={pageData.metaTitle || "Pure Sine Wave Inverters | Stable Power Output | Spectrum Solar"}
+        description={pageData.metaDescription || "High-performance pure sine wave inverters for homes and businesses. Safe for sensitive electronics and built for long-lasting performance."}
+        keywords={pageData.metaKeywords || "pure sine wave inverters, solar inverters india, heavy duty power inverter, home inverter kerala"}
       />
 
       {/* ── HERO + STAT STRIP ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/inverter_hero.webp" className="w-full h-full object-cover object-center" alt="Inverters" />
+          <img src={pageData.heroImage || "/images/inverter_hero.webp"} className="w-full h-full object-cover object-center" alt="Inverters" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85" />
         </div>
 
@@ -153,18 +154,21 @@ const Inverters: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
-              <img src="/images/inverter_support.webp" alt="Inverter installation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <img src={pageData.introImage || "/images/inverter_support.webp"} alt="Inverter installation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="reveal order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Smart Power Conversion Solutions</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
-                Smart Conversion.<br /><span className="text-yellow-400">Reliable Power.</span>
-              </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
-                An inverter converts stored DC power from batteries into usable AC power for your home or business. It plays a crucial role in ensuring uninterrupted power supply while protecting your appliances from voltage fluctuations.
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">
+                {pageData.overviewSubtitle || "Smart Power Conversion Solutions"}
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
+                dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "Smart Conversion.<br /><span class=\"text-yellow-400\">Reliable Power.</span>" }}
+              />
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-normal">
+                {pageData.overviewDesc1 || "An inverter converts stored DC power from batteries into usable AC power for your home or business. It plays a crucial role in ensuring uninterrupted power supply while protecting your appliances from voltage fluctuations."}
               </p>
-              <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                Spectrum Powers offers high-quality inverters built with advanced technology to deliver reliable, efficient performance — from basic home models to solar and commercial-grade systems.
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10 font-normal">
+                {pageData.overviewDesc2 || "Spectrum Powers offers high-quality inverters built with advanced technology to deliver reliable, efficient performance — from basic home models to solar and commercial-grade systems."}
               </p>
             </div>
           </div>
@@ -356,7 +360,7 @@ const Inverters: React.FC = () => {
               </div>
             </div>
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
-              <img src="/images/inverter_tech.webp" alt="Inverter unit close-up" className="w-full h-full object-cover" />
+              <img src={pageData.techImage || "/images/inverter_tech.webp"} alt="Inverter unit close-up" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -370,7 +374,7 @@ const Inverters: React.FC = () => {
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
-                <img src="/images/inverter_lifestyle.webp" alt="Inverter applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src={pageData.lifestyleImage || "/images/inverter_lifestyle.webp"} alt="Inverter applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">

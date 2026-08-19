@@ -3,6 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { PhoneCall, ChevronDown, Send, ExternalLink, Clock, Headphones } from 'lucide-react';
 import { sanityReadClient } from '../lib/sanityClient';
 import SmartForm from '../components/SmartForm';
+import SEO from '../components/SEO';
 
 const DEFAULT_FAQS = [
   {
@@ -28,6 +29,9 @@ const DEFAULT_FAQS = [
 ];
 
 const DEFAULT_SUPPORT_DATA = {
+  metaTitle: "Support & FAQs | Spectrum Solar Customer Help Center",
+  metaDescription: "Get help with your solar and power backup systems. Browse FAQs on net metering, subsidies, warranties, or contact our 24/7 service team.",
+  metaKeywords: "solar customer support, solar subsidy faq kerala, net metering help, spectrum solar service contact",
   showHero: true,
   heroTitle: "How can we help you?",
   heroSubtitle: "Help Center",
@@ -69,6 +73,11 @@ const Support: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
+      <SEO 
+        title={pageData.metaTitle || "Support & FAQs | Spectrum Solar Customer Help Center"}
+        description={pageData.metaDescription || "Get help with your solar and power backup systems. Browse FAQs on net metering, subsidies, warranties, or contact our 24/7 service team."}
+        keywords={pageData.metaKeywords || "solar customer support, solar subsidy faq kerala, net metering help, spectrum solar service contact"}
+      />
       {/* Hero */}
       {pageData.showHero !== false && (
         <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">

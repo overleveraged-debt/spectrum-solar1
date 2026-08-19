@@ -10,9 +10,13 @@ export const companyDefaults = {
   dealership: dealershipDefaults,
   freelance: freelanceDefaults,
   home: {
+    metaTitle: "Spectrum Solar | India's Trusted Solar Energy & Power Backup Brand",
+    metaDescription: "Empowering India with sustainable energy. 25+ years of excellence in solar installations, power backups, and nationwide franchise opportunities.",
+    metaKeywords: "spectrum solar, solar energy kerala, on grid solar panels, power backup, lithium ups, solar water heaters, solar franchise india",
     heroTitle: "INTELLIGENT ENERGY SYSTEMS.",
     heroSubtitle: "Spectrum Solar & Power",
-    heroVideoUrl: "/videos/home_hero_bg.mp4",
+    heroVideoUrl: "/videos/hero-bg.mp4",
+    heroVideoPoster: "/images/Banner01.webp",
     heroDesc: "Engineered for 25+ years of uncompromised performance. Slash your utility bills to zero with Tier-1 solar and lithium energy storage.",
     stat1Value: "25 Yrs", stat1Label: "Brand Excellence",
     stat2Value: "40K+", stat2Label: "Clean Installations",
@@ -29,9 +33,77 @@ export const companyDefaults = {
       { title: 'Zero Electricity Bills', desc: 'Net-metered solar plants can reduce your KSEB bill to ₹0. Pay for the system once, generate free power for 25 years.' },
       { title: 'Clean & Sustainable', desc: 'Every kW of solar installed avoids hundreds of kg of CO₂ per year. Power your home without harming the planet.' },
       { title: 'Fast ROI — 3 to 5 Years', desc: 'With government subsidies and KSEB net metering, most systems pay for themselves in under 5 years.' }
+    ],
+    faqsTitle: "Frequently Asked Questions",
+    faqsSubtitle: "Clear answers to commonly asked questions about solar systems, power backup, and subsidies.",
+    faqs: [
+      {
+        q: "How does net metering work with on-grid solar in India?",
+        a: "With On-Grid Solar, any surplus electricity your solar panels produce during the daytime is exported to the state electrical grid (e.g. KSEB). Your bi-monthly bill reflects only the net units consumed, drastically reducing your electricity expenses to near zero."
+      },
+      {
+        q: "What is the typical payback period (ROI) for a residential solar plant?",
+        a: "Most residential rooftop solar systems achieve a full return on investment (ROI) within 3 to 5 years, while delivering clean, free electricity for 25+ years backed by Tier-1 performance warranties."
+      },
+      {
+        q: "Are central and state government subsidies available?",
+        a: "Yes! Government schemes like PM Surya Ghar Muft Bijli Yojana offer substantial direct subsidies for residential rooftop solar plants. Our team assists you with registration, approval paperwork, and subsidy disbursement."
+      },
+      {
+        q: "What is the difference between On-Grid, Hybrid, and Off-Grid solar?",
+        a: "On-Grid is directly synchronized with the electrical grid for maximum bill savings without batteries. Hybrid combines grid net metering with lithium battery backup for power cuts. Off-Grid operates completely independently with dedicated battery storage for remote locations."
+      },
+      {
+        q: "What maintenance is required for solar panels and inverters?",
+        a: "Solar panels require minimal upkeep — periodic cleaning with water every 2–4 weeks removes accumulated dust. Spectrum Solar provides annual preventive health audits and remote system monitoring to ensure optimal generation."
+      }
     ]
   },
+  about: {
+    metaTitle: "About Spectrum Solar | India's Leading Solar Solutions Provider",
+    metaDescription: "With 25+ years of excellence, 40K+ satisfied customers, and 6,145+ solar projects, Spectrum Solar is India's trusted name in renewable energy.",
+    metaKeywords: "about spectrum solar, solar company kerala, renewable energy india, solar panel installation history, kochi solar company",
+    showHero: true,
+    heroTitle: '25 YEARS OF ENERGY EXCELLENCE',
+    heroSubtitle: 'Our Story',
+    heroImage: '/images/about-hero.webp',
+    heroDesc: 'Since 2001, powering thousands of homes and businesses with customized sustainable energy solutions.',
+    showStats: true,
+    stat1Value: '25+', stat1Label: 'Years of Excellence', stat1Sub: 'Since 2000',
+    stat2Value: '40K+', stat2Label: 'Satisfied Customers', stat2Sub: 'Across India',
+    stat3Value: '6,145+', stat3Label: 'Solar Projects', stat3Sub: 'Installed & Running',
+    stat4Value: '60+', stat4Label: 'Service Engineers', stat4Sub: 'Certified Experts',
+    showHeritage: true,
+    heritageSubtitle: 'Our Heritage',
+    heritageTitle: 'Built from the ground up in India.',
+    heritageDesc: "Founded in 2001, Spectrum Powers has been at the forefront of Kerala's energy revolution. We've grown from a local power electronics firm to a state-wide leader in sustainable energy — serving everything from humble households to 100KW industrial megaprojects.",
+    heritageFounded: '2001',
+    heritageHeadquarters: 'Kochi',
+    heritageCenters: '18+',
+    heritageImage: '/images/banner1090x907.jpg',
+    showQuality: true,
+    qualitySubtitle: 'Quality First',
+    qualityTitle: "Only the world's best brands.",
+    qualityDesc: "We use only top-tier international brands for our solar panels and backup systems, ensuring every installation meets the highest safety and performance standards. Kerala Government's Best Solar Energy Industry Award is a testament to our commitment.",
+    qualityAwardTitle: 'Best Solar Energy Industry Award',
+    qualityAwardDesc: 'Kerala Government State Award Recipient',
+    qualityImage: '/images/Banner04.jpg',
+    showCeoMessage: true,
+    ceoSubtitle: 'Leadership',
+    ceoTitle: 'Message from our CEO.',
+    ceoName: 'C.V. Raveendran',
+    ceoRole: 'Managing Director',
+    ceoMessage: 'Our journey began with a simple belief: that every Indian home and enterprise deserves reliable, clean, and affordable electricity. Over two decades later, that vision drives every panel we install and every customer we serve.',
+    presenceSubtitle: 'Coverage',
+    presenceTitle: 'Serving across India.',
+    presenceDesc: 'Headquartered in Kochi with 18+ regional centers and service engineers covering all major districts.',
+    ctaTitle: 'Ready to switch to solar?',
+    ctaDesc: 'Schedule a free energy audit with our senior engineers today.'
+  },
   'solar-solutions': {
+    metaTitle: "Solar Solutions | On-Grid, Hybrid & Off-Grid Solar Systems India",
+    metaDescription: "Slash your bills. Explore our premium KSEB net-metered On-Grid systems, Hybrid backups, and off-grid solar equipment. Free site assessment.",
+    metaKeywords: "solar solutions india, on grid solar panels, hybrid solar systems kerala, off grid solar power, solar water heaters",
     showHero: true,
     heroTitle: 'Solar Solutions',
     heroSubtitle: 'Solar Solutions Specialists',
@@ -98,39 +170,42 @@ export const companyDefaults = {
         tagline: 'Hot water. Zero electricity cost.',
         description: 'High-performance solar water heaters utilizing evacuated tube collectors (ETC) or flat plate collectors (FPC).',
         accentColor: '#facc15',
-        features: ['ETC & FPC Options', 'Inner Tank Glass-Lined', 'All-Weather Performance', '5-Year Warranty'],
+        features: ['Up to 80°C Water', 'ETC & FPC Options', 'Stainless Steel Tank', 'Electric Backup Included'],
         specs: [
-          { label: 'Capacities', value: '100L – 2000L' },
-          { label: 'Outer Tank', value: 'SS / Powder Coated' },
-          { label: 'Inner Tank', value: 'Glass Lined / SUS316' },
-          { label: 'Heating Back', value: 'Auxiliary Element' }
+          { label: 'Capacities', value: '100L – 500L+ (Resi) / 10,000L (Comm)' },
+          { label: 'Collector', value: 'Three-Target ETC / Copper FPC' },
+          { label: 'Tank Material', value: 'SS 304L Food Grade' },
+          { label: 'Warranty', value: '5 – 10 Years' }
         ],
-        image: '/images/water_heater_hero.webp'
+        image: '/images/solar_hero.webp'
       }
     ]
   },
   'power-backup': {
+    metaTitle: "Power Backup Solutions | UPS, Inverters & Batteries India",
+    metaDescription: "Never lose power again. Explore our advanced Lithium UPS, Home Inverters, and Tubular Batteries designed for Indian power conditions.",
+    metaKeywords: "power backup india, home ups kerala, lithium inverter battery, online ups industrial, tubular battery",
     showHero: true,
     heroTitle: 'Power Backup Solutions',
-    heroSubtitle: 'Energy Storage & Inverters',
-    heroImage: '/images/power_backup_banner.jpg',
-    heroDesc: 'Lithium UPS, home inverters, online UPS, and deep-cycle battery banks.',
+    heroSubtitle: 'Power Backup Specialists',
+    heroImage: '/images/home_backup_banner.webp',
+    heroDesc: 'Pure sine wave inverters, lithium UPS systems, and tubular batteries for reliable uninterrupted power.',
     showProducts: true,
     products: [
       {
         id: 'lithium-ups',
         number: '01',
         title: 'Lithium Inbuilt UPS',
-        category: 'Zero-Switch Technology',
-        tagline: 'Instant zero-switch backup.',
-        description: 'All-in-one wall-mountable lithium UPS systems. Instant zero-switch backup with 5x longer battery lifespan.',
+        category: 'Next-Gen Backup',
+        tagline: 'Wall-mounted. 10-year life. Zero maintenance.',
+        description: 'Sleek, wall-mountable home UPS with integrated LiFePO4 battery. Replaces bulky lead-acid setups with a clean, modern, zero-maintenance power station.',
         accentColor: '#facc15',
-        features: ['Instant Switchover (<10ms)', 'LifePO4 Safety Chemistry', '10-Year Maintenance-Free', 'Wall-Mountable Chassis'],
+        features: ['Integrated LiFePO4 Battery', 'Wall Mountable Design', '2-Hour Ultra-Fast Charging', '10-Year Expected Life'],
         specs: [
-          { label: 'Capacity Range', value: '1kVA – 10kVA' },
+          { label: 'Capacity Range', value: '1kVA – 5kVA' },
           { label: 'Battery Type', value: 'Inbuilt LiFePO4' },
-          { label: 'Switchover', value: '< 10ms' },
-          { label: 'Warranty', value: '5-Year Complete' }
+          { label: 'Charge Time', value: '2 Hours (0–100%)' },
+          { label: 'Warranty', value: '5 Years Comprehensive' }
         ],
         image: '/images/lithium_hero.webp'
       },
@@ -138,15 +213,15 @@ export const companyDefaults = {
         id: 'home-ups',
         number: '02',
         title: 'Home UPS System',
-        category: 'Residential Backup',
-        tagline: 'Reliable power for every home.',
-        description: 'Designed specifically for home appliances, IT equipment, and lighting loads during unexpected grid power cuts.',
+        category: 'Pure Sine Wave',
+        tagline: 'Reliable. Quiet. Safe for all appliances.',
+        description: 'Microcontroller-based pure sine wave UPS systems that protect your sensitive home electronics from voltage fluctuations and power cuts.',
         accentColor: '#facc15',
         features: ['Pure Sine Wave Output', 'Smart Battery Charging', 'Overload & Short Circuit Protection', 'Silent Operation'],
         specs: [
-          { label: 'Capacity Range', value: '700VA – 5kVA' },
-          { label: 'Battery Compatibility', value: 'Tubular / Flat / Lithium' },
+          { label: 'Capacity Range', value: '650VA – 3.5kVA' },
           { label: 'Waveform', value: 'Pure Sine Wave' },
+          { label: 'Transfer Time', value: '< 15ms' },
           { label: 'Warranty', value: '2 Years' }
         ],
         image: '/images/home_ups_hero.webp'
@@ -221,11 +296,66 @@ export const companyDefaults = {
       }
     ]
   },
-  calculators: {
-    costPerKW: 65000,
-    blendedTariff: 7.5
+  calculator: {
+    metaTitle: "Solar ROI Calculator | Estimate Savings & Subsidy | Spectrum Solar",
+    metaDescription: "Calculate your estimated solar system size, monthly electricity savings, government subsidy, and payback period in seconds with Spectrum Solar.",
+    metaKeywords: "solar calculator india, solar roi calculator kerala, kseb solar savings calculator, solar rooftop subsidy estimation",
+    heroTitle: "Solar Calculator",
+    heroSubtitle: "Yield & ROI Analytics"
+  },
+  feedback: {
+    metaTitle: "Customer Reviews & Testimonials | Spectrum Solar India",
+    metaDescription: "Read verified customer reviews and ratings from 40,000+ happy homes and businesses powered by Spectrum Solar across India.",
+    metaKeywords: "spectrum solar reviews, solar customer feedback kerala, verified solar testimonials india",
+    heroTitle: "Trusted By Thousands",
+    heroSubtitle: "Social Proof"
+  },
+  gallery: {
+    metaTitle: "Solar Installation Gallery | Spectrum Solar Projects",
+    metaDescription: "Explore our portfolio of residential, commercial, and industrial solar installations across India. See our engineering excellence in action.",
+    metaKeywords: "solar installation photos, solar rooftop gallery kerala, commercial solar projects photos india",
+    heroTitle: "Gallery",
+    heroSubtitle: "Our Installations",
+    galleryItems: [
+      { id: 1, src: '/images/p01.jpg', category: 'residential', title: 'Premium Residential Solar', location: 'Kannur', capacity: '5kW On-Grid' },
+      { id: 2, src: '/images/p02.jpg', category: 'commercial', title: 'Koyili Hospital', location: 'Kannur', capacity: '50kW Grid-Tied' },
+      { id: 3, src: '/images/p03.jpg', category: 'residential', title: 'Home Hybrid System', location: 'Thrissur', capacity: '3kW Hybrid' },
+      { id: 4, src: '/images/p04.jpg', category: 'industrial', title: 'DSC Centre', location: 'Kannur', capacity: '100kVA UPS' },
+      { id: 5, src: '/images/p05.jpg', category: 'residential', title: 'Lithium Battery Storage', location: 'Palakkad', capacity: '20kWh Lithium' },
+      { id: 6, src: '/images/p06.jpg', category: 'commercial', title: 'Ranni Taluk Hospital', location: 'Pathanamthitta', capacity: '30kW + UPS' },
+      { id: 7, src: '/images/p07.jpg', category: 'industrial', title: 'LEO Lab Solution', location: 'Kozhikode', capacity: '200kW On-Grid' },
+      { id: 8, src: '/images/banner1090x907.jpg', category: 'commercial', title: 'Sreenarayana Hospital', location: 'Ernakulam', capacity: '500kW On-Grid' },
+      { id: 9, src: '/images/banner1090x908.jpg', category: 'industrial', title: 'Industrial Solar Plant', location: 'Kollam', capacity: '150kW Industrial' },
+      { id: 10, src: '/images/banner1090x909.jpg', category: 'residential', title: 'Villa Solar + Storage', location: 'Munnar', capacity: '8kW + 20kWh' },
+      { id: 11, src: '/images/banner1200x1000.jpg', category: 'commercial', title: 'Resort Solar Integration', location: 'Wayanad', capacity: '25kW + Battery' }
+    ]
+  },
+  projects: {
+    metaTitle: "Our Solar Portfolio | 6,145+ Installations Across India | Spectrum Solar",
+    metaDescription: "Explore Spectrum Solar's extensive portfolio of residential, commercial, hospital, and government solar installations across India.",
+    metaKeywords: "solar projects kerala, commercial solar installations, hospital solar plant india, residential rooftop solar portfolio",
+    heroTitle: "4000+ SUCCESSFUL INSTALLATIONS",
+    heroSubtitle: "From residential rooftops to massive industrial grids, delivering energy excellence across the state.",
+    projects: [
+      { name: "DSC Centre", location: "Kannur", capacity: "100 KW", type: "Commercial", image: "/images/p01.jpg" },
+      { name: "Koyili Hospital", location: "Kannur", capacity: "50 KW", type: "Healthcare", image: "/images/p02.jpg" },
+      { name: "Ranni Taluk Hospital", location: "Ranni", capacity: "50 KW", type: "Government", image: "/images/p03.jpg" },
+      { name: "LEO Lab", location: "Kannur", capacity: "35 KW", type: "Commercial", image: "/images/p04.jpg" },
+      { name: "Commercial Complex", location: "Thrissur", capacity: "25 KW", type: "Commercial", image: "/images/p05.jpg" },
+      { name: "Residential Villa", location: "Kochi", capacity: "10 KW", type: "Residential", image: "/images/p06.jpg" }
+    ]
+  },
+  blog: {
+    metaTitle: "Solar & Clean Energy Blog | Spectrum Solar Knowledge Hub",
+    metaDescription: "Expert solar guides, subsidy updates, battery technology comparisons, and technical insights from Spectrum Solar engineers.",
+    metaKeywords: "solar energy blog india, kseb solar subsidy guide, lithium battery vs tubular, solar panel maintenance tips",
+    heroTitle: "Energy Excellence Insights",
+    heroSubtitle: "Insights & Updates"
   },
   careers: {
+    metaTitle: "Careers at Spectrum Solar | Join the Green Energy Revolution in India",
+    metaDescription: "Build your career with India's leading solar energy brand. We are hiring for Sales, Engineering, Operations, and more. Apply today!",
+    metaKeywords: "solar jobs india, solar engineer jobs kerala, renewable energy careers, spectrum solar hiring",
     showHero: true,
     heroTitle: 'JOIN THE ENERGY REVOLUTION',
     heroSubtitle: 'Careers',
@@ -260,6 +390,9 @@ export const companyDefaults = {
     ]
   },
   support: {
+    metaTitle: "Support & FAQs | Spectrum Solar Customer Help Center",
+    metaDescription: "Get help with your solar and power backup systems. Browse FAQs on net metering, subsidies, warranties, or contact our 24/7 service team.",
+    metaKeywords: "solar customer support, solar subsidy faq kerala, net metering help, spectrum solar service contact",
     showHero: true,
     heroTitle: "How can we help you?",
     heroSubtitle: "Help Center",
@@ -294,6 +427,9 @@ export const companyDefaults = {
     ]
   },
   contact: {
+    metaTitle: "Contact Us & Regional Offices | Spectrum Solar India",
+    metaDescription: "Connect with Spectrum Solar for solar site audits, technical inquiries, branch addresses, and customer support across India.",
+    metaKeywords: "contact spectrum solar, solar company phone number kerala, kochi solar office, solar site audit booking",
     showHero: true,
     heroTitle: 'START YOUR SOLAR JOURNEY',
     heroSubtitle: 'Global Network',

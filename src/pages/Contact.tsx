@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Phone, Mail, Clock, Building2, MapPin } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 import MapSection from '../components/MapSection';
 import SEO from '../components/SEO';
 import SmartForm from '../components/SmartForm';
@@ -9,20 +9,15 @@ import type { InquiryType } from '../components/SmartForm';
 import { CONTACT_INFO } from '../data/config';
 import { sanityReadClient } from '../lib/sanityClient';
 
-const DEFAULT_OFFICES = [
-  { city: "Kannur (HQ)", address: "Spectrum Tower, Near KSEB, Kannur 670001" },
-  { city: "Kochi", address: "Solar Hub, Edappally, Kochi 682024" },
-  { city: "Calicut", address: "Power Plaza, Mavoor Road, Calicut 673001" },
-  { city: "Trivandrum", address: "Energy Centre, Vazhuthacaud, Trivandrum 695010" }
-];
-
 const DEFAULT_CONTACT_DATA = {
+  metaTitle: "Contact Us | Spectrum Solar India",
+  metaDescription: "Connect with Spectrum Solar for solar site audits, technical inquiries, branch addresses, and customer support across India.",
+  metaKeywords: "contact spectrum solar, solar company phone number kerala, kochi solar office, solar site audit booking",
   showHero: true,
   heroTitle: 'START YOUR SOLAR JOURNEY',
   heroSubtitle: 'Global Network',
   heroImage: '/images/contact-hero.jpg',
   heroDesc: 'Connect with our senior engineering team for project audits and technical consultations.',
-  offices: DEFAULT_OFFICES
 };
 
 const Contact: React.FC = () => {
@@ -63,13 +58,13 @@ const Contact: React.FC = () => {
   };
 
   const currentSeo = seoData[initialType] || seoData.general;
-  const activeOffices = pageData.offices || [];
 
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
       <SEO 
-        title={`${currentSeo.title} | Spectrum Solar India`}
-        description={currentSeo.desc}
+        title={initialType !== 'general' ? `${currentSeo.title} | Spectrum Solar India` : (pageData.metaTitle || `${currentSeo.title} | Spectrum Solar India`)}
+        description={pageData.metaDescription || currentSeo.desc}
+        keywords={pageData.metaKeywords || "contact spectrum solar, solar company phone number kerala, kochi solar office, solar site audit booking"}
       />
       {/* Hero */}
       {pageData.showHero !== false && (
@@ -108,16 +103,24 @@ const Contact: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             
             {/* Left: Contact Info */}
-            <div className="lg:col-span-5 reveal">
-              <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Get In Touch</span>
-              <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight text-black leading-none mb-12">
-                Connect <br />With Us.
-              </h2>
+            <div className="lg:col-span-5 reveal space-y-8">
+              <div>
+                <span className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-4 block">Get In Touch</span>
+                <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight text-black leading-none mb-6">
+                  Connect <br />With Us.
+                </h2>
+                <p className="text-zinc-600 text-sm md:text-base leading-relaxed font-light">
+                  Have questions about residential solar, commercial projects, or power backup? Reach out to our engineering team directly or submit the enquiry form.
+                </p>
+              </div>
               
-              <div className="space-y-8 mb-16">
-                <a href={CONTACT_INFO.phoneLink} className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-white/50 border border-yellow-250/20 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-colors">
-                    <Phone className="w-5 h-5" />
+              <div className="space-y-4">
+                <a 
+                  href={CONTACT_INFO.phoneLink} 
+                  className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300 border border-zinc-200/60 shadow-sm hover:shadow-md"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-yellow-400/30 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
+                    <Phone className="w-6 h-6" />
                   </div>
                   <div>
                     <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-1">Call Today</p>
@@ -125,41 +128,18 @@ const Contact: React.FC = () => {
                   </div>
                 </a>
 
-                <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-white/50 border border-yellow-250/20 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-colors">
-                    <Mail className="w-5 h-5" />
+                <a 
+                  href={`mailto:${CONTACT_INFO.email}`} 
+                  className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300 border border-zinc-200/60 shadow-sm hover:shadow-md"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-yellow-400/30 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
+                    <Mail className="w-6 h-6" />
                   </div>
                   <div>
                     <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-1">Email Us</p>
                     <p className="text-zinc-950 font-black text-lg group-hover:text-yellow-600 transition-colors">{CONTACT_INFO.email}</p>
                   </div>
                 </a>
-
-                <div className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl hover:scale-[1.02]">
-                  <div className="w-12 h-12 rounded-xl bg-white/50 border border-yellow-250/20 flex items-center justify-center text-zinc-900">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-1">Support Hours</p>
-                    <p className="text-zinc-950 font-black text-lg">9:00 AM – 6:00 PM</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Offices Grid */}
-              <div>
-                <p className="text-zinc-500 font-medium text-[10px] uppercase tracking-[0.5em] mb-6">Our Offices</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {activeOffices.map((office, idx) => (
-                    <div key={idx} className="p-5 premium-cream-card rounded-2xl hover:scale-[1.02] transition-all duration-300">
-                      <div className="flex items-center gap-2 text-yellow-600 font-bold mb-2">
-                        {idx === 0 ? <Building2 className="w-4 h-4" /> : <MapPin className="w-4 h-4" />}
-                        <span className="text-xs font-black uppercase tracking-wider">{office.city}</span>
-                      </div>
-                      <p className="text-zinc-500 text-xs leading-relaxed">{office.address}</p>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
 

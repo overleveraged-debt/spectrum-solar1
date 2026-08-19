@@ -3,7 +3,9 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Briefcase, CheckCircle2, ArrowRight, BarChart3, Users, GraduationCap, Megaphone, Store } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import FAQSection from '../components/FAQSection';
 import { usePageContent } from '../hooks/usePageContent';
+import { dealershipDefaults } from '../data/defaults/pages/dealershipDefaults';
 
 const whyItems = [
   { number: '01', title: 'High-Demand Product Range', desc: 'Dealers get access to top-quality solar panels, inverters, batteries, hybrid & off-grid systems, solar water heaters, and UPS — all from a trusted brand.', icon: Store },
@@ -37,34 +39,26 @@ const Dealership: React.FC = () => {
   useScrollReveal();
   const { pageData } = usePageContent('dealership');
 
+  const faqs = pageData.faqs || dealershipDefaults.faqs;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Why become a Spectrum Solar Dealer in India?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Dealers get access to high-demand solar products, strong profit margins, and full marketing support from a recognized national brand."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What products can a dealer sell?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Solar Panels, Solar Inverters, Lithium & Lead Acid Batteries, Hybrid & Off-Grid Systems, Solar Water Heaters, and UPS."
-        }
+    "mainEntity": (faqs || []).map((faq: any) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
       }
-    ]
+    }))
   };
 
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
       <SEO 
-        title="Solar Dealership Network India | Partner with Spectrum Solar"
-        description="Become an authorized solar dealer in India. High-demand products, strong margins, and full marketing support from Spectrum Solar."
+        title={pageData.metaTitle || "Solar Dealership Network India | Partner with Spectrum Solar"}
+        description={pageData.metaDescription || "Become an authorized solar dealer in India. High-demand products, strong margins, and full marketing support from Spectrum Solar."}
+        keywords={pageData.metaKeywords || "solar dealership india, authorized solar dealer kerala, solar panel dealership, spectrum solar dealer"}
         schema={faqSchema}
       />
 
@@ -196,6 +190,15 @@ const Dealership: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── Dealership FAQs ── */}
+      <FAQSection
+        faqs={faqs}
+        title={pageData.faqsTitle || "Frequently Asked Questions"}
+        subtitle={pageData.faqsSubtitle || "Everything you need to know about becoming an authorized Spectrum Solar dealer."}
+        badge="Dealership FAQs"
+        theme="light"
+      />
 
       {/* ── CTA ── */}
       <section className="px-6 pt-20 pb-4 md:pt-28" data-nav-light>

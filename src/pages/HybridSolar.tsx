@@ -108,8 +108,9 @@ const HybridSolar: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="Hybrid Solar Systems with Battery Backup | Spectrum Solar India"
-        description="Enjoy the best of both worlds: zero electricity bills and 24/7 power backup. Our hybrid solar systems feature advanced lithium storage and smart grid switching."
+        title={pageData.metaTitle || "Hybrid Solar Systems with Battery Backup | Spectrum Solar India"}
+        description={pageData.metaDescription || "Enjoy the best of both worlds: zero electricity bills and 24/7 power backup. Our hybrid solar systems feature advanced lithium storage and smart grid switching."}
+        keywords={pageData.metaKeywords || "hybrid solar system india, solar system with battery backup, lithium hybrid solar kerala, grid tie with battery"}
         schema={hybridSchema}
       />
 
@@ -179,23 +180,25 @@ const HybridSolar: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
               <img
-                src="/images/hybrid_intro.webp"
+                src={pageData.introImage || "/images/hybrid_intro.webp"}
                 alt="Hybrid Solar consultation"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
 
             <div className="reveal" style={{ transitionDelay: '150ms' }}>
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Reliable Solar with Smart Backup</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
-                Solar + Battery.<br />
-                <span className="text-yellow-400">Always On.</span>
-              </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
-                A Hybrid Solar System combines solar panels, battery storage, and grid connectivity to deliver uninterrupted electricity. Use solar during the day, store excess energy in batteries, and rely on backup during outages.
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">
+                {pageData.overviewSubtitle || "Reliable Solar with Smart Backup"}
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
+                dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "Solar + Battery.<br /><span class=\"text-yellow-400\">Always On.</span>" }}
+              />
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-normal">
+                {pageData.overviewDesc1 || "A Hybrid Solar System combines solar panels, battery storage, and grid connectivity to deliver uninterrupted electricity. Use solar during the day, store excess energy in batteries, and rely on backup during outages."}
               </p>
-              <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                This makes it the ideal solution for homes and businesses facing frequent power cuts or voltage fluctuations — complete energy reliability in one system.
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10 font-normal">
+                {pageData.overviewDesc2 || "This makes it the ideal solution for homes and businesses facing frequent power cuts or voltage fluctuations — complete energy reliability in one system."}
               </p>
 
             </div>
@@ -383,7 +386,7 @@ const HybridSolar: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/hybrid_tech.webp"
+                src={pageData.techImage || "/images/hybrid_tech.webp"}
                 alt="Hybrid inverter unit"
                 className="w-full h-full object-cover"
               />
@@ -401,7 +404,7 @@ const HybridSolar: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/hybrid_lifestyle.webp"
+                  src={pageData.lifestyleImage || "/images/hybrid_lifestyle.webp"}
                   alt="Hybrid solar applications"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

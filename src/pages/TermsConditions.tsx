@@ -34,8 +34,9 @@ const TermsConditions: React.FC = () => {
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden min-h-screen">
       <SEO 
-        title={`${pageData.title || 'Terms & Conditions'} | Spectrum Solar India`}
-        description="Read the Terms and Conditions for using Spectrum Solar's website and services. Information regarding installations, warranties, and partnerships."
+        title={pageData.metaTitle || `${pageData.title || 'Terms & Conditions'} | Spectrum Solar India`}
+        description={pageData.metaDescription || "Read the Terms and Conditions for using Spectrum Solar's website and services. Information regarding installations, warranties, and partnerships."}
+        keywords={pageData.metaKeywords || "terms and conditions spectrum solar, solar contract terms, warranty terms solar india"}
       />
 
       {/* Header */}

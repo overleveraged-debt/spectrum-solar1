@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, Trash2, ChevronRight } from 'lucide-react';
+import { Plus, Trash2, ChevronRight, Upload, Loader2 } from 'lucide-react';
 
 interface ProductsEditorProps {
   products: any[];
@@ -7,6 +7,8 @@ interface ProductsEditorProps {
   setActiveIdx: (idx: number) => void;
   onChange: (newList: any[]) => void;
   textareaClass: string;
+  onImageUpload?: (cardIndex: number, e: React.ChangeEvent<HTMLInputElement>) => void;
+  uploadingImage?: string | null;
 }
 
 export default function ProductsEditor({
@@ -15,6 +17,8 @@ export default function ProductsEditor({
   setActiveIdx,
   onChange,
   textareaClass,
+  onImageUpload,
+  uploadingImage,
 }: ProductsEditorProps) {
   const list = products;
   const currentIdx = activeIdx ?? 0;
@@ -177,27 +181,48 @@ export default function ProductsEditor({
               />
             </div>
 
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
-                Image Path or URL
-              </label>
-              <div className="flex gap-3 items-center">
-                <input
-                  type="text"
-                  value={activeProd.image || ''}
-                  onChange={(e) => {
-                    const newList = [...list];
-                    newList[currentIdx] = { ...newList[currentIdx], image: e.target.value };
-                    onChange(newList);
-                  }}
-                  className="flex-1 bg-zinc-900 border border-zinc-850 text-white rounded-xl py-2.5 px-3.5 text-xs outline-none focus:border-yellow-400/50 transition-all"
-                  placeholder="e.g. /images/lithium_hero.webp"
-                />
-                {activeProd.image && (
-                  <div className="w-12 h-10 rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden shrink-0">
-                    <img src={activeProd.image} alt="Preview" className="w-full h-full object-cover" />
-                  </div>
-                )}
+            <div className="space-y-2 p-4 bg-zinc-900/80 border border-zinc-850 rounded-2xl">
+              <div>
+                <label className="text-[10px] font-black uppercase tracking-wider text-zinc-300 block">
+                  Product Image
+                </label>
+                <span className="text-[10px] text-zinc-500 mt-0.5 block">
+                  Upload an image from your computer or paste an image URL.
+                </span>
+              </div>
+              <div className="flex items-center gap-4 pt-1">
+                <div className="w-16 h-16 rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800 flex-shrink-0 flex items-center justify-center">
+                  {activeProd.image ? (
+                    <img src={activeProd.image} alt={activeProd.title || 'Product'} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-zinc-600 text-[10px] font-bold">No Image</span>
+                  )}
+                </div>
+                <div className="flex-1 flex items-center gap-3">
+                  {onImageUpload && (
+                    <div className="relative">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => onImageUpload(currentIdx, e)}
+                        className="hidden"
+                        id={`product-card-upload-${currentIdx}`}
+                        disabled={uploadingImage !== null && uploadingImage !== undefined}
+                      />
+                      <label
+                        htmlFor={`product-card-upload-${currentIdx}`}
+                        className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold text-xs py-2.5 px-4 rounded-xl cursor-pointer transition-all shadow-sm active:scale-95"
+                      >
+                        {uploadingImage === `product_card_${currentIdx}` ? (
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        ) : (
+                          <Upload className="w-3.5 h-3.5" />
+                        )}
+                        <span>{uploadingImage === `product_card_${currentIdx}` ? 'Uploading...' : activeProd.image ? 'Replace Photo' : 'Upload Photo'}</span>
+                      </label>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 

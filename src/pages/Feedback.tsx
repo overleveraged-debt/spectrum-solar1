@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Star, Quote, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { usePageContent } from '../hooks/usePageContent';
+import SEO from '../components/SEO';
 
 import { allTestimonials } from '../data/testimonials';
 
@@ -71,6 +72,11 @@ const Feedback: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden">
+      <SEO 
+        title={pageData.metaTitle || "Customer Reviews & Testimonials | Spectrum Solar India"}
+        description={pageData.metaDescription || "Read verified customer reviews and ratings from 40,000+ happy homes and businesses powered by Spectrum Solar across India."}
+        keywords={pageData.metaKeywords || "spectrum solar reviews, solar customer feedback kerala, verified solar testimonials india"}
+      />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">

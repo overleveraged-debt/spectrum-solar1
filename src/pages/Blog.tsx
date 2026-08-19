@@ -3,6 +3,8 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Calendar, User, ArrowRight, BookOpen, Loader2 } from 'lucide-react';
 import { sanityReadClient } from '../lib/sanityClient';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
+import { usePageContent } from '../hooks/usePageContent';
 
 const DEFAULT_POSTS = [
   {
@@ -35,6 +37,7 @@ const DEFAULT_POSTS = [
 ];
 
 const Blog: React.FC = () => {
+  const { pageData } = usePageContent('blog');
   const [posts, setPosts] = useState<any[]>(DEFAULT_POSTS);
 
   useEffect(() => {
@@ -98,6 +101,11 @@ const Blog: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden">
+      <SEO 
+        title={pageData.metaTitle || "Solar & Clean Energy Blog | Spectrum Solar Knowledge Hub"}
+        description={pageData.metaDescription || "Expert solar guides, subsidy updates, battery technology comparisons, and technical insights from Spectrum Solar engineers."}
+        keywords={pageData.metaKeywords || "solar energy blog india, kseb solar subsidy guide, lithium battery vs tubular, solar panel maintenance tips"}
+      />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">

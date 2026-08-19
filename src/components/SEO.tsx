@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 interface SEOProps {
   title: string;
   description: string;
+  keywords?: string;
   type?: 'website' | 'article' | 'product';
   url?: string;
   image?: string;
@@ -13,6 +14,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({ 
   title, 
   description, 
+  keywords,
   type = 'website', 
   url = 'https://www.spectrumpowers.com', 
   image = 'https://www.spectrumpowers.com/logo.png', 
@@ -26,6 +28,7 @@ const SEO: React.FC<SEOProps> = ({
       {/* Standard Metadata */}
       <title>{title}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
       
       {/* Canonical URL */}
       <link rel="canonical" href={finalUrl} />

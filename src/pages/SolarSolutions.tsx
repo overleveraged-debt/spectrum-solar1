@@ -113,11 +113,14 @@ const DEFAULT_PRODUCTS: Product[] = [
       { label: 'Inner Tank', value: 'Glass Lined / SUS316' },
       { label: 'Heating Back', value: 'Auxiliary Element' },
     ],
-    image: '/images/water_heater_hero.webp',
+    image: '/images/solar_hero.webp',
   },
 ];
 
 const DEFAULT_SOLAR_DATA = {
+  metaTitle: "Solar Solutions | On-Grid, Hybrid & Off-Grid Solar Systems India",
+  metaDescription: "Slash your bills. Explore our premium KSEB net-metered On-Grid systems, Hybrid backups, and off-grid solar equipment. Free site assessment.",
+  metaKeywords: "solar solutions india, on grid solar panels, hybrid solar systems kerala, off grid solar power, solar water heaters",
   showHero: true,
   heroTitle: 'Solar Solutions',
   heroSubtitle: 'Solar Solutions Specialists',
@@ -201,8 +204,9 @@ const SolarSolutions: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
       <SEO 
-        title="Solar Solutions | On-Grid, Hybrid & Off-Grid Solar Systems India"
-        description="Slash your bills. Explore our premium KSEB net-metered On-Grid systems, Hybrid backups, and off-grid solar equipment. Free site assessment."
+        title={pageData.metaTitle || "Solar Solutions | On-Grid, Hybrid & Off-Grid Solar Systems India"}
+        description={pageData.metaDescription || "Slash your bills. Explore our premium KSEB net-metered On-Grid systems, Hybrid backups, and off-grid solar equipment. Free site assessment."}
+        keywords={pageData.metaKeywords || "solar solutions india, on grid solar panels, hybrid solar systems kerala, off grid solar power, solar water heaters"}
         schema={categorySchema}
       />
       {/* Hero */}

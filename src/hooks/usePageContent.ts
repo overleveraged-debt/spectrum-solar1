@@ -15,14 +15,17 @@ export function usePageContent(pageId: string) {
             const parsed = JSON.parse(res.content);
             setPageData((prev: any) => {
               const combined = { ...prev, ...parsed };
-              if (Array.isArray(prev.benefits) && Array.isArray(parsed.benefits)) {
-                combined.benefits = prev.benefits.map((defItem: any, idx: number) => parsed.benefits[idx] || defItem);
+              if (Array.isArray(parsed.benefits)) {
+                combined.benefits = parsed.benefits;
               }
-              if (Array.isArray(prev.perfectFor) && Array.isArray(parsed.perfectFor)) {
-                combined.perfectFor = prev.perfectFor.map((defItem: any, idx: number) => parsed.perfectFor[idx] || defItem);
+              if (Array.isArray(parsed.faqs)) {
+                combined.faqs = parsed.faqs;
               }
-              if (Array.isArray(prev.howItWorksSteps) && Array.isArray(parsed.howItWorksSteps)) {
-                combined.howItWorksSteps = prev.howItWorksSteps.map((defItem: any, idx: number) => parsed.howItWorksSteps[idx] || defItem);
+              if (Array.isArray(parsed.perfectFor)) {
+                combined.perfectFor = parsed.perfectFor;
+              }
+              if (Array.isArray(parsed.howItWorksSteps)) {
+                combined.howItWorksSteps = parsed.howItWorksSteps;
               }
               return combined;
             });

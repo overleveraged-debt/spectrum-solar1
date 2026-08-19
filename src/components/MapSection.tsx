@@ -91,11 +91,11 @@ const MapSection: React.FC<{ height?: string; theme?: 'light' | 'dark' }> = ({ h
     >
       <div className="relative w-full rounded-[2rem] overflow-hidden" style={{ height }}>
         <MapContainer 
-          center={[10.5, 76.4]} 
-          zoom={8} 
-          maxBounds={[[8.0, 74.5], [13.0, 77.8]]}
-          minZoom={7.5}
-          maxBoundsViscosity={1.0}
+          center={[10.55, 76.15]} 
+          zoom={7} 
+          maxBounds={[[7.0, 73.0], [14.0, 79.5]]}
+          minZoom={6}
+          maxBoundsViscosity={0.8}
           style={{ height: '100%', width: '100%', background: isDark ? '#09090b' : '#f8fafc' }}
           scrollWheelZoom={false}
         >

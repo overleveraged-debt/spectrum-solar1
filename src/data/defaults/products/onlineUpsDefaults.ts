@@ -1,4 +1,7 @@
 export const onlineUpsDefaults = {
+  metaTitle: "Online UPS Systems | Zero Transfer Time | Spectrum Solar",
+  metaDescription: "Premium online UPS systems for mission-critical loads. Zero transfer time and double conversion technology for 100% power reliability.",
+  metaKeywords: "online ups systems, double conversion ups, industrial ups india, zero transfer ups, server power backup",
   showHero: true,
   heroSubtitle: "Critical Load Protection",
   heroTitle: "True Online UPS",
@@ -12,6 +15,9 @@ export const onlineUpsDefaults = {
   description: "Provides clean, stabilized voltage always regenerated from the battery bank, completely isolating load from grid noise.",
   overviewSubtitle: "Ultimate Power Protection Solution",
   overviewTitle: "Zero Delay. Total Protection.",
+  introImage: "/images/online_ups_support.webp",
+  techImage: "/images/online_ups_tech.webp",
+  lifestyleImage: "/images/online_ups_lifestyle.webp",
   overviewDesc1: "Provides continuous power by constantly running loads off the inverter via double conversion.",
   overviewDesc2: "Ideal for data centers, medical diagnostic equipment, servers, and sensitive industrial machines.",
   showHowItWorks: true,

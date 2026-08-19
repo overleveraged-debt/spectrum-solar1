@@ -1,5 +1,5 @@
 import React from 'react';
-import { Upload, Loader2 } from 'lucide-react';
+import { Upload, Loader2, Trash2, Image as ImageIcon } from 'lucide-react';
 import { fieldMeta } from '../config/pageEditorConfig';
 
 interface FormFieldRendererProps {
@@ -60,49 +60,60 @@ export default function FormFieldRenderer({
   }
 
   if (isImage) {
+    const isUploading = uploadingImage === key;
     return (
       <div key={key} className={`space-y-2 p-5 bg-zinc-950 border border-zinc-900 rounded-2xl ${colSpanClass}`}>
         <div>
-          <label className="font-semibold text-sm text-zinc-300 block">{meta.label}</label>
-          {meta.desc && <span className="text-xs text-zinc-500 mt-1 block">{meta.desc}</span>}
+          <label className="font-semibold text-sm text-zinc-200 block">{meta.label}</label>
+          {meta.desc && <span className="text-xs text-zinc-500 mt-0.5 block">{meta.desc}</span>}
         </div>
-        <div className="flex items-center gap-6 pt-2">
-          <div className="w-20 h-20 rounded-xl overflow-hidden bg-black border border-zinc-880 flex-shrink-0 flex items-center justify-center">
+        <div className="flex items-center gap-5 pt-2">
+          <div className="w-20 h-20 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 flex-shrink-0 flex items-center justify-center relative shadow-inner">
             {val ? (
               <img src={val} alt={meta.label} className="w-full h-full object-cover" />
             ) : (
-              <span className="text-zinc-700 text-xs">No Image</span>
+              <div className="flex flex-col items-center justify-center gap-1 text-zinc-600">
+                <ImageIcon className="w-5 h-5" />
+                <span className="text-[9px] font-bold uppercase tracking-wider">No Image</span>
+              </div>
+            )}
+            {isUploading && (
+              <div className="absolute inset-0 bg-black/75 flex items-center justify-center">
+                <Loader2 className="w-5 h-5 text-yellow-400 animate-spin" />
+              </div>
             )}
           </div>
-          <div className="flex-1 space-y-2">
-            <div className="relative">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageUpload(key, e)}
-                className="hidden"
-                id={`file-upload-${key}`}
-                disabled={uploadingImage !== null}
-              />
-              <label
-                htmlFor={`file-upload-${key}`}
-                className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-xs py-2 px-4 rounded-xl cursor-pointer transition-colors"
-              >
-                {uploadingImage === key ? (
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                ) : (
-                  <Upload className="w-3.5 h-3.5" />
-                )}
-                <span>Upload Photo</span>
-              </label>
-            </div>
+          <div className="flex-1 flex flex-wrap items-center gap-3">
             <input
-              type="text"
-              value={val || ''}
-              onChange={(e) => handleFieldChange(key, e.target.value)}
-              className="w-full bg-zinc-900 border border-zinc-850 text-zinc-400 text-xs rounded-xl py-2 px-3 focus:border-zinc-700 outline-none"
-              placeholder={meta.placeholder || 'Image path or URL'}
+              type="file"
+              accept="image/*"
+              onChange={(e) => handleImageUpload(key, e)}
+              className="hidden"
+              id={`file-upload-${key}`}
+              disabled={isUploading}
             />
+            <label
+              htmlFor={`file-upload-${key}`}
+              className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold text-xs py-2.5 px-4 rounded-xl cursor-pointer transition-all shadow-sm active:scale-95"
+            >
+              {isUploading ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              ) : (
+                <Upload className="w-3.5 h-3.5" />
+              )}
+              <span>{isUploading ? 'Uploading...' : val ? 'Replace Photo' : 'Upload Photo'}</span>
+            </label>
+
+            {val && (
+              <button
+                type="button"
+                onClick={() => handleFieldChange(key, '')}
+                className="inline-flex items-center gap-1.5 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-rose-400 hover:text-rose-300 font-semibold text-xs py-2.5 px-3.5 rounded-xl transition-all"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+                <span>Remove</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

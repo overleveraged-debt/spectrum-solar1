@@ -20,6 +20,8 @@ import OverviewCardsEditor from './editors/OverviewCardsEditor';
 import SpecsEditor from './editors/SpecsEditor';
 import FeaturesEditor from './editors/FeaturesEditor';
 import OpportunitiesCardsEditor from './editors/OpportunitiesCardsEditor';
+import GalleryEditor from './editors/GalleryEditor';
+import ProjectsEditor from './editors/ProjectsEditor';
 import FormFieldRenderer from './components/FormFieldRenderer';
 import { pageSectionGroups, fieldMeta, productOptions } from './config/pageEditorConfig';
 import { defaultPagesData } from '../../data/pageDefaults';
@@ -201,6 +203,102 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
     }
   };
 
+  const handleProductCardImageUpload = async (cardIndex: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const uploadKey = `product_card_${cardIndex}`;
+    setUploadingImage(uploadKey);
+    setStatus(null);
+
+    try {
+      const asset = await sanityClient.assets.upload('image', file, {
+        filename: file.name,
+      });
+
+      setData((prev: any) => {
+        const currentProducts = [...(prev.products || [])];
+        if (currentProducts[cardIndex]) {
+          currentProducts[cardIndex] = {
+            ...currentProducts[cardIndex],
+            image: asset.url,
+          };
+        }
+        return { ...prev, products: currentProducts };
+      });
+      setStatus({ type: 'success', message: `Product card #${cardIndex + 1} image uploaded successfully!` });
+    } catch (err: any) {
+      console.error(err);
+      setStatus({ type: 'error', message: 'Failed to upload image. Write token is required.' });
+    } finally {
+      setUploadingImage(null);
+    }
+  };
+
+  const handleGalleryImageUpload = async (itemIndex: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const uploadKey = `gallery_item_${itemIndex}`;
+    setUploadingImage(uploadKey);
+    setStatus(null);
+
+    try {
+      const asset = await sanityClient.assets.upload('image', file, {
+        filename: file.name,
+      });
+
+      setData((prev: any) => {
+        const currentItems = [...(prev.galleryItems || [])];
+        if (currentItems[itemIndex]) {
+          currentItems[itemIndex] = {
+            ...currentItems[itemIndex],
+            src: asset.url,
+          };
+        }
+        return { ...prev, galleryItems: currentItems };
+      });
+      setStatus({ type: 'success', message: `Gallery photo #${itemIndex + 1} uploaded successfully!` });
+    } catch (err: any) {
+      console.error(err);
+      setStatus({ type: 'error', message: 'Failed to upload image. Write token is required.' });
+    } finally {
+      setUploadingImage(null);
+    }
+  };
+
+  const handleProjectImageUpload = async (itemIndex: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const uploadKey = `project_item_${itemIndex}`;
+    setUploadingImage(uploadKey);
+    setStatus(null);
+
+    try {
+      const asset = await sanityClient.assets.upload('image', file, {
+        filename: file.name,
+      });
+
+      setData((prev: any) => {
+        const currentProjects = [...(prev.projects || [])];
+        if (currentProjects[itemIndex]) {
+          currentProjects[itemIndex] = {
+            ...currentProjects[itemIndex],
+            image: asset.url,
+          };
+        }
+        return { ...prev, projects: currentProjects };
+      });
+      setStatus({ type: 'success', message: `Project #${itemIndex + 1} photo uploaded successfully!` });
+    } catch (err: any) {
+      console.error(err);
+      setStatus({ type: 'error', message: 'Failed to upload image. Write token is required.' });
+    } finally {
+      setUploadingImage(null);
+    }
+  };
+
   const renderProductsEditor = () => (
     <ProductsEditor
       products={data.products || []}
@@ -208,6 +306,8 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
       setActiveIdx={setActiveProdCardIdx}
       onChange={(newList) => handleFieldChange('products', newList)}
       textareaClass={EXPANDING_TEXTAREA_CLASS}
+      onImageUpload={handleProductCardImageUpload}
+      uploadingImage={uploadingImage}
     />
   );
 
@@ -311,6 +411,14 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
     return <FeaturesEditor features={stringList} onChange={(newList) => handleFieldChange('benefits', newList)} />;
   };
 
+  const renderFreelanceBenefitsEditor = () => {
+    const rawBenefits = data.benefits || [];
+    const stringList = Array.isArray(rawBenefits)
+      ? rawBenefits.map((b: any) => typeof b === 'string' ? b : (b.title || b.text || b.desc || ''))
+      : [];
+    return <FeaturesEditor features={stringList} onChange={(newList) => handleFieldChange('benefits', newList)} />;
+  };
+
   const renderWhoCanJoinEditor = () => {
     const rawItems = data.whoCanJoin || [];
     const stringList = Array.isArray(rawItems)
@@ -318,6 +426,24 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
       : [];
     return <FeaturesEditor features={stringList} onChange={(newList) => handleFieldChange('whoCanJoin', newList)} />;
   };
+
+  const renderGalleryEditor = () => (
+    <GalleryEditor
+      galleryItems={data.galleryItems || []}
+      onChange={(newList) => handleFieldChange('galleryItems', newList)}
+      onImageUpload={handleGalleryImageUpload}
+      uploadingImage={uploadingImage}
+    />
+  );
+
+  const renderProjectsEditor = () => (
+    <ProjectsEditor
+      projects={data.projects || []}
+      onChange={(newList) => handleFieldChange('projects', newList)}
+      onImageUpload={handleProjectImageUpload}
+      uploadingImage={uploadingImage}
+    />
+  );
 
   const renderField = (key: string, val: any) => (
     <FormFieldRenderer
@@ -339,7 +465,9 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
     );
   }
 
-  const groups = (pageSectionGroups[pageId] || []).filter(group => {
+  const activeConfigKey = pageId === 'product-details' ? selectedProduct : pageId;
+  const rawGroups = pageSectionGroups[activeConfigKey] || pageSectionGroups[pageId] || [];
+  const groups = rawGroups.filter(group => {
     if (pageId === 'product-details') {
       const noHowItWorks = ['on-grid', 'lithium-batteries', 'tubular-batteries'];
       if (noHowItWorks.includes(selectedProduct) && group.id === 'how-it-works') {
@@ -491,8 +619,11 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
                           if (fieldKey === 'faqs') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderFaqsEditor()}</div>;
                           }
-                          if (fieldKey === 'freelanceBenefits') {
+                          if (fieldKey === 'franchiseBenefits') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderFranchiseBenefitsEditor()}</div>;
+                          }
+                          if (fieldKey === 'freelanceBenefits') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderFreelanceBenefitsEditor()}</div>;
                           }
                           if (fieldKey === 'whoCanJoin') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderWhoCanJoinEditor()}</div>;
@@ -532,6 +663,12 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
                           }
                           if (fieldKey === 'features') {
                             return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderFeaturesListEditor()}</div>;
+                          }
+                          if (fieldKey === 'galleryItems') {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderGalleryEditor()}</div>;
+                          }
+                          if (fieldKey === 'projects' && (pageId === 'projects' || Array.isArray(data.projects))) {
+                            return <div key={fieldKey} className="md:col-span-2 space-y-2">{renderProjectsEditor()}</div>;
                           }
                           return renderField(fieldKey, data[fieldKey]);
                         })

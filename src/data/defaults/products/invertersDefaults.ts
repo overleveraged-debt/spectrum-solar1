@@ -1,4 +1,7 @@
 export const invertersDefaults = {
+  metaTitle: "Pure Sine Wave Inverters | Stable Power Output | Spectrum Solar",
+  metaDescription: "High-performance pure sine wave inverters for homes and businesses. Safe for sensitive electronics and built for long-lasting performance.",
+  metaKeywords: "pure sine wave inverters, solar inverters india, heavy duty power inverter, home inverter kerala",
   showHero: true,
   heroSubtitle: "Power Conversion",
   heroTitle: "Home & Commercial Inverters",
@@ -12,6 +15,9 @@ export const invertersDefaults = {
   description: "High-performance DSP-controlled power inverters for home, office, and small shops.",
   overviewSubtitle: "Smart Power Conversion Solutions",
   overviewTitle: "Smart Conversion. Reliable Power.",
+  introImage: "/images/inverter_support.webp",
+  techImage: "/images/inverter_tech.webp",
+  lifestyleImage: "/images/inverter_lifestyle.webp",
   overviewDesc1: "Converts stored DC power from batteries into usable AC power for your appliances with total surge protection.",
   overviewDesc2: "Advanced digital inverter technology ensures silent, efficient performance across all load capacities.",
   showHowItWorks: true,

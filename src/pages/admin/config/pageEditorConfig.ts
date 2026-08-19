@@ -1,3 +1,11 @@
+// Standard SEO section group appended across all editable pages
+export const seoSectionGroup = {
+  id: 'seo',
+  title: 'Search Engine Optimization (SEO & Meta Tags)',
+  description: 'Customize the Google search title, meta description, and keywords for this page.',
+  fields: ['metaTitle', 'metaDescription', 'metaKeywords']
+};
+
 // Section groups mapping to make form structured and clean
 export const pageSectionGroups: Record<string, Array<{
   id: string;
@@ -78,7 +86,14 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Contact Call-to-Action',
       description: 'Configure the bottom call-to-action details, descriptions, and backdrop.',
       fields: ['contactSubtitle', 'contactTitle', 'contactDesc', 'contactBgImage']
-    }
+    },
+    {
+      id: 'faqs',
+      title: 'Frequently Asked Questions (FAQ)',
+      description: 'Configure frequently asked questions and answers for the home page.',
+      fields: ['faqsTitle', 'faqs']
+    },
+    seoSectionGroup
   ],
   about: [
     {
@@ -128,7 +143,8 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Bottom CTA Panel',
       description: 'Configure the call-to-action yellow box at the bottom of the page.',
       fields: ['ctaTitle', 'ctaDesc']
-    }
+    },
+    seoSectionGroup
   ],
 
   'solar-solutions': [
@@ -143,7 +159,8 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Solar Products Overview List',
       description: 'Configure titles, descriptions, features, specifications, and images for all 4 solar systems.',
       fields: ['products']
-    }
+    },
+    seoSectionGroup
   ],
   'power-backup': [
     {
@@ -157,7 +174,8 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Power Backup Products Overview List',
       description: 'Configure titles, descriptions, features, specifications, and images for all 6 power backup systems.',
       fields: ['products']
-    }
+    },
+    seoSectionGroup
   ],
   opportunities: [
     {
@@ -183,7 +201,8 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Opportunity Offerings Cards',
       description: 'Configure titles, descriptions, investments, and links for Franchise, Dealership, Freelance, and Careers cards.',
       fields: ['opportunities']
-    }
+    },
+    seoSectionGroup
   ],
   franchise: [
     {
@@ -209,7 +228,14 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Franchise Benefits Cards',
       description: 'Configure benefit cards displayed on the franchise page.',
       fields: ['franchiseBenefits']
-    }
+    },
+    {
+      id: 'faqs',
+      title: 'Frequently Asked Questions (FAQ)',
+      description: 'Configure franchise partnership questions and answers.',
+      fields: ['faqsTitle', 'faqs']
+    },
+    seoSectionGroup
   ],
   dealership: [
     {
@@ -241,7 +267,14 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Dealer Perks (What You Receive)',
       description: 'Configure dealer perks checklist cards.',
       fields: ['dealershipBenefits']
-    }
+    },
+    {
+      id: 'faqs',
+      title: 'Frequently Asked Questions (FAQ)',
+      description: 'Configure dealership questions and answers.',
+      fields: ['faqsTitle', 'faqs']
+    },
+    seoSectionGroup
   ],
   freelance: [
     {
@@ -273,7 +306,14 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Benefits of Joining Cards',
       description: 'Configure freelance partner perk cards.',
       fields: ['freelanceBenefits']
-    }
+    },
+    {
+      id: 'faqs',
+      title: 'Frequently Asked Questions (FAQ)',
+      description: 'Configure freelance partner questions and answers.',
+      fields: ['faqsTitle', 'faqs']
+    },
+    seoSectionGroup
   ],
   careers: [
     {
@@ -299,7 +339,8 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Careers FAQs',
       description: 'Manage job FAQs.',
       fields: ['faqsTitle', 'faqs']
-    }
+    },
+    seoSectionGroup
   ],
   support: [
     {
@@ -319,7 +360,8 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'General Support FAQs',
       description: 'Manage help topics.',
       fields: ['faqsTitle', 'faqs']
-    }
+    },
+    seoSectionGroup
   ],
   contact: [
     {
@@ -333,7 +375,65 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Our Offices List',
       description: 'Manage office cities and addresses.',
       fields: ['offices']
-    }
+    },
+    seoSectionGroup
+  ],
+  calculator: [
+    {
+      id: 'hero',
+      title: 'Calculator Page Header',
+      description: 'Configure the Solar ROI Calculator title and description text.',
+      fields: ['heroTitle', 'heroSubtitle']
+    },
+    seoSectionGroup
+  ],
+  feedback: [
+    {
+      id: 'hero',
+      title: 'Feedback Page Header',
+      description: 'Configure heading and description for the customer testimonials page.',
+      fields: ['heroTitle', 'heroSubtitle']
+    },
+    seoSectionGroup
+  ],
+  gallery: [
+    {
+      id: 'hero',
+      title: 'Gallery Page Header',
+      description: 'Configure heading and description for the project gallery page.',
+      fields: ['heroTitle', 'heroSubtitle']
+    },
+    {
+      id: 'galleryItems',
+      title: 'Gallery Photos Grid',
+      description: 'Upload, add, edit, categorize, and delete photo cards displayed in the Gallery grid.',
+      fields: ['galleryItems']
+    },
+    seoSectionGroup
+  ],
+  projects: [
+    {
+      id: 'hero',
+      title: 'Projects Page Header',
+      description: 'Configure heading and description for the solar projects portfolio page.',
+      fields: ['heroTitle', 'heroSubtitle']
+    },
+    {
+      id: 'projects',
+      title: 'Projects Portfolio Showcase',
+      description: 'Upload installation photos, manage capacities, client names, locations, and categories.',
+      fields: ['projects']
+    },
+    seoSectionGroup
+  ],
+  blog: [
+    {
+      id: 'hero',
+      title: 'Blog Page Header',
+      description: 'Configure heading and description for the main Blog and Knowledge Hub.',
+      fields: ['heroTitle', 'heroSubtitle']
+    },
+    seoSectionGroup
   ],
   'map-locations': [
     {
@@ -365,8 +465,8 @@ export const pageSectionGroups: Record<string, Array<{
     {
       id: 'details',
       title: 'Product Overview',
-      description: 'Configure introductory overview subtitle, headline, and paragraphs.',
-      fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description']
+      description: 'Configure introductory overview subtitle, headline, image, and paragraphs.',
+      fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description']
     },
     {
       id: 'how-it-works',
@@ -383,14 +483,14 @@ export const pageSectionGroups: Record<string, Array<{
     {
       id: 'advanced-features',
       title: 'Technical Features (Pill Tags)',
-      description: 'Configure engineering bullet point tags.',
-      fields: ['advancedFeatures']
+      description: 'Configure engineering bullet point tags and technical specs image.',
+      fields: ['techImage', 'advancedFeatures']
     },
     {
       id: 'applications',
       title: 'Perfect For (Target Applications)',
-      description: 'Configure target application scenarios (label and sub-description).',
-      fields: ['perfectFor']
+      description: 'Configure target application scenarios and lifestyle showcase image.',
+      fields: ['lifestyleImage', 'perfectFor']
     },
     {
       id: 'installation',
@@ -403,117 +503,128 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Frequently Asked Questions (FAQ)',
       description: 'Configure product-specific accordion questions.',
       fields: ['faqs']
-    }
+    },
+    seoSectionGroup
   ],
   'on-grid': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'hybrid': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'off-grid': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'water-heaters': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'lithium-ups': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'home-ups': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'inverters': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'online-ups': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'lithium-batteries': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'tubular-batteries': [
     { id: 'hero', title: 'Hero Banner', description: 'Configure product title, subtitle, image, and intro paragraph.', fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc'] },
     { id: 'stats', title: 'Statistics Strip', description: 'Configure 4 key value metrics displayed in the yellow strip.', fields: ['showStats', 'stat1Value', 'stat1Label', 'stat2Value', 'stat2Label', 'stat3Value', 'stat3Label', 'stat4Value', 'stat4Label'] },
-    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'overviewDesc1', 'overviewDesc2', 'description'] },
+    { id: 'details', title: 'Product Overview', description: 'Configure introductory overview subtitle, headline, image, and paragraphs.', fields: ['overviewSubtitle', 'overviewTitle', 'introImage', 'overviewDesc1', 'overviewDesc2', 'description'] },
     { id: 'how-it-works', title: 'How It Works / Mechanism Steps', description: 'Configure step-by-step visual process.', fields: ['showHowItWorks', 'howItWorksSteps'] },
     { id: 'benefits', title: 'Key Benefits', description: 'Configure key bento advantages grid items.', fields: ['benefits'] },
-    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags.', fields: ['advancedFeatures'] },
-    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios.', fields: ['perfectFor'] },
+    { id: 'advanced-features', title: 'Technical Features', description: 'Configure engineering bullet point tags and technical image.', fields: ['techImage', 'advancedFeatures'] },
+    { id: 'applications', title: 'Perfect For', description: 'Configure target application scenarios and lifestyle image.', fields: ['lifestyleImage', 'perfectFor'] },
     { id: 'installation', title: 'Installation Timeline Process', description: 'Configure project phases and timing guidelines.', fields: ['installationSteps'] },
-    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] }
+    { id: 'faqs', title: 'Frequently Asked Questions (FAQ)', description: 'Configure product-specific accordion questions.', fields: ['faqs'] },
+    seoSectionGroup
   ],
   'privacy-policy': [
     {
@@ -521,7 +632,8 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Privacy Policy Document Content',
       description: 'Configure content headings and description text.',
       fields: ['title', 'lastUpdated', 'sections']
-    }
+    },
+    seoSectionGroup
   ],
   'terms-conditions': [
     {
@@ -529,7 +641,8 @@ export const pageSectionGroups: Record<string, Array<{
       title: 'Terms & Conditions Document Content',
       description: 'Configure content headings and description text.',
       fields: ['title', 'lastUpdated', 'sections']
-    }
+    },
+    seoSectionGroup
   ],
   testimonials: [
     {
@@ -551,6 +664,23 @@ export const pageSectionGroups: Record<string, Array<{
 
 // Rich labels, descriptions and placeholders for inputs
 export const fieldMeta: Record<string, { label: string; desc?: string; placeholder?: string }> = {
+  // Global SEO Fields
+  metaTitle: { 
+    label: 'Page Meta Title (Google Search Title)', 
+    desc: 'The clickable headline displayed on Google search results and browser tabs. Recommended length: 50–60 characters.', 
+    placeholder: 'e.g. Spectrum Solar | India\'s Leading Solar & Power Backup Brand' 
+  },
+  metaDescription: { 
+    label: 'Page Meta Description (Search Snippet)', 
+    desc: 'The summary snippet displayed below the title in search engine results. Recommended length: 150–160 characters.', 
+    placeholder: 'e.g. Empowering homes and businesses with clean energy. 25+ years of excellence in solar installations.' 
+  },
+  metaKeywords: { 
+    label: 'Search Keywords (Comma-separated)', 
+    desc: 'Target keywords used for indexing across search engines.', 
+    placeholder: 'e.g. solar panels kerala, on grid solar kochi, solar subsidy, power backup' 
+  },
+
   brandPitch: { label: 'Footer Brand Pitch Description', desc: 'Short introductory tagline displayed right below the logo in the footer.', placeholder: 'Spectrum Solar is a pioneer...' },
   instagram: { label: 'Instagram Profile Link', desc: 'Social media link for Instagram icon.', placeholder: '#' },
   facebook: { label: 'Facebook Page Link', desc: 'Social media link for Facebook icon.', placeholder: '#' },
@@ -589,9 +719,12 @@ export const fieldMeta: Record<string, { label: string; desc?: string; placehold
   description: { label: 'Product Main Overview', desc: 'Paragraph explaining product capabilities.', placeholder: 'Product details...' },
   showStats: { label: 'Enable Statistics Strip', desc: 'Toggle the yellow stat block visibility.' },
 
-  // Overview Headers
+  // Overview Headers & Images
   overviewSubtitle: { label: 'Overview Section Subtitle', desc: 'Sleek orange top subtitle for the overview section.', placeholder: 'e.g. Comfort & Continuity for Your Home' },
   overviewTitle: { label: 'Overview Section Headline', desc: 'Large overlay title for the overview section.', placeholder: 'e.g. Power That Keeps Your Home Running.' },
+  introImage: { label: 'Overview Section Image', desc: 'Main product showcase image in the Overview section.', placeholder: '/images/...' },
+  techImage: { label: 'Technical Features Image', desc: 'Image displayed beside the technical features / specifications.', placeholder: '/images/...' },
+  lifestyleImage: { label: 'Applications & Lifestyle Image', desc: 'Image displayed in the Perfect For / Applications section.', placeholder: '/images/...' },
   overviewDesc1: { label: 'Overview Description Paragraph 1', desc: 'First overview text paragraph.', placeholder: 'Product intro details...' },
   overviewDesc2: { label: 'Overview Description Paragraph 2', desc: 'Second overview text paragraph.', placeholder: 'Secondary details...' },
 

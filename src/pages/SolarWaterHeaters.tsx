@@ -97,15 +97,16 @@ const SolarWaterHeaters: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="Solar Water Heaters | Energy Saving Solutions | Spectrum Solar"
-        description="Save up to 80% on water heating costs with our high-efficiency solar water heaters. ETC and FPC systems designed for maximum performance in all climates."
+        title={pageData.metaTitle || "Solar Water Heaters | Energy Saving Solutions | Spectrum Solar"}
+        description={pageData.metaDescription || "Save up to 80% on water heating costs with our high-efficiency solar water heaters. ETC and FPC systems designed for maximum performance in all climates."}
+        keywords={pageData.metaKeywords || "solar water heater india, etc solar water heater, fpc solar geyser kerala, commercial solar water heating"}
       />
 
       {/* ── HERO + STAT STRIP ── */}
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/water_heater_hero.webp"
+            src="/images/solar_hero.webp"
             className="w-full h-full object-cover object-center"
             alt="Solar Water Heaters"
           />
@@ -167,23 +168,25 @@ const SolarWaterHeaters: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
               <img
-                src="/images/water_heater_intro.webp"
+                src={pageData.introImage || "/images/solar_hero.webp"}
                 alt="Solar water heater benefits"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
 
             <div className="reveal" style={{ transitionDelay: '150ms' }}>
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Smart & Sustainable Water Heating</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
-                Hot Water.<br />
-                <span className="text-yellow-400">Zero Cost.</span>
-              </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
-                A Solar Water Heater uses sunlight to heat water, making it one of the most cost-effective and environmentally friendly solutions for homes and businesses. It reduces electricity consumption while ensuring a consistent hot water supply year-round.
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">
+                {pageData.overviewSubtitle || "Smart & Sustainable Water Heating"}
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
+                dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "Hot Water.<br /><span class=\"text-yellow-400\">Zero Cost.</span>" }}
+              />
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-normal">
+                {pageData.overviewDesc1 || "A Solar Water Heater uses sunlight to heat water, making it one of the most cost-effective and environmentally friendly solutions for homes and businesses. It reduces electricity consumption while ensuring a consistent hot water supply year-round."}
               </p>
-              <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                Spectrum Powers offers high-quality ETC and FPC systems designed for durability, efficiency, and long-term performance.
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10 font-normal">
+                {pageData.overviewDesc2 || "Spectrum Powers offers high-quality ETC and FPC systems designed for durability, efficiency, and long-term performance."}
               </p>
 
             </div>
@@ -386,7 +389,7 @@ const SolarWaterHeaters: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/water_heater_tech.webp"
+                src={pageData.techImage || "/images/solar_hero.webp"}
                 alt="Solar water heater technical detail"
                 className="w-full h-full object-cover"
               />
@@ -404,7 +407,7 @@ const SolarWaterHeaters: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/water_heater_lifestyle.webp"
+                  src={pageData.lifestyleImage || "/images/solar_hero.webp"}
                   alt="Solar water heater applications"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

@@ -70,13 +70,14 @@ const OnlineUps: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="Online UPS Systems | Zero Transfer Time | Spectrum Solar"
-        description="Premium online UPS systems for mission-critical loads. Zero transfer time and double conversion technology for 100% power reliability."
+        title={pageData.metaTitle || "Online UPS Systems | Zero Transfer Time | Spectrum Solar"}
+        description={pageData.metaDescription || "Premium online UPS systems for mission-critical loads. Zero transfer time and double conversion technology for 100% power reliability."}
+        keywords={pageData.metaKeywords || "online ups systems, double conversion ups, industrial ups india, zero transfer ups, server power backup"}
       />
 
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/online_ups_hero.webp" className="w-full h-full object-cover object-center" alt="Online UPS" />
+          <img src={pageData.heroImage || "/images/online_ups_hero.webp"} className="w-full h-full object-cover object-center" alt="Online UPS" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85" />
         </div>
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pt-32 md:pt-36 pb-8">
@@ -127,18 +128,21 @@ const OnlineUps: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
-              <img src="/images/online_ups_support.webp" alt="Online UPS system" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <img src={pageData.introImage || "/images/online_ups_support.webp"} alt="Online UPS system" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="reveal order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Ultimate Power Protection Solution</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
-                Zero Delay.<br /><span className="text-yellow-400">Total Protection.</span>
-              </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
-                An Online UPS provides continuous power without any interruption by constantly supplying electricity from its inverter via double conversion technology. Unlike traditional UPS systems, it ensures zero transfer time.
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">
+                {pageData.overviewSubtitle || "Ultimate Power Protection Solution"}
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
+                dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "Zero Delay.<br /><span class=\"text-yellow-400\">Total Protection.</span>" }}
+              />
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-normal">
+                {pageData.overviewDesc1 || "An Online UPS provides continuous power without any interruption by constantly supplying electricity from its inverter via double conversion technology. Unlike traditional UPS systems, it ensures zero transfer time."}
               </p>
-              <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                Ideal for critical equipment that cannot tolerate even a fraction of a second power loss — data centers, hospitals, industrial systems and mission-critical IT infrastructure.
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10 font-normal">
+                {pageData.overviewDesc2 || "Ideal for critical equipment that cannot tolerate even a fraction of a second power loss — data centers, hospitals, industrial systems and mission-critical IT infrastructure."}
               </p>
             </div>
           </div>
@@ -308,7 +312,7 @@ const OnlineUps: React.FC = () => {
               </div>
             </div>
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
-              <img src="/images/online_ups_tech.webp" alt="Online UPS unit close-up" className="w-full h-full object-cover" />
+              <img src={pageData.techImage || "/images/online_ups_tech.webp"} alt="Online UPS unit close-up" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -322,7 +326,7 @@ const OnlineUps: React.FC = () => {
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
-                <img src="/images/online_ups_lifestyle.webp" alt="Online UPS applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <img src={pageData.lifestyleImage || "/images/online_ups_lifestyle.webp"} alt="Online UPS applications" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">

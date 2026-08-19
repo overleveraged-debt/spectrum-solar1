@@ -1,4 +1,7 @@
 export const dealershipDefaults = {
+  metaTitle: "Solar Dealership Network India | Partner with Spectrum Solar",
+  metaDescription: "Become an authorized solar dealer in India. High-demand products, strong margins, and full marketing support from Spectrum Solar.",
+  metaKeywords: "solar dealership india, authorized solar dealer kerala, solar panel dealership, spectrum solar dealer",
   showHero: true,
   heroBadge: "Dealership Opportunity",
   heroTitle: "Solar Dealership in India",
@@ -28,5 +31,29 @@ export const dealershipDefaults = {
     'Authorised Dealer Certification', 'Competitive Dealer Margin Structure',
     'Marketing & Branding Materials', 'Technical Training & Onboarding',
     'Demo Products & Displays', 'Priority Stock Allocation'
+  ],
+  faqsTitle: "Frequently Asked Questions",
+  faqsSubtitle: "Everything you need to know about becoming an authorized Spectrum Solar dealer.",
+  faqs: [
+    {
+      q: "What products will I be authorized to distribute as a dealer?",
+      a: "As an authorized dealer, you will distribute our complete product range including On-Grid & Hybrid Solar Inverters, Lithium & Tubular Battery Banks, Solar Water Heaters, and Online UPS systems."
+    },
+    {
+      q: "What profit margins and discount structures do dealers receive?",
+      a: "Authorized dealers receive tier-1 wholesale pricing, healthy upfront retail margins, and seasonal volume rebates based on quarterly purchase targets."
+    },
+    {
+      q: "Do I need a physical showroom or shop to become a dealer?",
+      a: "Yes, an existing electrical, electronics, hardware, or solar showroom/shop is preferred to showcase demo working models and stock essential inventory."
+    },
+    {
+      q: "Does Spectrum Solar provide warranty support and spare parts?",
+      a: "Yes. Spectrum Solar directly handles warranty replacements, certified spares, and technical service escalations through our statewide engineering network."
+    },
+    {
+      q: "How fast can I get onboarded and start placing orders?",
+      a: "Upon agreement verification and basic document review, dealer accounts are activated within 48 to 72 hours with full catalog access and designated regional account manager support."
+    }
   ]
 };

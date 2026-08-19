@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
 import SEO from '../components/SEO';
 import MapSection from '../components/MapSection';
+import { usePageContent } from '../hooks/usePageContent';
 
-const galleryItems = [
+const DEFAULT_GALLERY_ITEMS = [
   { id: 1, src: '/images/p01.jpg', category: 'residential', title: 'Premium Residential Solar', location: 'Kannur', capacity: '5kW On-Grid' },
   { id: 2, src: '/images/p02.jpg', category: 'commercial', title: 'Koyili Hospital', location: 'Kannur', capacity: '50kW Grid-Tied' },
   { id: 3, src: '/images/p03.jpg', category: 'residential', title: 'Home Hybrid System', location: 'Thrissur', capacity: '3kW Hybrid' },
@@ -29,19 +30,24 @@ const categoryColor: Record<string, string> = {
 
 const Gallery: React.FC = () => {
   useScrollReveal();
+  const { pageData } = usePageContent('gallery');
   const [activeFilter, setActiveFilter] = useState('All');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
+  const galleryItems = pageData.galleryItems && Array.isArray(pageData.galleryItems) && pageData.galleryItems.length > 0
+    ? pageData.galleryItems
+    : DEFAULT_GALLERY_ITEMS;
+
   const filtered = activeFilter === 'All'
     ? galleryItems
-    : galleryItems.filter((g) => g.category === activeFilter.toLowerCase());
+    : galleryItems.filter((g: any) => String(g.category).toLowerCase() === activeFilter.toLowerCase());
 
-  const safeIndex = Math.min(currentIndex, filtered.length - 1);
-  const safeItem = filtered[safeIndex] ?? filtered[0];
+  const safeIndex = Math.min(currentIndex, Math.max(0, filtered.length - 1));
+  const safeItem = filtered[safeIndex] ?? filtered[0] ?? { src: '/images/p01.jpg', title: 'Solar Installation', location: 'India', capacity: 'Solar System' };
 
-  const goNext = useCallback(() => setCurrentIndex((i) => (i + 1) % filtered.length), [filtered.length]);
-  const goPrev = useCallback(() => setCurrentIndex((i) => (i - 1 + filtered.length) % filtered.length), [filtered.length]);
+  const goNext = useCallback(() => setCurrentIndex((i) => (filtered.length > 0 ? (i + 1) % filtered.length : 0)), [filtered.length]);
+  const goPrev = useCallback(() => setCurrentIndex((i) => (filtered.length > 0 ? (i - 1 + filtered.length) % filtered.length : 0)), [filtered.length]);
 
   const handleFilterChange = (f: string) => {
     setActiveFilter(f);
@@ -51,8 +57,9 @@ const Gallery: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
       <SEO 
-        title="Solar Installation Gallery | Spectrum Solar Projects"
-        description="Explore our portfolio of residential, commercial, and industrial solar installations across India. See our engineering excellence in action."
+        title={pageData.metaTitle || "Solar Installation Gallery | Spectrum Solar Projects"}
+        description={pageData.metaDescription || "Explore our portfolio of residential, commercial, and industrial solar installations across India. See our engineering excellence in action."}
+        keywords={pageData.metaKeywords || "solar installation photos, solar rooftop gallery kerala, commercial solar projects photos india"}
       />
       {/* Hero */}
       <section className="relative h-[55vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
@@ -63,8 +70,12 @@ const Gallery: React.FC = () => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-6 block">Our Installations</span>
-          <h1 className="text-[2rem] sm:text-5xl md:text-6xl font-thin tracking-tight mb-4 leading-[0.9] uppercase text-white">Gallery</h1>
-          <p className="text-white/60 text-base max-w-xl mx-auto font-light">Installations across India — from rooftops to industrial plants.</p>
+          <h1 className="text-[2rem] sm:text-5xl md:text-6xl font-thin tracking-tight mb-4 leading-[0.9] uppercase text-white">
+            {pageData.heroTitle || "Gallery"}
+          </h1>
+          <p className="text-white/60 text-base max-w-xl mx-auto font-light">
+            {pageData.heroSubtitle || "Installations across India — from rooftops to industrial plants."}
+          </p>
         </div>
       </section>
 
@@ -146,9 +157,9 @@ const Gallery: React.FC = () => {
 
               {/* Thumbnail strip — scrollable */}
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5 overflow-y-auto max-h-[340px] pr-1">
-                {filtered.map((item, i) => (
+                {filtered.map((item: any, i: number) => (
                   <button
-                    key={item.id}
+                    key={item.id || i}
                     onClick={() => setCurrentIndex(i)}
                     className={`relative rounded-xl overflow-hidden transition-all duration-200 ${i === safeIndex
                         ? 'ring-2 ring-yellow-400 ring-offset-2 ring-offset-zinc-950 scale-[0.98]'
@@ -163,7 +174,7 @@ const Gallery: React.FC = () => {
 
               {/* Dot pagination */}
               <div className="flex items-center gap-2 flex-wrap mt-2">
-                {filtered.map((_, i) => (
+                {filtered.map((_: any, i: number) => (
                   <button
                     key={i}
                     onClick={() => setCurrentIndex(i)}

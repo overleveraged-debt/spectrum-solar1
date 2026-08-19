@@ -5,66 +5,73 @@ import { Link } from 'react-router-dom';
 
 import MapSection from '../components/MapSection';
 import SEO from '../components/SEO';
+import { usePageContent } from '../hooks/usePageContent';
+
+const DEFAULT_PROJECTS = [
+  {
+    name: "DSC Centre",
+    location: "Kannur",
+    capacity: "100 KW",
+    type: "Commercial",
+    image: "/images/p01.jpg",
+  },
+  {
+    name: "Koyili Hospital",
+    location: "Kannur",
+    capacity: "50 KW",
+    type: "Healthcare",
+    image: "/images/p02.jpg",
+  },
+  {
+    name: "Ranni Taluk Hospital",
+    location: "Ranni",
+    capacity: "50 KW",
+    type: "Government",
+    image: "/images/p03.jpg",
+  },
+  {
+    name: "LEO Lab",
+    location: "Kannur",
+    capacity: "35 KW",
+    type: "Commercial",
+    image: "/images/p04.jpg",
+  },
+  {
+    name: "Commercial Complex",
+    location: "Thrissur",
+    capacity: "25 KW",
+    type: "Commercial",
+    image: "/images/p05.jpg",
+  },
+  {
+    name: "Residential Villa",
+    location: "Kochi",
+    capacity: "10 KW",
+    type: "Residential",
+    image: "/images/p06.jpg",
+  },
+];
+
+const resolveProjectIcon = (type: string) => {
+  const t = String(type || '').toLowerCase();
+  if (t.includes('health') || t.includes('hospital')) return <Hospital className="w-5 h-5" />;
+  return <Building2 className="w-5 h-5" />;
+};
 
 const Projects: React.FC = () => {
   useScrollReveal();
+  const { pageData } = usePageContent('projects');
 
-  const projects = [
-    {
-      name: "DSC Centre",
-      location: "Kannur",
-      capacity: "100 KW",
-      type: "Commercial",
-      icon: <Building2 className="w-5 h-5" />,
-      image: "/images/p01.jpg",
-    },
-    {
-      name: "Koyili Hospital",
-      location: "Kannur",
-      capacity: "50 KW",
-      type: "Healthcare",
-      icon: <Hospital className="w-5 h-5" />,
-      image: "/images/p02.jpg",
-    },
-    {
-      name: "Ranni Taluk Hospital",
-      location: "Ranni",
-      capacity: "50 KW",
-      type: "Government",
-      icon: <Hospital className="w-5 h-5" />,
-      image: "/images/p03.jpg",
-    },
-    {
-      name: "LEO Lab",
-      location: "Kannur",
-      capacity: "35 KW",
-      type: "Commercial",
-      icon: <Building2 className="w-5 h-5" />,
-      image: "/images/p04.jpg",
-    },
-    {
-      name: "Commercial Complex",
-      location: "Thrissur",
-      capacity: "25 KW",
-      type: "Commercial",
-      icon: <Building2 className="w-5 h-5" />,
-      image: "/images/p05.jpg",
-    },
-    {
-      name: "Residential Villa",
-      location: "Kochi",
-      capacity: "10 KW",
-      type: "Residential",
-      icon: <Building2 className="w-5 h-5" />,
-      image: "/images/p06.jpg",
-    },
-  ];
+  const projects = pageData.projects && Array.isArray(pageData.projects) && pageData.projects.length > 0
+    ? pageData.projects
+    : DEFAULT_PROJECTS;
 
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
       <SEO 
-        title="Our Solar Portfolio | 4000+ Installations Across India"
-        description="Explore Spectrum Solar's extensive portfolio of residential, commercial, and government projects. Over 4000 successful installations powering India."
+        title={pageData.metaTitle || "Our Solar Portfolio | 6,145+ Installations Across India | Spectrum Solar"}
+        description={pageData.metaDescription || "Explore Spectrum Solar's extensive portfolio of residential, commercial, hospital, and government solar installations across India."}
+        keywords={pageData.metaKeywords || "solar projects kerala, commercial solar installations, hospital solar plant india, residential rooftop solar portfolio"}
       />
       {/* Hero */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">
@@ -80,11 +87,17 @@ const Projects: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Our Portfolio</span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
-            4000+ SUCCESSFUL <br className="hidden sm:block" />
-            INSTALLATIONS
+            {pageData.heroTitle ? (
+              pageData.heroTitle
+            ) : (
+              <>
+                4000+ SUCCESSFUL <br className="hidden sm:block" />
+                INSTALLATIONS
+              </>
+            )}
           </h1>
           <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-black uppercase tracking-tighter drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-            From residential rooftops to massive industrial grids, delivering energy excellence across the state.
+            {pageData.heroSubtitle || "From residential rooftops to massive industrial grids, delivering energy excellence across the state."}
           </p>
         </div>
       </section>
@@ -109,7 +122,7 @@ const Projects: React.FC = () => {
       {/* Projects Grid */}
       <section className="px-6 py-16 mb-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project: any, index: number) => (
             <div
               key={index}
               className="reveal group cursor-pointer"
@@ -140,7 +153,7 @@ const Projects: React.FC = () => {
                 {/* Card Body */}
                 <div className="p-6 border-t border-zinc-100">
                   <div className="flex items-center gap-2 text-zinc-400 mb-2 text-[10px] font-medium uppercase tracking-widest">
-                    {project.icon}
+                    {resolveProjectIcon(project.type)}
                     <MapPin className="w-3 h-3" />
                     <span>{project.location}</span>
                   </div>

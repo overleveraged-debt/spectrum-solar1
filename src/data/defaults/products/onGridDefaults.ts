@@ -1,4 +1,7 @@
 export const onGridDefaults = {
+  metaTitle: "On-Grid Solar Systems | Net Metering & Zero Bills | Spectrum Solar",
+  metaDescription: "Slash your electricity bills to near zero with high-efficiency grid-connected solar systems. Export excess power and earn credits through net metering nationwide.",
+  metaKeywords: "on grid solar system, net metering solar kerala, rooftop solar panels, kseb solar subsidy, grid connected solar",
   showHero: true,
   heroSubtitle: "Grid-Connected · Net Metering",
   heroTitle: "On-Grid Solar System",
@@ -12,6 +15,9 @@ export const onGridDefaults = {
   description: "Grid-connected solar systems that feed excess power back to the KSEB grid through net metering. The most cost-effective way to slash your bill to zero.",
   overviewSubtitle: "Smart Solar Solution",
   overviewTitle: "Grid-Tied. Always Saving.",
+  introImage: "/images/ongrid_intro.webp",
+  techImage: "/images/ongrid_perfect.webp",
+  lifestyleImage: "/images/ongrid_applications_demo.webp",
   overviewDesc1: "Grid-connected solar systems that feed excess power back to the KSEB grid through net metering. The most cost-effective way to slash your bill to zero.",
   overviewDesc2: "This makes it the most cost-effective and fastest-ROI solar solution available — with zero battery costs and minimal maintenance.",
   showHowItWorks: true,

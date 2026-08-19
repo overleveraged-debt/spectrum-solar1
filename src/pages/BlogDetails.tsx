@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, Clock, Loader2, BookOpen } from 'lucide-react';
 import { sanityReadClient } from '../lib/sanityClient';
+import SEO from '../components/SEO';
 
 const DEFAULT_POSTS = [
   {
@@ -135,6 +136,12 @@ const BlogDetails: React.FC = () => {
 
   return (
     <div className="bg-zinc-950 text-white min-h-screen pb-20 pt-28">
+      <SEO 
+        title={`${post.title} | Spectrum Solar Insights`}
+        description={post.excerpt || `Read ${post.title} on the Spectrum Solar Knowledge Hub.`}
+        keywords={`${post.category || 'Solar'}, solar energy insights, spectrum solar blog, ${post.title.toLowerCase()}`}
+        type="article"
+      />
       <div className="max-w-4xl mx-auto px-6">
         {/* Back Button */}
         <Link

@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ onLoaded, title, videoUrl, videoPoster }) =
           preload="auto"
           {...({ fetchpriority: "high" } as any)}
           onCanPlayThrough={() => onLoaded?.()}
-          className="w-full h-full object-cover transition-all duration-1000 filter saturate-100 brightness-100 md:saturate-[0.6] md:brightness-[0.35]"
+          className="w-full h-full object-cover transition-all duration-1000"
           poster={videoPoster || "/images/Banner01.webp"}
           style={{ transform: `scale(${1 + scrollY * 0.0005}) translateY(${scrollY * 0.2}px)` }}
         />

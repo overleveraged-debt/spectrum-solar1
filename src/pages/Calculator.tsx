@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sun, CheckCircle2, TrendingUp, Sparkles, ShieldCheck, ArrowRight, Zap, Info } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import SEO from '../components/SEO';
+import { usePageContent } from '../hooks/usePageContent';
 
 interface SolarCalculatorProps {
   costPerKW: number;
@@ -135,8 +137,15 @@ const SolarCalculatorBody: React.FC<SolarCalculatorProps> = ({ costPerKW, blende
 // ─── Main Solar Calculator Page ──────────────────────────────────────────────
 
 const Calculator: React.FC = () => {
+  const { pageData } = usePageContent('calculator');
+
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
+      <SEO 
+        title={pageData.metaTitle || "Solar ROI Calculator | Estimate Savings & Subsidy | Spectrum Solar"}
+        description={pageData.metaDescription || "Calculate your estimated solar system size, monthly electricity savings, government subsidy, and payback period in seconds with Spectrum Solar."}
+        keywords={pageData.metaKeywords || "solar calculator india, solar roi calculator kerala, kseb solar savings calculator, solar rooftop subsidy estimation"}
+      />
       {/* Hero */}
       <section className="relative h-[65vh] flex items-center justify-center overflow-hidden mb-0 pt-24 mt-[-80px]">
         <div className="absolute inset-0 z-0">
@@ -145,9 +154,13 @@ const Calculator: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">Yield & ROI Analytics</span>
+          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
+            {pageData.heroSubtitle || "Yield & ROI Analytics"}
+          </span>
           <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
-            Solar <br className="hidden md:block" />Calculator
+            {pageData.heroTitle || (
+              <>Solar <br className="hidden md:block" />Calculator</>
+            )}
           </h1>
         </div>
       </section>

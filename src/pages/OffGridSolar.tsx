@@ -97,8 +97,9 @@ const OffGridSolar: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="Lithium Off-Grid Solar Systems | Energy Independence | Spectrum Solar"
-        description="Achieve 100% energy independence with our Lithium Off-Grid solar systems. No grid connection needed. Perfect for remote homes and businesses nationwide."
+        title={pageData.metaTitle || "Lithium Off-Grid Solar Systems | Energy Independence | Spectrum Solar"}
+        description={pageData.metaDescription || "Achieve 100% energy independence with our Lithium Off-Grid solar systems. No grid connection needed. Perfect for remote homes and businesses nationwide."}
+        keywords={pageData.metaKeywords || "off grid solar system india, standalone solar power, remote solar installation, lithium battery solar plant"}
       />
 
       {/* ── HERO + STAT STRIP ── */}
@@ -167,23 +168,25 @@ const OffGridSolar: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
               <img
-                src="/images/offgrid_intro.webp"
+                src={pageData.introImage || "/images/offgrid_intro.webp"}
                 alt="Off-grid solar powered home"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
 
             <div className="reveal" style={{ transitionDelay: '150ms' }}>
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Power Without Grid Dependency</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
-                No Grid.<br />
-                <span className="text-yellow-400">No Limits.</span>
-              </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
-                A Lithium Off-Grid Solar System is a completely independent power solution that does not rely on the electricity grid. It stores solar energy in advanced lithium batteries and supplies power continuously — making it ideal for remote areas.
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">
+                {pageData.overviewSubtitle || "Power Without Grid Dependency"}
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
+                dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "No Grid.<br /><span class=\"text-yellow-400\">No Limits.</span>" }}
+              />
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-normal">
+                {pageData.overviewDesc1 || "A Lithium Off-Grid Solar System is a completely independent power solution that does not rely on the electricity grid. It stores solar energy in advanced lithium batteries and supplies power continuously — making it ideal for remote areas."}
               </p>
-              <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                This system ensures stable, eco-friendly, and uninterrupted energy for your daily needs — whether you're in a remote village, farm, or off-grid retreat.
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10 font-normal">
+                {pageData.overviewDesc2 || "This system ensures stable, eco-friendly, and uninterrupted energy for your daily needs — whether you're in a remote village, farm, or off-grid retreat."}
               </p>
 
             </div>
@@ -370,7 +373,7 @@ const OffGridSolar: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/offgrid_tech.webp"
+                src={pageData.techImage || "/images/offgrid_tech.webp"}
                 alt="Off-grid system components"
                 className="w-full h-full object-cover"
               />
@@ -388,7 +391,7 @@ const OffGridSolar: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/offgrid_lifestyle.webp"
+                  src={pageData.lifestyleImage || "/images/offgrid_lifestyle.webp"}
                   alt="Off-grid solar applications"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

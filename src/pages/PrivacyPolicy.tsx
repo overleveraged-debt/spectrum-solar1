@@ -34,8 +34,9 @@ const PrivacyPolicy: React.FC = () => {
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden min-h-screen">
       <SEO 
-        title={`${pageData.title || 'Privacy Policy'} | Spectrum Solar India`}
-        description="Read the Privacy Policy of Spectrum Solar to understand how we collect, use, and protect your personal data and information across our nationwide services."
+        title={pageData.metaTitle || `${pageData.title || 'Privacy Policy'} | Spectrum Solar India`}
+        description={pageData.metaDescription || "Read the Privacy Policy of Spectrum Solar to understand how we collect, use, and protect your personal data and information across our nationwide services."}
+        keywords={pageData.metaKeywords || "privacy policy spectrum solar, customer data protection, solar privacy terms india"}
       />
 
       {/* Header */}

@@ -3,7 +3,9 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Users, CheckCircle2, ArrowRight, Banknote, MapPin, Zap, UserCheck, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import FAQSection from '../components/FAQSection';
 import { usePageContent } from '../hooks/usePageContent';
+import { freelanceDefaults } from '../data/defaults/pages/freelanceDefaults';
 
 const howItWorks = [
   { step: '01', title: 'Join as a Freelance Partner', desc: "Register with us for free — no investment, no paperwork hassle. Just fill out the form and we'll onboard you within 24 hours." },
@@ -38,34 +40,26 @@ const Freelance: React.FC = () => {
   useScrollReveal();
   const { pageData } = usePageContent('freelance');
 
+  const faqs = pageData.faqs || freelanceDefaults.faqs;
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How does the Spectrum Solar Freelance Partner program work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Join for free, refer customers across India for solar installations, and earn an attractive commission. We handle all the technical work and support."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who can join the freelance solar program?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Students, freelancers, real estate agents, electricians, and anyone with a network in India can join with zero investment."
-        }
+    "mainEntity": (faqs || []).map((faq: any) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
       }
-    ]
+    }))
   };
 
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
       <SEO 
-        title="Freelance Solar Partner Program India | Refer & Earn"
-        description="Earn attractive commissions with zero investment. Refer solar customers across India and partner with Spectrum Solar's trusted network."
+        title={pageData.metaTitle || "Freelance Solar Partner Program India | Refer & Earn"}
+        description={pageData.metaDescription || "Earn attractive commissions with zero investment. Refer solar customers across India and partner with Spectrum Solar's trusted network."}
+        keywords={pageData.metaKeywords || "solar freelance partner, refer and earn solar, solar agent program kerala, spectrum solar affiliate"}
         schema={faqSchema}
       />
 
@@ -186,6 +180,15 @@ const Freelance: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── Freelance FAQs ── */}
+      <FAQSection
+        faqs={faqs}
+        title={pageData.faqsTitle || "Frequently Asked Questions"}
+        subtitle={pageData.faqsSubtitle || "Answers on how to refer clients, earn commissions, and get paid."}
+        badge="Freelance Partner FAQs"
+        theme="light"
+      />
 
       {/* ── CTA ── */}
       <section className="px-6 pt-20 pb-4 md:pt-28" data-nav-light>

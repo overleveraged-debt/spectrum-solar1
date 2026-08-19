@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FileText, FileCode, LogOut, ChevronRight, ChevronLeft, Menu, Users, Inbox, MessageSquare } from 'lucide-react';
+import { LayoutDashboard, FileText, FileCode, LogOut, ChevronRight, ChevronLeft, Menu, Users, Inbox, MessageSquare, Image, Briefcase } from 'lucide-react';
 import PageEditor from './PageEditor';
 import BlogManager from './BlogManager';
 import LeadsViewer from './LeadsViewer';
@@ -8,6 +8,7 @@ import ApplicationsViewer from './ApplicationsViewer';
 
 type Tab =
   | 'home' | 'about' | 'solar-solutions' | 'power-backup' | 'opportunities' | 'franchise' | 'dealership' | 'freelance' | 'careers' | 'support' | 'contact' | 'product-details' | 'blogs'
+  | 'gallery' | 'projects'
   | 'map-locations' | 'privacy-policy' | 'terms-conditions'
   | 'leads' | 'applications' | 'testimonials' | 'footer';
 
@@ -61,6 +62,8 @@ export default function AdminDashboard() {
 
     { id: 'product-details', label: 'Product Landing Pages', icon: FileText, category: 'Products' },
 
+    { id: 'gallery', label: 'Gallery Showcase', icon: Image, category: 'Content Manager' },
+    { id: 'projects', label: 'Projects Portfolio', icon: Briefcase, category: 'Content Manager' },
     { id: 'blogs', label: 'Blog Posts', icon: FileCode, category: 'Content Manager' },
     { id: 'testimonials', label: 'Client Testimonials', icon: MessageSquare, category: 'Content Manager' },
 

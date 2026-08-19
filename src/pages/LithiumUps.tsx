@@ -98,8 +98,9 @@ const LithiumUps: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="Lithium Inbuilt UPS Systems | Zero-Switch Backup | Spectrum Solar"
-        description="Smart, compact, and long-lasting lithium inbuilt UPS systems. Zero-switch technology for mission-critical power backup. Maintenance-free performance for homes and offices."
+        title={pageData.metaTitle || "Lithium Inbuilt UPS Systems | Zero-Switch Backup | Spectrum Solar"}
+        description={pageData.metaDescription || "Smart, compact, and long-lasting lithium inbuilt UPS systems. Zero-switch technology for mission-critical power backup. Maintenance-free performance for homes and offices."}
+        keywords={pageData.metaKeywords || "lithium inbuilt ups, zero switch ups, lithium inverter for home, lifepo4 ups battery, compact ups india"}
       />
 
       {/* ── HERO + STAT STRIP (integrated) ───────────────────────────────── */}
@@ -107,7 +108,7 @@ const LithiumUps: React.FC = () => {
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/lithium_hero.webp"
+            src={pageData.heroImage || "/images/lithium_hero.webp"}
             className="w-full h-full object-cover object-center"
             alt="Lithium Inbuilt UPS System"
           />
@@ -173,7 +174,7 @@ const LithiumUps: React.FC = () => {
             {/* Mobile: heading first, then image, then body. Desktop: image left, content right */}
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
               <img
-                src="/images/lithium_intro.webp"
+                src={pageData.introImage || "/images/lithium_intro.webp"}
                 alt="Lithium UPS technician with homeowner"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -181,16 +182,18 @@ const LithiumUps: React.FC = () => {
 
             {/* Content */}
             <div className="reveal order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Next-Generation Solution</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
-                All-in-one.<br />
-                <span className="text-yellow-400">Always On.</span>
-              </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
-                A Lithium Inbuilt UPS System integrates the inverter and lithium battery into one compact, wall-mountable unit. Faster charging, longer life, zero maintenance.
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">
+                {pageData.overviewSubtitle || "Next-Generation Solution"}
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
+                dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "All-in-one.<br /><span class=\"text-yellow-400\">Always On.</span>" }}
+              />
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-normal">
+                {pageData.overviewDesc1 || "A Lithium Inbuilt UPS System integrates the inverter and lithium battery into one compact, wall-mountable unit. Faster charging, longer life, zero maintenance."}
               </p>
-              <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                Spectrum Powers delivers advanced lithium UPS systems engineered for efficiency, reliability, and space-saving installation — trusted by homes and businesses nationwide.
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10 font-normal">
+                {pageData.overviewDesc2 || "Spectrum Powers delivers advanced lithium UPS systems engineered for efficiency, reliability, and space-saving installation — trusted by homes and businesses nationwide."}
               </p>
 
             </div>
@@ -377,7 +380,7 @@ const LithiumUps: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/lithium_tech.webp"
+                src={pageData.techImage || "/images/lithium_tech.webp"}
                 alt="Lithium UPS unit close up"
                 className="w-full h-full object-cover"
               />
@@ -396,7 +399,7 @@ const LithiumUps: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/lithium_lifestyle.webp"
+                  src={pageData.lifestyleImage || "/images/lithium_lifestyle.webp"}
                   alt="Ideal installation"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
@@ -428,7 +431,7 @@ const LithiumUps: React.FC = () => {
           <h2 className="text-2xl md:text-5xl font-thin uppercase tracking-tight mb-6 md:mb-8 leading-tight">
             Seamless Backup for<br />Modern Living
           </h2>
-          <p className="text-zinc-400 text-base md:text-xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-zinc-400 text-base md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
             From lights and fans to laptops and Wi-Fi — enjoy uninterrupted power without noise, delay, or maintenance.
           </p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4">
@@ -503,7 +506,7 @@ const LithiumUps: React.FC = () => {
           <div className="text-center mb-12 md:mb-16 reveal">
             <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Questions</span>
             <h2 className="text-3xl md:text-5xl font-thin uppercase tracking-tight mb-4">Frequently Asked</h2>
-            <p className="text-zinc-400 font-light text-base md:text-lg">Everything you need to know about Lithium UPS technology.</p>
+            <p className="text-zinc-400 text-base md:text-lg">Everything you need to know about Lithium UPS technology.</p>
           </div>
 
           <div className="space-y-3">

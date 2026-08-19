@@ -1,4 +1,7 @@
 export const offGridDefaults = {
+  metaTitle: "Lithium Off-Grid Solar Systems | Energy Independence | Spectrum Solar",
+  metaDescription: "Achieve 100% energy independence with our Lithium Off-Grid solar systems. No grid connection needed. Perfect for remote homes and businesses nationwide.",
+  metaKeywords: "off grid solar system india, standalone solar power, remote solar installation, lithium battery solar plant",
   showHero: true,
   heroSubtitle: "Complete Independence",
   heroTitle: "Lithium Off-Grid System",
@@ -12,6 +15,9 @@ export const offGridDefaults = {
   description: "Fully autonomous power generation and storage using high-durability Lithium LFP battery technology.",
   overviewSubtitle: "Power Without Grid Dependency",
   overviewTitle: "No Grid. No Limits.",
+  introImage: "/images/offgrid_intro.webp",
+  techImage: "/images/offgrid_tech.webp",
+  lifestyleImage: "/images/offgrid_lifestyle.webp",
   overviewDesc1: "A Lithium Off-Grid Solar System is a completely independent power solution that does not rely on the electricity grid.",
   overviewDesc2: "Ensures stable, eco-friendly energy whether in a remote location, farm, or off-grid retreat.",
   showHowItWorks: true,

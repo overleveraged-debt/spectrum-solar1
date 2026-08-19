@@ -65,8 +65,9 @@ const HomeUps: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="Home UPS Systems | Reliable Power Backup | Spectrum Solar"
-        description="Keep your home powered during outages with our reliable UPS systems. Instant switching and stable voltage for all your household appliances."
+        title={pageData.metaTitle || "Home UPS Systems | Reliable Power Backup | Spectrum Solar"}
+        description={pageData.metaDescription || "Keep your home powered during outages with our reliable UPS systems. Instant switching and stable voltage for all your household appliances."}
+        keywords={pageData.metaKeywords || "home ups systems, inverter for home kerala, reliable power backup, sine wave inverter, household ups india"}
       />
 
       {/* ── HERO + STAT STRIP ── */}
@@ -134,7 +135,7 @@ const HomeUps: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5">
               <img
-                src="/images/home_ups_support.webp"
+                src={pageData.introImage || "/images/home_ups_support.webp"}
                 alt="Home UPS system installed"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -147,10 +148,10 @@ const HomeUps: React.FC = () => {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
                   dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "Power That Keeps<br />Your Home Running." }}
               />
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-normal">
                 {pageData.overviewDesc1 || "A Home UPS System provides uninterrupted power supply during outages by storing energy in batteries and supplying it instantly when needed. It ensures your daily routine is not disturbed."}
               </p>
-              <p className="text-zinc-500 leading-relaxed font-light mb-10">
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10 font-normal">
                 {pageData.overviewDesc2 || "Spectrum Powers offers customized UPS solutions based on your home's power requirements — ensuring optimal performance and efficiency for every family."}
               </p>
 
@@ -349,7 +350,7 @@ const HomeUps: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/home_ups_tech.webp"
+                src={pageData.techImage || "/images/home_ups_tech.webp"}
                 alt="Technical specs"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -367,7 +368,7 @@ const HomeUps: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
                 <img
-                  src="/images/home_ups_application.webp"
+                  src={pageData.lifestyleImage || "/images/home_ups_application.webp"}
                   alt="Home UPS usage scenarios"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

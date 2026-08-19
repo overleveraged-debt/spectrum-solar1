@@ -1,4 +1,7 @@
 export const opportunitiesDefaults = {
+  metaTitle: "Business Opportunities & Careers | Spectrum Solar India",
+  metaDescription: "Grow with India's fastest-growing solar network. Explore our Franchise, Dealership, Freelance, and Career opportunities nationwide.",
+  metaKeywords: "solar business opportunities, solar franchise india, solar dealership kerala, solar freelance partner, solar careers",
   showHero: true,
   heroSubtitle: "Grow with us",
   heroTitle: "Opportunities",

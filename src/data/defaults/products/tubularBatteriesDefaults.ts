@@ -1,4 +1,7 @@
 export const tubularBatteriesDefaults = {
+  metaTitle: "Tubular Batteries | Deep Cycle Power Storage | Spectrum Solar",
+  metaDescription: "Reliable tubular batteries for long-duration power backup. Proven deep-cycle technology designed for homes and businesses facing frequent power cuts nationwide.",
+  metaKeywords: "tubular batteries india, tall tubular battery kerala, deep cycle solar battery, inverter battery 150ah 200ah",
   showHero: true,
   heroSubtitle: "Lead-Acid Value",
   heroTitle: "Tall Tubular Batteries",
@@ -12,6 +15,9 @@ export const tubularBatteriesDefaults = {
   description: "Heavy duty tall tubular battery designed to withstand deep discharges and long power outage cycles in Indian conditions.",
   overviewSubtitle: "Proven Deep-Cycle Performance",
   overviewTitle: "Built for Long Power Cuts.",
+  introImage: "/images/tubular_battery_support.webp",
+  techImage: "/images/tubular_tech.webp",
+  lifestyleImage: "/images/tubular_lifestyle.webp",
   overviewDesc1: "Tubular plate design ensures high resistance to deep discharge and harsh temperature conditions.",
   overviewDesc2: "Ideal for long backup hours in homes, offices, and rural locations across India.",
   benefits: [

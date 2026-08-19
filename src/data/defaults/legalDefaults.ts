@@ -1,5 +1,8 @@
 export const legalDefaults = {
   'privacy-policy': {
+    metaTitle: "Privacy Policy | Spectrum Solar India",
+    metaDescription: "Read the Privacy Policy of Spectrum Solar to understand how we collect, use, and protect your personal data across our nationwide services.",
+    metaKeywords: "privacy policy spectrum solar, customer data protection, solar privacy terms india",
     title: 'Privacy Policy',
     lastUpdated: 'Last Updated: April 2026',
     sections: [
@@ -15,6 +18,9 @@ export const legalDefaults = {
   },
 
   'terms-conditions': {
+    metaTitle: "Terms & Conditions | Spectrum Solar India",
+    metaDescription: "Read the Terms and Conditions for using Spectrum Solar's website and services. Information regarding installations, warranties, and partnerships.",
+    metaKeywords: "terms and conditions spectrum solar, solar contract terms, warranty terms solar india",
     title: 'Terms & Conditions',
     lastUpdated: 'Last Updated: April 2026',
     sections: [

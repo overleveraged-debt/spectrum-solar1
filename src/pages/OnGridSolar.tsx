@@ -84,8 +84,9 @@ const OnGridSolar: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="On-Grid Solar Systems | Net Metering & Zero Bills | Spectrum Solar"
-        description="Slash your electricity bills to near zero with high-efficiency grid-connected solar systems. Export excess power and earn credits through net metering nationwide."
+        title={pageData.metaTitle || "On-Grid Solar Systems | Net Metering & Zero Bills | Spectrum Solar"}
+        description={pageData.metaDescription || "Slash your electricity bills to near zero with high-efficiency grid-connected solar systems. Export excess power and earn credits through net metering nationwide."}
+        keywords={pageData.metaKeywords || "on grid solar system, net metering solar kerala, rooftop solar panels, kseb solar subsidy, grid connected solar"}
       />
 
       {/* ── HERO + STAT STRIP (integrated) ───────────────────────────────── */}
@@ -166,7 +167,7 @@ const OnGridSolar: React.FC = () => {
             {/* Image */}
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
               <img
-                src="/images/ongrid_intro.webp"
+                src={pageData.introImage || "/images/ongrid_intro.webp"}
                 alt="On-Grid Solar installation"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -271,7 +272,7 @@ const OnGridSolar: React.FC = () => {
 
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5">
               <img
-                src="/images/ongrid_perfect.webp"
+                src={pageData.techImage || "/images/ongrid_perfect.webp"}
                 alt="On-grid solar technical detail"
                 className="w-full h-full object-cover"
               />
@@ -316,7 +317,7 @@ const OnGridSolar: React.FC = () => {
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-10">Perfect For</h2>
               <div className="rounded-[2.5rem] overflow-hidden aspect-[4/3] border border-white/5 shadow-2xl">
                 <img
-                  src="/images/ongrid_applications_demo.webp"
+                  src={pageData.lifestyleImage || "/images/ongrid_applications_demo.webp"}
                   alt="Solar panel installations"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

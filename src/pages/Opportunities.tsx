@@ -92,8 +92,9 @@ const Opportunities: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
       <SEO 
-        title="Business Opportunities & Careers | Spectrum Solar India"
-        description="Grow with India's fastest-growing solar network. Explore our Franchise, Dealership, Freelance, and Career opportunities nationwide."
+        title={oppData.metaTitle || "Business Opportunities & Careers | Spectrum Solar India"}
+        description={oppData.metaDescription || "Grow with India's fastest-growing solar network. Explore our Franchise, Dealership, Freelance, and Career opportunities nationwide."}
+        keywords={oppData.metaKeywords || "solar business opportunities, solar franchise india, solar dealership kerala, solar freelance partner, solar careers"}
       />
       {/* Hero */}
       <section className="relative h-[75vh] flex items-center justify-center overflow-hidden pt-24 mt-[-80px]">

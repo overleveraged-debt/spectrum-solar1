@@ -225,32 +225,37 @@ export default function BlogManager() {
                     <span className="text-zinc-600 text-xs">No Cover</span>
                   )}
                 </div>
-                <div className="space-y-2 flex-1">
+                <div className="flex-1 flex flex-wrap items-center gap-3">
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleImageUpload}
                     className="hidden"
                     id="blog-image-upload"
+                    disabled={uploadingImage}
                   />
                   <label
                     htmlFor="blog-image-upload"
-                    className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-xs py-2 px-4 rounded-xl cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold text-xs py-2.5 px-4 rounded-xl cursor-pointer transition-all shadow-sm active:scale-95"
                   >
                     {uploadingImage ? (
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
                     ) : (
                       <Upload className="w-3.5 h-3.5" />
                     )}
-                    <span>Upload Image</span>
+                    <span>{uploadingImage ? 'Uploading...' : editingBlog.coverImage ? 'Replace Cover Image' : 'Upload Cover Image'}</span>
                   </label>
-                  <input
-                    type="text"
-                    value={editingBlog.coverImage || ''}
-                    onChange={(e) => setEditingBlog({ ...editingBlog, coverImage: e.target.value })}
-                    placeholder="Or enter image URL directly"
-                    className="w-full bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs rounded-xl py-2 px-3 focus:border-zinc-700 outline-none"
-                  />
+
+                  {editingBlog.coverImage && (
+                    <button
+                      type="button"
+                      onClick={() => setEditingBlog({ ...editingBlog, coverImage: '' })}
+                      className="inline-flex items-center gap-1.5 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-rose-400 hover:text-rose-300 font-semibold text-xs py-2.5 px-3.5 rounded-xl transition-all"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span>Remove</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

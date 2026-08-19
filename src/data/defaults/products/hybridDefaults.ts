@@ -1,4 +1,7 @@
 export const hybridDefaults = {
+  metaTitle: "Hybrid Solar Systems with Battery Backup | Spectrum Solar India",
+  metaDescription: "Enjoy the best of both worlds: zero electricity bills and 24/7 power backup. Our hybrid solar systems feature advanced lithium storage and smart grid switching.",
+  metaKeywords: "hybrid solar system india, solar system with battery backup, lithium hybrid solar kerala, grid tie with battery",
   showHero: true,
   heroSubtitle: "Solar + Battery + Grid",
   heroTitle: "Hybrid Solar System",
@@ -12,6 +15,9 @@ export const hybridDefaults = {
   description: "A hybrid system combines solar panels, grid connection, and energy storage batteries for total reliability.",
   overviewSubtitle: "Reliable Solar with Smart Backup",
   overviewTitle: "Solar + Battery. Always On.",
+  introImage: "/images/hybrid_intro.webp",
+  techImage: "/images/hybrid_tech.webp",
+  lifestyleImage: "/images/hybrid_lifestyle.webp",
   overviewDesc1: "A Hybrid Solar System combines solar panels, battery storage, and grid connectivity to deliver uninterrupted electricity.",
   overviewDesc2: "Ideal for homes and businesses facing frequent power cuts — complete energy reliability in one system.",
   showHowItWorks: true,

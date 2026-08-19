@@ -162,6 +162,9 @@ const DEFAULT_PRODUCTS: Product[] = [
 ];
 
 const DEFAULT_BACKUP_DATA = {
+  metaTitle: "Power Backup Solutions | UPS, Inverters & Batteries India",
+  metaDescription: "Never lose power again. Explore our advanced Lithium UPS, Home Inverters, and Tubular Batteries designed for Indian power conditions.",
+  metaKeywords: "power backup india, home ups kerala, lithium inverter battery, online ups industrial, tubular battery",
   showHero: true,
   heroTitle: 'Power Backup Solutions',
   heroSubtitle: 'Power Backup Specialists',
@@ -247,8 +250,9 @@ const PowerBackup: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden min-h-screen">
       <SEO 
-        title="Power Backup Solutions | UPS, Inverters & Batteries India"
-        description="Never lose power again. Explore our advanced Lithium UPS, Home Inverters, and Tubular Batteries designed for Indian power conditions."
+        title={pageData.metaTitle || "Power Backup Solutions | UPS, Inverters & Batteries India"}
+        description={pageData.metaDescription || "Never lose power again. Explore our advanced Lithium UPS, Home Inverters, and Tubular Batteries designed for Indian power conditions."}
+        keywords={pageData.metaKeywords || "power backup india, home ups kerala, lithium inverter battery, online ups industrial, tubular battery"}
         schema={categorySchema}
       />
       {/* Hero */}

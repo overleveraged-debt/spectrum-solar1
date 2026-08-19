@@ -29,6 +29,9 @@ const DEFAULT_FAQS = [
 ];
 
 const DEFAULT_CAREERS_DATA = {
+  metaTitle: "Careers at Spectrum Solar | Join the Green Energy Revolution in India",
+  metaDescription: "Build your career with India's leading solar energy brand. We are hiring for Sales, Engineering, Operations, and more. Apply today!",
+  metaKeywords: "solar jobs india, solar engineer jobs kerala, renewable energy careers, spectrum solar hiring",
   showHero: true,
   heroTitle: 'JOIN THE ENERGY REVOLUTION',
   heroSubtitle: 'Careers',
@@ -103,8 +106,9 @@ const Careers: React.FC = () => {
   return (
     <div className="bg-white text-black pb-20 overflow-x-hidden">
       <SEO 
-        title="Careers at Spectrum Solar | Join the Green Energy Revolution in India"
-        description="Build your career with India's leading solar energy brand. We are hiring for Sales, Engineering, Operations, and more. Apply today!"
+        title={pageData.metaTitle || "Careers at Spectrum Solar | Join the Green Energy Revolution in India"}
+        description={pageData.metaDescription || "Build your career with India's leading solar energy brand. We are hiring for Sales, Engineering, Operations, and more. Apply today!"}
+        keywords={pageData.metaKeywords || "solar jobs india, solar engineer jobs kerala, renewable energy careers, spectrum solar hiring"}
         schema={faqSchema}
       />
 

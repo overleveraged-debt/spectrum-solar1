@@ -1,4 +1,7 @@
 export const homeUpsDefaults = {
+  metaTitle: "Home UPS Systems | Reliable Power Backup | Spectrum Solar",
+  metaDescription: "Keep your home powered during outages with our reliable UPS systems. Instant switching and stable voltage for all your household appliances.",
+  metaKeywords: "home ups systems, inverter for home kerala, reliable power backup, sine wave inverter, household ups india",
   showHero: true,
   heroSubtitle: "Residential Backup",
   heroTitle: "Home UPS System",
@@ -12,6 +15,9 @@ export const homeUpsDefaults = {
   description: "Pure sine wave home UPS systems protect sensitive electronics while keeping your lights and fans running smoothly.",
   overviewSubtitle: "Comfort & Continuity for Your Home",
   overviewTitle: "Power That Keeps Your Home Running.",
+  introImage: "/images/home_ups_support.webp",
+  techImage: "/images/home_ups_tech.webp",
+  lifestyleImage: "/images/home_ups_application.webp",
   overviewDesc1: "Provides uninterrupted power supply during outages by storing energy in batteries and supplying it instantly.",
   overviewDesc2: "Spectrum Powers offers customized UPS solutions based on your home's exact power requirements.",
   showHowItWorks: true,

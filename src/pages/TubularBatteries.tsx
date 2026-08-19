@@ -101,8 +101,9 @@ const TubularBatteries: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white min-h-screen overflow-x-hidden">
       <SEO 
-        title="Tubular Batteries | Deep Cycle Power Storage | Spectrum Solar"
-        description="Reliable tubular batteries for long-duration power backup. Proven deep-cycle technology designed for homes and businesses facing frequent power cuts nationwide."
+        title={pageData.metaTitle || "Tubular Batteries | Deep Cycle Power Storage | Spectrum Solar"}
+        description={pageData.metaDescription || "Reliable tubular batteries for long-duration power backup. Proven deep-cycle technology designed for homes and businesses facing frequent power cuts nationwide."}
+        keywords={pageData.metaKeywords || "tubular batteries india, tall tubular battery kerala, deep cycle solar battery, inverter battery 150ah 200ah"}
       />
 
       <section className="relative min-h-[calc(100vh+80px)] flex flex-col overflow-hidden mt-[-80px]">
@@ -154,16 +155,21 @@ const TubularBatteries: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-[4/3] shadow-2xl shadow-black/40 border border-white/5 order-2 lg:order-1">
-              <img src="/images/tubular_battery_support.webp" alt="Tubular battery bank" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <img src={pageData.introImage || "/images/tubular_battery_support.webp"} alt="Tubular battery bank" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="reveal order-1 lg:order-2" style={{ transitionDelay: '150ms' }}>
-              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">Proven Deep-Cycle Performance</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8">
-                Built for Long<br /><span className="text-yellow-400">Power Cuts.</span>
-              </h2>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-6">{description}</p>
-              <p className="text-zinc-500 leading-relaxed font-light mb-10">
-                Spectrum Powers stocks premium tubular batteries from trusted brands, with expert sizing and installation for maximum performance and longevity.
+              <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-5">
+                {pageData.overviewSubtitle || "Proven Deep-Cycle Performance"}
+              </span>
+              <h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-thin uppercase tracking-tight leading-[0.9] mb-8"
+                dangerouslySetInnerHTML={{ __html: pageData.overviewTitle || "Built for Long<br /><span class=\"text-yellow-400\">Power Cuts.</span>" }}
+              />
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-6 font-normal">
+                {pageData.overviewDesc1 || description}
+              </p>
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10 font-normal">
+                {pageData.overviewDesc2 || "Spectrum Powers stocks premium tubular batteries from trusted brands, with expert sizing and installation for maximum performance and longevity."}
               </p>
             </div>
           </div>
@@ -271,7 +277,7 @@ const TubularBatteries: React.FC = () => {
               </div>
             </div>
             <div className="reveal rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl border border-white/5" style={{ transitionDelay: '150ms' }}>
-              <img src="/images/tubular_tech.webp" alt="Tubular battery cell detail" className="w-full h-full object-cover" />
+              <img src={pageData.techImage || "/images/tubular_tech.webp"} alt="Tubular battery cell detail" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -285,7 +291,7 @@ const TubularBatteries: React.FC = () => {
               <span className="text-yellow-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Applications</span>
               <h2 className="text-4xl md:text-6xl font-thin uppercase tracking-tight mb-8 md:mb-10">Perfect For</h2>
               <div className="rounded-[2rem] overflow-hidden aspect-video border border-white/5 shadow-2xl">
-                <img src="/images/tubular_lifestyle.webp" alt="Tubular battery in home installation" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
+                <img src={pageData.lifestyleImage || "/images/tubular_lifestyle.webp"} alt="Tubular battery in home installation" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
             <div className="lg:col-span-2 space-y-3">

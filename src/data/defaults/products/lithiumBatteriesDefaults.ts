@@ -1,4 +1,7 @@
 export const lithiumBatteriesDefaults = {
+  metaTitle: "Lithium LFP Batteries | Advanced Energy Storage | Spectrum Solar",
+  metaDescription: "Upgrade to the future of energy storage with our high-capacity Lithium LFP batteries. 10x cycle life and zero maintenance for residential and industrial use.",
+  metaKeywords: "lithium lfp batteries, lifepo4 solar battery india, lithium inverter battery kerala, 48v lithium battery",
   showHero: true,
   heroSubtitle: "LFP Energy Storage",
   heroTitle: "LFP Lithium Batteries",
@@ -12,6 +15,9 @@ export const lithiumBatteriesDefaults = {
   description: "Premium Lithium Iron Phosphate (LifePO4) storage batteries with integrated BMS monitors.",
   overviewSubtitle: "The Future of Energy Storage",
   overviewTitle: "Smarter. Longer-Lasting.",
+  introImage: "/images/lithium_battery_support.webp",
+  techImage: "/images/lithium_battery_tech.webp",
+  lifestyleImage: "/images/lithium_battery_lifestyle.webp",
   overviewDesc1: "LFP technology delivers fast 2-hour charging, high depth of discharge, and zero maintenance.",
   overviewDesc2: "Spectrum Powers supplies premium lithium battery banks engineered for solar and UPS integration.",
   benefits: [

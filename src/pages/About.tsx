@@ -7,6 +7,11 @@ import SEO from '../components/SEO';
 import { sanityReadClient } from '../lib/sanityClient';
 
 const DEFAULT_ABOUT_DATA = {
+  // SEO Metadata
+  metaTitle: "About Spectrum Solar | India's Leading Solar Solutions Provider",
+  metaDescription: "With 25+ years of excellence, 40K+ satisfied customers, and 6,145+ solar projects, Spectrum Solar is India's trusted name in renewable energy.",
+  metaKeywords: "about spectrum solar, solar company kerala, renewable energy india, solar panel installation history, kochi solar company",
+
   showHero: true,
   heroTitle: '25 YEARS OF ENERGY EXCELLENCE',
   heroSubtitle: 'Our Story',
@@ -101,8 +106,9 @@ const About: React.FC = () => {
   return (
     <div className="bg-zinc-950 text-white pb-20 overflow-x-hidden">
       <SEO
-        title="About Spectrum Solar | India's Leading Solar Solutions Provider"
-        description="With 25+ years of excellence, 40K+ satisfied customers, and 6,145+ solar projects, Spectrum Solar is India's trusted name in renewable energy."
+        title={pageData.metaTitle || "About Spectrum Solar | India's Leading Solar Solutions Provider"}
+        description={pageData.metaDescription || "With 25+ years of excellence, 40K+ satisfied customers, and 6,145+ solar projects, Spectrum Solar is India's trusted name in renewable energy."}
+        keywords={pageData.metaKeywords || "about spectrum solar, solar company kerala, renewable energy india, solar panel installation history, kochi solar company"}
       />
       {/* Hero */}
       {pageData.showHero !== false && (

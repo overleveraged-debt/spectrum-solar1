@@ -6,11 +6,17 @@ import Hero from '../components/Hero';
 import StatsBar from '../components/StatsBar';
 import LoadingScreen from '../components/LoadingScreen';
 import SEO from '../components/SEO';
+import FAQSection from '../components/FAQSection';
 
 import { allTestimonials } from '../data/testimonials';
 import { sanityReadClient } from '../lib/sanityClient';
 
 const DEFAULT_HOME_DATA = {
+  // SEO Metadata
+  metaTitle: "Spectrum Solar | India's Trusted Solar Energy & Power Backup Brand",
+  metaDescription: "Empowering India with sustainable energy. 25+ years of excellence in solar installations, power backups, and nationwide franchise opportunities.",
+  metaKeywords: "spectrum solar, solar energy kerala, on grid solar panels, power backup, lithium ups, solar water heaters, solar franchise india",
+
   // Hero Section
   showHero: true,
   heroTitle: 'Precision Since 2002.',
@@ -133,6 +139,31 @@ const DEFAULT_HOME_DATA = {
   showCalculator: true,
   showPerfectFor: true,
   showTestimonials: true,
+  showFaqs: true,
+  faqsTitle: 'Frequently Asked Questions',
+  faqsSubtitle: 'Clear answers to commonly asked questions about solar systems, power backup, and subsidies.',
+  faqs: [
+    {
+      q: 'How does net metering work with on-grid solar in India?',
+      a: 'With On-Grid Solar, any surplus electricity your solar panels produce during the daytime is exported to the state electrical grid (e.g. KSEB). Your bi-monthly bill reflects only the net units consumed, drastically reducing your electricity expenses to near zero.'
+    },
+    {
+      q: 'What is the typical payback period (ROI) for a residential solar plant?',
+      a: 'Most residential rooftop solar systems achieve a full return on investment (ROI) within 3 to 5 years, while delivering clean, free electricity for 25+ years backed by Tier-1 performance warranties.'
+    },
+    {
+      q: 'Are central and state government subsidies available?',
+      a: 'Yes! Government schemes like PM Surya Ghar Muft Bijli Yojana offer substantial direct subsidies for residential rooftop solar plants. Our team assists you with registration, approval paperwork, and subsidy disbursement.'
+    },
+    {
+      q: 'What is the difference between On-Grid, Hybrid, and Off-Grid solar?',
+      a: 'On-Grid is directly synchronized with the electrical grid for maximum bill savings without batteries. Hybrid combines grid net metering with lithium battery backup for power cuts. Off-Grid operates completely independently with dedicated battery storage for remote locations.'
+    },
+    {
+      q: 'What maintenance is required for solar panels and inverters?',
+      a: 'Solar panels require minimal upkeep — periodic cleaning with water every 2–4 weeks removes accumulated dust. Spectrum Solar provides annual preventive health audits and remote system monitoring to ensure optimal generation.'
+    }
+  ]
 };
 
 const homeTestimonials = allTestimonials.slice(0, 5);
@@ -294,8 +325,9 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col bg-zinc-950 noise-bg overflow-x-hidden">
       <SEO 
-        title="Spectrum Solar | India's Trusted Solar Energy & Power Backup Brand"
-        description="Empowering India with sustainable energy. 25+ years of excellence in solar installations, power backups, and nationwide franchise opportunities."
+        title={pageData.metaTitle || "Spectrum Solar | India's Trusted Solar Energy & Power Backup Brand"}
+        description={pageData.metaDescription || "Empowering India with sustainable energy. 25+ years of excellence in solar installations, power backups, and nationwide franchise opportunities."}
+        keywords={pageData.metaKeywords || "spectrum solar, solar energy kerala, on grid solar panels, power backup, lithium ups, solar water heaters, solar franchise india"}
         schema={orgSchema}
       />
       <LoadingScreen isVisible={!isVideoLoaded} />
@@ -624,6 +656,17 @@ const Home: React.FC = () => {
             </div>
           </div>
         </section>
+      )}
+
+      {/* FAQs Section */}
+      {pageData.showFaqs !== false && (
+        <FAQSection
+          faqs={pageData.faqs || DEFAULT_HOME_DATA.faqs}
+          title={pageData.faqsTitle || "Frequently Asked Questions"}
+          subtitle={pageData.faqsSubtitle || "Clear answers to commonly asked questions about solar systems, power backup, and subsidies."}
+          badge="Got Questions?"
+          theme="dark"
+        />
       )}
 
       {/* Contact CTA — Solar Image Background */}
