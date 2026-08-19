@@ -19,19 +19,69 @@ export default function AdminDashboard() {
   const [pendingTabSwitch, setPendingTabSwitch] = useState<Tab | null>(null);
   const navigate = useNavigate();
 
-  // Authentication check
+  // 2-Hour Sliding Inactivity Session Management
   useEffect(() => {
+    const INACTIVITY_TIMEOUT_MS = 2 * 60 * 60 * 1000; // 2 hours
     const auth = localStorage.getItem('spectrum_admin_authenticated');
     if (auth !== 'true') {
       navigate('/admin/login');
+      return;
     }
+
+    // Check last active time on load
+    const lastActiveStr = localStorage.getItem('spectrum_admin_last_active');
+    const now = Date.now();
+    if (lastActiveStr) {
+      const lastActive = parseInt(lastActiveStr, 10);
+      if (now - lastActive > INACTIVITY_TIMEOUT_MS) {
+        localStorage.removeItem('spectrum_admin_authenticated');
+        localStorage.removeItem('spectrum_admin_last_active');
+        localStorage.setItem('spectrum_admin_expired_msg', 'Your session expired due to 2 hours of inactivity. Please enter your passcode.');
+        navigate('/admin');
+        return;
+      }
+    } else {
+      localStorage.setItem('spectrum_admin_last_active', now.toString());
+    }
+
+    // Activity tracker that refreshes the sliding session
+    let throttleTimer: any = null;
+    const updateActivity = () => {
+      if (!throttleTimer) {
+        throttleTimer = setTimeout(() => {
+          localStorage.setItem('spectrum_admin_last_active', Date.now().toString());
+          throttleTimer = null;
+        }, 10000); // Throttle writes to once every 10 seconds
+      }
+    };
+
+    const events = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
+    events.forEach(event => window.addEventListener(event, updateActivity, { passive: true }));
+
+    // Periodic check every 30 seconds
+    const interval = setInterval(() => {
+      const currentActive = parseInt(localStorage.getItem('spectrum_admin_last_active') || '0', 10);
+      if (Date.now() - currentActive > INACTIVITY_TIMEOUT_MS) {
+        localStorage.removeItem('spectrum_admin_authenticated');
+        localStorage.removeItem('spectrum_admin_last_active');
+        localStorage.setItem('spectrum_admin_expired_msg', 'Your session expired due to 2 hours of inactivity. Please enter your passcode.');
+        navigate('/admin');
+      }
+    }, 30000);
+
+    return () => {
+      events.forEach(event => window.removeEventListener(event, updateActivity));
+      clearInterval(interval);
+      if (throttleTimer) clearTimeout(throttleTimer);
+    };
   }, [navigate]);
 
   const handleLogout = () => {
     // Clear dirty flag when logging out to bypass alert warning
     setIsEditorDirty(false);
     localStorage.removeItem('spectrum_admin_authenticated');
-    navigate('/admin/login');
+    localStorage.removeItem('spectrum_admin_last_active');
+    navigate('/admin');
   };
 
   const handleTabClick = (tabId: Tab) => {
