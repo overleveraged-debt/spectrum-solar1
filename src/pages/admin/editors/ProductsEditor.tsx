@@ -218,7 +218,7 @@ export default function ProductsEditor({
                         ) : (
                           <Upload className="w-3.5 h-3.5" />
                         )}
-                        <span>{uploadingImage === `product_card_${currentIdx}` ? 'Uploading...' : activeProd.image ? 'Replace Photo' : 'Upload Photo'}</span>
+                        <span>{uploadingImage === `product_card_${currentIdx}` ? 'Uploading Photo...' : 'Update / Change Photo'}</span>
                       </label>
                     </div>
                   )}
@@ -232,27 +232,13 @@ export default function ProductsEditor({
                 <label className="text-[10px] font-black uppercase tracking-wider text-zinc-400 block">
                   Bullet Features Checklist ({(activeProd.features || []).length} items)
                 </label>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const newList = [...list];
-                    const currentFeatures = newList[currentIdx]?.features || [];
-                    newList[currentIdx] = {
-                      ...newList[currentIdx],
-                      features: [...currentFeatures, 'New Feature Point'],
-                    };
-                    onChange(newList);
-                  }}
-                  className="text-yellow-400 hover:text-yellow-300 text-xs font-semibold flex items-center gap-1"
-                >
-                  <Plus className="w-3.5 h-3.5" /> Add Feature Bullet
-                </button>
+                <span className="text-[9px] text-zinc-500 font-bold uppercase tracking-wider">Fixed Feature List</span>
               </div>
 
               <div className="space-y-2">
                 {(activeProd.features || []).map((feat: string, fIdx: number) => (
-                  <div key={fIdx} className="flex items-center gap-2 bg-zinc-900 border border-zinc-850 p-2 px-3 rounded-xl">
-                    <span className="w-2 h-2 rounded-full bg-yellow-400 shrink-0" />
+                  <div key={fIdx} className="flex items-center gap-2.5 bg-zinc-900 border border-zinc-850 p-2.5 px-3.5 rounded-xl">
+                    <span className="w-2 h-2 rounded-full bg-yellow-400 shrink-0 shadow-[0_0_6px_rgba(250,204,21,0.8)]" />
                     <input
                       type="text"
                       value={feat || ''}
@@ -266,25 +252,9 @@ export default function ProductsEditor({
                         };
                         onChange(newList);
                       }}
-                      className="flex-1 bg-transparent text-white text-xs outline-none font-medium"
+                      className="flex-1 bg-transparent text-white text-xs outline-none font-medium focus:text-yellow-400 transition-colors"
                       placeholder="e.g. Instant Switchover (<10ms)"
                     />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const newList = [...list];
-                        const updatedFeatures = [...(newList[currentIdx].features || [])];
-                        updatedFeatures.splice(fIdx, 1);
-                        newList[currentIdx] = {
-                          ...newList[currentIdx],
-                          features: updatedFeatures,
-                        };
-                        onChange(newList);
-                      }}
-                      className="text-rose-400 hover:text-rose-300 text-xs font-semibold p-1"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
                   </div>
                 ))}
               </div>

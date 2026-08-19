@@ -18,11 +18,18 @@ export default function FormFieldRenderer({
   uploadingImage,
 }: FormFieldRendererProps) {
   const isBoolean = typeof val === 'boolean';
-  const isImage = (typeof val === 'string' && (val.startsWith('http') || val.includes('/images/') || val.includes('.webp') || val.includes('.png') || val.includes('.jpg'))) ||
-                  key.toLowerCase().includes('image') ||
-                  key.toLowerCase().includes('img') ||
-                  key.toLowerCase().includes('photo') ||
-                  key.toLowerCase().includes('banner');
+  const isLinkOrText = key.toLowerCase().includes('link') || 
+                       key.toLowerCase().includes('url') && !key.toLowerCase().includes('video') && !key.toLowerCase().includes('image') ||
+                       ['instagram', 'facebook', 'linkedin', 'twitter', 'phone', 'email', 'hours'].includes(key.toLowerCase());
+
+  const isImage = !isLinkOrText && (
+    key.toLowerCase().includes('image') ||
+    key.toLowerCase().includes('img') ||
+    key.toLowerCase().includes('photo') ||
+    key.toLowerCase().includes('banner') ||
+    key.toLowerCase().includes('poster') ||
+    (typeof val === 'string' && (val.includes('.webp') || val.includes('.png') || val.includes('.jpg') || val.includes('.jpeg') || val.includes('.svg') || val.includes('/images/')))
+  );
   const isVideo = key.toLowerCase().includes('video') || key.toLowerCase().includes('vid');
 
   const meta = fieldMeta[key] || {
@@ -83,7 +90,7 @@ export default function FormFieldRenderer({
               </div>
             )}
           </div>
-          <div className="flex-1 flex flex-wrap items-center gap-3">
+          <div className="flex-1 flex items-center gap-3">
             <input
               type="file"
               accept="image/*"
@@ -101,19 +108,8 @@ export default function FormFieldRenderer({
               ) : (
                 <Upload className="w-3.5 h-3.5" />
               )}
-              <span>{isUploading ? 'Uploading...' : val ? 'Replace Photo' : 'Upload Photo'}</span>
+              <span>{isUploading ? 'Uploading Photo...' : 'Update / Change Photo'}</span>
             </label>
-
-            {val && (
-              <button
-                type="button"
-                onClick={() => handleFieldChange(key, '')}
-                className="inline-flex items-center gap-1.5 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-rose-400 hover:text-rose-300 font-semibold text-xs py-2.5 px-3.5 rounded-xl transition-all"
-              >
-                <Trash2 className="w-3.5 h-3.5" />
-                <span>Remove</span>
-              </button>
-            )}
           </div>
         </div>
       </div>
@@ -121,19 +117,52 @@ export default function FormFieldRenderer({
   }
 
   if (isVideo) {
+    const isUploading = uploadingImage === key;
+    const resolvedVideoSrc = val || '/videos/hero-bg.mp4';
     return (
-      <div key={key} className={`space-y-2 p-5 bg-zinc-950 border border-zinc-900 rounded-2xl ${colSpanClass}`}>
-        <div>
-          <label className="font-semibold text-sm text-zinc-300 block">{meta.label}</label>
-          {meta.desc && <span className="text-xs text-zinc-500 mt-1 block">{meta.desc}</span>}
+      <div key={key} className={`space-y-4 p-5 bg-zinc-950 border border-zinc-900 rounded-2xl ${colSpanClass}`}>
+        <div className="flex items-center justify-between">
+          <div>
+            <label className="font-semibold text-sm text-zinc-300 block">{meta.label}</label>
+            {meta.desc && <span className="text-xs text-zinc-500 mt-1 block">{meta.desc}</span>}
+          </div>
+          <span className="text-[10px] bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">
+            Active Video
+          </span>
         </div>
-        <input
-          type="text"
-          value={val || ''}
-          onChange={(e) => handleFieldChange(key, e.target.value)}
-          className="w-full bg-zinc-900 border border-zinc-850 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none transition-colors"
-          placeholder={meta.placeholder || 'Enter video file link...'}
-        />
+
+        {/* Video Preview Player */}
+        <div className="rounded-2xl overflow-hidden bg-black border border-zinc-850 aspect-video max-h-56 w-full flex items-center justify-center relative shadow-inner">
+          <video
+            src={resolvedVideoSrc}
+            controls
+            muted
+            playsInline
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        <div>
+          <input
+            type="file"
+            accept="video/mp4,video/webm,video/ogg"
+            onChange={(e) => handleImageUpload(key, e)}
+            className="hidden"
+            id={`file-upload-${key}`}
+            disabled={isUploading}
+          />
+          <label
+            htmlFor={`file-upload-${key}`}
+            className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold text-xs py-2.5 px-5 rounded-xl cursor-pointer transition-all shadow-sm active:scale-95"
+          >
+            {isUploading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <Upload className="w-4 h-4" />
+            )}
+            <span>{isUploading ? 'Uploading Video to Cloud...' : 'Update / Change Video'}</span>
+          </label>
+        </div>
       </div>
     );
   }

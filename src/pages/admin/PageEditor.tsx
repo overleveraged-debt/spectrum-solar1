@@ -188,16 +188,19 @@ export default function PageEditor({ pageId, onDirtyChange }: PageEditorProps) {
     setUploadingImage(key);
     setStatus(null);
 
+    const isVideoFile = file.type.startsWith('video/') || key.toLowerCase().includes('video');
+    const assetType = isVideoFile ? 'file' : 'image';
+
     try {
-      const asset = await sanityClient.assets.upload('image', file, {
+      const asset = await sanityClient.assets.upload(assetType, file, {
         filename: file.name,
       });
 
       setData((prev: any) => ({ ...prev, [key]: asset.url }));
-      setStatus({ type: 'success', message: 'Image uploaded successfully!' });
+      setStatus({ type: 'success', message: `${isVideoFile ? 'Video' : 'Image'} uploaded successfully!` });
     } catch (err: any) {
       console.error(err);
-      setStatus({ type: 'error', message: 'Failed to upload image. Write token is required.' });
+      setStatus({ type: 'error', message: `Failed to upload ${isVideoFile ? 'video' : 'image'}. Write token is required.` });
     } finally {
       setUploadingImage(null);
     }

@@ -274,9 +274,6 @@ const Home: React.FC = () => {
         if (isMounted && res && res.content) {
           try {
             const parsed = JSON.parse(res.content);
-            if (parsed.heroVideoUrl && parsed.heroVideoUrl.startsWith('/videos/')) {
-              delete parsed.heroVideoUrl; // Fallback to CDN URL if Sanity has old broken relative path
-            }
             setPageData(prev => ({ ...prev, ...parsed }));
           } catch (e) {
             console.error("Failed to parse home page data from Sanity", e);
