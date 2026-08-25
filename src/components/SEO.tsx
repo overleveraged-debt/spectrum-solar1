@@ -9,6 +9,7 @@ interface SEOProps {
   url?: string;
   image?: string;
   schema?: Record<string, any>;
+  noindex?: boolean;
 }
 
 const SEO: React.FC<SEOProps> = ({ 
@@ -18,7 +19,8 @@ const SEO: React.FC<SEOProps> = ({
   type = 'website', 
   url = 'https://www.spectrumpowers.com', 
   image = 'https://www.spectrumpowers.com/logo.png', 
-  schema 
+  schema,
+  noindex = false
 }) => {
   const finalImage = image.startsWith('http') ? image : `https://www.spectrumpowers.com${image}`;
   const finalUrl = url.startsWith('http') ? url : `https://www.spectrumpowers.com${url}`;
@@ -29,6 +31,7 @@ const SEO: React.FC<SEOProps> = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       
       {/* Canonical URL */}
       <link rel="canonical" href={finalUrl} />

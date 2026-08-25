@@ -304,19 +304,71 @@ const Home: React.FC = () => {
 
   useScrollReveal();
 
-  // Organization Schema for Nationwide presence
-  const orgSchema = {
+  // Organization & Sitelinks Navigation Schema
+  const homeSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Spectrum Solar",
-    "url": "https://www.spectrumpowers.com",
-    "logo": "https://www.spectrumpowers.com/logo.png",
-    "description": "India's trusted leader in solar energy and power backup solutions, serving nationwide.",
-    "foundingDate": "2002",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "IN"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Spectrum Solar",
+        "url": "https://www.spectrumpowers.com",
+        "logo": "https://www.spectrumpowers.com/logo.png",
+        "description": "India's trusted leader in solar energy and power backup solutions, serving nationwide.",
+        "foundingDate": "2002",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "name": "Spectrum Solar Key Navigation",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "Solar Solutions",
+            "description": "On-Grid, Hybrid, and Off-Grid Solar Power Systems with government subsidy support.",
+            "url": "https://www.spectrumpowers.com/solar"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Power Backup",
+            "description": "Lithium UPS, Home Inverters, and high-capacity battery backup systems.",
+            "url": "https://www.spectrumpowers.com/power"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Solar Calculator",
+            "description": "Calculate solar power savings, payback period, and recommended system capacity.",
+            "url": "https://www.spectrumpowers.com/calculator"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "About Us",
+            "description": "25+ years of precision engineering and trusted solar installations across India.",
+            "url": "https://www.spectrumpowers.com/about"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "Contact Us",
+            "description": "Get in touch for free rooftop site surveys, consultations, and customer care.",
+            "url": "https://www.spectrumpowers.com/contact"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 6,
+            "name": "Business Opportunities",
+            "description": "Franchise, Dealership, and Freelance partner opportunities with Spectrum Solar.",
+            "url": "https://www.spectrumpowers.com/opportunities"
+          }
+        ]
+      }
+    ]
   };
 
   return (
@@ -325,7 +377,7 @@ const Home: React.FC = () => {
         title={pageData.metaTitle || "Spectrum Solar | India's Trusted Solar Energy & Power Backup Brand"}
         description={pageData.metaDescription || "Empowering India with sustainable energy. 25+ years of excellence in solar installations, power backups, and nationwide franchise opportunities."}
         keywords={pageData.metaKeywords || "spectrum solar, solar energy kerala, on grid solar panels, power backup, lithium ups, solar water heaters, solar franchise india"}
-        schema={orgSchema}
+        schema={homeSchema}
       />
       <LoadingScreen isVisible={!isVideoLoaded} />
       {pageData.showHero !== false && (

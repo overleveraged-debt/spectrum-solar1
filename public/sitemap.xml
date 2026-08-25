@@ -1,27 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Tier 1: Main Homepage -->
   <url>
     <loc>https://www.spectrumpowers.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://www.spectrumpowers.com/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- Tier 1 Core Navigation Pillars (Top Sitelink Targets) -->
   <url>
     <loc>https://www.spectrumpowers.com/solar</loc>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.spectrumpowers.com/power</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/calculator</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.spectrumpowers.com/opportunities</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Tier 2: Product & Category Solutions -->
+  <url>
+    <loc>https://www.spectrumpowers.com/solar/on-grid</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/solar/hybrid</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/solar/off-grid</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/solar/water-heaters</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/power/lithium-ups</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/power/home-ups</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/power/inverters</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/power/online-ups</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/power/lithium-batteries</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/power/tubular-batteries</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Tier 2: Engagement & Proof Pages -->
+  <url>
+    <loc>https://www.spectrumpowers.com/gallery</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/projects</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -40,24 +122,33 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Tier 3: Support & Information -->
   <url>
     <loc>https://www.spectrumpowers.com/careers</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.spectrumpowers.com/contact</loc>
+    <loc>https://www.spectrumpowers.com/support</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.spectrumpowers.com/feedback</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Tier 4: Legal & Policy (Low Priority) -->
   <url>
     <loc>https://www.spectrumpowers.com/privacy-policy</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.spectrumpowers.com/terms-conditions</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
   </url>
 </urlset>

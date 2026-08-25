@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -56,6 +56,8 @@ function App() {
 
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
+            <Route path="home" element={<Navigate to="/" replace />} />
+            <Route path="index.html" element={<Navigate to="/" replace />} />
             <Route path="about" element={<About />} />
             {/* Solar Solutions */}
             <Route path="solar" element={<SolarSolutions />} />

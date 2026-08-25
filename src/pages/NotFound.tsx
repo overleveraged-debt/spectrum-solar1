@@ -10,6 +10,7 @@ const NotFound: React.FC = () => {
       <SEO 
         title="Page Not Found | Spectrum Solar" 
         description="The page you are looking for does not exist. Return to Spectrum Solar to explore our nationwide solar solutions."
+        noindex={true}
       />
       
       <div className="relative mb-8">
