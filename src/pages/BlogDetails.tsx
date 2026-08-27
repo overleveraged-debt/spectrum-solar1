@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, Clock, Loader2, BookOpen } from 'lucide-react';
 import { sanityReadClient } from '../lib/sanityClient';
 import SEO from '../components/SEO';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 
 const DEFAULT_POSTS = [
   {
@@ -100,12 +101,6 @@ const BlogDetails: React.FC = () => {
     }
   };
 
-  const categoryColor: Record<string, string> = {
-    Innovation: '#facc15',
-    Savings: '#4ade80',
-    Technical: '#60a5fa',
-  };
-
   if (loading) {
     return (
       <div className="bg-zinc-950 text-white min-h-screen flex flex-col items-center justify-center gap-4">
@@ -139,7 +134,7 @@ const BlogDetails: React.FC = () => {
       <SEO 
         title={`${post.title} | Spectrum Solar Insights`}
         description={post.excerpt || `Read ${post.title} on the Spectrum Solar Knowledge Hub.`}
-        keywords={`${post.category || 'Solar'}, solar energy insights, spectrum solar blog, ${post.title.toLowerCase()}`}
+        keywords={`solar energy insights, spectrum solar blog, ${post.title.toLowerCase()}`}
         type="article"
       />
       <div className="max-w-4xl mx-auto px-6">
@@ -154,18 +149,10 @@ const BlogDetails: React.FC = () => {
 
         {/* Article Meta */}
         <div className="space-y-6 mb-10">
-          <div className="flex flex-wrap items-center gap-4">
-            <span
-              className="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800"
-              style={{ color: categoryColor[post.category || 'Innovation'] || '#facc15' }}
-            >
-              {post.category || 'Innovation'}
-            </span>
-            <div className="flex items-center gap-4 text-zinc-500 text-[10px] font-medium uppercase tracking-widest">
-              <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-yellow-400" /> {formatDate(post.publishedAt)}</span>
-              <span className="flex items-center gap-1.5"><User className="w-3.5 h-3.5 text-yellow-400" /> {post.author || 'Tech Team'}</span>
-              <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-yellow-400" /> {post.readTime || '5 min read'}</span>
-            </div>
+          <div className="flex items-center gap-4 text-zinc-500 text-[10px] font-medium uppercase tracking-widest">
+            <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-yellow-400" /> {formatDate(post.publishedAt)}</span>
+            <span className="flex items-center gap-1.5"><User className="w-3.5 h-3.5 text-yellow-400" /> {post.author || 'Tech Team'}</span>
+            <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-yellow-400" /> {post.readTime || '5 min read'}</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-thin tracking-tight leading-[1.05] uppercase">
@@ -189,8 +176,8 @@ const BlogDetails: React.FC = () => {
         )}
 
         {/* Article Body */}
-        <article className="prose prose-invert max-w-none text-zinc-300 leading-relaxed font-light text-base space-y-6 whitespace-pre-line">
-          {post.body}
+        <article className="prose prose-invert max-w-none text-zinc-300 leading-relaxed font-light text-base">
+          <MarkdownRenderer content={post.body} />
         </article>
       </div>
     </div>

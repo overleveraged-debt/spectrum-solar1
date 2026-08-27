@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { sanityClient } from '../../lib/sanityClient';
 import { Plus, Edit2, Trash2, Save, X, Loader2, Upload, Calendar, AlertCircle, CheckCircle2 } from 'lucide-react';
+import BlogRichEditor from './components/BlogRichEditor';
 
 interface BlogPost {
   _id?: string;
@@ -8,6 +9,8 @@ interface BlogPost {
   slug: { current: string };
   coverImage?: string;
   publishedAt: string;
+  author?: string;
+  readTime?: string;
   excerpt: string;
   body: string;
 }
@@ -38,7 +41,10 @@ export default function BlogManager() {
   }, []);
 
   const handleEdit = (blog: BlogPost) => {
-    setEditingBlog(blog);
+    setEditingBlog({
+      ...blog,
+      author: blog.author || 'Tech Team',
+    });
     setStatus(null);
   };
 
@@ -47,6 +53,7 @@ export default function BlogManager() {
       title: '',
       slug: { current: '' },
       publishedAt: new Date().toISOString().split('T')[0],
+      author: 'Tech Team',
       excerpt: '',
       body: ''
     });
@@ -73,6 +80,10 @@ export default function BlogManager() {
     // Make sure slug is valid
     const slugValue = editingBlog.slug.current || editingBlog.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
 
+    // Auto-calculate reading time (approx 200 words per min)
+    const wordCount = (editingBlog.body || '').trim().split(/\s+/).filter(Boolean).length;
+    const computedReadTime = `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
+
     try {
       const doc = {
         _type: 'blog',
@@ -80,6 +91,8 @@ export default function BlogManager() {
         slug: { _type: 'slug', current: slugValue },
         coverImage: editingBlog.coverImage,
         publishedAt: new Date(editingBlog.publishedAt).toISOString(),
+        author: editingBlog.author || 'Tech Team',
+        readTime: computedReadTime,
         excerpt: editingBlog.excerpt,
         body: editingBlog.body,
       };
@@ -181,7 +194,7 @@ export default function BlogManager() {
 
           <form onSubmit={handleSave} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-2">
+              <div className="space-y-2 md:col-span-2">
                 <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">
                   Blog Title
                 </label>
@@ -191,8 +204,14 @@ export default function BlogManager() {
                   value={editingBlog.title}
                   onChange={(e) => setEditingBlog({ ...editingBlog, title: e.target.value })}
                   className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none"
-                  placeholder="e.g., The Future of Solar energy in India"
+                  placeholder="e.g., The Future of Solar Energy in Kerala"
                 />
+                {editingBlog.title && (
+                  <div className="text-[11px] text-zinc-500 font-mono flex items-center gap-1.5 pt-0.5">
+                    <span className="text-zinc-600">🔗 Live URL:</span>
+                    <span className="text-yellow-400/90 font-medium">/blog/{editingBlog.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '')}</span>
+                  </div>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -209,6 +228,19 @@ export default function BlogManager() {
                     className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 pl-12 pr-4 text-sm focus:border-yellow-400/50 outline-none"
                   />
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">
+                  Author / Byline
+                </label>
+                <input
+                  type="text"
+                  value={editingBlog.author || 'Tech Team'}
+                  onChange={(e) => setEditingBlog({ ...editingBlog, author: e.target.value })}
+                  className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none"
+                  placeholder="e.g. Spectrum Engineering Team or Engineer Corner"
+                />
               </div>
             </div>
 
@@ -277,14 +309,11 @@ export default function BlogManager() {
             {/* Body */}
             <div className="space-y-2">
               <label className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">
-                Body Content
+                Body Content & Formatting
               </label>
-              <textarea
-                required
+              <BlogRichEditor
                 value={editingBlog.body}
-                onChange={(e) => setEditingBlog({ ...editingBlog, body: e.target.value })}
-                className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl py-3 px-4 text-sm focus:border-yellow-400/50 outline-none font-mono transition-all duration-300 h-28 focus:h-80 resize-none py-2.5 overflow-y-auto"
-                placeholder="Write your blog post content here..."
+                onChange={(body) => setEditingBlog({ ...editingBlog, body })}
               />
             </div>
 

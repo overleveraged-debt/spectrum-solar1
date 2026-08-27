@@ -90,12 +90,6 @@ const Blog: React.FC = () => {
     }
   };
 
-  const categoryColor: Record<string, string> = {
-    Innovation: '#facc15',
-    Savings: '#4ade80',
-    Technical: '#60a5fa',
-  };
-
   const featured = posts[0] || DEFAULT_POSTS[0];
   const rest = posts.slice(1);
 
@@ -118,15 +112,14 @@ const Blog: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-zinc-950 to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <span className="text-yellow-400 font-medium tracking-[0.4em] uppercase text-[10px] mb-8 block drop-shadow-lg">
-            Insights & Updates
+          <span className="inline-block text-yellow-400 text-xs font-semibold uppercase tracking-[0.3em] mb-4 bg-yellow-400/10 border border-yellow-400/20 px-4 py-1.5 rounded-full backdrop-blur-sm">
+            Knowledge & Innovation
           </span>
-          <h1 className="text-[1.9rem] sm:text-5xl md:text-6xl lg:text-7xl font-thin tracking-tight mb-6 leading-[0.9] uppercase text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.6)]">
-            ENERGY EXCELLENCE <br className="hidden md:block" />
-            INSIGHTS
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-thin tracking-tight uppercase leading-[0.95] mb-6">
+            Energy <span className="text-yellow-400 font-normal">Insights.</span>
           </h1>
-          <p className="text-yellow-400 text-base md:text-xl leading-relaxed max-w-2xl mx-auto font-light tracking-wide drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-            Two decades of technical expertise, distilled into actionable energy insights.
+          <p className="text-zinc-300 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+            Latest trends, government subsidy updates, technology breakdowns, and expert solar engineering guides.
           </p>
         </div>
       </section>
@@ -161,14 +154,6 @@ const Blog: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/50 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-transparent"></div>
-                <div className="absolute top-6 left-6">
-                  <span
-                    className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-sm"
-                    style={{ color: categoryColor[featured.category || 'Innovation'] || '#facc15' }}
-                  >
-                    {featured.category || 'Innovation'}
-                  </span>
-                </div>
                 <div className="absolute bottom-6 left-6">
                   <span className="bg-yellow-400 text-black text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full">
                     Featured
@@ -218,14 +203,6 @@ const Blog: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
-                  <div className="absolute top-5 left-5 flex gap-2">
-                    <span
-                      className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-sm"
-                      style={{ color: categoryColor[post.category || 'Innovation'] || '#facc15' }}
-                    >
-                      {post.category || 'Innovation'}
-                    </span>
-                  </div>
                   <div className="absolute bottom-5 right-5">
                     <span className="text-zinc-400 text-[9px] font-medium uppercase tracking-widest">{post.readTime || '5 min read'}</span>
                   </div>
