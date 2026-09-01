@@ -127,27 +127,27 @@ const Contact: React.FC = () => {
                 <a 
                   href={activePhoneLink} 
                   onClick={() => logClickActivity('call', { label: 'Contact Page Call Button' })}
-                  className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300 border border-zinc-200/60 shadow-sm hover:shadow-md"
+                  className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300 border border-zinc-200/60 shadow-sm hover:shadow-md"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white border border-yellow-400/30 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
-                    <Phone className="w-6 h-6" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-2xl bg-white border border-yellow-400/30 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-1">Call Today</p>
-                    <p className="text-zinc-950 font-black text-lg group-hover:text-yellow-600 transition-colors">{activePhoneText}</p>
+                    <p className="text-zinc-950 font-black text-base sm:text-lg group-hover:text-yellow-600 transition-colors truncate">{activePhoneText}</p>
                   </div>
                 </a>
 
                 <a 
                   href={`mailto:${activeEmail}`} 
-                  className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300 border border-zinc-200/60 shadow-sm hover:shadow-md"
+                  className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300 border border-zinc-200/60 shadow-sm hover:shadow-md"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white border border-yellow-400/30 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
-                    <Mail className="w-6 h-6" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-2xl bg-white border border-yellow-400/30 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-1">Email Us</p>
-                    <p className="text-zinc-950 font-black text-lg group-hover:text-yellow-600 transition-colors">{activeEmail}</p>
+                    <p className="text-zinc-950 font-black text-sm sm:text-base md:text-lg group-hover:text-yellow-600 transition-colors break-words sm:break-all leading-tight">{activeEmail}</p>
                   </div>
                 </a>
               </div>
