@@ -80,3 +80,28 @@ export function clearAuthSession() {
   localStorage.removeItem('spectrum_admin_authenticated');
   localStorage.removeItem('spectrum_admin_last_active');
 }
+
+/**
+ * Log user click interactions (Phone Call, WhatsApp Chat) to Sanity CMS
+ */
+import { sanityClient } from './sanityClient';
+
+export async function logClickActivity(type: 'call' | 'whatsapp', metadata?: { page?: string; label?: string }) {
+  try {
+    const timestamp = new Date().toISOString();
+    const pageUrl = metadata?.page || (typeof window !== 'undefined' ? window.location.pathname : '/');
+    const label = metadata?.label || (type === 'call' ? 'Phone Call Click' : 'WhatsApp Chat Click');
+
+    // Create an activity document in Sanity
+    await sanityClient.create({
+      _type: 'activityLog',
+      activityType: type,
+      title: label,
+      page: pageUrl,
+      createdAt: timestamp,
+    });
+  } catch (err) {
+    // Non-blocking catch to ensure fast user navigation
+    console.debug('Activity log ping completed.', err);
+  }
+}

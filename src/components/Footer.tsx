@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data/config';
 import { usePageContent } from '../hooks/usePageContent';
+import { logClickActivity } from '../lib/authCrypto';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -44,10 +45,10 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-zinc-950 pt-24 pb-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-16 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 pb-20">
           
           {/* Brand & Description */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-3 space-y-8">
             <Link to="/" className="inline-block">
               <img 
                 src="/logo.png" 
@@ -190,7 +191,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contact Column */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <button 
               onClick={() => toggleSection('contact')}
               className="w-full flex items-center justify-between md:cursor-default text-left py-2 md:py-0"
@@ -202,7 +203,7 @@ const Footer: React.FC = () => {
             <div className={`overflow-hidden transition-all duration-300 md:max-h-none ${openSection === 'contact' ? 'max-h-[300px] mt-4 md:mt-0' : 'max-h-0 md:max-h-none'}`}>
               <ul className="space-y-6">
                 <li className="flex gap-3">
-                  <MapPin className="w-4 h-4 text-yellow-400 shrink-0" />
+                  <MapPin className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
                   <div className="space-y-1">
                     <p className="text-[10px] font-black uppercase text-zinc-400 tracking-wider leading-none">Headquarters</p>
                     <p className="text-zinc-400 text-xs leading-relaxed">Kochi</p>
@@ -210,13 +211,17 @@ const Footer: React.FC = () => {
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-yellow-400 shrink-0" />
-                  <a href={`tel:${phoneVal.replace(/\s+/g, '')}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                  <a 
+                    href={`tel:${phoneVal.replace(/\s+/g, '')}`} 
+                    onClick={() => logClickActivity('call', { label: 'Footer Call Link' })}
+                    className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block break-all"
+                  >
                     {phoneVal}
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-yellow-400 shrink-0" />
-                  <a href={`mailto:${emailVal}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block">
+                  <a href={`mailto:${emailVal}`} className="text-zinc-400 hover:text-yellow-400 text-xs leading-relaxed transition-colors block break-all">
                     {emailVal}
                   </a>
                 </li>

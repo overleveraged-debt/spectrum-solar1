@@ -367,8 +367,14 @@ export const pageSectionGroups: Record<string, Array<{
     {
       id: 'hero',
       title: 'Hero Section',
-      description: 'Configure page headlines.',
+      description: 'Configure page headlines and banner backdrop.',
       fields: ['showHero', 'heroTitle', 'heroSubtitle', 'heroImage', 'heroDesc']
+    },
+    {
+      id: 'contactInfo',
+      title: 'Contact Details (Phone & Email)',
+      description: 'Customize phone number and central inquiry email displayed on the contact page.',
+      fields: ['phone', 'email']
     },
     {
       id: 'offices',

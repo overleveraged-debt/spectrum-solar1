@@ -85,13 +85,6 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
           resumeUrl: formData.linkedinUrl, // LinkedIn profile acts as resume link
           createdAt: timestamp
         });
-
-        // Trigger pre-filled email alert
-        const subject = encodeURIComponent(`New Job Application: ${formData.name} - ${formData.position}`);
-        const body = encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nPosition: ${formData.position}\nLinkedIn: ${formData.linkedinUrl}\n\nCover Letter / Details:\n${formData.details}`
-        );
-        window.location.href = `mailto:support@spectrumsolar.com?subject=${subject}&body=${body}`;
       } else {
         // Build description with any extra properties
         let extraInfo = '';
@@ -111,13 +104,6 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
           description: `${formData.details}${extraInfo}`,
           createdAt: timestamp
         });
-
-        // Trigger pre-filled email alert
-        const subject = encodeURIComponent(`New Website Enquiry: ${formData.name} (${type.toUpperCase()})`);
-        const body = encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInquiry For: ${type}${extraInfo}\n\nAdditional Details:\n${formData.details}`
-        );
-        window.location.href = `mailto:support@spectrumsolar.com?subject=${subject}&body=${body}`;
       }
 
       setIsSubmitting(false);
@@ -148,9 +134,9 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
         <div className="w-20 h-20 bg-green-500/10 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8">
           <Zap className="w-10 h-10 fill-current" />
         </div>
-        <h3 className="text-3xl font-thin uppercase tracking-tight mb-4 text-black">Message Saved!</h3>
+        <h3 className="text-3xl font-thin uppercase tracking-tight mb-4 text-black">Message Sent!</h3>
         <p className="text-zinc-600 font-light mb-8 max-w-sm mx-auto">
-          Your inquiry has been stored in the dashboard and pre-filled in your mail client. Expect our callback within 24 hours.
+          Thank you for reaching out. Your inquiry has been received and our engineering team will get back to you within 24 hours.
         </p>
         <button 
           onClick={() => setSubmitted(false)}
@@ -178,8 +164,8 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="John Doe"
-              className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
+              placeholder=""
+              className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
             />
           </div>
           <div className="space-y-2">
@@ -192,8 +178,8 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="+91 98765 43210"
-              className={`w-full bg-white border rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:bg-white transition-all text-sm shadow-sm
+              placeholder=""
+              className={`w-full bg-white border rounded-full px-7 py-4 text-black focus:outline-none focus:bg-white transition-all text-sm shadow-sm
                 ${errors.phone ? 'border-red-500 focus:border-red-500' : 'border-zinc-200 focus:border-yellow-450'}
               `}
             />
@@ -217,8 +203,8 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="john@example.com"
-              className={`w-full bg-white border rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:bg-white transition-all text-sm shadow-sm
+              placeholder=""
+              className={`w-full bg-white border rounded-full px-7 py-4 text-black focus:outline-none focus:bg-white transition-all text-sm shadow-sm
                 ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-zinc-200 focus:border-yellow-450'}
               `}
             />
@@ -300,8 +286,8 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
                 name="targetLocation"
                 value={formData.targetLocation}
                 onChange={handleChange}
-                placeholder="City Name"
-                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
+                placeholder=""
+                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
               />
             </div>
             <div className="space-y-2">
@@ -335,8 +321,8 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
-                placeholder="e.g. Site Engineer"
-                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
+                placeholder=""
+                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
               />
             </div>
             <div className="space-y-2">
@@ -349,8 +335,8 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
                 name="linkedinUrl"
                 value={formData.linkedinUrl}
                 onChange={handleChange}
-                placeholder="https://linkedin.com/in/..."
-                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
+                placeholder=""
+                className="w-full bg-white border border-zinc-200 rounded-full px-7 py-4 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all text-sm shadow-sm"
               />
             </div>
           </div>
@@ -366,12 +352,8 @@ const SmartForm: React.FC<SmartFormProps> = ({ initialType = 'general' }) => {
             name="details"
             value={formData.details}
             onChange={handleChange}
-            placeholder={
-              type === 'careers' ? "Tell us why you want to join the green energy revolution..." :
-              type === 'solar' ? "Please describe your site (roof type, orientation, etc.)..." :
-              "Any specific questions or requirements?"
-            }
-            className="w-full bg-white border border-zinc-200 rounded-[1.5rem] px-7 py-5 text-black placeholder:text-zinc-400 focus:outline-none focus:border-yellow-450 focus:bg-white transition-all resize-none text-sm shadow-sm"
+            placeholder=""
+            className="w-full bg-white border border-zinc-200 rounded-[1.5rem] px-7 py-5 text-black focus:outline-none focus:border-yellow-450 focus:bg-white transition-all resize-none text-sm shadow-sm"
           />
         </div>
 

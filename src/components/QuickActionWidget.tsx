@@ -2,6 +2,7 @@ import React from 'react';
 import { Phone } from 'lucide-react';
 import { CONTACT_INFO } from '../data/config';
 import { usePageContent } from '../hooks/usePageContent';
+import { logClickActivity } from '../lib/authCrypto';
 
 const QuickActionWidget: React.FC = () => {
   const { pageData: supportData } = usePageContent('support');
@@ -19,6 +20,7 @@ const QuickActionWidget: React.FC = () => {
       {/* Phone Call Button (with Gold Pulsing Glow Aura behind) */}
       <a
         href={phoneLink}
+        onClick={() => logClickActivity('call', { label: 'Floating Call Button' })}
         className="relative w-12 h-12 rounded-full bg-zinc-900/90 hover:bg-yellow-400 text-yellow-400 hover:text-black border border-yellow-400/40 hover:border-yellow-400 flex items-center justify-center backdrop-blur-xl transition-all duration-300 transform hover:scale-110 active:scale-95 group"
         title="Call Sales & Support"
         aria-label="Call Sales & Support"
@@ -31,6 +33,7 @@ const QuickActionWidget: React.FC = () => {
       {/* WhatsApp Button (Clean Icon Only with Pulsing Glow Aura behind) */}
       <a
         href={whatsappLink}
+        onClick={() => logClickActivity('whatsapp', { label: 'Floating WhatsApp Button' })}
         target="_blank"
         rel="noopener noreferrer"
         className="relative w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center transition-all duration-300 transform hover:scale-110 active:scale-95 shadow-lg group"

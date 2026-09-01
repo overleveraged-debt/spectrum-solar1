@@ -8,6 +8,8 @@ import SmartForm from '../components/SmartForm';
 import type { InquiryType } from '../components/SmartForm';
 import { CONTACT_INFO } from '../data/config';
 import { sanityReadClient } from '../lib/sanityClient';
+import { usePageContent } from '../hooks/usePageContent';
+import { logClickActivity } from '../lib/authCrypto';
 
 const DEFAULT_CONTACT_DATA = {
   metaTitle: "Contact Us | Spectrum Solar India",
@@ -18,6 +20,8 @@ const DEFAULT_CONTACT_DATA = {
   heroSubtitle: 'Global Network',
   heroImage: '/images/contact-hero.jpg',
   heroDesc: 'Connect with our senior engineering team for project audits and technical consultations.',
+  phone: '',
+  email: '',
 };
 
 const Contact: React.FC = () => {
@@ -45,6 +49,11 @@ const Contact: React.FC = () => {
       isMounted = false;
     };
   }, []);
+
+  const { pageData: supportData } = usePageContent('support');
+  const activePhoneText = pageData.phone || supportData.phone || CONTACT_INFO.phoneText;
+  const activePhoneLink = `tel:${activePhoneText.replace(/[^\d+]/g, '')}`;
+  const activeEmail = pageData.email || supportData.email || CONTACT_INFO.email;
 
   const seoData = {
     general: { title: "Contact Us", desc: "Get in touch with Spectrum Solar for expert consultation and support across India." },
@@ -116,7 +125,8 @@ const Contact: React.FC = () => {
               
               <div className="space-y-4">
                 <a 
-                  href={CONTACT_INFO.phoneLink} 
+                  href={activePhoneLink} 
+                  onClick={() => logClickActivity('call', { label: 'Contact Page Call Button' })}
                   className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300 border border-zinc-200/60 shadow-sm hover:shadow-md"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-white border border-yellow-400/30 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
@@ -124,12 +134,12 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-1">Call Today</p>
-                    <p className="text-zinc-950 font-black text-lg group-hover:text-yellow-600 transition-colors">{CONTACT_INFO.phoneText}</p>
+                    <p className="text-zinc-950 font-black text-lg group-hover:text-yellow-600 transition-colors">{activePhoneText}</p>
                   </div>
                 </a>
 
                 <a 
-                  href={`mailto:${CONTACT_INFO.email}`} 
+                  href={`mailto:${activeEmail}`} 
                   className="flex items-center gap-6 p-6 premium-cream-card rounded-2xl group hover:scale-[1.02] transition-all duration-300 border border-zinc-200/60 shadow-sm hover:shadow-md"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-white border border-yellow-400/30 flex items-center justify-center text-zinc-900 group-hover:bg-yellow-400 group-hover:text-black transition-all shadow-sm">
@@ -137,7 +147,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-1">Email Us</p>
-                    <p className="text-zinc-950 font-black text-lg group-hover:text-yellow-600 transition-colors">{CONTACT_INFO.email}</p>
+                    <p className="text-zinc-950 font-black text-lg group-hover:text-yellow-600 transition-colors">{activeEmail}</p>
                   </div>
                 </a>
               </div>
