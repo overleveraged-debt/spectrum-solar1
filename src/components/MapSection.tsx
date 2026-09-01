@@ -101,10 +101,12 @@ const MapSection: React.FC<{ height?: string; theme?: 'light' | 'dark' }> = ({ h
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            subdomains="abcd"
+            maxZoom={20}
             url={
               (() => {
                 const apiKey = import.meta.env.VITE_CARTO_API_KEY;
-                const keyParam = apiKey ? `?api_key=${apiKey}` : '';
+                const keyParam = apiKey ? `?key=${apiKey}` : '';
                 return isDark 
                   ? `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png${keyParam}`
                   : `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png${keyParam}`;

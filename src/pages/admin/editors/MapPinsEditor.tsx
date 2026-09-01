@@ -109,7 +109,9 @@ export default function MapPinsEditor({
             >
               <TileLayer
                 attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
-                url={`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png${import.meta.env.VITE_CARTO_API_KEY ? `?api_key=${import.meta.env.VITE_CARTO_API_KEY}` : ''}`}
+                subdomains="abcd"
+                maxZoom={20}
+                url={`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png${import.meta.env.VITE_CARTO_API_KEY ? `?key=${import.meta.env.VITE_CARTO_API_KEY}` : ''}`}
               />
               <GeoJSON
                 data={keralaMaskGeojson as any}
